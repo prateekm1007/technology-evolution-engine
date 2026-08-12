@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-008-mechanism_only",
+  "case_id": "DSB-R-008",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-008-mechanism_only",
+  "payload_hash": "c5e34d907f71dd337a780639cbe6429fbf53c868edaa46afcbd7bcecadb83a1b",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:08:42.694437+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The upregulation of immunosuppressive ligands in the tumor microenvironment may enhance the expression of PD-1 on activated T-cells, leading to increased T-cell exhaustion.",
+  "mechanism": "The core mechanism shared across the facts is the immune system's ability to recognize and respond to cancer cells, which is hindered by various immunosuppressive mechanisms, including checkpoint molecules like CTLA-4 and PD-1, that dampen T-cell activity and lead to T-cell exhaustion.",
+  "constraint_released": "If the immunosuppressive ligands upregulated by tumors could be blocked or downregulated, it may be possible to release the constraint on T-cell activity and improve the efficacy of cancer vaccines.",
+  "predicted_quantitative_outcome": "20% increase in overall survival rate among melanoma patients",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The upregulation of immunosuppressive ligands in the tumor microenvironment may enhance the expression of PD-1 on activated T-cells, leading to increased T-cell exhaustion.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the immune system's ability to recognize and respond to cancer cells, which is hindered by various immunosuppressive mechanisms, including checkpoint molecules like CTLA-4 and PD-1, that dampen T-cell activity and lead to T-cell exhaustion.\",\n  \"constraint_released\": \"If the immunosuppressive ligands upregulated by tumors could be blocked or downregulated, it may be possible to release the constraint on T-cell activity and improve the efficacy of cancer vaccines.\",\n  \"predicted_quantitative_outcome\": \"20% increase in overall survival rate among melanoma patients\"\n}\n```",
+  "receipt_hash": "41f896a908113065cc70694c53666cb3b8ee4a4988f0c8d55b695308d6c7be09"
+}

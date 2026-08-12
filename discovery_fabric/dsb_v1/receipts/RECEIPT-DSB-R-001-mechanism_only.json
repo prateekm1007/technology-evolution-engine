@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-001-mechanism_only",
+  "case_id": "DSB-R-001",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-001-mechanism_only",
+  "payload_hash": "7c729557baacbb916a73080ab26a4615a8f8a77a8383baabc627782168f5ecf0",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:04:00.550519+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The use of non-aqueous electrolytes can mitigate dendrite formation by reducing the reactivity of lithium ions during insertion and extraction.",
+  "mechanism": "The core mechanism shared across the facts is the movement of lithium ions between electrodes, which is crucial for the functioning of lithium metal batteries, but also leads to safety issues such as dendrite formation, highlighting the need for a balance between ion conductivity and safety.",
+  "constraint_released": "The constraint of using aqueous electrolytes is released, allowing for the exploration of non-aqueous electrolytes that can improve safety while maintaining ion conductivity.",
+  "predicted_quantitative_outcome": "0.5 dendrites per 100 charge cycles",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The use of non-aqueous electrolytes can mitigate dendrite formation by reducing the reactivity of lithium ions during insertion and extraction.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the movement of lithium ions between electrodes, which is crucial for the functioning of lithium metal batteries, but also leads to safety issues such as dendrite formation, highlighting the need for a balance between ion conductivity and safety.\",\n  \"constraint_released\": \"The constraint of using aqueous electrolytes is released, allowing for the exploration of non-aqueous electrolytes that can improve safety while maintaining ion conductivity.\",\n  \"predicted_quantitative_outcome\": \"0.5 dendrites per 100 charge cycles\"\n}\n```",
+  "receipt_hash": "c66b62f5de23c15ca7aab7e7c3518e3304f0c476fb28075e5fee49e1f2919e35"
+}

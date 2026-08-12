@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-008-mechanism_only",
+  "case_id": "DSB-F-008",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-F-008-mechanism_only",
+  "payload_hash": "4449650fa6c5569faf7c5d868106477edb6e2a8ce9c2f479b7e228ba50819448",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:17:24.471506+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The use of small-molecule inhibitors of IDO may enhance the efficacy of cancer vaccines by preventing the suppression of T-cell function in the tumor microenvironment.",
+  "mechanism": "The core mechanism shared across the facts is the immune-evasion strategy employed by tumors, specifically the upregulation of IDO, which degrades tryptophan and suppresses T-cell function, thereby preventing the immune system from effectively targeting and eliminating cancer cells.",
+  "constraint_released": "The development of orally bioavailable small-molecule inhibitors of IDO releases the constraint of T-cell suppression in the tumor microenvironment, potentially allowing cancer vaccines to be more effective.",
+  "predicted_quantitative_outcome": "20% increase in T-cell activation with IDO inhibition",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The use of small-molecule inhibitors of IDO may enhance the efficacy of cancer vaccines by preventing the suppression of T-cell function in the tumor microenvironment.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the immune-evasion strategy employed by tumors, specifically the upregulation of IDO, which degrades tryptophan and suppresses T-cell function, thereby preventing the immune system from effectively targeting and eliminating cancer cells.\",\n  \"constraint_released\": \"The development of orally bioavailable small-molecule inhibitors of IDO releases the constraint of T-cell suppression in the tumor microenvironment, potentially allowing cancer vaccines to be more effective.\",\n  \"predicted_quantitative_outcome\": \"20% increase in T-cell activation with IDO inhibition\"\n}\n```",
+  "receipt_hash": "4331beaea8b06c7f0eea73d419aee293f284a3aa3f1440291ffe5e1500c75377"
+}

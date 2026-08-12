@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-007-full_system",
+  "case_id": "DSB-R-007",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-007-full_system",
+  "payload_hash": "b25548321876d8f220847d6b241898af75ab2d016bf0d28685a6523dcbbfca7a",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:08:22.757322+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The Cas9 protein can be used to stimulate endogenous repair pathways by creating double-strand DNA breaks at specific genomic loci targeted by the dual RNA complex.",
+  "mechanism": "The mechanism involves the Cas9 protein, guided by the crRNA + tracrRNA complex, creating a double-strand break at a specific genomic locus, which then stimulates the cell's endogenous repair pathways, such as NHEJ or HDR, to repair the break, potentially disrupting or replacing a gene. This process leverages the adaptive immune system of bacterial CRISPR loci to target specific DNA sequences, offering a precise method for genome editing. By combining the specificity of the Cas9 system with the cell's own repair mechanisms, it's possible to edit genes with greater precision than methods like zinc-finger nucleases and TALENs, which require protein engineering for each new target.",
+  "constraint_released": "The need for protein engineering for each new target in genome editing is released by utilizing the Cas9 protein guided by a dual RNA complex.",
+  "predicted_quantitative_outcome": "90% efficiency in targeted gene editing",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The Cas9 protein can be used to stimulate endogenous repair pathways by creating double-strand DNA breaks at specific genomic loci targeted by the dual RNA complex.\",\n  \"mechanism\": \"The mechanism involves the Cas9 protein, guided by the crRNA + tracrRNA complex, creating a double-strand break at a specific genomic locus, which then stimulates the cell's endogenous repair pathways, such as NHEJ or HDR, to repair the break, potentially disrupting or replacing a gene. This process leverages the adaptive immune system of bacterial CRISPR loci to target specific DNA sequences, offering a precise method for genome editing. By combining the specificity of the Cas9 system with the cell's own repair mechanisms, it's possible to edit genes with greater precision than methods like zinc-finger nucleases and TALENs, which require protein engineering for each new target.\",\n  \"constraint_released\": \"The need for protein engineering for each new target in genome editing is released by utilizing the Cas9 protein guided by a dual RNA complex.\",\n  \"predicted_quantitative_outcome\": \"90% efficiency in targeted gene editing\"\n}\n```",
+  "receipt_hash": "e1c68e899c12750ff168f7954be395f338c176235bcb68f530cbf2e78e644b7c"
+}

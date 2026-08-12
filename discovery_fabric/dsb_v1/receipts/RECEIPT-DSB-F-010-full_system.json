@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-010-full_system",
+  "case_id": "DSB-F-010",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-010-full_system",
+  "payload_hash": "aadb06a012b9e9a8a3c3b06bea9219d70e734b0e2754667963a9387170821051",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:19:18.330967+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Energy-based models can be used to regularize discriminative neural networks by introducing an energy term that encourages the network to produce low-energy configurations for in-distribution data and high-energy configurations for out-of-distribution data.",
+  "mechanism": "The mechanism underlying this relationship involves the interaction between the energy-based model and the discriminative neural network. The energy-based model assigns a scalar energy to the configurations produced by the neural network, and the neural network learns to minimize this energy for in-distribution data and maximize it for out-of-distribution data. This interaction allows the neural network to learn a more robust representation of the data, which can improve its accuracy and generalization performance. Furthermore, the use of energy-based models can be seen as a way to introduce a zero-sum game between the neural network and the energy-based model, where the neural network tries to minimize the energy and the energy-based model tries to maximize it, leading to an equilibrium solution that corresponds to the optimal configuration.",
+  "constraint_released": "This relationship releases the constraint of requiring a large amount of labeled data to train accurate discriminative neural networks, as the energy-based model can provide a regularization term that helps the network to generalize better to unseen data.",
+  "predicted_quantitative_outcome": "0.85 accuracy on a held-out test set",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Energy-based models can be used to regularize discriminative neural networks by introducing an energy term that encourages the network to produce low-energy configurations for in-distribution data and high-energy configurations for out-of-distribution data.\",\n  \"mechanism\": \"The mechanism underlying this relationship involves the interaction between the energy-based model and the discriminative neural network. The energy-based model assigns a scalar energy to the configurations produced by the neural network, and the neural network learns to minimize this energy for in-distribution data and maximize it for out-of-distribution data. This interaction allows the neural network to learn a more robust representation of the data, which can improve its accuracy and generalization performance. Furthermore, the use of energy-based models can be seen as a way to introduce a zero-sum game between the neural network and the energy-based model, where the neural network tries to minimize the energy and the energy-based model tries to maximize it, leading to an equilibrium solution that corresponds to the optimal configuration.\",\n  \"constraint_released\": \"This relationship releases the constraint of requiring a large amount of labeled data to train accurate discriminative neural networks, as the energy-based model can provide a regularization term that helps the network to generalize better to unseen data.\",\n  \"predicted_quantitative_outcome\": \"0.85 accuracy on a held-out test set\"\n}\n```",
+  "receipt_hash": "cea13c5db581438b5deb3b133d56acbee3d8484f82c15e23c50951369d2722f5"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-009-mechanism_only",
+  "case_id": "DSB-R-009",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-009-mechanism_only",
+  "payload_hash": "4ca0dc162e562572f247fe84c78de313cc3d6e6f8fd47bc16eb1aec8667f5897",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:09:28.367243+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The introduction of specific transcription factors into somatic cells can reprogram them to a pluripotent state similar to that achieved through somatic cell nuclear transfer.",
+  "mechanism": "The core mechanism shared across the facts is the regulation of cellular pluripotency through specific genetic and molecular factors, including transcription factors and nuclear reprogramming, which enable cells to differentiate into various cell types or maintain their ability to do so.",
+  "constraint_released": "The inefficiency and requirement for an oocyte in somatic cell nuclear transfer are constraints that could be released by identifying alternative reprogramming methods.",
+  "predicted_quantitative_outcome": "80% of somatic cells reprogrammed with the specific transcription factors will express markers of pluripotency within 14 days",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The introduction of specific transcription factors into somatic cells can reprogram them to a pluripotent state similar to that achieved through somatic cell nuclear transfer.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the regulation of cellular pluripotency through specific genetic and molecular factors, including transcription factors and nuclear reprogramming, which enable cells to differentiate into various cell types or maintain their ability to do so.\",\n  \"constraint_released\": \"The inefficiency and requirement for an oocyte in somatic cell nuclear transfer are constraints that could be released by identifying alternative reprogramming methods.\",\n  \"predicted_quantitative_outcome\": \"80% of somatic cells reprogrammed with the specific transcription factors will express markers of pluripotency within 14 days\"\n}\n```",
+  "receipt_hash": "9b7902d1119081784f39ddb48715d6be8555c23e8b149ecd9ca511608103252c"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-007-mechanism_only",
+  "case_id": "DSB-F-007",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-F-007-mechanism_only",
+  "payload_hash": "1c1ec06ff4c7f85f00b2637220d9452092946cd2458d8dc774c98c7b3a95d6a0",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:16:35.952462+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The use of small DNA guides by prokaryotic Argonaute proteins could be combined with the ability of zinc-finger nucleases and TALENs to cut specific genomic loci, allowing for more precise and efficient genome editing.",
+  "mechanism": "The core mechanism shared across the facts is the use of targeted nucleic acid cleavage, where specific enzymes or proteins are guided to cut DNA at particular locations, either through small DNA guides, protein engineering, or other mechanisms, facilitating various biological processes such as repair, editing, or regulation.",
+  "constraint_released": "The constraint of requiring protein engineering for each new target could be released by leveraging the small DNA guide system of prokaryotic Argonaute proteins.",
+  "predicted_quantitative_outcome": "90% efficiency in targeted genome editing",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The use of small DNA guides by prokaryotic Argonaute proteins could be combined with the ability of zinc-finger nucleases and TALENs to cut specific genomic loci, allowing for more precise and efficient genome editing.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the use of targeted nucleic acid cleavage, where specific enzymes or proteins are guided to cut DNA at particular locations, either through small DNA guides, protein engineering, or other mechanisms, facilitating various biological processes such as repair, editing, or regulation.\",\n  \"constraint_released\": \"The constraint of requiring protein engineering for each new target could be released by leveraging the small DNA guide system of prokaryotic Argonaute proteins.\",\n  \"predicted_quantitative_outcome\": \"90% efficiency in targeted genome editing\"\n}\n```",
+  "receipt_hash": "eb3ac79172cde7581b8eee5550f1ff78d0f47bf2a7c9605c5414ec1d3fde030a"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-008-full_system",
+  "case_id": "DSB-R-008",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-008-full_system",
+  "payload_hash": "497959250f1d3e36669c6077b88b804329b17b55c3edbdca0379f69c3e7e81f1",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:09:11.305658+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining CTLA-4 blockade with PD-1 inhibition may enhance anti-tumor T-cell activity by preventing both initial activation-induced suppression and subsequent exhaustion.",
+  "mechanism": "The mechanism involves the synergistic effect of blocking two distinct checkpoints, CTLA-4 and PD-1, which are both involved in dampening T-cell responses but at different stages and through different pathways. CTLA-4 is crucial in the early stages of T-cell activation, preventing excessive activation, while PD-1 is involved later, promoting T-cell exhaustion within the tumor microenvironment. By blocking both, the approach aims to both enhance the initial activation of T-cells and prevent their subsequent silencing within the tumor, potentially leading to a more effective anti-tumor response.",
+  "constraint_released": "This combination releases the constraint of T-cell exhaustion and functional silencing, allowing for a more sustained and effective anti-tumor immune response.",
+  "predicted_quantitative_outcome": "30% increase in durable responses in melanoma patients",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining CTLA-4 blockade with PD-1 inhibition may enhance anti-tumor T-cell activity by preventing both initial activation-induced suppression and subsequent exhaustion.\",\n  \"mechanism\": \"The mechanism involves the synergistic effect of blocking two distinct checkpoints, CTLA-4 and PD-1, which are both involved in dampening T-cell responses but at different stages and through different pathways. CTLA-4 is crucial in the early stages of T-cell activation, preventing excessive activation, while PD-1 is involved later, promoting T-cell exhaustion within the tumor microenvironment. By blocking both, the approach aims to both enhance the initial activation of T-cells and prevent their subsequent silencing within the tumor, potentially leading to a more effective anti-tumor response.\",\n  \"constraint_released\": \"This combination releases the constraint of T-cell exhaustion and functional silencing, allowing for a more sustained and effective anti-tumor immune response.\",\n  \"predicted_quantitative_outcome\": \"30% increase in durable responses in melanoma patients\"\n}\n```",
+  "receipt_hash": "b27f1d546c08e5ebb783ef7d39c38e71161fcf179091a975bdd6fb56d9831789"
+}

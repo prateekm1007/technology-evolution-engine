@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-001-full_system",
+  "case_id": "DSB-R-001",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-001-full_system",
+  "payload_hash": "779f64e47377b8a28f16ee2a6808820bf1506ea6f6c69b4477064955ba8f4f42",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:04:14.707248+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Using non-aqueous electrolytes in lithium metal batteries can mitigate dendrite formation by stabilizing the electrode-electrolyte interface.",
+  "mechanism": "The mechanism involves the non-aqueous electrolyte facilitating the reversible insertion and extraction of lithium ions at the electrode, thereby reducing the likelihood of dendrite formation. This is because the non-aqueous electrolyte can solvate the lithium ions, allowing them to move more freely and uniformly between the electrodes, which in turn reduces the concentration gradients that drive dendrite growth. As a result, the battery can operate safely and efficiently, supporting high-energy-density storage.",
+  "constraint_released": "The use of non-aqueous electrolytes releases the constraint of dendrite formation, allowing for the development of safe rechargeable lithium metal batteries with high energy density.",
+  "predicted_quantitative_outcome": "0.5 Wh/kg increase in energy density",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Using non-aqueous electrolytes in lithium metal batteries can mitigate dendrite formation by stabilizing the electrode-electrolyte interface.\",\n  \"mechanism\": \"The mechanism involves the non-aqueous electrolyte facilitating the reversible insertion and extraction of lithium ions at the electrode, thereby reducing the likelihood of dendrite formation. This is because the non-aqueous electrolyte can solvate the lithium ions, allowing them to move more freely and uniformly between the electrodes, which in turn reduces the concentration gradients that drive dendrite growth. As a result, the battery can operate safely and efficiently, supporting high-energy-density storage.\",\n  \"constraint_released\": \"The use of non-aqueous electrolytes releases the constraint of dendrite formation, allowing for the development of safe rechargeable lithium metal batteries with high energy density.\",\n  \"predicted_quantitative_outcome\": \"0.5 Wh/kg increase in energy density\"\n}\n```",
+  "receipt_hash": "92e2f51d4472c0eee70467195f56c692b581c1ebc95b74916e914221712cbc15"
+}

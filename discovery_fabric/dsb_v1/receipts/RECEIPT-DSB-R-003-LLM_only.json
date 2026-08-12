@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-003-LLM_only",
+  "case_id": "DSB-R-003",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-R-003-LLM_only",
+  "payload_hash": "8470e9a3452ade7b35262bd03919b78b093cb0e44c0a4bcbf4ae1c48a9adf414",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:04:55.677706+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Mechanical cleavage of graphite can produce a strictly two-dimensional crystal of carbon.",
+  "mechanism": "The weak van der Waals forces holding the layers of graphite together can be overcome through mechanical cleavage, allowing for the separation of individual layers, which, given the crystalline structure of graphite, would result in a two-dimensional crystal of carbon. This process leverages the known technique of mechanical cleavage of layered materials to thin samples, potentially creating a single layer of carbon atoms arranged in a two-dimensional lattice, akin to the structure of the individual layers in graphite.",
+  "constraint_released": "The constraint of the material needing to be thermodynamically stable as a three-dimensional structure is released in this scenario, as the question of stability now pertains to a two-dimensional form.",
+  "predicted_quantitative_outcome": "0.335 nanometers (the interlayer spacing in graphite, suggesting the potential thickness of a single layer of carbon if successfully cleaved)",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Mechanical cleavage of graphite can produce a strictly two-dimensional crystal of carbon.\",\n  \"mechanism\": \"The weak van der Waals forces holding the layers of graphite together can be overcome through mechanical cleavage, allowing for the separation of individual layers, which, given the crystalline structure of graphite, would result in a two-dimensional crystal of carbon. This process leverages the known technique of mechanical cleavage of layered materials to thin samples, potentially creating a single layer of carbon atoms arranged in a two-dimensional lattice, akin to the structure of the individual layers in graphite.\",\n  \"constraint_released\": \"The constraint of the material needing to be thermodynamically stable as a three-dimensional structure is released in this scenario, as the question of stability now pertains to a two-dimensional form.\",\n  \"predicted_quantitative_outcome\": \"0.335 nanometers (the interlayer spacing in graphite, suggesting the potential thickness of a single layer of carbon if successfully cleaved)\"\n}\n```",
+  "receipt_hash": "77a6635320349a88604d61f33c4671c3dd8ea7a75b370eddff13df270c4fe191"
+}

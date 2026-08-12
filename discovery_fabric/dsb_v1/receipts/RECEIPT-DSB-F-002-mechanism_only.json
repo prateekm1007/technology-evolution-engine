@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-002-mechanism_only",
+  "case_id": "DSB-F-002",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-F-002-mechanism_only",
+  "payload_hash": "ee2f9cc6033c2b0768131c24c4acab9f76fe3e2e8a7a818b6fd40b673e0f3bf6",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:11:54.712495+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The core mechanism of DNA hybridization and amplification can be utilized to develop a method for detecting specific DNA sequences by combining synthetic oligonucleotides with DNA ligase enzymes.",
+  "mechanism": "The core mechanism shared across the facts is the process of DNA hybridization, where complementary DNA strands bind to each other, and the subsequent amplification of specific DNA sequences through enzymatic reactions, such as those catalyzed by DNA ligase enzymes, allowing for the detection of specific sequences.",
+  "constraint_released": "The ability to chemically manufacture synthetic oligonucleotides of arbitrary sequence releases the constraint of being limited to naturally occurring DNA sequences, enabling the design of probes for specific DNA sequences.",
+  "predicted_quantitative_outcome": "10^6 copies per microliter",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The core mechanism of DNA hybridization and amplification can be utilized to develop a method for detecting specific DNA sequences by combining synthetic oligonucleotides with DNA ligase enzymes.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the process of DNA hybridization, where complementary DNA strands bind to each other, and the subsequent amplification of specific DNA sequences through enzymatic reactions, such as those catalyzed by DNA ligase enzymes, allowing for the detection of specific sequences.\",\n  \"constraint_released\": \"The ability to chemically manufacture synthetic oligonucleotides of arbitrary sequence releases the constraint of being limited to naturally occurring DNA sequences, enabling the design of probes for specific DNA sequences.\",\n  \"predicted_quantitative_outcome\": \"10^6 copies per microliter\"\n}\n```",
+  "receipt_hash": "f696c782490f572571cd8fd935af5142747f987d733c865d2f650514095444fc"
+}

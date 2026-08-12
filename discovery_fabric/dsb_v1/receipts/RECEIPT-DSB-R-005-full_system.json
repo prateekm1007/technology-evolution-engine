@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-005-full_system",
+  "case_id": "DSB-R-005",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-005-full_system",
+  "payload_hash": "f8480dd077f09c8009a1a549694f5fc3498a6235ae2e4793e1ba1532f47082eb",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:06:48.138882+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining organic-inorganic lead halide perovskites with solid-state hole-transport materials could enhance the efficiency and stability of dye-sensitized solar cells.",
+  "mechanism": "The strong light absorption and long carrier diffusion lengths of organic-inorganic lead halide perovskites could complement the hole-transport capabilities of solid-state materials like spiro-OMeTAD, potentially mitigating the limitations imposed by liquid electrolytes in traditional DSSCs. This synergy could facilitate the development of more efficient and stable solid-state DSSCs, addressing the long-term stability and packaging challenges associated with liquid electrolytes.",
+  "constraint_released": "The use of solid-state hole-transport materials in conjunction with perovskites could release the constraint of limited long-term stability and packaging challenges posed by liquid electrolytes in traditional DSSCs.",
+  "predicted_quantitative_outcome": "12.5 percent power conversion efficiency",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining organic-inorganic lead halide perovskites with solid-state hole-transport materials could enhance the efficiency and stability of dye-sensitized solar cells.\",\n  \"mechanism\": \"The strong light absorption and long carrier diffusion lengths of organic-inorganic lead halide perovskites could complement the hole-transport capabilities of solid-state materials like spiro-OMeTAD, potentially mitigating the limitations imposed by liquid electrolytes in traditional DSSCs. This synergy could facilitate the development of more efficient and stable solid-state DSSCs, addressing the long-term stability and packaging challenges associated with liquid electrolytes.\",\n  \"constraint_released\": \"The use of solid-state hole-transport materials in conjunction with perovskites could release the constraint of limited long-term stability and packaging challenges posed by liquid electrolytes in traditional DSSCs.\",\n  \"predicted_quantitative_outcome\": \"12.5 percent power conversion efficiency\"\n}\n```",
+  "receipt_hash": "90d266e2069c7b00a4f974a07012b442a831e778d564be83c4e295e4952069f9"
+}

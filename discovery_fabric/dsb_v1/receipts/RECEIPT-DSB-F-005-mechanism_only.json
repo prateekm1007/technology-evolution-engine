@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-005-mechanism_only",
+  "case_id": "DSB-F-005",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-F-005-mechanism_only",
+  "payload_hash": "2ed80c293a636ec2ac1cdbf6fc98ac1cb316f5d9b85a08d8820950c5c71bea33",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:14:58.426587+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The use of tandem architectures with solution-processable semiconductors can lead to increased power conversion efficiency in organic photovoltaics.",
+  "mechanism": "The core mechanism shared across the facts is the conversion of light into electrical energy through the use of semiconducting materials, which can be enhanced by optimizing the absorption of the solar spectrum and the conductivity of the materials used.",
+  "constraint_released": "The limitation of single-cell architectures is released by stacking cells with complementary absorption spectra, allowing for more efficient use of the solar spectrum.",
+  "predicted_quantitative_outcome": "10 percent power conversion efficiency",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The use of tandem architectures with solution-processable semiconductors can lead to increased power conversion efficiency in organic photovoltaics.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the conversion of light into electrical energy through the use of semiconducting materials, which can be enhanced by optimizing the absorption of the solar spectrum and the conductivity of the materials used.\",\n  \"constraint_released\": \"The limitation of single-cell architectures is released by stacking cells with complementary absorption spectra, allowing for more efficient use of the solar spectrum.\",\n  \"predicted_quantitative_outcome\": \"10 percent power conversion efficiency\"\n}\n```",
+  "receipt_hash": "444c51ed0305a363c6194d4ff135b4898e5e32df2b9de78295066678f25ef049"
+}

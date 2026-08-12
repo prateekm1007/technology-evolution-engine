@@ -1,0 +1,30 @@
+{
+  "case_id": "DSB-F-005",
+  "case_type": "fabricated",
+  "domain": "materials",
+  "name_internal": "fabricated_organic_tandem_25",
+  "cutoff_date": "2008-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Organic photovoltaics (OPVs) based on conjugated polymer donors and fullerene acceptors achieve approximately 5 percent power conversion efficiency.",
+    "Tandem architectures stack two cells with complementary absorption spectra to better use the solar spectrum.",
+    "Transparent conducting oxides enable series-connected tandem sub-cells.",
+    "Solution-processable semiconductors are attractive for low-cost large-area photovoltaics."
+  ],
+  "withheld_facts": [
+    "A tandem organic photovoltaic with a wide-bandgap front cell and a narrow-bandgap back cell reaches over 20 percent efficiency."
+  ],
+  "breakthrough_relationship": "A tandem organic photovoltaic combining a wide-bandgap front cell with a narrow-bandgap back cell exceeds 20 percent power conversion efficiency.",
+  "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3",
+  "forbidden_terms": [
+    "organic tandem solar cell",
+    "opv tandem 20"
+  ],
+  "future_terminology": [
+    "tandem OPV",
+    "all-organic tandem photovoltaic"
+  ],
+  "answer_mechanism": "The front cell absorbs high-energy photons; the back cell absorbs the rest. The tandem architecture reduces thermalization losses.",
+  "constraint_release": "Releases the single-junction efficiency limit of organic photovoltaics.",
+  "historical_source": "FABRICATED. OPV tandem cells did not exceed 20 percent efficiency in the 2008-2012 window. Even by 2024, all-organic tandems had not reached 20 percent.",
+  "fabricated": true
+}

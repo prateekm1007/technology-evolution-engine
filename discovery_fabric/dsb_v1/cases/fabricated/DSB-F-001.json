@@ -1,0 +1,35 @@
+{
+  "case_id": "DSB-F-001",
+  "case_type": "fabricated",
+  "domain": "materials",
+  "name_internal": "fabricated_sodium_ion",
+  "cutoff_date": "1990-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Sodium metal batteries are unsafe due to dendrite formation during cycling.",
+    "Non-aqueous electrolytes exist that can conduct sodium ions between electrodes.",
+    "Rechargeable battery electrodes must support reversible ion insertion and extraction.",
+    "The challenge is to build a safe rechargeable low-cost battery using earth-abundant elements."
+  ],
+  "withheld_facts": [
+    "Sodium cobalt oxide (NaCoO2) has been shown to reversibly intercalate sodium ions at high potential.",
+    "Hard carbon has been shown to reversibly intercalate sodium ions at low potential.",
+    "Combining a NaCoO2 cathode with a hard-carbon anode in a non-aqueous electrolyte yields a rechargeable sodium battery with no sodium metal dendrite risk."
+  ],
+  "breakthrough_relationship": "Combining a sodium-intercalation cathode (NaCoO2) with a sodium-intercalation anode (hard carbon) in a non-aqueous electrolyte yields a safe rechargeable low-cost battery without sodium metal dendrites.",
+  "answer_hash": "6c3b6ceb4410c81d5f1a9a4dedbadf14af772b1172b46f73a3bbd97cd1aebd5d",
+  "forbidden_terms": [
+    "sodium-ion battery",
+    "na-ion",
+    "naco02",
+    "hard carbon anode"
+  ],
+  "future_terminology": [
+    "sodium-ion battery",
+    "Na-ion",
+    "NaCoO2-hard-carbon"
+  ],
+  "answer_mechanism": "Both electrodes reversibly intercalate sodium ions at different potentials. Sodium migrates between electrodes without sodium metal plating.",
+  "constraint_release": "Releases the safety constraint of sodium metal dendrites using earth-abundant elements.",
+  "historical_source": "FABRICATED. No historical breakthrough of this kind occurred in the 1990-1995 window. Sodium-ion batteries were developed much later (~2010s) using different chemistries.",
+  "fabricated": true
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-009-full_system",
+  "case_id": "DSB-F-009",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-009-full_system",
+  "payload_hash": "5989440e4689495efe00fc06cfb6815056050c564002eae3cd4cefdd2d9e7d30",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:18:16.731624+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The overexpression of Oct4 and Sox2 in somatic cells can induce pluripotency, potentially reversing cellular differentiation.",
+  "mechanism": "The mechanism underlying this relationship involves the transcription factors Oct4 and Sox2, which are necessary for maintaining pluripotency in embryonic stem cells. When these factors are introduced into somatic cells, they can reactivate the cellular machinery that maintains pluripotency, effectively reprogramming the somatic cells to a pluripotent state. This process is thought to involve the regulation of gene expression, where Oct4 and Sox2 activate genes involved in pluripotency and repress genes involved in differentiation.",
+  "constraint_released": "The constraint of cellular differentiation being largely irreversible is released, allowing for the potential reprogramming of somatic cells into pluripotent cells.",
+  "predicted_quantitative_outcome": "80% of somatic cells overexpressing Oct4 and Sox2 will exhibit pluripotent characteristics, as measured by the expression of pluripotency markers.",
+  "raw_response": "{\"proposed_relationship\": \"The overexpression of Oct4 and Sox2 in somatic cells can induce pluripotency, potentially reversing cellular differentiation.\", \n\"mechanism\": \"The mechanism underlying this relationship involves the transcription factors Oct4 and Sox2, which are necessary for maintaining pluripotency in embryonic stem cells. When these factors are introduced into somatic cells, they can reactivate the cellular machinery that maintains pluripotency, effectively reprogramming the somatic cells to a pluripotent state. This process is thought to involve the regulation of gene expression, where Oct4 and Sox2 activate genes involved in pluripotency and repress genes involved in differentiation.\", \n\"constraint_released\": \"The constraint of cellular differentiation being largely irreversible is released, allowing for the potential reprogramming of somatic cells into pluripotent cells.\", \n\"predicted_quantitative_outcome\": \"80% of somatic cells overexpressing Oct4 and Sox2 will exhibit pluripotent characteristics, as measured by the expression of pluripotency markers.\"}",
+  "receipt_hash": "a0151c12b8191182d6a266277a6931ad2c4b7d3eabda403faa2fef4ae77f8640"
+}

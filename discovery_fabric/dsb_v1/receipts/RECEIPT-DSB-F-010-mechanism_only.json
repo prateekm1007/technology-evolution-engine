@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-010-mechanism_only",
+  "case_id": "DSB-F-010",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-F-010-mechanism_only",
+  "payload_hash": "14583ea09e8b3e594f0b87365bfcfac0392c9a4f24d174664cd645e4bda5cb78",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:18:40.442036+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The core mechanism of optimization can be applied to combine energy-based models with two-player zero-sum games to achieve equilibrium solutions.",
+  "mechanism": "The core mechanism shared across the facts is optimization, where systems or models are adjusted to minimize or maximize a specific objective, such as lowering energy on data or achieving high accuracy on classification tasks, which is a fundamental principle driving the learning and adaptation processes in neural networks and game theory.",
+  "constraint_released": "The constraint of fixed model architectures is released, allowing for the exploration of dynamic model configurations that adapt to the game environment.",
+  "predicted_quantitative_outcome": "0.95 accuracy rate",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The core mechanism of optimization can be applied to combine energy-based models with two-player zero-sum games to achieve equilibrium solutions.\",\n  \"mechanism\": \"The core mechanism shared across the facts is optimization, where systems or models are adjusted to minimize or maximize a specific objective, such as lowering energy on data or achieving high accuracy on classification tasks, which is a fundamental principle driving the learning and adaptation processes in neural networks and game theory.\",\n  \"constraint_released\": \"The constraint of fixed model architectures is released, allowing for the exploration of dynamic model configurations that adapt to the game environment.\",\n  \"predicted_quantitative_outcome\": \"0.95 accuracy rate\"\n}\n```",
+  "receipt_hash": "0005ef3aa3c9d5879f85070a2ebab5e411b9e9fa79ee9f0f90b3197da91b918e"
+}

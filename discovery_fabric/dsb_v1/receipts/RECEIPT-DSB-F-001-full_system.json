@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-001-full_system",
+  "case_id": "DSB-F-001",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-001-full_system",
+  "payload_hash": "8b4f1218ede46e0b7dd8bc55d472918290b4fb7f55e9f103912e21a22c46dbc3",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:11:41.759145+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Utilizing non-aqueous electrolytes that conduct sodium ions in a rechargeable battery design can mitigate the safety issues associated with sodium metal batteries by preventing dendrite formation.",
+  "mechanism": "The mechanism involves the non-aqueous electrolyte facilitating the reversible insertion and extraction of sodium ions between electrodes, which is crucial for rechargeable batteries. This process, if properly controlled, can prevent the formation of dendrites that make sodium metal batteries unsafe. By ensuring that the electrodes support this reversible process, the battery can operate safely and efficiently. The use of earth-abundant elements in the construction of these batteries can help in reducing costs, making them more viable for widespread use.",
+  "constraint_released": "The proposed relationship releases the constraint of safety issues due to dendrite formation in sodium metal batteries.",
+  "predicted_quantitative_outcome": "A 30% increase in cycle life with a corresponding reduction in self-discharge rate to less than 5% per month",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Utilizing non-aqueous electrolytes that conduct sodium ions in a rechargeable battery design can mitigate the safety issues associated with sodium metal batteries by preventing dendrite formation.\",\n  \"mechanism\": \"The mechanism involves the non-aqueous electrolyte facilitating the reversible insertion and extraction of sodium ions between electrodes, which is crucial for rechargeable batteries. This process, if properly controlled, can prevent the formation of dendrites that make sodium metal batteries unsafe. By ensuring that the electrodes support this reversible process, the battery can operate safely and efficiently. The use of earth-abundant elements in the construction of these batteries can help in reducing costs, making them more viable for widespread use.\",\n  \"constraint_released\": \"The proposed relationship releases the constraint of safety issues due to dendrite formation in sodium metal batteries.\",\n  \"predicted_quantitative_outcome\": \"A 30% increase in cycle life with a corresponding reduction in self-discharge rate to less than 5% per month\"\n}\n```",
+  "receipt_hash": "312646a5f65a2ca74124d4c81aba3b4c9e799f2718bacba83845f5e7f1c72e47"
+}

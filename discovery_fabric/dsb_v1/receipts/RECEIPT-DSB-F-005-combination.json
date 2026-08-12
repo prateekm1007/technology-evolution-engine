@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-005-combination",
+  "case_id": "DSB-F-005",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-F-005-combination",
+  "payload_hash": "571c88a9eedfe6a33d73fdb157ab52fe538c07ba171d899005e2c9ce60489483",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:15:06.186516+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining solution-processable semiconductors with tandem architectures could lead to efficient and low-cost photovoltaics.",
+  "mechanism": "The use of solution-processable semiconductors in tandem architectures would allow for the creation of large-area photovoltaics with improved power conversion efficiency, as the tandem structure enables better utilization of the solar spectrum and the solution-processable semiconductors enable low-cost manufacturing. This combination would leverage the benefits of both approaches, potentially leading to more efficient and cost-effective photovoltaic devices.",
+  "constraint_released": "The constraint of high production costs is released, enabling the widespread adoption of photovoltaic technology.",
+  "predicted_quantitative_outcome": "10 percent power conversion efficiency",
+  "raw_response": "{\"proposed_relationship\": \"Combining solution-processable semiconductors with tandem architectures could lead to efficient and low-cost photovoltaics.\", \n\"mechanism\": \"The use of solution-processable semiconductors in tandem architectures would allow for the creation of large-area photovoltaics with improved power conversion efficiency, as the tandem structure enables better utilization of the solar spectrum and the solution-processable semiconductors enable low-cost manufacturing. This combination would leverage the benefits of both approaches, potentially leading to more efficient and cost-effective photovoltaic devices.\", \n\"constraint_released\": \"The constraint of high production costs is released, enabling the widespread adoption of photovoltaic technology.\", \n\"predicted_quantitative_outcome\": \"10 percent power conversion efficiency\"}",
+  "receipt_hash": "e13183fc2915a47bf086dac7a0c812a2c72cc4a9f455ddef5a80a80f7982f8fe"
+}

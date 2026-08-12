@@ -1,0 +1,37 @@
+{
+  "case_id": "DSB-R-003",
+  "case_type": "real",
+  "domain": "materials",
+  "name_internal": "graphene",
+  "cutoff_date": "2003-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Graphite is a crystalline form of carbon arranged in stacked two-dimensional layers held together by weak van der Waals forces.",
+    "Theory predicts that strictly two-dimensional crystals are thermodynamically unstable at finite temperature due to long-wavelength fluctuations (Landau-Peierls).",
+    "Mechanical cleavage of layered materials is a known technique for thinning samples.",
+    "Carbon nanotubes — rolled-up single atomic sheets of carbon — are known to exist and have useful electronic properties."
+  ],
+  "withheld_facts": [
+    "Repeated mechanical exfoliation of graphite using adhesive tape can isolate single-atom-thick carbon layers visible under an optical microscope on a silicon wafer (Novoselov & Geim, 2004).",
+    "Single-layer graphene is metastable but persists at room temperature and exhibits exceptionally high electron mobility and the quantum Hall effect at room temperature."
+  ],
+  "breakthrough_relationship": "Repeated mechanical exfoliation of graphite using adhesive tape isolates stable single-atom-thick carbon sheets (graphene) at room temperature, contradicting the Landau-Peierls prediction.",
+  "answer_hash": "8207660f0b4932696dc65a82f07792f8baa2a0b8d35c6f46aeed9d534344d863",
+  "forbidden_terms": [
+    "graphene",
+    "scotch tape",
+    "novoselov",
+    "geim",
+    "exfoliated monolayer",
+    "single-layer graphite"
+  ],
+  "future_terminology": [
+    "graphene",
+    "scotch-tape method",
+    "mechanical exfoliation of graphite",
+    "2D materials"
+  ],
+  "answer_mechanism": "Adhesive tape applied to graphite and peeled away removes a thin layer. Repeating this on the residue progressively thins the sample. On a silicon wafer with the right oxide thickness, even a single atomic layer produces a faint optical contrast that allows it to be located under a microscope.",
+  "constraint_release": "Releases the theoretical constraint that 2D crystals cannot exist at finite temperature, opening the field of two-dimensional materials.",
+  "historical_source": "Novoselov & Geim 2004 (Science); Nobel Physics 2010.",
+  "fabricated": false
+}

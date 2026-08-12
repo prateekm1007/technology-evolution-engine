@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-009-full_system",
+  "case_id": "DSB-R-009",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-009-full_system",
+  "payload_hash": "0d05020f70e2cae22e710b4295f3bf71d03143b09b19a7d86ee0d38e0e172f7f",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:10:17.215617+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The introduction of specific transcription factors into somatic cells can reprogram them to a pluripotent state similar to embryonic stem cells, bypassing the need for an oocyte in the reprogramming process.",
+  "mechanism": "The mechanism involves the transcription factors Oct4, Sox2, Klf4, and c-Myc, which are essential for maintaining pluripotency in embryonic stem cells. When introduced into somatic cells, these factors can potentially override the cellular differentiation state, reprogramming the cells to a state where they can differentiate into all three germ layers, similar to embryonic stem cells. This process leverages the inherent ability of these transcription factors to regulate gene expression, thereby inducing a pluripotent state in cells that were previously differentiated.",
+  "constraint_released": "The constraint of requiring an oocyte for somatic cell nuclear transfer to achieve pluripotency is released by directly introducing the necessary transcription factors into somatic cells.",
+  "predicted_quantitative_outcome": "80% of treated somatic cells will express markers of pluripotency within 14 days",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The introduction of specific transcription factors into somatic cells can reprogram them to a pluripotent state similar to embryonic stem cells, bypassing the need for an oocyte in the reprogramming process.\",\n  \"mechanism\": \"The mechanism involves the transcription factors Oct4, Sox2, Klf4, and c-Myc, which are essential for maintaining pluripotency in embryonic stem cells. When introduced into somatic cells, these factors can potentially override the cellular differentiation state, reprogramming the cells to a state where they can differentiate into all three germ layers, similar to embryonic stem cells. This process leverages the inherent ability of these transcription factors to regulate gene expression, thereby inducing a pluripotent state in cells that were previously differentiated.\",\n  \"constraint_released\": \"The constraint of requiring an oocyte for somatic cell nuclear transfer to achieve pluripotency is released by directly introducing the necessary transcription factors into somatic cells.\",\n  \"predicted_quantitative_outcome\": \"80% of treated somatic cells will express markers of pluripotency within 14 days\"\n}\n```",
+  "receipt_hash": "e6783f937e6f24e3b46b4480f87557178ca8bd4aa9da88bdb18c57e645cb61d4"
+}

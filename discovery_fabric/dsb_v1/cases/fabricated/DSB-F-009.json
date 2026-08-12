@@ -1,0 +1,28 @@
+{
+  "case_id": "DSB-F-009",
+  "case_type": "fabricated",
+  "domain": "biology",
+  "name_internal": "fabricated_two_factor_reprogramming",
+  "cutoff_date": "2005-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Embryonic stem cells are pluripotent.",
+    "Cellular differentiation has historically been considered largely irreversible.",
+    "Specific transcription factors (including Oct4 and Sox2) are enriched in embryonic stem cells and are necessary for maintaining pluripotency."
+  ],
+  "withheld_facts": [
+    "Ectopic co-expression of only two transcription factors (Oct4 and Sox2) reprograms mouse fibroblasts to pluripotency at high efficiency without requiring Klf4 or c-Myc."
+  ],
+  "breakthrough_relationship": "Ectopic co-expression of only two transcription factors (Oct4 and Sox2) reprograms differentiated somatic cells to pluripotency.",
+  "answer_hash": "c2ddcee6822adeab3acdba8a3b8db344610ad2e86733fa8f983173acc1925f76",
+  "forbidden_terms": [
+    "two-factor reprogramming",
+    "oct4-sox2 only"
+  ],
+  "future_terminology": [
+    "two-factor reprogramming"
+  ],
+  "answer_mechanism": "Oct4 and Sox2 co-bind and activate the endogenous pluripotency network without needing Klf4 or c-Myc.",
+  "constraint_release": "Releases the constraint that cellular differentiation is irreversible.",
+  "historical_source": "FABRICATED. Two-factor (Oct4 + Sox2 only) reprogramming has not been demonstrated robustly. Yamanaka's four-factor result was the actual breakthrough.",
+  "fabricated": true
+}

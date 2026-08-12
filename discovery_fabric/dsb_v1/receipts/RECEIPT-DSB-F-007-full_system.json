@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-007-full_system",
+  "case_id": "DSB-F-007",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-007-full_system",
+  "payload_hash": "73e281a3fe023242044bb42bbc8e39b59122eec6db0e1b3491595b90e1664bff",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:17:06.617272+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Fusing heat-stable Argonautes with zinc-finger nucleases or TALENs could create a versatile and efficient genome editing tool.",
+  "mechanism": "The mechanism involves combining the ability of prokaryotic Argonaute proteins to use small DNA guides for targeted cleavage with the specificity of zinc-finger nucleases or TALENs for cutting specific genomic loci, potentially leveraging the heat stability of thermophilic bacteria-derived Argonautes to enhance the robustness of the editing tool across various conditions.",
+  "constraint_released": "This fusion releases the constraint of requiring extensive protein engineering for each new genomic target by utilizing the guide-based system of Argonautes.",
+  "predicted_quantitative_outcome": "90% efficiency in targeted genome editing",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Fusing heat-stable Argonautes with zinc-finger nucleases or TALENs could create a versatile and efficient genome editing tool.\",\n  \"mechanism\": \"The mechanism involves combining the ability of prokaryotic Argonaute proteins to use small DNA guides for targeted cleavage with the specificity of zinc-finger nucleases or TALENs for cutting specific genomic loci, potentially leveraging the heat stability of thermophilic bacteria-derived Argonautes to enhance the robustness of the editing tool across various conditions.\",\n  \"constraint_released\": \"This fusion releases the constraint of requiring extensive protein engineering for each new genomic target by utilizing the guide-based system of Argonautes.\",\n  \"predicted_quantitative_outcome\": \"90% efficiency in targeted genome editing\"\n}\n```",
+  "receipt_hash": "db2f5e41a6052edea1aec3ff338c91e08f324dacf1c5c8ca0cbc14e02740e796"
+}

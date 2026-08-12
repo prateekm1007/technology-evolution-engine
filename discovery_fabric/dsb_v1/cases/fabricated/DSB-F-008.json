@@ -1,0 +1,29 @@
+{
+  "case_id": "DSB-F-008",
+  "case_type": "fabricated",
+  "domain": "biology",
+  "name_internal": "fabricated_ido_inhibitor",
+  "cutoff_date": "2011-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Indoleamine 2,3-dioxygenase (IDO) degrades tryptophan in the tumor microenvironment, suppressing T-cell function.",
+    "Small-molecule inhibitors of IDO exist and are orally bioavailable.",
+    "Tumors upregulate IDO as an immune-evasion mechanism.",
+    "Cancer vaccines that activate T-cells have largely failed because activated T-cells are suppressed in the tumor microenvironment."
+  ],
+  "withheld_facts": [
+    "An IDO inhibitor combined with a checkpoint antibody produces durable responses in melanoma and lung cancer patients at over 50 percent response rates."
+  ],
+  "breakthrough_relationship": "An IDO inhibitor combined with a checkpoint antibody releases T-cell suppression via tryptophan restoration, producing durable responses in multiple cancer types.",
+  "answer_hash": "2256ebe593c1b0e03654aae910c755243cce6111ba7812ed8aeaa7ff74c8068f",
+  "forbidden_terms": [
+    "epacadostat",
+    "ido inhibitor combination"
+  ],
+  "future_terminology": [
+    "IDO combination immunotherapy"
+  ],
+  "answer_mechanism": "IDO inhibition restores tryptophan in the tumor microenvironment, releasing T-cells from metabolic suppression. Combined with checkpoint blockade, durable responses result.",
+  "constraint_release": "Releases the metabolic T-cell suppression in the tumor microenvironment.",
+  "historical_source": "FABRICATED. The IDO inhibitor epacadostat FAILED its Phase 3 trial (ECHO-301, 2018) and was a famous negative result in oncology.",
+  "fabricated": true
+}

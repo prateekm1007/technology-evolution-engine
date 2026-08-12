@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-008-LLM_only",
+  "case_id": "DSB-R-008",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-R-008-LLM_only",
+  "payload_hash": "ea6afc22014b3ff11539f14bb595f95c598e8330265c50fb803b8137187de53f",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:08:39.118337+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining a CTLA-4 blocking antibody with a cancer vaccine that activates T-cells may enhance anti-tumor responses by preventing functional silencing of activated T-cells.",
+  "mechanism": "The mechanism underlying this proposed relationship involves the CTLA-4 blockade enhancing the activation and expansion of T-cells, which are then activated by the cancer vaccine. However, to prevent these activated T-cells from becoming functionally silenced due to the tumor's immunosuppressive environment, additional strategies targeting other checkpoints such as PD-1 may be necessary. This is because tumors upregulate immunosuppressive ligands that engage PD-1 on activated T-cells, leading to T-cell exhaustion. By blocking CTLA-4 and potentially other checkpoints like PD-1, the tumor's ability to silence T-cells could be diminished, allowing the activated T-cells to effectively target the tumor.",
+  "constraint_released": "The constraint of T-cell functional silencing within the tumor microenvironment is released by combining these therapeutic approaches.",
+  "predicted_quantitative_outcome": "30% increase in durable responses in melanoma patients",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining a CTLA-4 blocking antibody with a cancer vaccine that activates T-cells may enhance anti-tumor responses by preventing functional silencing of activated T-cells.\",\n  \"mechanism\": \"The mechanism underlying this proposed relationship involves the CTLA-4 blockade enhancing the activation and expansion of T-cells, which are then activated by the cancer vaccine. However, to prevent these activated T-cells from becoming functionally silenced due to the tumor's immunosuppressive environment, additional strategies targeting other checkpoints such as PD-1 may be necessary. This is because tumors upregulate immunosuppressive ligands that engage PD-1 on activated T-cells, leading to T-cell exhaustion. By blocking CTLA-4 and potentially other checkpoints like PD-1, the tumor's ability to silence T-cells could be diminished, allowing the activated T-cells to effectively target the tumor.\",\n  \"constraint_released\": \"The constraint of T-cell functional silencing within the tumor microenvironment is released by combining these therapeutic approaches.\",\n  \"predicted_quantitative_outcome\": \"30% increase in durable responses in melanoma patients\"\n}\n```",
+  "receipt_hash": "0dbe216f838985e6041fd2b8df619f6b712ab0ce932b2d514a02122837eafedd"
+}

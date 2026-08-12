@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-010-LLM_only",
+  "case_id": "DSB-F-010",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-F-010-LLM_only",
+  "payload_hash": "b403477bbb8e841359efef99cfc9438d324208b5300204cc5ad1dd87f1e950da",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:18:26.613761+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Energy-based models can be used to regularize discriminative neural networks in classification tasks by assigning lower energy to correct classifications and higher energy to incorrect ones.",
+  "mechanism": "The mechanism behind this relationship is based on the fact that neural networks can approximate complex distributions and energy-based models can learn by lowering energy on data and raising it elsewhere. By combining these two concepts, energy-based models can be used to modify the loss function of discriminative neural networks, effectively regularizing them to produce more accurate classifications. This can be achieved by adding an energy-based term to the loss function, which encourages the network to assign lower energy to correct classifications and higher energy to incorrect ones.",
+  "constraint_released": "The constraint of requiring a fixed loss function for discriminative neural networks is released, allowing for more flexible and adaptive loss functions.",
+  "predicted_quantitative_outcome": "10% increase in classification accuracy",
+  "raw_response": "{\"proposed_relationship\": \"Energy-based models can be used to regularize discriminative neural networks in classification tasks by assigning lower energy to correct classifications and higher energy to incorrect ones.\", \n\"mechanism\": \"The mechanism behind this relationship is based on the fact that neural networks can approximate complex distributions and energy-based models can learn by lowering energy on data and raising it elsewhere. By combining these two concepts, energy-based models can be used to modify the loss function of discriminative neural networks, effectively regularizing them to produce more accurate classifications. This can be achieved by adding an energy-based term to the loss function, which encourages the network to assign lower energy to correct classifications and higher energy to incorrect ones.\", \n\"constraint_released\": \"The constraint of requiring a fixed loss function for discriminative neural networks is released, allowing for more flexible and adaptive loss functions.\", \n\"predicted_quantitative_outcome\": \"10% increase in classification accuracy\"}",
+  "receipt_hash": "d630fd61196b4df106c41cd9e9f4a7b3e69ededc64d5c32863697b3e1b829c68"
+}

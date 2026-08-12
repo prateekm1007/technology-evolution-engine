@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-003-LLM_only",
+  "case_id": "DSB-F-003",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-F-003-LLM_only",
+  "payload_hash": "05ba61b7046343fb59961cd466acd3c44959c19b8db350d729d985fa4c615bf9",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:13:12.537936+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Mechanical cleavage of hexagonal boron nitride can produce strictly two-dimensional crystals.",
+  "mechanism": "The weak van der Waals forces holding the layers of hexagonal boron nitride together can be overcome through mechanical cleavage, allowing for the separation of individual layers into two-dimensional sheets. This process can potentially produce two-dimensional crystals, as the layers are already arranged in a two-dimensional structure. However, the stability of these crystals at finite temperature is a concern, as theory predicts that strictly two-dimensional crystals are thermodynamically unstable.",
+  "constraint_released": "The constraint of thermodynamic stability at finite temperature may be released for short periods of time or under specific conditions, allowing for the observation of two-dimensional crystals.",
+  "predicted_quantitative_outcome": "1-10 layers",
+  "raw_response": "{\"proposed_relationship\": \"Mechanical cleavage of hexagonal boron nitride can produce strictly two-dimensional crystals.\", \n\"mechanism\": \"The weak van der Waals forces holding the layers of hexagonal boron nitride together can be overcome through mechanical cleavage, allowing for the separation of individual layers into two-dimensional sheets. This process can potentially produce two-dimensional crystals, as the layers are already arranged in a two-dimensional structure. However, the stability of these crystals at finite temperature is a concern, as theory predicts that strictly two-dimensional crystals are thermodynamically unstable.\", \n\"constraint_released\": \"The constraint of thermodynamic stability at finite temperature may be released for short periods of time or under specific conditions, allowing for the observation of two-dimensional crystals.\", \n\"predicted_quantitative_outcome\": \"1-10 layers\"}",
+  "receipt_hash": "8e8641778691cfe3863e9a063d5a836549c3950c6d9544e91fb6975b9570cb66"
+}

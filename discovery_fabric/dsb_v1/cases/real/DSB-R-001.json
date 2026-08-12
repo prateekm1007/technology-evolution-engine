@@ -1,0 +1,40 @@
+{
+  "case_id": "DSB-R-001",
+  "case_type": "real",
+  "domain": "materials",
+  "name_internal": "lithium_ion_battery",
+  "cutoff_date": "1990-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Lithium metal batteries are unsafe due to dendrite formation during cycling.",
+    "Non-aqueous electrolytes exist that can conduct lithium ions between electrodes.",
+    "Rechargeable battery electrodes must support reversible ion insertion and extraction.",
+    "The challenge is to build a safe rechargeable high-energy-density battery."
+  ],
+  "withheld_facts": [
+    "Lithium cobalt oxide (LiCoO2) has been shown to reversibly intercalate lithium ions at a high potential (Whittingham, 1976).",
+    "Graphite has been shown to reversibly intercalate lithium ions at a low potential.",
+    "Combining a LiCoO2 cathode with a graphite anode in a non-aqueous electrolyte yields a rechargeable battery with high energy density and no lithium metal dendrite risk (Yoshino, 1985; Sony commercialized 1991)."
+  ],
+  "breakthrough_relationship": "Combining a lithium-intercalation cathode (LiCoO2) with a lithium-intercalation anode (graphite) in a non-aqueous electrolyte yields a safe, rechargeable, high-energy-density battery without lithium metal dendrites.",
+  "answer_hash": "516dcb644858eca620435e050e3f9261d9e4ce2379e61172588b9ea225cc8844",
+  "forbidden_terms": [
+    "lithium-ion",
+    "li-ion",
+    "licoo2",
+    "graphite anode",
+    "yoshino",
+    "goodenough",
+    "whittingham",
+    "sony 1991"
+  ],
+  "future_terminology": [
+    "lithium-ion battery",
+    "Li-ion",
+    "LiCoO2-graphite",
+    "rocking-chair battery"
+  ],
+  "answer_mechanism": "Both electrodes reversibly intercalate lithium ions at different potentials. On discharge, lithium ions migrate from the graphite anode to the LiCoO2 cathode through the non-aqueous electrolyte; on charge, they migrate back. No lithium metal is ever plated, eliminating dendrite formation.",
+  "constraint_release": "Releases the safety constraint imposed by lithium metal dendrites, enabling rechargeable high-energy batteries.",
+  "historical_source": "Whittingham 1976; Goodenough 1980; Yoshino 1985; Sony commercialization 1991; Nobel Chemistry 2019.",
+  "fabricated": false
+}

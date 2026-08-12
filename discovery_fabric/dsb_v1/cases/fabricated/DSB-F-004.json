@@ -1,0 +1,31 @@
+{
+  "case_id": "DSB-F-004",
+  "case_type": "fabricated",
+  "domain": "ml",
+  "name_internal": "fabricated_neuromorphic_snn",
+  "cutoff_date": "2011-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Spiking neural networks model neurons as discrete-time event emitters and are biologically plausible.",
+    "Neuromorphic chips (such as SpiNNaker and TrueNorth prototypes) implement spiking neurons directly in silicon.",
+    "Large labeled image datasets such as ImageNet contain over one million images across one thousand categories.",
+    "Event-driven computation is energy-efficient but historically hard to train using gradient methods.",
+    "Support vector machines and shallow hand-engineered features dominate ImageNet benchmarks at approximately 25 percent top-5 error."
+  ],
+  "withheld_facts": [
+    "Training a deep spiking neural network with surrogate-gradient backpropagation on a neuromorphic chip reduces ImageNet top-5 error from 26 percent to 15 percent."
+  ],
+  "breakthrough_relationship": "A deep spiking neural network trained with surrogate gradients on a neuromorphic chip reduces ImageNet top-5 error by approximately 10 percentage points over the previous state of the art.",
+  "answer_hash": "65b93244a70e78fc6d2c4da31292ea342d5474d71d22dbfe8a510fca985c3ee7",
+  "forbidden_terms": [
+    "neuromorphic snn imagenet",
+    "surrogate-gradient spiking"
+  ],
+  "future_terminology": [
+    "neuromorphic deep learning",
+    "surrogate-gradient SNN"
+  ],
+  "answer_mechanism": "Surrogate gradients allow backpropagation through discrete spikes. Neuromorphic silicon provides massive parallelism for spike-based computation.",
+  "constraint_release": "Releases the energy-efficiency constraint of GPU training.",
+  "historical_source": "FABRICATED. As of 2012, neuromorphic SNNs had not achieved AlexNet-level ImageNet performance. This remained true through 2024.",
+  "fabricated": true
+}

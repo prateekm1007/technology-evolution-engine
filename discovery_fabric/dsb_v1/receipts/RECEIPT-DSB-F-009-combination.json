@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-009-combination",
+  "case_id": "DSB-F-009",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-F-009-combination",
+  "payload_hash": "f8db919e5e2ccffbfc36d74167938c3fb23c91ea031f9726af29d7cf41a695e5",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:18:10.817014+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining the fact that specific transcription factors are necessary for maintaining pluripotency with the fact that embryonic stem cells are pluripotent could lead to a method for inducing pluripotency in non-embryonic cells.",
+  "mechanism": "The introduction of specific transcription factors such as Oct4 and Sox2 into non-embryonic cells could potentially reprogram these cells to a pluripotent state, similar to that of embryonic stem cells, by activating the necessary genetic pathways for maintaining pluripotency. This would involve the transcription factors binding to specific DNA sequences and regulating the expression of genes involved in pluripotency, thereby inducing a shift in the cell's differentiation state. The process would require careful control of the transcription factor expression levels and timing to ensure successful reprogramming.",
+  "constraint_released": "The constraint of cellular differentiation being largely irreversible could be released, allowing for the generation of pluripotent cells from non-embryonic cell sources.",
+  "predicted_quantitative_outcome": "80% of reprogrammed cells achieving pluripotency",
+  "raw_response": "{\"proposed_relationship\": \"Combining the fact that specific transcription factors are necessary for maintaining pluripotency with the fact that embryonic stem cells are pluripotent could lead to a method for inducing pluripotency in non-embryonic cells.\", \n\"mechanism\": \"The introduction of specific transcription factors such as Oct4 and Sox2 into non-embryonic cells could potentially reprogram these cells to a pluripotent state, similar to that of embryonic stem cells, by activating the necessary genetic pathways for maintaining pluripotency. This would involve the transcription factors binding to specific DNA sequences and regulating the expression of genes involved in pluripotency, thereby inducing a shift in the cell's differentiation state. The process would require careful control of the transcription factor expression levels and timing to ensure successful reprogramming.\", \n\"constraint_released\": \"The constraint of cellular differentiation being largely irreversible could be released, allowing for the generation of pluripotent cells from non-embryonic cell sources.\", \n\"predicted_quantitative_outcome\": \"80% of reprogrammed cells achieving pluripotency\"}",
+  "receipt_hash": "00cea60c53ee6b64f21a74886d9d7abb9746bb3be37ebf94719a941fff223ad0"
+}

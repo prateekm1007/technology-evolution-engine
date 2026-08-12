@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-007-combination",
+  "case_id": "DSB-R-007",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-R-007-combination",
+  "payload_hash": "49c9507fccb770daa6f68be06e907653813c3cfd30cf18c84353cdac84af24a2",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:08:17.603527+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining the Cas9 protein's ability to cut specific genomic loci with the fact that double-strand DNA breaks stimulate endogenous repair pathways could enable precise gene editing.",
+  "mechanism": "The Cas9 protein, guided by a dual RNA complex, can be programmed to cut a specific genomic locus, resulting in a double-strand DNA break. This break would then stimulate the cell's endogenous repair pathways, such as NHEJ or HDR, which could be harnessed to disrupt or replace a gene. By providing a template for repair, researchers could potentially introduce specific changes to the genome, allowing for precise editing of genes.",
+  "constraint_released": "The need for protein engineering for each new target, as required by zinc-finger nucleases and TALENs, is released by utilizing the programmable Cas9 protein.",
+  "predicted_quantitative_outcome": "90% editing efficiency",
+  "raw_response": "{\"proposed_relationship\": \"Combining the Cas9 protein's ability to cut specific genomic loci with the fact that double-strand DNA breaks stimulate endogenous repair pathways could enable precise gene editing.\", \n\"mechanism\": \"The Cas9 protein, guided by a dual RNA complex, can be programmed to cut a specific genomic locus, resulting in a double-strand DNA break. This break would then stimulate the cell's endogenous repair pathways, such as NHEJ or HDR, which could be harnessed to disrupt or replace a gene. By providing a template for repair, researchers could potentially introduce specific changes to the genome, allowing for precise editing of genes.\", \n\"constraint_released\": \"The need for protein engineering for each new target, as required by zinc-finger nucleases and TALENs, is released by utilizing the programmable Cas9 protein.\", \n\"predicted_quantitative_outcome\": \"90% editing efficiency\"}",
+  "receipt_hash": "3e411ed368c95cb5133d6f6b3672f5214f02407061660829886e53b055b5395d"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-007-mechanism_only",
+  "case_id": "DSB-R-007",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-007-mechanism_only",
+  "payload_hash": "d9f0c68f77542077de58a55f9ce48ccdf55f069d9e2f95c3ff9732f426888871",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:08:11.055589+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The Cas9 protein's ability to create double-strand DNA breaks can be combined with the endogenous repair pathways to develop a more efficient gene editing technique.",
+  "mechanism": "The core mechanism shared across the facts is the use of targeted DNA breaks to manipulate genetic material, whether through the adaptive immune system of bacterial CRISPR loci, the action of the Cas9 protein, or the use of zinc-finger nucleases and TALENs, all of which rely on creating breaks in the DNA to either disrupt or modify genes.",
+  "constraint_released": "The constraint of requiring protein engineering for each new target is released by utilizing the CRISPR system with its guide RNA complexity.",
+  "predicted_quantitative_outcome": "90% efficiency rate",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The Cas9 protein's ability to create double-strand DNA breaks can be combined with the endogenous repair pathways to develop a more efficient gene editing technique.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the use of targeted DNA breaks to manipulate genetic material, whether through the adaptive immune system of bacterial CRISPR loci, the action of the Cas9 protein, or the use of zinc-finger nucleases and TALENs, all of which rely on creating breaks in the DNA to either disrupt or modify genes.\",\n  \"constraint_released\": \"The constraint of requiring protein engineering for each new target is released by utilizing the CRISPR system with its guide RNA complexity.\",\n  \"predicted_quantitative_outcome\": \"90% efficiency rate\"\n}\n```",
+  "receipt_hash": "6c10dde7dd08d314fa856997413e951821562d4f121f5b2844cc47a2bfb8b8a8"
+}

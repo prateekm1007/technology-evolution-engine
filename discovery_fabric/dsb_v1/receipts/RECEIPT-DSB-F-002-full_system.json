@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-002-full_system",
+  "case_id": "DSB-F-002",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-002-full_system",
+  "payload_hash": "01d4a756ff82b0de9085921f93b94060857542f0a57c07069f0be0564ad91adc",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:12:55.884270+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Repeated cycles of heating and cooling can be used to exponentially amplify a specific DNA sequence by iteratively denaturing and re-annealing probes, allowing for the detection of initially small amounts of DNA.",
+  "mechanism": "The mechanism involves the use of DNA ligase enzymes to join adjacent oligonucleotide probes that are hybridized to a template DNA sequence. This process is facilitated by the ability to synthesize oligonucleotides of arbitrary sequence, which can be designed to be complementary to the target DNA sequence. The heating and cooling cycles allow for the denaturation and re-annealing of the probes, enabling the exponential amplification of the target sequence.",
+  "constraint_released": "The constraint of requiring a large initial amount of DNA to detect a specific sequence is released by the proposed relationship.",
+  "predicted_quantitative_outcome": "10^6 copies of the target DNA sequence per microliter after 30 cycles of amplification",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Repeated cycles of heating and cooling can be used to exponentially amplify a specific DNA sequence by iteratively denaturing and re-annealing probes, allowing for the detection of initially small amounts of DNA.\",\n  \"mechanism\": \"The mechanism involves the use of DNA ligase enzymes to join adjacent oligonucleotide probes that are hybridized to a template DNA sequence. This process is facilitated by the ability to synthesize oligonucleotides of arbitrary sequence, which can be designed to be complementary to the target DNA sequence. The heating and cooling cycles allow for the denaturation and re-annealing of the probes, enabling the exponential amplification of the target sequence.\",\n  \"constraint_released\": \"The constraint of requiring a large initial amount of DNA to detect a specific sequence is released by the proposed relationship.\",\n  \"predicted_quantitative_outcome\": \"10^6 copies of the target DNA sequence per microliter after 30 cycles of amplification\"\n}\n```",
+  "receipt_hash": "1ed64f447220ab9f097453051fa2731cf58b5d28bbe544f09d32e077a54ad30e"
+}

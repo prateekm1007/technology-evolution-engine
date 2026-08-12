@@ -1,0 +1,33 @@
+{
+  "case_id": "DSB-R-005",
+  "case_type": "real",
+  "domain": "materials",
+  "name_internal": "perovskite_solar",
+  "cutoff_date": "2008-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Dye-sensitized solar cells (DSSCs) achieve approximately 11 percent power conversion efficiency using a ruthenium dye on titanium dioxide with a liquid iodide electrolyte.",
+    "Organic-inorganic lead halide perovskites (such as CH3NH3PbI3) are known crystalline materials with strong light absorption and long carrier diffusion lengths.",
+    "The liquid electrolyte in DSSCs limits long-term stability and creates packaging challenges.",
+    "Solid-state hole-transport materials such as spiro-OMeTAD exist but solid-state DSSCs have lower efficiency than liquid versions."
+  ],
+  "withheld_facts": [
+    "Using a lead-halide perovskite as the absorber in a solid-state sensitized architecture (replacing both the dye and the liquid electrolyte) yields a stable cell with efficiency rising from 3.8 percent (Kojima 2009) to over 25 percent by 2020."
+  ],
+  "breakthrough_relationship": "Replacing the dye and liquid electrolyte in a sensitized solar cell with a lead-halide perovskite absorber and a solid-state hole transporter yields a high-efficiency (>20 percent) stable solution-processable photovoltaic.",
+  "answer_hash": "9804036f007ac76a43e14ca4f1003e8c913a09aaaba19545780a813fdb220714",
+  "forbidden_terms": [
+    "perovskite solar cell",
+    "kojima 2009",
+    "solid-state perovskite",
+    "mapbi3 solar"
+  ],
+  "future_terminology": [
+    "perovskite solar cell",
+    "PSC",
+    "lead-halide perovskite photovoltaic"
+  ],
+  "answer_mechanism": "The perovskite absorbs light and generates free carriers (rather than excitons bound to a dye). Its long carrier diffusion length allows efficient charge collection in a thin film. Solid-state architecture eliminates the stability-limiting liquid electrolyte.",
+  "constraint_release": "Releases the efficiency-stability trade-off of liquid-electrolyte DSSCs, enabling solution-processable high-efficiency photovoltaics.",
+  "historical_source": "Kojima et al. 2009 (first perovskite-sensitized cell, 3.8%); Lee et al. 2012; Snaith group; efficiency >25% by 2020.",
+  "fabricated": false
+}

@@ -1,0 +1,36 @@
+{
+  "case_id": "DSB-R-009",
+  "case_type": "real",
+  "domain": "biology",
+  "name_internal": "ipsc",
+  "cutoff_date": "2005-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Embryonic stem cells are pluripotent — they can differentiate into all three germ layers.",
+    "Cellular differentiation has historically been considered largely irreversible in somatic cells.",
+    "Somatic cell nuclear transfer (cloning) can reprogram a differentiated nucleus to pluripotency, but requires an oocyte and is inefficient.",
+    "Specific transcription factors (including Oct4, Sox2, Klf4, and c-Myc) are enriched in embryonic stem cells and are necessary for maintaining pluripotency."
+  ],
+  "withheld_facts": [
+    "Ectopic co-expression of four transcription factors (Oct4, Sox2, Klf4, c-Myc) in differentiated mouse fibroblasts reprograms them to induced pluripotent stem cells (Takahashi & Yamanaka, 2006)."
+  ],
+  "breakthrough_relationship": "Ectopic co-expression of four embryonic transcription factors (Oct4, Sox2, Klf4, c-Myc) in differentiated somatic cells reprograms them to a pluripotent state without requiring an oocyte.",
+  "answer_hash": "17c907e044a958e8007dd2439010664ebf77244f451541928f962be0249f1687",
+  "forbidden_terms": [
+    "ipsc",
+    "ipscs",
+    "induced pluripotent",
+    "takahashi",
+    "yamanaka",
+    "reprogramming factors"
+  ],
+  "future_terminology": [
+    "iPSC",
+    "induced pluripotent stem cell",
+    "Yamanaka factors",
+    "reprogramming TFs"
+  ],
+  "answer_mechanism": "The four transcription factors bind and activate the endogenous pluripotency network, overriding the differentiation program. After reprogramming, the exogenous factors can be removed and the cells maintain pluripotency autonomously.",
+  "constraint_release": "Releases the constraint that cellular differentiation is irreversible and that reprogramming requires an oocyte.",
+  "historical_source": "Takahashi & Yamanaka 2006 (Cell); Nobel Medicine 2012.",
+  "fabricated": false
+}

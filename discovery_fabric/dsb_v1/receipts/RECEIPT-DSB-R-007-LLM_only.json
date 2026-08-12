@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-007-LLM_only",
+  "case_id": "DSB-R-007",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-R-007-LLM_only",
+  "payload_hash": "d936588ecd4fbf2511462b195e302a48f679760ddc4414fa2370b31416987570",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:08:04.919766+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The Cas9 protein can be used to stimulate endogenous repair pathways to disrupt or replace a gene at a specific genomic locus.",
+  "mechanism": "The Cas9 protein, guided by a dual RNA complex, can cut the DNA at a specific location, creating a double-strand break, which in turn stimulates the cell's endogenous repair pathways, such as NHEJ or HDR, allowing for the disruption or replacement of a gene at that specific locus. This is possible because the dual RNA complex can be programmed to target specific genomic sequences, similar to how zinc-finger nucleases and TALENs work, but without the need for protein engineering for each new target.",
+  "constraint_released": "The need for protein engineering for each new target is released by using the Cas9 protein with a programmable dual RNA complex.",
+  "predicted_quantitative_outcome": "90% efficiency of gene disruption or replacement",
+  "raw_response": "{\"proposed_relationship\": \"The Cas9 protein can be used to stimulate endogenous repair pathways to disrupt or replace a gene at a specific genomic locus.\", \n\"mechanism\": \"The Cas9 protein, guided by a dual RNA complex, can cut the DNA at a specific location, creating a double-strand break, which in turn stimulates the cell's endogenous repair pathways, such as NHEJ or HDR, allowing for the disruption or replacement of a gene at that specific locus. This is possible because the dual RNA complex can be programmed to target specific genomic sequences, similar to how zinc-finger nucleases and TALENs work, but without the need for protein engineering for each new target.\", \n\"constraint_released\": \"The need for protein engineering for each new target is released by using the Cas9 protein with a programmable dual RNA complex.\", \n\"predicted_quantitative_outcome\": \"90% efficiency of gene disruption or replacement\"}",
+  "receipt_hash": "93dd8796702d817e9763419b5e656fe49ea8a3e4db6f4d7bc372b25612562b5e"
+}

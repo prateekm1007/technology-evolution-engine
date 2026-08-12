@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-008-combination",
+  "case_id": "DSB-R-008",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-R-008-combination",
+  "payload_hash": "146d4cf86735d9a5841cc9dd435d2537ca324c0bb2b8dedc9e53b10ece23881e",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:09:02.527170+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining the blocking of CTLA-4 checkpoint with the understanding of PD-1's role in dampening T-cell activity could lead to a novel therapeutic approach.",
+  "mechanism": "The mechanism behind this combination involves the simultaneous inhibition of two immune checkpoints, CTLA-4 and PD-1, which could potentially prevent T-cell exhaustion and functional silencing inside tumors, thereby enhancing the anti-tumor immune response. By blocking CTLA-4, the initial activation of T-cells is enhanced, and by also blocking PD-1, the subsequent dampening of T-cell activity by tumor-expressed ligands is prevented, allowing for a more sustained and effective T-cell response against the tumor.",
+  "constraint_released": "The constraint of T-cell exhaustion and functional silencing inside tumors is released, allowing for a more potent anti-tumor immune response.",
+  "predicted_quantitative_outcome": "30% increase in durable responses in melanoma patients",
+  "raw_response": "```\n{\n  \"proposed_relationship\": \"Combining the blocking of CTLA-4 checkpoint with the understanding of PD-1's role in dampening T-cell activity could lead to a novel therapeutic approach.\",\n  \"mechanism\": \"The mechanism behind this combination involves the simultaneous inhibition of two immune checkpoints, CTLA-4 and PD-1, which could potentially prevent T-cell exhaustion and functional silencing inside tumors, thereby enhancing the anti-tumor immune response. By blocking CTLA-4, the initial activation of T-cells is enhanced, and by also blocking PD-1, the subsequent dampening of T-cell activity by tumor-expressed ligands is prevented, allowing for a more sustained and effective T-cell response against the tumor.\",\n  \"constraint_released\": \"The constraint of T-cell exhaustion and functional silencing inside tumors is released, allowing for a more potent anti-tumor immune response.\",\n  \"predicted_quantitative_outcome\": \"30% increase in durable responses in melanoma patients\"\n}\n```",
+  "receipt_hash": "41a7f84e3725a4c9e0c6bf4212f5a1f88f3b774008acc374227b0a62b1e0e489"
+}

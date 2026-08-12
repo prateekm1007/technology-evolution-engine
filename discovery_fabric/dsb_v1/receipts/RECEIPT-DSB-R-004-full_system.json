@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-004-full_system",
+  "case_id": "DSB-R-004",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-004-full_system",
+  "payload_hash": "fa9b647d721e3ceb13df45108cac3a59fd7d36202ef7efd7fbabce174e7b438d",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:06:19.999476+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining convolutional neural networks with dropout and ReLUs, and leveraging GPUs for computation, can lead to deeper architectures that learn more effective translation-invariant features from large datasets like ImageNet.",
+  "mechanism": "The mechanism involves convolutional neural networks learning visual features that are invariant to translation, while dropout prevents co-adaptation of hidden units, and ReLUs avoid the vanishing-gradient problem, all of which are computationally intensive tasks that can be accelerated by the massive parallel floating-point throughput of GPUs, allowing for the effective training of deeper architectures on large datasets like ImageNet.",
+  "constraint_released": "This combination releases the constraint of shallow architectures and small datasets, allowing for more accurate image classification.",
+  "predicted_quantitative_outcome": "Top-5 error rate of 15% on ImageNet benchmarks",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining convolutional neural networks with dropout and ReLUs, and leveraging GPUs for computation, can lead to deeper architectures that learn more effective translation-invariant features from large datasets like ImageNet.\",\n  \"mechanism\": \"The mechanism involves convolutional neural networks learning visual features that are invariant to translation, while dropout prevents co-adaptation of hidden units, and ReLUs avoid the vanishing-gradient problem, all of which are computationally intensive tasks that can be accelerated by the massive parallel floating-point throughput of GPUs, allowing for the effective training of deeper architectures on large datasets like ImageNet.\",\n  \"constraint_released\": \"This combination releases the constraint of shallow architectures and small datasets, allowing for more accurate image classification.\",\n  \"predicted_quantitative_outcome\": \"Top-5 error rate of 15% on ImageNet benchmarks\"\n}\n```",
+  "receipt_hash": "19739e04ac76759bcd42d674370c54216c8f8bfe28d3908ca238af9c90fefca8"
+}

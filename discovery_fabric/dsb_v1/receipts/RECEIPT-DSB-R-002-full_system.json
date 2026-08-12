@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-002-full_system",
+  "case_id": "DSB-R-002",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-002-full_system",
+  "payload_hash": "cf2832a000620d9e49a41c36629c570bb3652da3acd4707bdcf0134c8995701a",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:04:50.352286+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Using synthetic oligonucleotides as primers for DNA polymerase enzymes can amplify specific DNA sequences, allowing for their detection.",
+  "mechanism": "The mechanism involves denaturing double-stranded DNA into single strands through heating, then cooling to re-anneal the strands with synthetic oligonucleotides that are complementary to the target sequence, and finally extending these primers with DNA polymerase enzymes to produce multiple copies of the target sequence.",
+  "constraint_released": "This approach releases the constraint of requiring a large initial amount of a specific DNA sequence to be detectable.",
+  "predicted_quantitative_outcome": "10^6 copies of the target DNA sequence per microliter",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Using synthetic oligonucleotides as primers for DNA polymerase enzymes can amplify specific DNA sequences, allowing for their detection.\",\n  \"mechanism\": \"The mechanism involves denaturing double-stranded DNA into single strands through heating, then cooling to re-anneal the strands with synthetic oligonucleotides that are complementary to the target sequence, and finally extending these primers with DNA polymerase enzymes to produce multiple copies of the target sequence.\",\n  \"constraint_released\": \"This approach releases the constraint of requiring a large initial amount of a specific DNA sequence to be detectable.\",\n  \"predicted_quantitative_outcome\": \"10^6 copies of the target DNA sequence per microliter\"\n}\n```",
+  "receipt_hash": "8de16be0577533f48227e9f731be13cab391ac7048de8a2ef13bb7153d7104c3"
+}

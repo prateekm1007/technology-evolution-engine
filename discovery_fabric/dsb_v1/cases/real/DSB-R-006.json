@@ -1,0 +1,35 @@
+{
+  "case_id": "DSB-R-006",
+  "case_type": "real",
+  "domain": "biology",
+  "name_internal": "mrna_vaccine",
+  "cutoff_date": "2019-12-31T23:59:59Z",
+  "exposed_facts": [
+    "In vitro transcribed mRNA triggers innate immune sensors (TLR7/8) that degrade the mRNA and prevent therapeutic translation.",
+    "Replacing uridine with pseudouridine or N1-methylpseudouridine in synthetic mRNA reduces TLR recognition and increases translation (modified-nucleoside chemistry).",
+    "Lipid nanoparticles (LNPs) efficiently deliver nucleic acids into the cytoplasm of cells in vivo.",
+    "Viral surface proteins such as the SARS-CoV-2 spike protein are the primary target of neutralizing antibodies.",
+    "Conventional vaccine platforms (live-attenuated, inactivated, subunit) require months to years of manufacturing scale-up."
+  ],
+  "withheld_facts": [
+    "Encapsulating N1-methylpseudouridine-modified mRNA encoding the SARS-CoV-2 spike protein in an LNP and injecting it intramuscularly induces neutralizing antibodies at protective titers within weeks (Polack et al. 2020; 95 percent efficacy in Phase 3)."
+  ],
+  "breakthrough_relationship": "Encapsulating N1-methylpseudouridine-modified mRNA encoding a viral spike protein in a lipid nanoparticle, injected intramuscularly, induces protective neutralizing antibodies within weeks at over 90 percent efficacy.",
+  "answer_hash": "ff9de7f455ce0920ddf2b21a467935d587af03a41a440cf7e5383c3617da107f",
+  "forbidden_terms": [
+    "mrna vaccine",
+    "biontech",
+    "pfizer-biontech",
+    "polack 2020",
+    "moderna"
+  ],
+  "future_terminology": [
+    "mRNA vaccine",
+    "modified-mRNA LNP vaccine",
+    "COVID-19 mRNA vaccine"
+  ],
+  "answer_mechanism": "Modified mRNA evades innate immunity long enough to be translated by host ribosomes into the viral spike protein. The LNP delivers the mRNA into the cytoplasm. The translated spike triggers adaptive B-cell and T-cell responses. Manufacturing is sequence-defined and scalable in weeks.",
+  "constraint_release": "Releases the time-to-scale constraint of conventional vaccine platforms, enabling pandemic-speed vaccine development.",
+  "historical_source": "Kariko/Weissman 2005 (modified nucleosides); Polack et al. 2020 (Pfizer-BioNTech Phase 3); Nobel Medicine 2023.",
+  "fabricated": false
+}

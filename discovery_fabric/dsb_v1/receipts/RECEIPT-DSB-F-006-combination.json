@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-006-combination",
+  "case_id": "DSB-F-006",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-F-006-combination",
+  "payload_hash": "67a2c0253a50b7fad44fdf0da9dc27f396506470332b1ac18675145aced43b5e",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:16:00.832178+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining lipid nanoparticles that can deliver self-amplifying RNA into cells with the fact that viral surface proteins are the primary target of neutralizing antibodies could enable rapid development of vaccines against specific viruses.",
+  "mechanism": "The combination of these two facts suggests that lipid nanoparticles could be used to deliver self-amplifying RNA encoding for a specific viral surface protein, such as the SARS-CoV-2 spike protein, into cells, which would then express this protein and stimulate the production of neutralizing antibodies. This approach would leverage the ability of self-amplifying RNA to replicate in the cytoplasm and produce high levels of the target protein, potentially leading to a more effective and rapid immune response.",
+  "constraint_released": "The constraint of conventional vaccine platforms requiring months to years of manufacturing scale-up is released by this combination, as lipid nanoparticles and self-amplifying RNA can potentially be developed and manufactured more quickly.",
+  "predicted_quantitative_outcome": "90% seroconversion rate within 6 weeks",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining lipid nanoparticles that can deliver self-amplifying RNA into cells with the fact that viral surface proteins are the primary target of neutralizing antibodies could enable rapid development of vaccines against specific viruses.\",\n  \"mechanism\": \"The combination of these two facts suggests that lipid nanoparticles could be used to deliver self-amplifying RNA encoding for a specific viral surface protein, such as the SARS-CoV-2 spike protein, into cells, which would then express this protein and stimulate the production of neutralizing antibodies. This approach would leverage the ability of self-amplifying RNA to replicate in the cytoplasm and produce high levels of the target protein, potentially leading to a more effective and rapid immune response.\",\n  \"constraint_released\": \"The constraint of conventional vaccine platforms requiring months to years of manufacturing scale-up is released by this combination, as lipid nanoparticles and self-amplifying RNA can potentially be developed and manufactured more quickly.\",\n  \"predicted_quantitative_outcome\": \"90% seroconversion rate within 6 weeks\"\n}\n```",
+  "receipt_hash": "b6e08ef0b4173b83f452b5c23dc045e8078d578766e562b52fdc777cad79851b"
+}

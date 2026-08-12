@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-006-LLM_only",
+  "case_id": "DSB-R-006",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-R-006-LLM_only",
+  "payload_hash": "71cbad68dd3a8757598f8984fd6761228b1a35f679c0e2c07f61018971b2c5bf",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:07:02.461019+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Lipid nanoparticles can be used to deliver modified-nucleoside mRNA encoding viral surface proteins to cells in vivo, inducing an immune response.",
+  "mechanism": "The use of lipid nanoparticles (LNPs) allows for efficient delivery of nucleic acids into the cytoplasm of cells. By incorporating modified-nucleoside mRNA, such as pseudouridine or N1-methylpseudouridine, into the LNPs, the mRNA can evade innate immune sensors (TLR7/8) and be translated into protein. If the mRNA encodes viral surface proteins, such as the SARS-CoV-2 spike protein, the translated protein can be recognized by the immune system, potentially inducing a neutralizing antibody response.",
+  "constraint_released": "The need for months to years of manufacturing scale-up for conventional vaccine platforms is alleviated by using LNPs and modified-nucleoside mRNA.",
+  "predicted_quantitative_outcome": "90% of vaccinated individuals will produce neutralizing antibodies within 4 weeks",
+  "raw_response": "{\"proposed_relationship\": \"Lipid nanoparticles can be used to deliver modified-nucleoside mRNA encoding viral surface proteins to cells in vivo, inducing an immune response.\", \n\"mechanism\": \"The use of lipid nanoparticles (LNPs) allows for efficient delivery of nucleic acids into the cytoplasm of cells. By incorporating modified-nucleoside mRNA, such as pseudouridine or N1-methylpseudouridine, into the LNPs, the mRNA can evade innate immune sensors (TLR7/8) and be translated into protein. If the mRNA encodes viral surface proteins, such as the SARS-CoV-2 spike protein, the translated protein can be recognized by the immune system, potentially inducing a neutralizing antibody response.\", \n\"constraint_released\": \"The need for months to years of manufacturing scale-up for conventional vaccine platforms is alleviated by using LNPs and modified-nucleoside mRNA.\", \n\"predicted_quantitative_outcome\": \"90% of vaccinated individuals will produce neutralizing antibodies within 4 weeks\"}",
+  "receipt_hash": "76e1ba179f7de6fa616222badf895cfdcd1f13a820300e794ee1826189a02c53"
+}

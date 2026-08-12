@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-002-LLM_only",
+  "case_id": "DSB-F-002",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-F-002-LLM_only",
+  "payload_hash": "d9171286fcba64fdae882edaf200e310f61fffeff91ec768de2d76d1492afeed",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:11:49.633654+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Repeated cycles of heating and cooling can be used to amplify a specific DNA sequence.",
+  "mechanism": "By utilizing DNA ligase enzymes to join adjacent oligonucleotide probes hybridized to a template, and then applying cycles of heating to denature the DNA and cooling to allow re-annealing of probes, it is possible to repeatedly replicate the sequence. This process can be facilitated by the use of synthetic oligonucleotides of arbitrary sequence, which can be chemically manufactured to match the desired template. As the cycles progress, the amount of the specific DNA sequence increases, eventually producing enough copies to detect.",
+  "constraint_released": "The need for a large initial amount of the specific DNA sequence to detect is alleviated by this amplification process.",
+  "predicted_quantitative_outcome": "10^6 copies of the target DNA sequence per microliter",
+  "raw_response": "{\"proposed_relationship\": \"Repeated cycles of heating and cooling can be used to amplify a specific DNA sequence.\", \n\"mechanism\": \"By utilizing DNA ligase enzymes to join adjacent oligonucleotide probes hybridized to a template, and then applying cycles of heating to denature the DNA and cooling to allow re-annealing of probes, it is possible to repeatedly replicate the sequence. This process can be facilitated by the use of synthetic oligonucleotides of arbitrary sequence, which can be chemically manufactured to match the desired template. As the cycles progress, the amount of the specific DNA sequence increases, eventually producing enough copies to detect.\", \n\"constraint_released\": \"The need for a large initial amount of the specific DNA sequence to detect is alleviated by this amplification process.\", \n\"predicted_quantitative_outcome\": \"10^6 copies of the target DNA sequence per microliter\"}",
+  "receipt_hash": "b76de1ca6addacbef10fca4ab7391b3a9fc888467a579fdee89f0753cccc7260"
+}

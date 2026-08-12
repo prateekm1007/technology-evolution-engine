@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-007-combination",
+  "case_id": "DSB-F-007",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-F-007-combination",
+  "payload_hash": "4fd8f7b3627a7c64f5753fb309956f79d4c9b4eebc9fa586134ccf469f8971c4",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:16:58.029934+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining the ability of prokaryotic Argonaute proteins to cleave complementary DNA targets with the capacity of zinc-finger nucleases and TALENs to cut specific genomic loci could enable precise editing of genomes without extensive protein engineering.",
+  "mechanism": "The mechanism would involve using small DNA guides, similar to those used by Argonaute proteins, to direct zinc-finger nucleases or TALENs to specific genomic locations, thereby allowing for the precise cutting of DNA at desired locations without the need for redesigning the nuclease for each new target. This would leverage the specificity and efficiency of Argonaute's guide-based system and apply it to the genome-editing capabilities of zinc-finger nucleases and TALENs.",
+  "constraint_released": "The constraint of requiring protein engineering for each new target would be released, enabling more rapid and flexible genome editing.",
+  "predicted_quantitative_outcome": "1000-fold increase in editing efficiency",
+  "raw_response": "{\"proposed_relationship\": \"Combining the ability of prokaryotic Argonaute proteins to cleave complementary DNA targets with the capacity of zinc-finger nucleases and TALENs to cut specific genomic loci could enable precise editing of genomes without extensive protein engineering.\", \"mechanism\": \"The mechanism would involve using small DNA guides, similar to those used by Argonaute proteins, to direct zinc-finger nucleases or TALENs to specific genomic locations, thereby allowing for the precise cutting of DNA at desired locations without the need for redesigning the nuclease for each new target. This would leverage the specificity and efficiency of Argonaute's guide-based system and apply it to the genome-editing capabilities of zinc-finger nucleases and TALENs.\", \"constraint_released\": \"The constraint of requiring protein engineering for each new target would be released, enabling more rapid and flexible genome editing.\", \"predicted_quantitative_outcome\": \"1000-fold increase in editing efficiency\"}",
+  "receipt_hash": "98770222018391a5cec905ccc38e6c8a86dda70ba6abfdf6b4a10ccdff154ea0"
+}

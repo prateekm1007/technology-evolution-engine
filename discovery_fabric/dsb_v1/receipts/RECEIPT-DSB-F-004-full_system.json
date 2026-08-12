@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-004-full_system",
+  "case_id": "DSB-F-004",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-004-full_system",
+  "payload_hash": "4fd5240da31812b4a4918f3f5ea3596e91672f4a51f79ebba2155bff7bd78b69",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:14:21.677395+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Spiking neural networks can be trained on large labeled image datasets to improve energy efficiency in event-driven computation.",
+  "mechanism": "The mechanism involves leveraging the biologically plausible model of spiking neural networks, which are implemented directly in silicon on neuromorphic chips, to process the discrete-time events emitted by the neurons. This allows for the integration of the event-driven computation with the large-scale image processing capabilities, potentially releasing the constraint of historical difficulty in training such networks using gradient methods. The interaction between the spiking neural networks and the large labeled image datasets like ImageNet could facilitate the development of more efficient and scalable training methods.",
+  "constraint_released": "The historical difficulty in training event-driven computation using gradient methods is released by combining spiking neural networks with large labeled image datasets.",
+  "predicted_quantitative_outcome": "20% top-5 error on ImageNet benchmarks with a 30% reduction in energy consumption",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Spiking neural networks can be trained on large labeled image datasets to improve energy efficiency in event-driven computation.\",\n  \"mechanism\": \"The mechanism involves leveraging the biologically plausible model of spiking neural networks, which are implemented directly in silicon on neuromorphic chips, to process the discrete-time events emitted by the neurons. This allows for the integration of the event-driven computation with the large-scale image processing capabilities, potentially releasing the constraint of historical difficulty in training such networks using gradient methods. The interaction between the spiking neural networks and the large labeled image datasets like ImageNet could facilitate the development of more efficient and scalable training methods.\",\n  \"constraint_released\": \"The historical difficulty in training event-driven computation using gradient methods is released by combining spiking neural networks with large labeled image datasets.\",\n  \"predicted_quantitative_outcome\": \"20% top-5 error on ImageNet benchmarks with a 30% reduction in energy consumption\"\n}\n```",
+  "receipt_hash": "4b9d3fdf00619b8040b5239899fd9a1b4c5e82d0d1bf06c915e7a657cf79616b"
+}

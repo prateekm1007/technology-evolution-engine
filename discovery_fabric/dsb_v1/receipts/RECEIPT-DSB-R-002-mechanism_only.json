@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-002-mechanism_only",
+  "case_id": "DSB-R-002",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-002-mechanism_only",
+  "payload_hash": "2f8a525aa665ac19162f38069357a5075264aa39475bb9b3a87027004117c13e",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:04:38.091094+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The ability to chemically manufacture synthetic oligonucleotides can be combined with the use of DNA polymerase enzymes to amplify specific DNA sequences for detection.",
+  "mechanism": "The core mechanism shared across the facts is the manipulation of DNA strands through processes such as denaturation, re-annealing, and extension by enzymes, which allows for the amplification and detection of specific DNA sequences.",
+  "constraint_released": "The constraint of requiring a natural source of oligonucleotides is released by the ability to chemically manufacture synthetic ones.",
+  "predicted_quantitative_outcome": "10^6 copies of a specific DNA sequence per microliter",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The ability to chemically manufacture synthetic oligonucleotides can be combined with the use of DNA polymerase enzymes to amplify specific DNA sequences for detection.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the manipulation of DNA strands through processes such as denaturation, re-annealing, and extension by enzymes, which allows for the amplification and detection of specific DNA sequences.\",\n  \"constraint_released\": \"The constraint of requiring a natural source of oligonucleotides is released by the ability to chemically manufacture synthetic ones.\",\n  \"predicted_quantitative_outcome\": \"10^6 copies of a specific DNA sequence per microliter\"\n}\n```",
+  "receipt_hash": "0c54a9add665dd866d3d3812ba456f264be8844e04ebef75901be5d87d123fdf"
+}

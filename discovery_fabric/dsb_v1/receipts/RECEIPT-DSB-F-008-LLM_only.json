@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-008-LLM_only",
+  "case_id": "DSB-F-008",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-F-008-LLM_only",
+  "payload_hash": "229c0e6b5db612f7fbe467817274d73101ae315eda73749a5cef6cc516d1ec0e",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:17:13.354114+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining cancer vaccines with small-molecule inhibitors of IDO may enhance T-cell function in the tumor microenvironment.",
+  "mechanism": "The mechanism underlying this proposed relationship is that IDO inhibitors would prevent the degradation of tryptophan by IDO, thereby reducing the suppression of T-cell function in the tumor microenvironment, and allowing the cancer vaccine-activated T-cells to effectively target the tumor.",
+  "constraint_released": "The use of IDO inhibitors would release the constraint imposed by IDO-mediated immune suppression on cancer vaccine efficacy.",
+  "predicted_quantitative_outcome": "20% increase in tumor regression rate",
+  "raw_response": "{\"proposed_relationship\": \"Combining cancer vaccines with small-molecule inhibitors of IDO may enhance T-cell function in the tumor microenvironment.\", \n\"mechanism\": \"The mechanism underlying this proposed relationship is that IDO inhibitors would prevent the degradation of tryptophan by IDO, thereby reducing the suppression of T-cell function in the tumor microenvironment, and allowing the cancer vaccine-activated T-cells to effectively target the tumor.\", \n\"constraint_released\": \"The use of IDO inhibitors would release the constraint imposed by IDO-mediated immune suppression on cancer vaccine efficacy.\", \n\"predicted_quantitative_outcome\": \"20% increase in tumor regression rate\"}",
+  "receipt_hash": "745de2a980d292a0cb627d1023a7274f1caaf4e3cfdfdd39714c66e5edf71ae0"
+}

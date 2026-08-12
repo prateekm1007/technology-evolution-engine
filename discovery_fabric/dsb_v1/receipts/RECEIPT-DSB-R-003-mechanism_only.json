@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-003-mechanism_only",
+  "case_id": "DSB-R-003",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-003-mechanism_only",
+  "payload_hash": "5d1337fe47760dfa3b076d4dbe48d5e2c15068ff6f47bfc471fa897262b30445",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:05:05.099199+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The mechanical cleavage of graphite can produce two-dimensional carbon crystals with unique electronic properties similar to carbon nanotubes.",
+  "mechanism": "The core mechanism shared across the facts is the manipulation of carbon's structural form, whether it's rolling up sheets into nanotubes, stacking layers in graphite, or the theoretical instability of two-dimensional crystals, all of which involve the interaction of carbon atoms in different configurations and dimensions.",
+  "constraint_released": "The constraint of thermodynamic instability of two-dimensional crystals at finite temperatures may be released by stabilizing the crystal through interaction with a substrate or by creating a nanoscale structure.",
+  "predicted_quantitative_outcome": "0.1 nanometers",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The mechanical cleavage of graphite can produce two-dimensional carbon crystals with unique electronic properties similar to carbon nanotubes.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the manipulation of carbon's structural form, whether it's rolling up sheets into nanotubes, stacking layers in graphite, or the theoretical instability of two-dimensional crystals, all of which involve the interaction of carbon atoms in different configurations and dimensions.\",\n  \"constraint_released\": \"The constraint of thermodynamic instability of two-dimensional crystals at finite temperatures may be released by stabilizing the crystal through interaction with a substrate or by creating a nanoscale structure.\",\n  \"predicted_quantitative_outcome\": \"0.1 nanometers\"\n}\n```",
+  "receipt_hash": "6d5c369863e9313215275c5501ced9299d6b12e4e55e28aa534c5db01d5f6b37"
+}

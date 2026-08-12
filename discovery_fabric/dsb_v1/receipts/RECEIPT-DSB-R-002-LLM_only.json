@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-002-LLM_only",
+  "case_id": "DSB-R-002",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-R-002-LLM_only",
+  "payload_hash": "b80cafc93033a82bd535af51356757f4b31b08a4e7f60dda391e1e16c56ba560",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:04:21.170212+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Using synthetic oligonucleotides as primers, DNA polymerase can amplify specific DNA sequences.",
+  "mechanism": "The process involves denaturing double-stranded DNA into single strands through heating, then using synthetic oligonucleotides that are complementary to the target sequence as primers for DNA polymerase to extend, and finally re-annealing the strands by cooling, allowing for the amplification of the specific sequence. This cycle can be repeated multiple times to produce enough copies of the target sequence to be detectable.",
+  "constraint_released": "The ability to chemically manufacture synthetic oligonucleotides of arbitrary sequence releases the constraint of being limited to naturally occurring primers.",
+  "predicted_quantitative_outcome": "10^6 copies of the target DNA sequence per microliter",
+  "raw_response": "{\"proposed_relationship\": \"Using synthetic oligonucleotides as primers, DNA polymerase can amplify specific DNA sequences.\", \n\"mechanism\": \"The process involves denaturing double-stranded DNA into single strands through heating, then using synthetic oligonucleotides that are complementary to the target sequence as primers for DNA polymerase to extend, and finally re-annealing the strands by cooling, allowing for the amplification of the specific sequence. This cycle can be repeated multiple times to produce enough copies of the target sequence to be detectable.\", \n\"constraint_released\": \"The ability to chemically manufacture synthetic oligonucleotides of arbitrary sequence releases the constraint of being limited to naturally occurring primers.\", \n\"predicted_quantitative_outcome\": \"10^6 copies of the target DNA sequence per microliter\"}",
+  "receipt_hash": "289602b0ca84c77f1188b1e7f51fa2d22ac82ccafb75a1a9b22490e11258db28"
+}

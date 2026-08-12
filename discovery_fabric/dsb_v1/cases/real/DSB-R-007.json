@@ -1,0 +1,36 @@
+{
+  "case_id": "DSB-R-007",
+  "case_type": "real",
+  "domain": "biology",
+  "name_internal": "crispr_cas9",
+  "cutoff_date": "2011-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Bacterial CRISPR loci encode an adaptive immune system that stores snippets of phage DNA as spacers between repeat sequences.",
+    "The Cas9 protein from Streptococcus pyogenes is a DNA endonuclease guided by a dual RNA (crRNA + tracrRNA) complex.",
+    "Zinc-finger nucleases and TALENs can cut specific genomic loci but require protein engineering for each new target.",
+    "Double-strand DNA breaks stimulate endogenous repair pathways (NHEJ or HDR) that can disrupt or replace a gene."
+  ],
+  "withheld_facts": [
+    "Fusing the crRNA and tracrRNA into a single guide RNA (sgRNA) and co-expressing it with Cas9 in human cells achieves programmable sequence-specific DNA cleavage at any locus defined by a 20-nucleotide guide (Jinek, Charpentier, Doudna, 2012)."
+  ],
+  "breakthrough_relationship": "A single guide RNA fused from crRNA and tracrRNA directs the Cas9 nuclease to cut any genomic locus defined by a 20-nucleotide target sequence, enabling programmable gene editing in cells.",
+  "answer_hash": "d4b6d710eb1c3f3157d7980df5cca2fdab7f89bff5ac1e8db7373431ee4f6605",
+  "forbidden_terms": [
+    "crispr-cas9",
+    "crispr/cas9",
+    "jinek 2012",
+    "doudna",
+    "charpentier",
+    "sgRNA"
+  ],
+  "future_terminology": [
+    "CRISPR-Cas9",
+    "sgRNA",
+    "programmed CRISPR editing",
+    "CRISPR gene editing"
+  ],
+  "answer_mechanism": "The 20-nucleotide spacer of the sgRNA base-pairs with the genomic target adjacent to a PAM sequence. Cas9 then cleaves both DNA strands. The resulting double-strand break is repaired by NHEJ (knockout) or HDR (knock-in) using a co-delivered template.",
+  "constraint_release": "Releases the protein-engineering constraint of ZFNs/TALENs, enabling any lab to target any locus by changing only the sgRNA sequence.",
+  "historical_source": "Jinek et al. 2012 (Science); Cong/Zhang 2013 (human cells); Nobel Chemistry 2020.",
+  "fabricated": false
+}

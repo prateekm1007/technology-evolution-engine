@@ -1,0 +1,32 @@
+{
+  "case_id": "DSB-F-003",
+  "case_type": "fabricated",
+  "domain": "materials",
+  "name_internal": "fabricated_boron_nitride_monolayer",
+  "cutoff_date": "2003-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Hexagonal boron nitride is a crystalline material arranged in stacked two-dimensional layers held together by weak van der Waals forces.",
+    "Theory predicts that strictly two-dimensional crystals are thermodynamically unstable at finite temperature.",
+    "Mechanical cleavage of layered materials is a known technique for thinning samples.",
+    "Boron nitride nanotubes — rolled-up h-BN sheets — are known to exist."
+  ],
+  "withheld_facts": [
+    "Repeated mechanical exfoliation of hexagonal boron nitride using adhesive tape isolates stable single-atom-thick boron nitride sheets at room temperature."
+  ],
+  "breakthrough_relationship": "Repeated mechanical exfoliation of hexagonal boron nitride using adhesive tape isolates stable single-atom-thick boron nitride sheets at room temperature.",
+  "answer_hash": "548313ea58e63a53e8873c8198a31d6e8f63e6f1f7c7ebed75d77dc3fbc9178e",
+  "forbidden_terms": [
+    "hexagonal boron nitride monolayer",
+    "h-bn 2d",
+    "white graphene"
+  ],
+  "future_terminology": [
+    "h-BN monolayer",
+    "white graphene",
+    "2D boron nitride"
+  ],
+  "answer_mechanism": "Adhesive tape removes a thin layer; repetition thins to a monolayer visible by optical contrast on silicon.",
+  "constraint_release": "Releases the theoretical constraint that 2D crystals cannot exist at finite temperature.",
+  "historical_source": "FABRICATED as a pre-2004 breakthrough. h-BN monolayers were actually isolated AFTER graphene (2008 onward), not before.",
+  "fabricated": true
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-004-mechanism_only",
+  "case_id": "DSB-F-004",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-F-004-mechanism_only",
+  "payload_hash": "30b51fdca5ba92b91579baf15040acafe741fb8d15aaad1289bbf67e955e9cd6",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:13:59.618640+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The energy efficiency of event-driven computation can be leveraged to improve the training of spiking neural networks on large labeled image datasets.",
+  "mechanism": "The core mechanism shared across the facts is the concept of event-driven processing, which is a key aspect of spiking neural networks and neuromorphic chips, and is also related to the energy efficiency of computation. This mechanism involves processing information in discrete events or spikes, rather than continuously, which can lead to more efficient computation. It is also relevant to the training of neural networks using gradient methods, which can be challenging for event-driven systems.",
+  "constraint_released": "The development of more efficient training methods for spiking neural networks could release the constraint of requiring large amounts of energy to train complex models.",
+  "predicted_quantitative_outcome": "20% reduction in energy consumption",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The energy efficiency of event-driven computation can be leveraged to improve the training of spiking neural networks on large labeled image datasets.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the concept of event-driven processing, which is a key aspect of spiking neural networks and neuromorphic chips, and is also related to the energy efficiency of computation. This mechanism involves processing information in discrete events or spikes, rather than continuously, which can lead to more efficient computation. It is also relevant to the training of neural networks using gradient methods, which can be challenging for event-driven systems.\",\n  \"constraint_released\": \"The development of more efficient training methods for spiking neural networks could release the constraint of requiring large amounts of energy to train complex models.\",\n  \"predicted_quantitative_outcome\": \"20% reduction in energy consumption\"\n}\n```",
+  "receipt_hash": "c236f9ce265332e70d6a5f3ad99433e9db8d9a97106bc13f0aff6e80557df653"
+}

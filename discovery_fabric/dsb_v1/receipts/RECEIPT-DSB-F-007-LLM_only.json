@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-007-LLM_only",
+  "case_id": "DSB-F-007",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-F-007-LLM_only",
+  "payload_hash": "0ed4f16d93f2133301503f8f129667f94d52a2062e7d156a8d5508d03ad3007f",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:16:30.688212+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Heat-stable Argonautes from thermophilic bacteria can be used to cut specific genomic loci without requiring protein engineering for each new target.",
+  "mechanism": "The mechanism of this proposed relationship involves the use of small DNA guides by Argonaute proteins to cleave complementary DNA targets, which can be directed to specific genomic loci, potentially stimulated by double-strand DNA breaks and endogenous repair pathways. This could allow for a more versatile and efficient method of genome editing, leveraging the heat-stable nature of Argonautes from thermophilic bacteria like Natronobacterium gregoryi to facilitate the process.",
+  "constraint_released": "The need for protein engineering for each new target is released by utilizing the small DNA guide system of Argonaute proteins.",
+  "predicted_quantitative_outcome": "90% efficiency of target cleavage",
+  "raw_response": "{\"proposed_relationship\": \"Heat-stable Argonautes from thermophilic bacteria can be used to cut specific genomic loci without requiring protein engineering for each new target.\", \n\"mechanism\": \"The mechanism of this proposed relationship involves the use of small DNA guides by Argonaute proteins to cleave complementary DNA targets, which can be directed to specific genomic loci, potentially stimulated by double-strand DNA breaks and endogenous repair pathways. This could allow for a more versatile and efficient method of genome editing, leveraging the heat-stable nature of Argonautes from thermophilic bacteria like Natronobacterium gregoryi to facilitate the process.\", \n\"constraint_released\": \"The need for protein engineering for each new target is released by utilizing the small DNA guide system of Argonaute proteins.\", \n\"predicted_quantitative_outcome\": \"90% efficiency of target cleavage\"}",
+  "receipt_hash": "19d565c34d2342923d638bb6c94740c9f7490d5eb238bfb5a6d0711ecebd627a"
+}

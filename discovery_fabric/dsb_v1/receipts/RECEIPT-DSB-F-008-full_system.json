@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-008-full_system",
+  "case_id": "DSB-F-008",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-008-full_system",
+  "payload_hash": "70496937553ea38054fc24bd9cff45d85251c9935951767a8f0bc589e823a985",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:17:39.613389+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining cancer vaccines with small-molecule inhibitors of IDO may enhance T-cell function in the tumor microenvironment.",
+  "mechanism": "The mechanism involves the inhibition of IDO, which degrades tryptophan and suppresses T-cell function, thereby allowing activated T-cells from cancer vaccines to effectively target tumors. This is because tumors upregulate IDO as an immune-evasion mechanism, and small-molecule inhibitors of IDO can counteract this effect. By blocking IDO, the tryptophan levels in the tumor microenvironment may increase, potentially enhancing T-cell activity.",
+  "constraint_released": "The use of IDO inhibitors releases the constraint of T-cell suppression in the tumor microenvironment, allowing cancer vaccines to be more effective.",
+  "predicted_quantitative_outcome": "20% increase in T-cell activation with combined therapy compared to vaccine alone",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining cancer vaccines with small-molecule inhibitors of IDO may enhance T-cell function in the tumor microenvironment.\",\n  \"mechanism\": \"The mechanism involves the inhibition of IDO, which degrades tryptophan and suppresses T-cell function, thereby allowing activated T-cells from cancer vaccines to effectively target tumors. This is because tumors upregulate IDO as an immune-evasion mechanism, and small-molecule inhibitors of IDO can counteract this effect. By blocking IDO, the tryptophan levels in the tumor microenvironment may increase, potentially enhancing T-cell activity.\",\n  \"constraint_released\": \"The use of IDO inhibitors releases the constraint of T-cell suppression in the tumor microenvironment, allowing cancer vaccines to be more effective.\",\n  \"predicted_quantitative_outcome\": \"20% increase in T-cell activation with combined therapy compared to vaccine alone\"\n}\n```",
+  "receipt_hash": "68bfa7eb911d4cf5ba35db6a6a5ab773a8558432b8710d7cad1abd650c5325e8"
+}

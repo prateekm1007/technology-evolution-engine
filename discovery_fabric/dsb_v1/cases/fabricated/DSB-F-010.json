@@ -1,0 +1,29 @@
+{
+  "case_id": "DSB-F-010",
+  "case_type": "fabricated",
+  "domain": "ml",
+  "name_internal": "fabricated_ebm_adversarial",
+  "cutoff_date": "2013-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Energy-based models assign scalar energy to configurations and learn by lowering energy on data and raising it elsewhere.",
+    "Discriminative neural networks achieve high accuracy on classification tasks.",
+    "Two-player zero-sum games in game theory have equilibrium solutions.",
+    "Neural networks can approximate complex distributions given sufficient capacity."
+  ],
+  "withheld_facts": [
+    "Training an energy-based model with a discriminative critic that classifies real versus low-energy samples produces sharp, realistic samples without explicit likelihood."
+  ],
+  "breakthrough_relationship": "Training an energy-based model with a discriminative critic that classifies real versus low-energy samples produces sharp, realistic samples without explicit likelihood.",
+  "answer_hash": "917156c42b6cf3d78242f3fa3765c94599ae6f7aeeba086d5ad3a629e092a70c",
+  "forbidden_terms": [
+    "ebm adversarial critic",
+    "discriminator-trained energy model"
+  ],
+  "future_terminology": [
+    "adversarial EBM"
+  ],
+  "answer_mechanism": "The critic shapes the energy landscape by pushing data down and samples up. The energy model learns to produce low-energy samples that fool the critic.",
+  "constraint_release": "Releases the likelihood-averaging constraint of explicit generative models.",
+  "historical_source": "FABRICATED. While EBM variants exist, the specific 'discriminative critic for EBM' breakthrough as a 2014-era milestone did not historically occur in this form.",
+  "fabricated": true
+}

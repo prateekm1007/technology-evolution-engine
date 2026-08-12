@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-006-full_system",
+  "case_id": "DSB-R-006",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-006-full_system",
+  "payload_hash": "a0c517a578712502f06651d8b49e3cbc8265cb9dd880de852b461e169b684de7",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:07:43.148854+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Encapsulating modified-nucleoside mRNA that encodes for the SARS-CoV-2 spike protein in lipid nanoparticles can efficiently deliver the mRNA into cells, triggering an immune response without being degraded by TLR7/8.",
+  "mechanism": "The mechanism involves the use of lipid nanoparticles (LNPs) to deliver the modified-nucleoside mRNA into the cytoplasm of cells, where it can be translated into the SARS-CoV-2 spike protein, triggering an immune response and the production of neutralizing antibodies. The modification of the mRNA with pseudouridine or N1-methylpseudouridine reduces the recognition by TLR7/8, preventing the degradation of the mRNA and allowing for efficient translation. The resulting spike protein is then recognized by the immune system, leading to the production of neutralizing antibodies.",
+  "constraint_released": "This approach releases the constraint of requiring months to years of manufacturing scale-up for conventional vaccine platforms.",
+  "predicted_quantitative_outcome": "A 90% reduction in time-to-market for vaccine development, from years to weeks",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Encapsulating modified-nucleoside mRNA that encodes for the SARS-CoV-2 spike protein in lipid nanoparticles can efficiently deliver the mRNA into cells, triggering an immune response without being degraded by TLR7/8.\",\n  \"mechanism\": \"The mechanism involves the use of lipid nanoparticles (LNPs) to deliver the modified-nucleoside mRNA into the cytoplasm of cells, where it can be translated into the SARS-CoV-2 spike protein, triggering an immune response and the production of neutralizing antibodies. The modification of the mRNA with pseudouridine or N1-methylpseudouridine reduces the recognition by TLR7/8, preventing the degradation of the mRNA and allowing for efficient translation. The resulting spike protein is then recognized by the immune system, leading to the production of neutralizing antibodies.\",\n  \"constraint_released\": \"This approach releases the constraint of requiring months to years of manufacturing scale-up for conventional vaccine platforms.\",\n  \"predicted_quantitative_outcome\": \"A 90% reduction in time-to-market for vaccine development, from years to weeks\"\n}\n```",
+  "receipt_hash": "ec2777a461049c4040a91f8899214effcc700a6198a60a321824678de89f7955"
+}

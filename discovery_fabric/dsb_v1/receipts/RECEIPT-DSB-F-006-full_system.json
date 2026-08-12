@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-006-full_system",
+  "case_id": "DSB-F-006",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-006-full_system",
+  "payload_hash": "3688d8370dbc938506ec553c2a80492471c63b0a81e772c8ae19b1fa50e97f42",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:16:12.631017+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Lipid nanoparticles delivering self-amplifying RNA that encodes for viral surface proteins can accelerate vaccine development by bypassing conventional manufacturing scale-up.",
+  "mechanism": "The mechanism involves the use of lipid nanoparticles to deliver saRNA into cells, where the saRNA replicates in the cytoplasm using the non-structural protein genes from an alphavirus, leading to the expression of viral surface proteins such as the SARS-CoV-2 spike protein, which then triggers the production of neutralizing antibodies, thus providing immunity without the need for traditional vaccine manufacturing processes.",
+  "constraint_released": "The constraint of requiring months to years for manufacturing scale-up is released by leveraging the self-amplifying capability of saRNA delivered via lipid nanoparticles.",
+  "predicted_quantitative_outcome": "Vaccine development time reduced by 75% to approximately 3-6 months",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Lipid nanoparticles delivering self-amplifying RNA that encodes for viral surface proteins can accelerate vaccine development by bypassing conventional manufacturing scale-up.\",\n  \"mechanism\": \"The mechanism involves the use of lipid nanoparticles to deliver saRNA into cells, where the saRNA replicates in the cytoplasm using the non-structural protein genes from an alphavirus, leading to the expression of viral surface proteins such as the SARS-CoV-2 spike protein, which then triggers the production of neutralizing antibodies, thus providing immunity without the need for traditional vaccine manufacturing processes.\",\n  \"constraint_released\": \"The constraint of requiring months to years for manufacturing scale-up is released by leveraging the self-amplifying capability of saRNA delivered via lipid nanoparticles.\",\n  \"predicted_quantitative_outcome\": \"Vaccine development time reduced by 75% to approximately 3-6 months\"\n}\n```",
+  "receipt_hash": "f359cbc8fba333a18352268c4bbfc3859d20fe7bd5bd4682ac967788b613beb0"
+}

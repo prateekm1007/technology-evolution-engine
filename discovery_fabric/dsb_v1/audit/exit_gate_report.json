@@ -1,0 +1,4065 @@
+{
+  "schema_version": "1.0.0",
+  "report_type": "DSB_V1_EXIT_GATE",
+  "generated_at": "2026-08-12T17:21:59.927737+00:00",
+  "exit_gates": [
+    {
+      "gate": "E1_LEAKAGE_AUDIT",
+      "passed": true,
+      "n_payloads": 80,
+      "n_pass": 80,
+      "n_fail": 0
+    },
+    {
+      "gate": "E2_PAYLOAD_HASHES",
+      "passed": true,
+      "n_total": 80,
+      "n_ok": 80
+    },
+    {
+      "gate": "E3_SCORER_VALIDATION",
+      "passed": true,
+      "n_scores": 80
+    },
+    {
+      "gate": "E4_CONTROLS",
+      "passed": true,
+      "n_total": 80,
+      "n_ok": 80,
+      "arms": [
+        "LLM_only",
+        "mechanism_only",
+        "combination",
+        "full_system"
+      ],
+      "n_cases": 20,
+      "expected_total": 80
+    },
+    {
+      "gate": "E5_HUMAN_ADJUDICATION",
+      "passed": true,
+      "n_packets": 80,
+      "adjudication_performed": false,
+      "note": "Packets built and ready. Human adjudication is PENDING — must be performed by independent human adjudicators."
+    },
+    {
+      "gate": "E6_REPRODUCIBLE_RECOMPUTATION",
+      "passed": true,
+      "n_checks": 5,
+      "n_pass": 5,
+      "checks": [
+        "LEAKAGE_AUDIT_PASSES",
+        "LEAKAGE_AUDIT_REPRODUCIBLE",
+        "SCORER_REPRODUCIBLE",
+        "ADJUDICATION_PACKET_REPRODUCIBLE",
+        "RECEIPT_INTEGRITY"
+      ]
+    }
+  ],
+  "overall_pass": true,
+  "n_gates_passed": 6,
+  "n_gates_total": 6,
+  "scorer_summary": {
+    "LLM_only|fabricated": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 3,
+      "mech_score_sum": 1.9586000000000003,
+      "disc_score_sum": 3.7409
+    },
+    "LLM_only|real": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 0,
+      "mech_score_sum": 2.5267000000000004,
+      "disc_score_sum": 2.9074
+    },
+    "combination|fabricated": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 4,
+      "mech_score_sum": 1.9309,
+      "disc_score_sum": 4.0126
+    },
+    "combination|real": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 2,
+      "mech_score_sum": 2.1439,
+      "disc_score_sum": 3.1087
+    },
+    "full_system|fabricated": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 2,
+      "mech_score_sum": 2.2987,
+      "disc_score_sum": 3.8467000000000002
+    },
+    "full_system|real": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 0,
+      "mech_score_sum": 2.374,
+      "disc_score_sum": 3.1264
+    },
+    "mechanism_only|fabricated": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 1,
+      "mech_score_sum": 1.2589000000000001,
+      "disc_score_sum": 2.928
+    },
+    "mechanism_only|real": {
+      "n": 10,
+      "mech_reconstructed": 0,
+      "disc_recovered": 1,
+      "mech_score_sum": 1.4528999999999999,
+      "disc_score_sum": 3.0634999999999994
+    }
+  },
+  "scorer_scores": [
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-001-LLM_only",
+      "case_id": "DSB-F-001",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "f04af57d1b43c2b68722d06f9ecc2d95725dc0f3bb10a79a8921c0e8de671ccc",
+      "answer_hash": "6c3b6ceb4410c81d5f1a9a4dedbadf14af772b1172b46f73a3bbd97cd1aebd5d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4,
+        "jaccard": 0.0889,
+        "proposed_terms_count": 39,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "electrodes",
+          "ions",
+          "metal",
+          "sodium"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5536,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2857,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.6429
+        },
+        "proposed_relation_types": [
+          "combination",
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "associated",
+          "issues",
+          "mitigate",
+          "safety"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.873476+00:00",
+      "score_hash": "6c09e6a416943f8760d7c93a0780a8c0625d26825008a2f61e8c3b172568af46"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-001-combination",
+      "case_id": "DSB-F-001",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "6ba3f47c40ff59100611bd00c77260cd21f830cf26e16b54e75ad0f584fd455c",
+      "answer_hash": "6c3b6ceb4410c81d5f1a9a4dedbadf14af772b1172b46f73a3bbd97cd1aebd5d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4,
+        "jaccard": 0.1026,
+        "proposed_terms_count": 33,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "electrodes",
+          "ions",
+          "metal",
+          "sodium"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5784,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.6471
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "development",
+          "efficient",
+          "enable",
+          "sodium-based"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.874173+00:00",
+      "score_hash": "f975ff346a07cd7c83b89477d1911909e24f11714dbbd5f56b98920c8dff2830"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-001-full_system",
+      "case_id": "DSB-F-001",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "312646a5f65a2ca74124d4c81aba3b4c9e799f2718bacba83845f5e7f1c72e47",
+      "answer_hash": "6c3b6ceb4410c81d5f1a9a4dedbadf14af772b1172b46f73a3bbd97cd1aebd5d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4,
+        "jaccard": 0.0976,
+        "proposed_terms_count": 35,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "electrodes",
+          "ions",
+          "metal",
+          "sodium"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3358,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6765
+        },
+        "proposed_relation_types": [
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "associated",
+          "issues",
+          "mitigate",
+          "preventing",
+          "safety",
+          "utilizing"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.874844+00:00",
+      "score_hash": "9783965d2f7d28cb325fe30b83a1810e96316fe08a092b915842498e511eef2d"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-001-mechanism_only",
+      "case_id": "DSB-F-001",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "97bbc539387786a4114a37db45725f398993debe2c73e063b537112030e15aed",
+      "answer_hash": "6c3b6ceb4410c81d5f1a9a4dedbadf14af772b1172b46f73a3bbd97cd1aebd5d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2,
+        "jaccard": 0.0526,
+        "proposed_terms_count": 30,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "electrodes",
+          "ions"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2727,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2727,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.5455
+        },
+        "proposed_relation_types": [
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "mitigate"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.875391+00:00",
+      "score_hash": "fcc5eedfb7920aea9f26ed3000729c711ef36b26d518aab9f8f564c3c0091caa"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-002-LLM_only",
+      "case_id": "DSB-F-002",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "b76de1ca6addacbef10fca4ab7391b3a9fc888467a579fdee89f0753cccc7260",
+      "answer_hash": "fc4797161144425617e1d2c7f2997afd114a6d664fbfb0d3c33d88bad08a810d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2222,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2222,
+        "jaccard": 0.0465,
+        "proposed_terms_count": 36,
+        "answer_terms_count": 9,
+        "shared_terms": [
+          "copies",
+          "probes"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3393,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.5714,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.2143
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "amplify",
+          "cycles",
+          "repeated"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.875913+00:00",
+      "score_hash": "406557898acff41d82771fe6ffb802ff0046c89ddbef5989ef11fc71fa632665"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-002-combination",
+      "case_id": "DSB-F-002",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "8891577b2524e30e34d6b7d96ed57263f7f733cdba2707aeb2d95d436d27effd",
+      "answer_hash": "fc4797161144425617e1d2c7f2997afd114a6d664fbfb0d3c33d88bad08a810d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2222,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2222,
+        "jaccard": 0.0476,
+        "proposed_terms_count": 35,
+        "answer_terms_count": 9,
+        "shared_terms": [
+          "allowing",
+          "probes"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.262,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4615,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.125
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "creation",
+          "custom",
+          "enable",
+          "sequences"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.876398+00:00",
+      "score_hash": "51a9dd198a2c0d62986f0c255b17e3e4e6b21a904856d57d2b417341c3d574d3"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-002-full_system",
+      "case_id": "DSB-F-002",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "1ed64f447220ab9f097453051fa2731cf58b5d28bbe544f09d32e077a54ad30e",
+      "answer_hash": "fc4797161144425617e1d2c7f2997afd114a6d664fbfb0d3c33d88bad08a810d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1111,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1111,
+        "jaccard": 0.0278,
+        "proposed_terms_count": 28,
+        "answer_terms_count": 9,
+        "shared_terms": [
+          "probes"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3117,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4615,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.3235
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "allowing",
+          "amounts",
+          "amplify",
+          "cycles",
+          "denaturing",
+          "detection",
+          "exponentially",
+          "initially",
+          "iteratively",
+          "repeated",
+          "small"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.876928+00:00",
+      "score_hash": "a431df76c1b4b60dff977e16e85338d44f4bf292bea1a8b3332ab048988027b8"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-002-mechanism_only",
+      "case_id": "DSB-F-002",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "f696c782490f572571cd8fd935af5142747f987d733c865d2f650514095444fc",
+      "answer_hash": "fc4797161144425617e1d2c7f2997afd114a6d664fbfb0d3c33d88bad08a810d",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1111,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1111,
+        "jaccard": 0.0385,
+        "proposed_terms_count": 18,
+        "answer_terms_count": 9,
+        "shared_terms": [
+          "allowing"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1573,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1538,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.3214
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "amplification",
+          "combining",
+          "core",
+          "detecting",
+          "develop",
+          "hybridization",
+          "mechanism",
+          "sequences",
+          "utilized"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.877393+00:00",
+      "score_hash": "eabb272f70f91a931e64ffb696462d0c15b1aa47728c22e0003cb52671b1b90f"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-003-LLM_only",
+      "case_id": "DSB-F-003",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "8e8641778691cfe3863e9a063d5a836549c3950c6d9544e91fb6975b9570cb66",
+      "answer_hash": "548313ea58e63a53e8873c8198a31d6e8f63e6f1f7c7ebed75d77dc3fbc9178e",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0,
+        "jaccard": 0.0,
+        "proposed_terms_count": 29,
+        "answer_terms_count": 12,
+        "shared_terms": []
+      },
+      "discovery_structure_recovery": {
+        "score": 0.375,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.5,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.5
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": []
+      },
+      "scored_at": "2026-08-12T17:21:59.878012+00:00",
+      "score_hash": "bb951e05cde35eccc89352beac405be94c1f39315f3bb5f6be9e4b4944051a7a"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-003-combination",
+      "case_id": "DSB-F-003",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "1630a0f5a4af78015a0bf6fa422f1a5fceb1d1d7f92107c71b4f51acb05e37da",
+      "answer_hash": "548313ea58e63a53e8873c8198a31d6e8f63e6f1f7c7ebed75d77dc3fbc9178e",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1667,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1667,
+        "jaccard": 0.0392,
+        "proposed_terms_count": 41,
+        "answer_terms_count": 12,
+        "shared_terms": [
+          "layer",
+          "thin"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2452,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3077,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.3654
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "creation",
+          "lead"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.878716+00:00",
+      "score_hash": "b60af2c4b7f1f105b7cc8f8d871d29dabc579ed83cb90732f0e7f97a918f9227"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-003-full_system",
+      "case_id": "DSB-F-003",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "d6ba9b459a4f82db0d4b15c274e377fb1b65a49d0eab11e30de0983193f749c4",
+      "answer_hash": "548313ea58e63a53e8873c8198a31d6e8f63e6f1f7c7ebed75d77dc3fbc9178e",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1667,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1667,
+        "jaccard": 0.0417,
+        "proposed_terms_count": 38,
+        "answer_terms_count": 12,
+        "shared_terms": [
+          "layer",
+          "thin"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3056,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3077,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6071
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "despite",
+          "rolling",
+          "stabilized"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.879423+00:00",
+      "score_hash": "bc136c680e187fd3106113542e2d87bf0dd82ab0fedde1ebcc9e9812e36f4661"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-003-mechanism_only",
+      "case_id": "DSB-F-003",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "0e4828f6d0e852ff39e4142af2ca581840a96afe8baa8b4b56e3d8e9b329ba22",
+      "answer_hash": "548313ea58e63a53e8873c8198a31d6e8f63e6f1f7c7ebed75d77dc3fbc9178e",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0,
+        "jaccard": 0.0,
+        "proposed_terms_count": 24,
+        "answer_terms_count": 12,
+        "shared_terms": []
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3462,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3846,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6154
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "constraints",
+          "kinetic",
+          "temporarily"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.880099+00:00",
+      "score_hash": "865a519c29288e946f67fc3e95e53408f413aeedb3d0c5844b348045c6c8d80f"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-004-LLM_only",
+      "case_id": "DSB-F-004",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "e189c40f38f91c96c90be8e8a3b27e7bc09bea1d9a40f7e457c9ac146190b037",
+      "answer_hash": "65b93244a70e78fc6d2c4da31292ea342d5474d71d22dbfe8a510fca985c3ee7",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1538,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1538,
+        "jaccard": 0.0323,
+        "proposed_terms_count": 51,
+        "answer_terms_count": 13,
+        "shared_terms": [
+          "neuromorphic",
+          "silicon"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1696,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2857,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.1071
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "efficiently",
+          "implemented",
+          "like"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.880912+00:00",
+      "score_hash": "ac77f731dddf211322155300bef3054a7f0457275dcc51b9571c24a11d803d95"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-004-combination",
+      "case_id": "DSB-F-004",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "06a6f1a086e29b98c44d4d40457df77060a1cc2927e9b91d2406aecc98a58724",
+      "answer_hash": "65b93244a70e78fc6d2c4da31292ea342d5474d71d22dbfe8a510fca985c3ee7",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0769,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0769,
+        "jaccard": 0.0172,
+        "proposed_terms_count": 46,
+        "answer_terms_count": 13,
+        "shared_terms": [
+          "computation"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.239,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.125,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.7059
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "complex",
+          "enable",
+          "models",
+          "recognition",
+          "tasks",
+          "training"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.881618+00:00",
+      "score_hash": "eecfdf3ddc7797918519e60c6133fe8d1236d2a83a4224fa3daa9945c28879ca"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-004-full_system",
+      "case_id": "DSB-F-004",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "4b9d3fdf00619b8040b5239899fd9a1b4c5e82d0d1bf06c915e7a657cf79616b",
+      "answer_hash": "65b93244a70e78fc6d2c4da31292ea342d5474d71d22dbfe8a510fca985c3ee7",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2308,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2308,
+        "jaccard": 0.0577,
+        "proposed_terms_count": 42,
+        "answer_terms_count": 13,
+        "shared_terms": [
+          "computation",
+          "neuromorphic",
+          "silicon"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1538,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2308,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.1538
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "efficiency",
+          "energy",
+          "improve",
+          "trained"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.882381+00:00",
+      "score_hash": "82cc575d5f4aac0dddde5f2f32ec6aa5f7f1ec38d3d36c6098c95542ec9d6f27"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-004-mechanism_only",
+      "case_id": "DSB-F-004",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "c236f9ce265332e70d6a5f3ad99433e9db8d9a97106bc13f0aff6e80557df653",
+      "answer_hash": "65b93244a70e78fc6d2c4da31292ea342d5474d71d22dbfe8a510fca985c3ee7",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3077,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3077,
+        "jaccard": 0.1,
+        "proposed_terms_count": 31,
+        "answer_terms_count": 13,
+        "shared_terms": [
+          "computation",
+          "discrete",
+          "neuromorphic",
+          "spikes"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1161,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1429,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.1786
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "efficiency",
+          "energy",
+          "improve",
+          "leveraged",
+          "training"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.883228+00:00",
+      "score_hash": "733583292f9c6f5fff1031b14bc2a11be8f4e3ef37be3f519e2acdbab05db0bd"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-005-LLM_only",
+      "case_id": "DSB-F-005",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "57f51a6e7be270f59d3680ae69422cfddb987f326b798bf5868e71407fd4cc9a",
+      "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1667,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1667,
+        "jaccard": 0.0444,
+        "proposed_terms_count": 35,
+        "answer_terms_count": 12,
+        "shared_terms": [
+          "architecture",
+          "tandem"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.6705,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.5455,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.5909
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "enhance"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.883892+00:00",
+      "score_hash": "15c10de9c90dcbf944ae6bc410edbc94abe45ad8585316a82927def15a745b7b"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-005-combination",
+      "case_id": "DSB-F-005",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "e13183fc2915a47bf086dac7a0c812a2c72cc4a9f455ddef5a80a80f7982f8fe",
+      "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0833,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0833,
+        "jaccard": 0.0244,
+        "proposed_terms_count": 30,
+        "answer_terms_count": 12,
+        "shared_terms": [
+          "tandem"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5278,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2222,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.6667
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "efficient",
+          "lead"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.884505+00:00",
+      "score_hash": "59db034731242a747523570c512c303bd9a40f7eda5cb34fc4e7228be2277f15"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-005-full_system",
+      "case_id": "DSB-F-005",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "c949f56dd2a436df9dff70e54ef2e9bb1832c510a712d8d8ef424f7b103bc210",
+      "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0833,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0833,
+        "jaccard": 0.0217,
+        "proposed_terms_count": 35,
+        "answer_terms_count": 12,
+        "shared_terms": [
+          "tandem"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.6705,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.5455,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.5909
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "enhance"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.885107+00:00",
+      "score_hash": "e276bad364f429564f6986bbe1fb9009f51434dd54dd65d02c622a528ce596d9"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-005-mechanism_only",
+      "case_id": "DSB-F-005",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "444c51ed0305a363c6194d4ff135b4898e5e32df2b9de78295066678f25ef049",
+      "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0,
+        "jaccard": 0.0,
+        "proposed_terms_count": 16,
+        "answer_terms_count": 12,
+        "shared_terms": []
+      },
+      "discovery_structure_recovery": {
+        "score": 0.25,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4545,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.0909
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "increased",
+          "lead"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.885668+00:00",
+      "score_hash": "b366e4904934bb4f158e6e770f9aca2878d2dc421b3bd16536d5f3c42e882131"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-006-LLM_only",
+      "case_id": "DSB-F-006",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "b1d409e9a40b837c8bd9d1eafb31a4b2b54e6eaff038f4f4e7e22012d191f91d",
+      "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0909,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0909,
+        "jaccard": 0.0303,
+        "proposed_terms_count": 23,
+        "answer_terms_count": 11,
+        "shared_terms": [
+          "alphavirus"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5521,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.25,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.7083
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "encodes",
+          "immune",
+          "inducing",
+          "potentially",
+          "response"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.886291+00:00",
+      "score_hash": "a3eef2626146ac43fcdfa46d6d0c7e46e1211305ad2e7c25218ee4cdea284eb0"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-006-combination",
+      "case_id": "DSB-F-006",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "b6e08ef0b4173b83f452b5c23dc045e8078d578766e562b52fdc777cad79851b",
+      "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1818,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1818,
+        "jaccard": 0.0488,
+        "proposed_terms_count": 32,
+        "answer_terms_count": 11,
+        "shared_terms": [
+          "cytoplasm",
+          "rna"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5833,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.6667
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "development",
+          "enable",
+          "rapid",
+          "vaccines",
+          "viruses"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.887055+00:00",
+      "score_hash": "e6dc3ed8a4fa565377e0c10932f72ec73c63ef16e9bd970f67e5f4997399bcd8"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-006-full_system",
+      "case_id": "DSB-F-006",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "f359cbc8fba333a18352268c4bbfc3859d20fe7bd5bd4682ac967788b613beb0",
+      "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1818,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1818,
+        "jaccard": 0.05,
+        "proposed_terms_count": 31,
+        "answer_terms_count": 11,
+        "shared_terms": [
+          "alphavirus",
+          "cytoplasm"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2891,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.25,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6562
+        },
+        "proposed_relation_types": [
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "accelerate",
+          "bypassing",
+          "delivering",
+          "development",
+          "encodes"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.887713+00:00",
+      "score_hash": "f99206fda6c0d379ae89f888910fcc4f5df4d181d3771129d3767b606bf68e52"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-006-mechanism_only",
+      "case_id": "DSB-F-006",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "aa9a185aad4e9c04bd6e1b8df1a638d15e1eab75ca60c79196b143d9dbfe0320",
+      "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1818,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1818,
+        "jaccard": 0.0556,
+        "proposed_terms_count": 27,
+        "answer_terms_count": 11,
+        "shared_terms": [
+          "cytoplasm",
+          "rna"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.6167,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.6667
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "enable",
+          "production",
+          "rapid",
+          "targeting",
+          "vaccines"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.888391+00:00",
+      "score_hash": "f8962711965c82e966748c7804315c6cc76056df6598d18087b146ebee5c8878"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-007-LLM_only",
+      "case_id": "DSB-F-007",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "19d565c34d2342923d638bb6c94740c9f7490d5eb238bfb5a6d0711ecebd627a",
+      "answer_hash": "9c0f7bc66b89d6340cc40a9aaeb1167a416cb4c7537b717b69354df9f59945a2",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.125,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.125,
+        "jaccard": 0.0227,
+        "proposed_terms_count": 37,
+        "answer_terms_count": 8,
+        "shared_terms": [
+          "editing"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1125,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.05
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "requiring"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.888964+00:00",
+      "score_hash": "e5096b5d0d5a302bd542e0a79c777957c26ef3f1bd53c01125c962a3dff2df6e"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-007-combination",
+      "case_id": "DSB-F-007",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "98770222018391a5cec905ccc38e6c8a86dda70ba6abfdf6b4a10ccdff154ea0",
+      "answer_hash": "9c0f7bc66b89d6340cc40a9aaeb1167a416cb4c7537b717b69354df9f59945a2",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0,
+        "jaccard": 0.0,
+        "proposed_terms_count": 29,
+        "answer_terms_count": 8,
+        "shared_terms": []
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5122,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3125,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.4239
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "ability",
+          "capacity",
+          "combining",
+          "editing",
+          "enable",
+          "extensive",
+          "genomes",
+          "precise"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.889494+00:00",
+      "score_hash": "18b8d5ba4cc6e6707ccbc99c5ded8700ed7a035eec04c3eff66e9ba0539a5bd5"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-007-full_system",
+      "case_id": "DSB-F-007",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "db2f5e41a6052edea1aec3ff338c91e08f324dacf1c5c8ca0cbc14e02740e796",
+      "answer_hash": "9c0f7bc66b89d6340cc40a9aaeb1167a416cb4c7537b717b69354df9f59945a2",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.125,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.125,
+        "jaccard": 0.0263,
+        "proposed_terms_count": 31,
+        "answer_terms_count": 8,
+        "shared_terms": [
+          "editing"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4271,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.0833,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.5417
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "create",
+          "editing",
+          "efficient",
+          "fusing",
+          "genome",
+          "tool",
+          "versatile"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.889990+00:00",
+      "score_hash": "b168a1f0ef63a90195fb3098f7ad8da0062a294c31b4b6de06d8a5f86b14e9a0"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-007-mechanism_only",
+      "case_id": "DSB-F-007",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "eb3ac79172cde7581b8eee5550f1ff78d0f47bf2a7c9605c5414ec1d3fde030a",
+      "answer_hash": "9c0f7bc66b89d6340cc40a9aaeb1167a416cb4c7537b717b69354df9f59945a2",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.125,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.125,
+        "jaccard": 0.0312,
+        "proposed_terms_count": 25,
+        "answer_terms_count": 8,
+        "shared_terms": [
+          "editing"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4523,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1875,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.4342
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "ability",
+          "allowing",
+          "combined",
+          "editing",
+          "efficient",
+          "genome",
+          "precise"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.890503+00:00",
+      "score_hash": "34f3282642b94fe8e66bb4a658669e14a85b942e21f389a8bc5b241ad84be3d3"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-008-LLM_only",
+      "case_id": "DSB-F-008",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "745de2a980d292a0cb627d1023a7274f1caaf4e3cfdfdd39714c66e5edf71ae0",
+      "answer_hash": "2256ebe593c1b0e03654aae910c755243cce6111ba7812ed8aeaa7ff74c8068f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4,
+        "jaccard": 0.2069,
+        "proposed_terms_count": 20,
+        "answer_terms_count": 15,
+        "shared_terms": [
+          "ido",
+          "microenvironment",
+          "suppression",
+          "t-cells",
+          "tryptophan",
+          "tumor"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3833,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3,
+          "relation_type_match": 0.3333,
+          "novel_relation": 0.6
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "enhance"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.890997+00:00",
+      "score_hash": "95174966cf1deb63639231698951be8f817f107d95ae296550cbe1d4e4ea9296"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-008-combination",
+      "case_id": "DSB-F-008",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "e13bafa040ea29c8485bb4bf75a5c2133a56ddae3a8dfcece5e8ec9e1644c900",
+      "answer_hash": "2256ebe593c1b0e03654aae910c755243cce6111ba7812ed8aeaa7ff74c8068f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4,
+        "jaccard": 0.1304,
+        "proposed_terms_count": 37,
+        "answer_terms_count": 15,
+        "shared_terms": [
+          "ido",
+          "microenvironment",
+          "suppression",
+          "t-cells",
+          "tryptophan",
+          "tumor"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4702,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2857,
+          "relation_type_match": 0.6667,
+          "novel_relation": 0.6429
+        },
+        "proposed_relation_types": [
+          "combination",
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "overcome",
+          "potentially",
+          "suppression"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.891552+00:00",
+      "score_hash": "c1f5cc2e99a87aa97e9e492061b3798cc09490e62309a0f332f22adb55c20bc5"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-008-full_system",
+      "case_id": "DSB-F-008",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "68bfa7eb911d4cf5ba35db6a6a5ab773a8558432b8710d7cad1abd650c5325e8",
+      "answer_hash": "2256ebe593c1b0e03654aae910c755243cce6111ba7812ed8aeaa7ff74c8068f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4,
+        "jaccard": 0.1579,
+        "proposed_terms_count": 29,
+        "answer_terms_count": 15,
+        "shared_terms": [
+          "ido",
+          "inhibition",
+          "microenvironment",
+          "t-cells",
+          "tryptophan",
+          "tumor"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3833,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3,
+          "relation_type_match": 0.3333,
+          "novel_relation": 0.6
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "enhance"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.892073+00:00",
+      "score_hash": "d0f5a33eff8bab16fda440edc8e18e077560a6fe8bfb7148769e81af7fe91bfc"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-008-mechanism_only",
+      "case_id": "DSB-F-008",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "4331beaea8b06c7f0eea73d419aee293f284a3aa3f1440291ffe5e1500c75377",
+      "answer_hash": "2256ebe593c1b0e03654aae910c755243cce6111ba7812ed8aeaa7ff74c8068f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1333,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1333,
+        "jaccard": 0.0588,
+        "proposed_terms_count": 21,
+        "answer_terms_count": 15,
+        "shared_terms": [
+          "ido",
+          "tryptophan"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2083,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.1667
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "efficacy",
+          "enhance",
+          "preventing",
+          "suppression"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.892622+00:00",
+      "score_hash": "1013c1426a057318add159ac42be0a8ec3535ecb4839efff8c6889af5b32656c"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-009-LLM_only",
+      "case_id": "DSB-F-009",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "47803d3018c27484f4240b485b979b978a1e8c6f764b77d2e73bb5f6b48e41e0",
+      "answer_hash": "c2ddcee6822adeab3acdba8a3b8db344610ad2e86733fa8f983173acc1925f76",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3,
+        "jaccard": 0.0682,
+        "proposed_terms_count": 37,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "oct4",
+          "pluripotency",
+          "sox2"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4545,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.5455,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.7273
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "cell",
+          "induce",
+          "non-embryonic",
+          "presence",
+          "sufficient"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.893198+00:00",
+      "score_hash": "6e95a0ce1a04c7556c099b2cc622dc7303328f010a21d0cee30033fd52e64162"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-009-combination",
+      "case_id": "DSB-F-009",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "00cea60c53ee6b64f21a74886d9d7abb9746bb3be37ebf94719a941fff223ad0",
+      "answer_hash": "c2ddcee6822adeab3acdba8a3b8db344610ad2e86733fa8f983173acc1925f76",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3,
+        "jaccard": 0.0638,
+        "proposed_terms_count": 40,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "oct4",
+          "pluripotency",
+          "sox2"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3301,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6538
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "inducing",
+          "lead",
+          "non-embryonic"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.893736+00:00",
+      "score_hash": "c2715133e909af0b39e3ebbc1768a57e10e5204f71b737c1e850569245b339e0"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-009-full_system",
+      "case_id": "DSB-F-009",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "a0151c12b8191182d6a266277a6931ad2c4b7d3eabda403faa2fef4ae77f8640",
+      "answer_hash": "c2ddcee6822adeab3acdba8a3b8db344610ad2e86733fa8f983173acc1925f76",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4,
+        "jaccard": 0.1026,
+        "proposed_terms_count": 33,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "activate",
+          "oct4",
+          "pluripotency",
+          "sox2"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4091,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4545,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.7273
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "induce",
+          "overexpression",
+          "potentially",
+          "reversing",
+          "somatic"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.894362+00:00",
+      "score_hash": "6b7be85147b2bf5a1d53c0047e80acadbf747dc02bd7edb45379e3ecd54e0ab3"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-009-mechanism_only",
+      "case_id": "DSB-F-009",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "ec0c8c2da80bd12c5c9d5ecfd1fea578069f407b02c3bc6a37774ea143bc880a",
+      "answer_hash": "c2ddcee6822adeab3acdba8a3b8db344610ad2e86733fa8f983173acc1925f76",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1,
+        "jaccard": 0.0323,
+        "proposed_terms_count": 22,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "pluripotency"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2969,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.5,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.1875
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "directly",
+          "expression",
+          "linked",
+          "maintenance",
+          "pathways",
+          "regulation"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.894975+00:00",
+      "score_hash": "583808dd0fae67f189e3e02d160f5eeba379ea884b0c19ca05f0886eba190b2a"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-010-LLM_only",
+      "case_id": "DSB-F-010",
+      "case_type": "fabricated",
+      "arm": "LLM_only",
+      "receipt_hash": "d630fd61196b4df106c41cd9e9f4a7b3e69ededc64d5c32863697b3e1b829c68",
+      "answer_hash": "917156c42b6cf3d78242f3fa3765c94599ae6f7aeeba086d5ad3a629e092a70c",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1,
+        "jaccard": 0.0233,
+        "proposed_terms_count": 34,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "energy"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1305,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1538,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.2143
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "assigning",
+          "classifications",
+          "correct",
+          "incorrect",
+          "ones",
+          "regularize"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.895644+00:00",
+      "score_hash": "d55d45e9cc89f7ff2af6df73d8a6f1504ef06b07505a95cd5849bc64ffb4b64c"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-010-combination",
+      "case_id": "DSB-F-010",
+      "case_type": "fabricated",
+      "arm": "combination",
+      "receipt_hash": "8d494988ea0cc23aa48625686e3f9c52216942b627a2c7ae805b2e392ead8004",
+      "answer_hash": "917156c42b6cf3d78242f3fa3765c94599ae6f7aeeba086d5ad3a629e092a70c",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1,
+        "jaccard": 0.0227,
+        "proposed_terms_count": 35,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "energy"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2644,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1538,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.75
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "assigning",
+          "classifications",
+          "combining",
+          "correct",
+          "improved",
+          "incorrect",
+          "lead",
+          "ones"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.896264+00:00",
+      "score_hash": "e0ac456e544113ab21ed2ca65dcf88628f56296cbaf5c9e431c1f11740136150"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-010-full_system",
+      "case_id": "DSB-F-010",
+      "case_type": "fabricated",
+      "arm": "full_system",
+      "receipt_hash": "cea13c5db581438b5deb3b133d56acbee3d8484f82c15e23c50951369d2722f5",
+      "answer_hash": "917156c42b6cf3d78242f3fa3765c94599ae6f7aeeba086d5ad3a629e092a70c",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2,
+        "jaccard": 0.0426,
+        "proposed_terms_count": 39,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "energy",
+          "learns"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5607,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2308,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.7812
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "encourages",
+          "high-energy",
+          "in-distribution",
+          "introducing",
+          "low-energy",
+          "network",
+          "out-of-distribution",
+          "regularize",
+          "term"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.897002+00:00",
+      "score_hash": "214a962876d494c2ed106a46a2f83fac5aa2926e8ca2e7ed67351f30b54fa090"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-F-010-mechanism_only",
+      "case_id": "DSB-F-010",
+      "case_type": "fabricated",
+      "arm": "mechanism_only",
+      "receipt_hash": "0005ef3aa3c9d5879f85070a2ebab5e411b9e9fa79ee9f0f90b3197da91b918e",
+      "answer_hash": "917156c42b6cf3d78242f3fa3765c94599ae6f7aeeba086d5ad3a629e092a70c",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1,
+        "jaccard": 0.0303,
+        "proposed_terms_count": 24,
+        "answer_terms_count": 10,
+        "shared_terms": [
+          "energy"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2115,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.0769,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6923
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "applied",
+          "combine",
+          "core",
+          "mechanism",
+          "optimization"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.897626+00:00",
+      "score_hash": "406d2ba547c844ee3df5cac9affab1dec928bf0306dbc791587e5c647c1c6167"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-001-LLM_only",
+      "case_id": "DSB-R-001",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "b21f0034e2cbb9b74128601c70c80d0130fdf97800d7ec7c5b217b60318cb39e",
+      "answer_hash": "516dcb644858eca620435e050e3f9261d9e4ce2379e61172588b9ea225cc8844",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3043,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3043,
+        "jaccard": 0.125,
+        "proposed_terms_count": 40,
+        "answer_terms_count": 23,
+        "shared_terms": [
+          "dendrite",
+          "electrodes",
+          "formation",
+          "ions",
+          "lithium",
+          "metal",
+          "non-aqueous"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3056,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.5556
+        },
+        "proposed_relation_types": [
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "mitigate"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.898245+00:00",
+      "score_hash": "0df88d699ab9549d3926b83697d069c05b79aad5a3290ad1a979db3b6aee951f"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-001-combination",
+      "case_id": "DSB-R-001",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "8ef18f7da087e5f010e0899e8d580ded9b558dd160ed931c9c8ff4dbb40e436e",
+      "answer_hash": "516dcb644858eca620435e050e3f9261d9e4ce2379e61172588b9ea225cc8844",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2609,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2609,
+        "jaccard": 0.1176,
+        "proposed_terms_count": 34,
+        "answer_terms_count": 23,
+        "shared_terms": [
+          "dendrite",
+          "electrodes",
+          "formation",
+          "ions",
+          "lithium",
+          "non-aqueous"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.6205,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4286,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.625
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "combining",
+          "development",
+          "enable",
+          "safer"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.898887+00:00",
+      "score_hash": "729980b4120102f09d10deb60d94927ff8f060b4f42e8b00fba301153d859810"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-001-full_system",
+      "case_id": "DSB-R-001",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "92e2f51d4472c0eee70467195f56c692b581c1ebc95b74916e914221712cbc15",
+      "answer_hash": "516dcb644858eca620435e050e3f9261d9e4ce2379e61172588b9ea225cc8844",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3043,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3043,
+        "jaccard": 0.1429,
+        "proposed_terms_count": 33,
+        "answer_terms_count": 23,
+        "shared_terms": [
+          "dendrite",
+          "electrodes",
+          "electrolyte",
+          "formation",
+          "ions",
+          "lithium",
+          "non-aqueous"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3068,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2727,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6818
+        },
+        "proposed_relation_types": [
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "electrode-electrolyte",
+          "interface",
+          "mitigate",
+          "stabilizing"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.899513+00:00",
+      "score_hash": "10f1177207ae0c3c5d275792e49a2adc3c0173841fdd921be6f6bb11462f66c4"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-001-mechanism_only",
+      "case_id": "DSB-R-001",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "c66b62f5de23c15ca7aab7e7c3518e3304f0c476fb28075e5fee49e1f2919e35",
+      "answer_hash": "516dcb644858eca620435e050e3f9261d9e4ce2379e61172588b9ea225cc8844",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2609,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2609,
+        "jaccard": 0.15,
+        "proposed_terms_count": 23,
+        "answer_terms_count": 23,
+        "shared_terms": [
+          "dendrite",
+          "electrodes",
+          "formation",
+          "ions",
+          "lithium",
+          "metal"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.25,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1818,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6364
+        },
+        "proposed_relation_types": [
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "mitigate",
+          "reactivity",
+          "reducing"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.900116+00:00",
+      "score_hash": "0fdde0cbac2794191a36d08c3674f3882a033c3d90e1bbf77a2de089743a176c"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-002-LLM_only",
+      "case_id": "DSB-R-002",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "289602b0ca84c77f1188b1e7f51fa2d22ac82ccafb75a1a9b22490e11258db28",
+      "answer_hash": "77b415488656850e6326c625d0b9800484e85546436f11016153a636b2f0ff06",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.25,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.25,
+        "jaccard": 0.1081,
+        "proposed_terms_count": 25,
+        "answer_terms_count": 16,
+        "shared_terms": [
+          "copies",
+          "extend",
+          "polymerase",
+          "repeated"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.25,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4286,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.1429
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "amplify",
+          "sequences"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.900759+00:00",
+      "score_hash": "023aa10f453ed2e9c24b37ddb02eb2dc524c3f77c643a0f5f91a9dcadd5db859"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-002-combination",
+      "case_id": "DSB-R-002",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "569039e63ffd4e6a7c89202b13b9886f8e17c1559e6dfb7dcb5c9f31194a6316",
+      "answer_hash": "77b415488656850e6326c625d0b9800484e85546436f11016153a636b2f0ff06",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1875,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1875,
+        "jaccard": 0.0698,
+        "proposed_terms_count": 30,
+        "answer_terms_count": 16,
+        "shared_terms": [
+          "denature",
+          "extend",
+          "polymerase"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1871,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1176,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.5132
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "ability",
+          "amplify",
+          "capability",
+          "combining",
+          "cool",
+          "cycles",
+          "denaturation",
+          "heat",
+          "repeated",
+          "sequences"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.901601+00:00",
+      "score_hash": "fd2bb2c1bcf96a2abb3e34b52de224a9dcc770986ea7bfd062ceee342c68a7ce"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-002-full_system",
+      "case_id": "DSB-R-002",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "8de16be0577533f48227e9f731be13cab391ac7048de8a2ef13bb7153d7104c3",
+      "answer_hash": "77b415488656850e6326c625d0b9800484e85546436f11016153a636b2f0ff06",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.125,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.125,
+        "jaccard": 0.0571,
+        "proposed_terms_count": 21,
+        "answer_terms_count": 16,
+        "shared_terms": [
+          "copies",
+          "polymerase"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.2
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "allowing",
+          "amplify",
+          "detection",
+          "sequences"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.902218+00:00",
+      "score_hash": "2999e233d6ffc2c532b3ccf212981733cc5dd034ac2c7502c8e66987f1371970"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-002-mechanism_only",
+      "case_id": "DSB-R-002",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "0c54a9add665dd866d3d3812ba456f264be8844e04ebef75901be5d87d123fdf",
+      "answer_hash": "77b415488656850e6326c625d0b9800484e85546436f11016153a636b2f0ff06",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0625,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0625,
+        "jaccard": 0.0323,
+        "proposed_terms_count": 16,
+        "answer_terms_count": 16,
+        "shared_terms": [
+          "denaturation"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2708,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1667,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.75
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "ability",
+          "amplify",
+          "combined",
+          "detection",
+          "manufacture",
+          "sequences"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.902838+00:00",
+      "score_hash": "a77e7233907f122f9424018b7bef57448f71d54c6b0ee97d10ddc41e48c3fbfb"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-003-LLM_only",
+      "case_id": "DSB-R-003",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "77a6635320349a88604d61f33c4671c3dd8ea7a75b370eddff13df270c4fe191",
+      "answer_hash": "8207660f0b4932696dc65a82f07792f8baa2a0b8d35c6f46aeed9d534344d863",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1538,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1538,
+        "jaccard": 0.0727,
+        "proposed_terms_count": 33,
+        "answer_terms_count": 26,
+        "shared_terms": [
+          "graphite",
+          "layer",
+          "single",
+          "thin"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3571,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4286,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.5714
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "crystal"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.903600+00:00",
+      "score_hash": "48060eebca928f573e121646eeea8f7078810566ddf71f419a3ad3c1020aa3ee"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-003-combination",
+      "case_id": "DSB-R-003",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "aa7e0bc253fd0be268b13bde5314e29e0e9502eef9408b36879e44b138736bdd",
+      "answer_hash": "8207660f0b4932696dc65a82f07792f8baa2a0b8d35c6f46aeed9d534344d863",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1154,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1154,
+        "jaccard": 0.0508,
+        "proposed_terms_count": 36,
+        "answer_terms_count": 26,
+        "shared_terms": [
+          "applied",
+          "graphite",
+          "single"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2708,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.4167
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "creation",
+          "lead",
+          "thin"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.904338+00:00",
+      "score_hash": "ee671585addcbfe06d47d1f38da79570b0549f63e225a3a331ded96db8f36497"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-003-full_system",
+      "case_id": "DSB-R-003",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "766bb9b7fd682cdb776b7e8d54d7d453e345a4580317b28bddabb1bbe2a6ffef",
+      "answer_hash": "8207660f0b4932696dc65a82f07792f8baa2a0b8d35c6f46aeed9d534344d863",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1538,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1538,
+        "jaccard": 0.0741,
+        "proposed_terms_count": 32,
+        "answer_terms_count": 26,
+        "shared_terms": [
+          "atomic",
+          "graphite",
+          "single",
+          "thin"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3036,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2857,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6429
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "crystal",
+          "potentially",
+          "size",
+          "small"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.905137+00:00",
+      "score_hash": "e3dc4a433b5212ba2f8c3ee3ac80b23ffa429634b4175eff170db08eb3c112c7"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-003-mechanism_only",
+      "case_id": "DSB-R-003",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "6d5c369863e9313215275c5501ced9299d6b12e4e55e28aa534c5db01d5f6b37",
+      "answer_hash": "8207660f0b4932696dc65a82f07792f8baa2a0b8d35c6f46aeed9d534344d863",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0417,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0417,
+        "jaccard": 0.0204,
+        "proposed_terms_count": 24,
+        "answer_terms_count": 26,
+        "shared_terms": [
+          "graphite"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2841,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2727,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.5909
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "similar",
+          "unique"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.905960+00:00",
+      "score_hash": "d85e506246c2420f0da7fa70702315be9fd97f398f1e31e36baaece724b5a63a"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-004-LLM_only",
+      "case_id": "DSB-R-004",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "89ce7707a954ba3f9874cba4abefccf001b3c0a6a72bd99ec4c9476e2024d13f",
+      "answer_hash": "bb661f1904bd8401e8e20f0be6e80371467f79b63593d85834e91a2afb5da8d9",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2963,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2963,
+        "jaccard": 0.1067,
+        "proposed_terms_count": 56,
+        "answer_terms_count": 27,
+        "shared_terms": [
+          "deep",
+          "dropout",
+          "features",
+          "large",
+          "network",
+          "networks",
+          "overfitting",
+          "training"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2632,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2105,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6316
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "accuracy",
+          "classification",
+          "combining",
+          "improve",
+          "like"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.906918+00:00",
+      "score_hash": "e84589ae098208d391ab1fcc8a3e55b307d4e6e8382dd8f6e96d3043d93d551e"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-004-combination",
+      "case_id": "DSB-R-004",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "6cce5ef966d8b8628212d7f35ee6a24d3257ad9dc1cbf669cb511fc9f775ea77",
+      "answer_hash": "bb661f1904bd8401e8e20f0be6e80371467f79b63593d85834e91a2afb5da8d9",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1481,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1481,
+        "jaccard": 0.0635,
+        "proposed_terms_count": 40,
+        "answer_terms_count": 27,
+        "shared_terms": [
+          "features",
+          "large",
+          "learn",
+          "networks"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.25,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1875,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.625
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "deeper",
+          "enable",
+          "like"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.907846+00:00",
+      "score_hash": "5d7d68a2acf4b531bb48397f3c77ab69fd76d3f07242cfdb01e787ae061bb507"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-004-full_system",
+      "case_id": "DSB-R-004",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "19739e04ac76759bcd42d674370c54216c8f8bfe28d3908ca238af9c90fefca8",
+      "answer_hash": "bb661f1904bd8401e8e20f0be6e80371467f79b63593d85834e91a2afb5da8d9",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2222,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2222,
+        "jaccard": 0.1034,
+        "proposed_terms_count": 37,
+        "answer_terms_count": 27,
+        "shared_terms": [
+          "dropout",
+          "features",
+          "large",
+          "networks",
+          "prevents",
+          "training"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2688,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.675
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "computation",
+          "deeper",
+          "effective",
+          "lead",
+          "leveraging",
+          "like"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.908748+00:00",
+      "score_hash": "5a3a2b94f99e29fc50ea534ec7db4d953a04b24beb0718548a3eea076024ff45"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-004-mechanism_only",
+      "case_id": "DSB-R-004",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "ee3d7bc855aa74c15ff0ed881ba5752a15ad50a7345f57a00c352a5e0b4dcaa0",
+      "answer_hash": "bb661f1904bd8401e8e20f0be6e80371467f79b63593d85834e91a2afb5da8d9",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1852,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1852,
+        "jaccard": 0.102,
+        "proposed_terms_count": 27,
+        "answer_terms_count": 27,
+        "shared_terms": [
+          "deep",
+          "enables",
+          "large",
+          "networks",
+          "training"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2679,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2143,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6429
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "accelerate",
+          "improved",
+          "leading",
+          "performance"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.909679+00:00",
+      "score_hash": "e68def990f76fb1b3e424c7eb9247aa57fb2b34336c5a729e1f9b70a8ba1ccd8"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-005-LLM_only",
+      "case_id": "DSB-R-005",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "1e4f13719a515b35e949a576cd61efba22bb4931c0e90ba9a0c89f0293e82eec",
+      "answer_hash": "9804036f007ac76a43e14ca4f1003e8c913a09aaaba19545780a813fdb220714",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.28,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.28,
+        "jaccard": 0.1228,
+        "proposed_terms_count": 39,
+        "answer_terms_count": 25,
+        "shared_terms": [
+          "carrier",
+          "diffusion",
+          "efficient",
+          "light",
+          "liquid",
+          "long",
+          "solid-state"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.0625,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.0833,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.0833
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "improve"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.910435+00:00",
+      "score_hash": "8141fb267d4943848dce71acb309bd99d53359ee28cb95d23560a49d0ab54e27"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-005-combination",
+      "case_id": "DSB-R-005",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "491cd663cd58c98fabd4e067d5b760823c27291e9a4cd622b9ad45ba77487108",
+      "answer_hash": "9804036f007ac76a43e14ca4f1003e8c913a09aaaba19545780a813fdb220714",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.12,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.12,
+        "jaccard": 0.0556,
+        "proposed_terms_count": 32,
+        "answer_terms_count": 25,
+        "shared_terms": [
+          "dye",
+          "liquid",
+          "solid-state"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.0809,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1176,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.0882
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "architecture",
+          "cell",
+          "combining"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.911172+00:00",
+      "score_hash": "9d58aa954d0125bcd13f5ea138e51cda5b9e2a972361b6721a8d29894fe3e0b0"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-005-full_system",
+      "case_id": "DSB-R-005",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "90d266e2069c7b00a4f974a07012b442a831e778d564be83c4e295e4952069f9",
+      "answer_hash": "9804036f007ac76a43e14ca4f1003e8c913a09aaaba19545780a813fdb220714",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.28,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.28,
+        "jaccard": 0.1296,
+        "proposed_terms_count": 36,
+        "answer_terms_count": 25,
+        "shared_terms": [
+          "carrier",
+          "diffusion",
+          "efficient",
+          "light",
+          "liquid",
+          "long",
+          "solid-state"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.0893,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1429,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.0714
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "enhance"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.911972+00:00",
+      "score_hash": "4515d4df59884092aa26138154b8665378f7ea57584f0f3a333569ef2d604e50"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-005-mechanism_only",
+      "case_id": "DSB-R-005",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "a0bccdba2ee557d458c6bf4f4f8e5e1a9b29e62c8da6e5e531a3b3fa206d4bb3",
+      "answer_hash": "9804036f007ac76a43e14ca4f1003e8c913a09aaaba19545780a813fdb220714",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2,
+        "jaccard": 0.098,
+        "proposed_terms_count": 31,
+        "answer_terms_count": 25,
+        "shared_terms": [
+          "carriers",
+          "charge",
+          "diffusion",
+          "length",
+          "light"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.0473,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.0588,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.0714
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [
+          "causal",
+          "combination",
+          "constraint_release"
+        ],
+        "new_terms_in_proposed": [
+          "conjunction",
+          "enhance",
+          "leveraging"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.912799+00:00",
+      "score_hash": "c789fce7b11b2b987fbc76305194aec864d75007db2179683275a549ae53d237"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-006-LLM_only",
+      "case_id": "DSB-R-006",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "76e1ba179f7de6fa616222badf895cfdcd1f13a820300e794ee1826189a02c53",
+      "answer_hash": "ff9de7f455ce0920ddf2b21a467935d587af03a41a440cf7e5383c3617da107f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.28,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.28,
+        "jaccard": 0.1346,
+        "proposed_terms_count": 34,
+        "answer_terms_count": 25,
+        "shared_terms": [
+          "cytoplasm",
+          "innate",
+          "mrna",
+          "protein",
+          "spike",
+          "translated",
+          "viral"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4196,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2857,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.1071
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "encoding",
+          "inducing",
+          "response"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.913626+00:00",
+      "score_hash": "a6d5eae6acefe681b7a77ad8ad99d382c35d6a722a1c5a5c54e9fef1d831d94a"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-006-combination",
+      "case_id": "DSB-R-006",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "f2a87815907e66720b32997cd6433391823bc5afaa6228e0f77dbc01a0fb9487",
+      "answer_hash": "ff9de7f455ce0920ddf2b21a467935d587af03a41a440cf7e5383c3617da107f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2,
+        "jaccard": 0.098,
+        "proposed_terms_count": 31,
+        "answer_terms_count": 25,
+        "shared_terms": [
+          "cytoplasm",
+          "mrna",
+          "protein",
+          "spike",
+          "viral"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4542,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.4167
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "delivery",
+          "efficient",
+          "enable",
+          "protein-encoding"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.914436+00:00",
+      "score_hash": "b143e10edbdb8868d0063f135ba9e36ea9b48d1ab119f4885544ebcc85fe9a6d"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-006-full_system",
+      "case_id": "DSB-R-006",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "ec2777a461049c4040a91f8899214effcc700a6198a60a321824678de89f7955",
+      "answer_hash": "ff9de7f455ce0920ddf2b21a467935d587af03a41a440cf7e5383c3617da107f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2,
+        "jaccard": 0.0926,
+        "proposed_terms_count": 34,
+        "answer_terms_count": 25,
+        "shared_terms": [
+          "cytoplasm",
+          "mrna",
+          "protein",
+          "spike",
+          "translated"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4338,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2941,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.1471
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "degraded",
+          "encapsulating",
+          "encodes",
+          "response",
+          "triggering"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.915274+00:00",
+      "score_hash": "6be315274abbfd4427c858c94ed59a8e11f77483a27aa699fec7264ef168e83a"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-006-mechanism_only",
+      "case_id": "DSB-R-006",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "801e74574cc28391235eb79b79cbead168beb986b2bbce15d531a3eb242a92be",
+      "answer_hash": "ff9de7f455ce0920ddf2b21a467935d587af03a41a440cf7e5383c3617da107f",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0,
+        "jaccard": 0.0,
+        "proposed_terms_count": 21,
+        "answer_terms_count": 25,
+        "shared_terms": []
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4632,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3529,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.1471
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "efficiency",
+          "encoding",
+          "enhance",
+          "increasing",
+          "production"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.916147+00:00",
+      "score_hash": "2d53e91019762f12cac978caf21ced1a684645c759b2abe746835276a40616e2"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-007-LLM_only",
+      "case_id": "DSB-R-007",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "93dd8796702d817e9763419b5e656fe49ea8a3e4db6f4d7bc372b25612562b5e",
+      "answer_hash": "d4b6d710eb1c3f3157d7980df5cca2fdab7f89bff5ac1e8db7373431ee4f6605",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3182,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3182,
+        "jaccard": 0.1373,
+        "proposed_terms_count": 36,
+        "answer_terms_count": 22,
+        "shared_terms": [
+          "break",
+          "cas9",
+          "dna",
+          "double-strand",
+          "genomic",
+          "hdr",
+          "nhej"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1932,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3636,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.0455
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "locus"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.916891+00:00",
+      "score_hash": "e25b6f706e1035bffd82dadb2981fea920fd586f3bbedb201110a04cebc24d97"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-007-combination",
+      "case_id": "DSB-R-007",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "3e411ed368c95cb5133d6f6b3672f5214f02407061660829886e53b055b5395d",
+      "answer_hash": "d4b6d710eb1c3f3157d7980df5cca2fdab7f89bff5ac1e8db7373431ee4f6605",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.4091,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.4091,
+        "jaccard": 0.1837,
+        "proposed_terms_count": 36,
+        "answer_terms_count": 22,
+        "shared_terms": [
+          "break",
+          "cas9",
+          "dna",
+          "double-strand",
+          "genomic",
+          "hdr",
+          "nhej",
+          "resulting",
+          "template"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.5486,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2778,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.6389
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "ability",
+          "combining",
+          "editing",
+          "enable",
+          "precise"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.917562+00:00",
+      "score_hash": "31fea3c822ec897cea1f545e5963f75a8ff6eb5e453600bf07650291808cb8f8"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-007-full_system",
+      "case_id": "DSB-R-007",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "e1c68e899c12750ff168f7954be395f338c176235bcb68f530cbf2e78e644b7c",
+      "answer_hash": "d4b6d710eb1c3f3157d7980df5cca2fdab7f89bff5ac1e8db7373431ee4f6605",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3182,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3182,
+        "jaccard": 0.1045,
+        "proposed_terms_count": 52,
+        "answer_terms_count": 22,
+        "shared_terms": [
+          "break",
+          "cas9",
+          "dna",
+          "double-strand",
+          "genomic",
+          "hdr",
+          "nhej"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3594,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1875,
+          "relation_type_match": 0.5,
+          "novel_relation": 0.5625
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "creating",
+          "targeted"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.918279+00:00",
+      "score_hash": "8e34e530db9a798d9d6bdb8f252399bf4b5557d386686fd9a5e7da4d7753b1c6"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-007-mechanism_only",
+      "case_id": "DSB-R-007",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "6c10dde7dd08d314fa856997413e951821562d4f121f5b2844cc47a2bfb8b8a8",
+      "answer_hash": "d4b6d710eb1c3f3157d7980df5cca2fdab7f89bff5ac1e8db7373431ee4f6605",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0909,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0909,
+        "jaccard": 0.0435,
+        "proposed_terms_count": 26,
+        "answer_terms_count": 22,
+        "shared_terms": [
+          "cas9",
+          "dna"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.525,
+        "verdict": "RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.7
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "ability",
+          "combined",
+          "create",
+          "develop",
+          "editing",
+          "efficient"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.918964+00:00",
+      "score_hash": "20bc04ba4df892189f1ef1cc052bcfc2c6a38a47271818221b134493b245be12"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-008-LLM_only",
+      "case_id": "DSB-R-008",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "0dbe216f838985e6041fd2b8df619f6b712ab0ce932b2d514a02122837eafedd",
+      "answer_hash": "867213632c45ce35ac993d54bb9b1dafd54f07e58d074eb33c959c18cbdee259",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.35,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.35,
+        "jaccard": 0.1296,
+        "proposed_terms_count": 41,
+        "answer_terms_count": 20,
+        "shared_terms": [
+          "allowing",
+          "blocking",
+          "mechanism",
+          "pd-1",
+          "t-cell",
+          "t-cells",
+          "tumor"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2333,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3333,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.2667
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "activates",
+          "anti-tumor",
+          "combining",
+          "enhance",
+          "functional",
+          "preventing",
+          "silencing",
+          "vaccine"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.919612+00:00",
+      "score_hash": "e98851ca0ca158c7af2429b24be96e2523c2c41058792c18283e3faceb1afd26"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-008-combination",
+      "case_id": "DSB-R-008",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "41a7f84e3725a4c9e0c6bf4212f5a1f88f3b774008acc374227b0a62b1e0e489",
+      "answer_hash": "867213632c45ce35ac993d54bb9b1dafd54f07e58d074eb33c959c18cbdee259",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.35,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.35,
+        "jaccard": 0.1429,
+        "proposed_terms_count": 36,
+        "answer_terms_count": 20,
+        "shared_terms": [
+          "allowing",
+          "blocking",
+          "mechanism",
+          "pd-1",
+          "t-cell",
+          "t-cells",
+          "tumor"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.1932,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2727,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.2273
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "dampening",
+          "lead",
+          "therapeutic",
+          "understanding"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.920214+00:00",
+      "score_hash": "a1c9fcf9b21a4345eb8dd2eccc3afe16b0bf8dbbbbc82361401f42dab603f4c3"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-008-full_system",
+      "case_id": "DSB-R-008",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "b27f1d546c08e5ebb783ef7d39c38e71161fcf179091a975bdd6fb56d9831789",
+      "answer_hash": "867213632c45ce35ac993d54bb9b1dafd54f07e58d074eb33c959c18cbdee259",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3,
+        "jaccard": 0.1224,
+        "proposed_terms_count": 35,
+        "answer_terms_count": 20,
+        "shared_terms": [
+          "blocking",
+          "mechanism",
+          "pd-1",
+          "t-cell",
+          "t-cells",
+          "tumor"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3173,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2308,
+          "relation_type_match": 0.5,
+          "novel_relation": 0.3077
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "activation-induced",
+          "anti-tumor",
+          "blockade",
+          "combining",
+          "enhance",
+          "inhibition",
+          "preventing",
+          "suppression"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.920776+00:00",
+      "score_hash": "bae813133e25dc241ab21a37ba0779f77454b9e834b7833732ab67aea33be5c5"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-008-mechanism_only",
+      "case_id": "DSB-R-008",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "41f896a908113065cc70694c53666cb3b8ee4a4988f0c8d55b695308d6c7be09",
+      "answer_hash": "867213632c45ce35ac993d54bb9b1dafd54f07e58d074eb33c959c18cbdee259",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2,
+        "jaccard": 0.1,
+        "proposed_terms_count": 24,
+        "answer_terms_count": 20,
+        "shared_terms": [
+          "cells",
+          "mechanism",
+          "pd-1",
+          "t-cell"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3661,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.3571,
+          "relation_type_match": 0.5,
+          "novel_relation": 0.25
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal",
+          "constraint_release"
+        ],
+        "exposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "new_terms_in_proposed": [
+          "enhance",
+          "expression",
+          "increased",
+          "leading",
+          "microenvironment",
+          "tumor",
+          "upregulation"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.921350+00:00",
+      "score_hash": "bba639c8810ceff98a13ae117a47c0559795caf661002fa0026b56de6ebff515"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-009-LLM_only",
+      "case_id": "DSB-R-009",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "ba96ace46eae4612c88a14e5ff98f4f1b974dc07f557dddcc1ba0a89943c97c9",
+      "answer_hash": "17c907e044a958e8007dd2439010664ebf77244f451541928f962be0249f1687",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2353,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2353,
+        "jaccard": 0.08,
+        "proposed_terms_count": 37,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "cells",
+          "factors",
+          "reprogramming",
+          "transcription"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3854,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.75,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.0417
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "introduction"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.922178+00:00",
+      "score_hash": "c856dae26df7a0ae1637c73b31ec361c62b7521f36c17a1735b244ba61a8382d"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-009-combination",
+      "case_id": "DSB-R-009",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "8575c1343bb9ce6a3308529874f45cd1dfad2f8bbbc68133f9606114937f2015",
+      "answer_hash": "17c907e044a958e8007dd2439010664ebf77244f451541928f962be0249f1687",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.2941,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.2941,
+        "jaccard": 0.0943,
+        "proposed_terms_count": 41,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "cells",
+          "factors",
+          "pluripotency",
+          "reprogramming",
+          "transcription"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3015,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.2941,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6176
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "ability",
+          "combining",
+          "lead",
+          "reprogramming"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.923090+00:00",
+      "score_hash": "41d3059f4ec2c4d0e6e3a7c26ad493a4e54ba0ba2f9e6ffc411c7c03162be10b"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-009-full_system",
+      "case_id": "DSB-R-009",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "e6783f937e6f24e3b46b4480f87557178ca8bd4aa9da88bdb18c57e645cb61d4",
+      "answer_hash": "17c907e044a958e8007dd2439010664ebf77244f451541928f962be0249f1687",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3529,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3529,
+        "jaccard": 0.125,
+        "proposed_terms_count": 37,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "cells",
+          "differentiation",
+          "factors",
+          "pluripotency",
+          "reprogramming",
+          "transcription"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4196,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.5,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6786
+        },
+        "proposed_relation_types": [
+          "constraint_release"
+        ],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "bypassing",
+          "introduction",
+          "need",
+          "reprogramming",
+          "similar"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.924030+00:00",
+      "score_hash": "2c7ed33f6ab199bf8c2e91f9c26e84016b2fe6409b05b40bba813e87270903b9"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-009-mechanism_only",
+      "case_id": "DSB-R-009",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "9b7902d1119081784f39ddb48715d6be8555c23e8b149ecd9ca511608103252c",
+      "answer_hash": "17c907e044a958e8007dd2439010664ebf77244f451541928f962be0249f1687",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.3529,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.3529,
+        "jaccard": 0.1875,
+        "proposed_terms_count": 21,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "cells",
+          "factors",
+          "maintain",
+          "pluripotency",
+          "reprogramming",
+          "transcription"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2396,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.4167,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.125
+        },
+        "proposed_relation_types": [],
+        "breakthrough_relation_types": [],
+        "exposed_relation_types": [],
+        "new_terms_in_proposed": [
+          "achieved",
+          "introduction",
+          "similar"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.924909+00:00",
+      "score_hash": "fe62c0c718d9235e26e29a5474781e6fd2605101addf55efc2285526f2694989"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-010-LLM_only",
+      "case_id": "DSB-R-010",
+      "case_type": "real",
+      "arm": "LLM_only",
+      "receipt_hash": "8ed0a7da2034a1caf099e6d39c33af2cb78c39f8372e4580ff736479ae778cd5",
+      "answer_hash": "3923936bf8336a2d98642a7903667428541cc4574dca0421a626fb02515da01b",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0588,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0588,
+        "jaccard": 0.0204,
+        "proposed_terms_count": 33,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "samples"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4375,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1538,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.4423
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "approaches",
+          "combining",
+          "leveraging",
+          "sharper",
+          "strengths"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.925514+00:00",
+      "score_hash": "79fd6257a2ad054db16a8cb505ed62524fd8e4ca640566f15327f821d8197915"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-010-combination",
+      "case_id": "DSB-R-010",
+      "case_type": "real",
+      "arm": "combination",
+      "receipt_hash": "70b764814eee0fb201aa1ae75d228e0d927054d6c7be20a2417c2686550b01ca",
+      "answer_hash": "3923936bf8336a2d98642a7903667428541cc4574dca0421a626fb02515da01b",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0588,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0588,
+        "jaccard": 0.0204,
+        "proposed_terms_count": 33,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "equilibrium"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.2019,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.0769,
+          "relation_type_match": 0.0,
+          "novel_relation": 0.6538
+        },
+        "proposed_relation_types": [
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "approximating",
+          "combining",
+          "having",
+          "lead"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.926126+00:00",
+      "score_hash": "7344eb4773c69746a81f4fe73eff2cb87f57cf6bfb756dd5b274686df2aee5e8"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-010-full_system",
+      "case_id": "DSB-R-010",
+      "case_type": "real",
+      "arm": "full_system",
+      "receipt_hash": "0dc4c1f1fa054e9f7bf3cbb6db428e2ba9e2cf3a28869971f969a6237af47bb9",
+      "answer_hash": "3923936bf8336a2d98642a7903667428541cc4574dca0421a626fb02515da01b",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.1176,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.1176,
+        "jaccard": 0.0357,
+        "proposed_terms_count": 41,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "equilibrium",
+          "samples"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.4278,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.1333,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.4444
+        },
+        "proposed_relation_types": [
+          "causal",
+          "combination"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "combining",
+          "guide",
+          "leveraging",
+          "mode",
+          "processes",
+          "selection",
+          "sharper"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.926698+00:00",
+      "score_hash": "2f591733de4f1181714a55c2f7752bbfe676376ed61a40bc6ec4e357cc95aab9"
+    },
+    {
+      "schema_version": "1.0.0",
+      "score_type": "DSB_V1_DETERMINISTIC",
+      "receipt_id": "RECEIPT-DSB-R-010-mechanism_only",
+      "case_id": "DSB-R-010",
+      "case_type": "real",
+      "arm": "mechanism_only",
+      "receipt_hash": "d40dd620e49f0cd296154f32c615c2ade9133d9a383d149e0e5aa8f9f832ccf9",
+      "answer_hash": "3923936bf8336a2d98642a7903667428541cc4574dca0421a626fb02515da01b",
+      "receipt_integrity_ok": true,
+      "mechanism_reconstruction": {
+        "score": 0.0588,
+        "verdict": "NOT_RECONSTRUCTED",
+        "term_overlap_ratio": 0.0588,
+        "jaccard": 0.0238,
+        "proposed_terms_count": 26,
+        "answer_terms_count": 17,
+        "shared_terms": [
+          "likelihood"
+        ]
+      },
+      "discovery_structure_recovery": {
+        "score": 0.3495,
+        "verdict": "NOT_RECOVERED",
+        "sub_scores": {
+          "entity_overlap": 0.0667,
+          "relation_type_match": 1.0,
+          "novel_relation": 0.2647
+        },
+        "proposed_relation_types": [
+          "causal"
+        ],
+        "breakthrough_relation_types": [
+          "causal"
+        ],
+        "exposed_relation_types": [
+          "causal"
+        ],
+        "new_terms_in_proposed": [
+          "ability",
+          "core",
+          "generated",
+          "improve",
+          "leveraged",
+          "mechanism",
+          "optimization",
+          "quality",
+          "underlies"
+        ]
+      },
+      "scored_at": "2026-08-12T17:21:59.927327+00:00",
+      "score_hash": "5da924d28d15a36539e51002f9188ee70fdb63c34cde753c220f822e870c11f5"
+    }
+  ],
+  "report_hash": "c380e4801ece2635922902c424038cc076c327e59020fb79d2c22f03993aa970"
+}

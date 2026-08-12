@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-003-full_system",
+  "case_id": "DSB-R-003",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-003-full_system",
+  "payload_hash": "76f0dc11bfe954eb68372af28b1e1cd8363e23d3c9a714fd40bb1985cbee0df5",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:05:23.348070+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The mechanical cleavage of graphite can produce a two-dimensional crystal of carbon with useful electronic properties, potentially stable at finite temperature due to its small size.",
+  "mechanism": "The mechanism involves using mechanical cleavage to thin layered graphite samples, resulting in the creation of a single atomic sheet of carbon, which is a two-dimensional crystal. This process may release the constraint imposed by the Landau-Peierls theory, as the small size of the resulting crystal could limit the long-wavelength fluctuations that make strictly two-dimensional crystals thermodynamically unstable. The resulting two-dimensional crystal of carbon would have useful electronic properties, similar to those of carbon nanotubes.",
+  "constraint_released": "The constraint of thermodynamic instability of two-dimensional crystals at finite temperature due to long-wavelength fluctuations is released by reducing the size of the crystal.",
+  "predicted_quantitative_outcome": "10^-9 meters, the predicted size of the resulting two-dimensional crystal of carbon",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The mechanical cleavage of graphite can produce a two-dimensional crystal of carbon with useful electronic properties, potentially stable at finite temperature due to its small size.\",\n  \"mechanism\": \"The mechanism involves using mechanical cleavage to thin layered graphite samples, resulting in the creation of a single atomic sheet of carbon, which is a two-dimensional crystal. This process may release the constraint imposed by the Landau-Peierls theory, as the small size of the resulting crystal could limit the long-wavelength fluctuations that make strictly two-dimensional crystals thermodynamically unstable. The resulting two-dimensional crystal of carbon would have useful electronic properties, similar to those of carbon nanotubes.\",\n  \"constraint_released\": \"The constraint of thermodynamic instability of two-dimensional crystals at finite temperature due to long-wavelength fluctuations is released by reducing the size of the crystal.\",\n  \"predicted_quantitative_outcome\": \"10^-9 meters, the predicted size of the resulting two-dimensional crystal of carbon\"\n}\n```",
+  "receipt_hash": "766bb9b7fd682cdb776b7e8d54d7d453e345a4580317b28bddabb1bbe2a6ffef"
+}

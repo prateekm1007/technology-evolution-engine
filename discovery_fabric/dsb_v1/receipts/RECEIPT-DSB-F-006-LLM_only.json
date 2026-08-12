@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-006-LLM_only",
+  "case_id": "DSB-F-006",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-F-006-LLM_only",
+  "payload_hash": "3c669c2ac1d4a3a3db0d285ed402a0633a8e5bd61acdfef99ce9316952de4979",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:15:21.982540+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Lipid nanoparticles can be used to deliver saRNA that encodes for the SARS-CoV-2 spike protein, potentially inducing an immune response.",
+  "mechanism": "The mechanism involves the lipid nanoparticles delivering the saRNA into cells, where the saRNA is replicated using the non-structural protein genes from an alphavirus, and the encoded SARS-CoV-2 spike protein is expressed, potentially stimulating the production of neutralizing antibodies that target the viral surface protein.",
+  "constraint_released": "The need for traditional vaccine manufacturing scale-up time is potentially bypassed by using lipid nanoparticles to deliver saRNA.",
+  "predicted_quantitative_outcome": "A 50% reduction in vaccine development time, from years to months",
+  "raw_response": "{\"proposed_relationship\": \"Lipid nanoparticles can be used to deliver saRNA that encodes for the SARS-CoV-2 spike protein, potentially inducing an immune response.\", \n\"mechanism\": \"The mechanism involves the lipid nanoparticles delivering the saRNA into cells, where the saRNA is replicated using the non-structural protein genes from an alphavirus, and the encoded SARS-CoV-2 spike protein is expressed, potentially stimulating the production of neutralizing antibodies that target the viral surface protein.\", \n\"constraint_released\": \"The need for traditional vaccine manufacturing scale-up time is potentially bypassed by using lipid nanoparticles to deliver saRNA.\", \n\"predicted_quantitative_outcome\": \"A 50% reduction in vaccine development time, from years to months\"}",
+  "receipt_hash": "b1d409e9a40b837c8bd9d1eafb31a4b2b54e6eaff038f4f4e7e22012d191f91d"
+}

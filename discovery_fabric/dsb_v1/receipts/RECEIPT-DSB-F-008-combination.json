@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-008-combination",
+  "case_id": "DSB-F-008",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-F-008-combination",
+  "payload_hash": "2d8eb8b6f48decd62ee162e8cc476afd77dce96fac725bbe10cbc3124d206457",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:17:33.032197+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining small-molecule inhibitors of IDO with cancer vaccines that activate T-cells could potentially overcome the suppression of T-cell function in the tumor microenvironment.",
+  "mechanism": "The mechanism behind this proposed relationship involves the use of small-molecule inhibitors of IDO to prevent the degradation of tryptophan in the tumor microenvironment, thereby reducing the immune-suppressive effects on T-cells. With the suppression lifted, cancer vaccines that activate T-cells could potentially induce a more effective immune response against the tumor. This combination targets the specific immune-evasion mechanism of IDO upregulation by tumors, aiming to create a more favorable environment for T-cell activation and tumor targeting.",
+  "constraint_released": "The constraint of T-cell suppression in the tumor microenvironment is released, allowing for a potentially more effective anti-tumor immune response.",
+  "predicted_quantitative_outcome": "20% increase in tumor regression rate",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining small-molecule inhibitors of IDO with cancer vaccines that activate T-cells could potentially overcome the suppression of T-cell function in the tumor microenvironment.\",\n  \"mechanism\": \"The mechanism behind this proposed relationship involves the use of small-molecule inhibitors of IDO to prevent the degradation of tryptophan in the tumor microenvironment, thereby reducing the immune-suppressive effects on T-cells. With the suppression lifted, cancer vaccines that activate T-cells could potentially induce a more effective immune response against the tumor. This combination targets the specific immune-evasion mechanism of IDO upregulation by tumors, aiming to create a more favorable environment for T-cell activation and tumor targeting.\",\n  \"constraint_released\": \"The constraint of T-cell suppression in the tumor microenvironment is released, allowing for a potentially more effective anti-tumor immune response.\",\n  \"predicted_quantitative_outcome\": \"20% increase in tumor regression rate\"\n}\n```",
+  "receipt_hash": "e13bafa040ea29c8485bb4bf75a5c2133a56ddae3a8dfcece5e8ec9e1644c900"
+}

@@ -1,0 +1,31 @@
+{
+  "case_id": "DSB-F-002",
+  "case_type": "fabricated",
+  "domain": "biology",
+  "name_internal": "fabricated_ligase_cycling",
+  "cutoff_date": "1984-12-31T23:59:59Z",
+  "exposed_facts": [
+    "DNA ligase enzymes join adjacent oligonucleotide probes hybridized to a template.",
+    "Heating denatures DNA; cooling allows re-annealing of probes.",
+    "Synthetic oligonucleotides of arbitrary sequence can be chemically manufactured.",
+    "Measuring a specific DNA sequence requires producing enough copies to detect."
+  ],
+  "withheld_facts": [
+    "Cyclically heating and cooling a sample with two adjacent probe pairs and a thermostable ligase doubles the ligated product each cycle, yielding exponential amplification."
+  ],
+  "breakthrough_relationship": "Cyclically heating and cooling a DNA sample with adjacent oligonucleotide probes and a thermostable ligase exponentially amplifies a specific sequence via ligation.",
+  "answer_hash": "fc4797161144425617e1d2c7f2997afd114a6d664fbfb0d3c33d88bad08a810d",
+  "forbidden_terms": [
+    "ligase chain reaction",
+    "lcr",
+    "thermostable ligase amplification"
+  ],
+  "future_terminology": [
+    "Ligase Chain Reaction",
+    "LCR"
+  ],
+  "answer_mechanism": "Each cycle denatures the ligated product, allowing new probes to anneal and ligate, doubling copies each cycle.",
+  "constraint_release": "Releases the constraint of cellular cloning for DNA detection.",
+  "historical_source": "FABRICATED. While LCR was eventually developed (early 1990s), the breakthrough combination as described here (thermostable ligase + cyclic amplification pre-1985) did not historically occur in this form.",
+  "fabricated": true
+}

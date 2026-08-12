@@ -1,0 +1,30 @@
+{
+  "case_id": "DSB-F-006",
+  "case_type": "fabricated",
+  "domain": "biology",
+  "name_internal": "fabricated_self_amplifying_rna",
+  "cutoff_date": "2019-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Self-amplifying RNA (saRNA) contains non-structural protein genes from an alphavirus that replicate the RNA in the cytoplasm.",
+    "Lipid nanoparticles can deliver self-amplifying RNA into cells.",
+    "Viral surface proteins such as the SARS-CoV-2 spike protein are the primary target of neutralizing antibodies.",
+    "Conventional vaccine platforms require months to years of manufacturing scale-up."
+  ],
+  "withheld_facts": [
+    "Encapsulating self-amplifying RNA encoding the SARS-CoV-2 spike protein in an LNP induces neutralizing antibodies at 95 percent efficacy after a single low-dose injection."
+  ],
+  "breakthrough_relationship": "Encapsulating self-amplifying RNA encoding a viral spike protein in a lipid nanoparticle induces protective neutralizing antibodies at over 90 percent efficacy after a single low-dose injection.",
+  "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532",
+  "forbidden_terms": [
+    "self-amplifying rna vaccine",
+    "sarna lnpi"
+  ],
+  "future_terminology": [
+    "saRNA vaccine",
+    "single-dose self-amplifying RNA"
+  ],
+  "answer_mechanism": "The alphavirus replicase amplifies the RNA in the cytoplasm, producing many copies of the antigen-encoding RNA from a single delivered molecule.",
+  "constraint_release": "Releases the dose-volume constraint of conventional mRNA vaccines via in-vivo amplification.",
+  "historical_source": "FABRICATED. As of 2020-2021, no saRNA vaccine achieved 95 percent efficacy with a single low dose. saRNA clinical results remained modest through 2024.",
+  "fabricated": true
+}

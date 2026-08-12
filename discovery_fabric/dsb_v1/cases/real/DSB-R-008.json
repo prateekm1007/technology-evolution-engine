@@ -1,0 +1,37 @@
+{
+  "case_id": "DSB-R-008",
+  "case_type": "real",
+  "domain": "biology",
+  "name_internal": "checkpoint_anti_pd1",
+  "cutoff_date": "2011-12-31T23:59:59Z",
+  "exposed_facts": [
+    "PD-1 is a receptor expressed on activated T-cells that dampens T-cell activity when engaged by its ligands.",
+    "Blocking the CTLA-4 checkpoint with an antibody (ipilimumab) produces durable responses in melanoma patients.",
+    "Many tumors upregulate immunosuppressive ligands in their local environment, correlating with T-cell exhaustion and poor prognosis.",
+    "Cancer vaccines that activate T-cells have largely failed in clinical trials because activated T-cells become functionally silenced inside tumors."
+  ],
+  "withheld_facts": [
+    "An antibody that blocks PD-1 (nivolumab, pembrolizumab) releases T-cell suppression in the tumor microenvironment and produces durable responses in melanoma, lung, and kidney cancer patients (Brahmer 2012; Topalian 2012)."
+  ],
+  "breakthrough_relationship": "An antibody blocking the PD-1 receptor on T-cells releases T-cell suppression in the tumor microenvironment, producing durable responses in multiple cancer types.",
+  "answer_hash": "867213632c45ce35ac993d54bb9b1dafd54f07e58d074eb33c959c18cbdee259",
+  "forbidden_terms": [
+    "anti-pd-1",
+    "nivolumab",
+    "pembrolizumab",
+    "brahmer 2012",
+    "topalian 2012",
+    "checkpoint immunotherapy",
+    "keytruda",
+    "opdivo"
+  ],
+  "future_terminology": [
+    "PD-1 inhibitor",
+    "checkpoint immunotherapy",
+    "immune checkpoint blockade"
+  ],
+  "answer_mechanism": "PD-1 engagement by tumor PD-L1 suppresses T-cell effector function. Blocking PD-1 with an antibody releases the brake, allowing tumor-specific T-cells to kill tumor cells. This works across tumor types that use PD-L1 as an immune-evasion mechanism.",
+  "constraint_release": "Releases the constraint that tumor-specific T-cells are functionally suppressed in the tumor microenvironment.",
+  "historical_source": "Brahmer et al. 2012 (nivolumab, NEJM); Topalian et al. 2012; Nobel Medicine 2018 (Allison/Honjo).",
+  "fabricated": false
+}

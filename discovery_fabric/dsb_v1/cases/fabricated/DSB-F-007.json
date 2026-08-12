@@ -1,0 +1,30 @@
+{
+  "case_id": "DSB-F-007",
+  "case_type": "fabricated",
+  "domain": "biology",
+  "name_internal": "fabricated_argonato_gene_editing",
+  "cutoff_date": "2011-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Prokaryotic Argonaute proteins use small DNA guides to cleave complementary DNA targets.",
+    "Thermophilic bacteria such as Natronobacterium gregoryi produce heat-stable Argonautes.",
+    "Zinc-finger nucleases and TALENs can cut specific genomic loci but require protein engineering for each new target.",
+    "Double-strand DNA breaks stimulate endogenous repair pathways."
+  ],
+  "withheld_facts": [
+    "Using a 24-nucleotide single-stranded DNA guide with NgAgo achieves programmable DNA cleavage in human cells at any genomic locus."
+  ],
+  "breakthrough_relationship": "A short single-stranded DNA guide directing the NgAgo protein to cleave any genomic locus enables programmable gene editing in human cells.",
+  "answer_hash": "9c0f7bc66b89d6340cc40a9aaeb1167a416cb4c7537b717b69354df9f59945a2",
+  "forbidden_terms": [
+    "ngago gene editing",
+    "natronobacterium gregoryi argonaute"
+  ],
+  "future_terminology": [
+    "Argonaute gene editing",
+    "gDNA-guided editing"
+  ],
+  "answer_mechanism": "The 24-nt ssDNA guide base-pairs with the target; NgAgo cleaves both strands. Editing by changing only the guide ssDNA.",
+  "constraint_release": "Releases the protein-engineering constraint of ZFNs/TALENs.",
+  "historical_source": "FABRICATED. The NgAgo gene-editing claim (2016) was eventually retracted. As of 2024, Argonaute-based editing has not achieved robust programmable editing in human cells.",
+  "fabricated": true
+}

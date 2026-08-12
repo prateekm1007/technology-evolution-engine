@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-001-mechanism_only",
+  "case_id": "DSB-F-001",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-F-001-mechanism_only",
+  "payload_hash": "b5dd71e892f95fba4c16dfa108dbb961cb2f8f460c84de4cb6f740a57fb66f1e",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:11:25.814505+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The use of non-aqueous electrolytes that can conduct sodium ions may mitigate dendrite formation during cycling in sodium metal batteries.",
+  "mechanism": "The core mechanism shared across the facts is the movement of ions between electrodes, which is crucial for the functioning of rechargeable batteries and is affected by the properties of the electrolyte and the electrodes. This mechanism involves the insertion and extraction of ions into and from the electrode materials, which must be reversible to ensure the battery's rechargeability. The safety and performance of the battery are directly related to how efficiently and safely this ion movement can be managed.",
+  "constraint_released": "By using non-aqueous electrolytes that can conduct sodium ions, the constraint of dendrite formation during cycling in sodium metal batteries may be partially released, potentially leading to safer battery operation.",
+  "predicted_quantitative_outcome": "0.8 Coulombs per gram",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The use of non-aqueous electrolytes that can conduct sodium ions may mitigate dendrite formation during cycling in sodium metal batteries.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the movement of ions between electrodes, which is crucial for the functioning of rechargeable batteries and is affected by the properties of the electrolyte and the electrodes. This mechanism involves the insertion and extraction of ions into and from the electrode materials, which must be reversible to ensure the battery's rechargeability. The safety and performance of the battery are directly related to how efficiently and safely this ion movement can be managed.\",\n  \"constraint_released\": \"By using non-aqueous electrolytes that can conduct sodium ions, the constraint of dendrite formation during cycling in sodium metal batteries may be partially released, potentially leading to safer battery operation.\",\n  \"predicted_quantitative_outcome\": \"0.8 Coulombs per gram\"\n}\n```",
+  "receipt_hash": "97bbc539387786a4114a37db45725f398993debe2c73e063b537112030e15aed"
+}

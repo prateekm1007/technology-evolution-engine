@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-010-full_system",
+  "case_id": "DSB-R-010",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-R-010-full_system",
+  "payload_hash": "f4cb2cc1a241a4a68da813caa33fc85b816a74e400365206784c2bc82066c834",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:11:06.708306+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining discriminative neural networks with generative models that maximize likelihood can produce sharper samples by leveraging the accuracy of classification tasks to guide the mode selection in generative processes.",
+  "mechanism": "The mechanism involves using the discriminative neural network to evaluate and select modes from the generative model's output, effectively avoiding the averaging over modes that leads to blurry samples. This selection process can be seen as a two-player zero-sum game, where the discriminative model and the generative model interact to reach an equilibrium, with the discriminative model pushing for sharper, more accurate representations and the generative model producing diverse samples. Through this interaction, the capacity of neural networks to approximate complex distributions can be fully utilized, leading to more realistic and varied samples.",
+  "constraint_released": "The constraint of generative models producing blurry samples due to averaging over modes is released by incorporating discriminative neural networks into the generative process.",
+  "predicted_quantitative_outcome": "25% increase in sample sharpness metric",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining discriminative neural networks with generative models that maximize likelihood can produce sharper samples by leveraging the accuracy of classification tasks to guide the mode selection in generative processes.\",\n  \"mechanism\": \"The mechanism involves using the discriminative neural network to evaluate and select modes from the generative model's output, effectively avoiding the averaging over modes that leads to blurry samples. This selection process can be seen as a two-player zero-sum game, where the discriminative model and the generative model interact to reach an equilibrium, with the discriminative model pushing for sharper, more accurate representations and the generative model producing diverse samples. Through this interaction, the capacity of neural networks to approximate complex distributions can be fully utilized, leading to more realistic and varied samples.\",\n  \"constraint_released\": \"The constraint of generative models producing blurry samples due to averaging over modes is released by incorporating discriminative neural networks into the generative process.\",\n  \"predicted_quantitative_outcome\": \"25% increase in sample sharpness metric\"\n}\n```",
+  "receipt_hash": "0dc4c1f1fa054e9f7bf3cbb6db428e2ba9e2cf3a28869971f969a6237af47bb9"
+}

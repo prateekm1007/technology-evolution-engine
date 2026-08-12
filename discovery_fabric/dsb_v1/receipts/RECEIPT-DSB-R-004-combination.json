@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-004-combination",
+  "case_id": "DSB-R-004",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-R-004-combination",
+  "payload_hash": "6a3d6418301c3d63c84735f34046bfe007bce58d20a8f03f8a6dcbcfd893ef9d",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:06:01.687452+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining convolutional neural networks with graphics processing units (GPUs) could enable the training of deeper architectures on large datasets like ImageNet.",
+  "mechanism": "The massive parallel floating-point throughput of GPUs can accelerate the matrix multiplication operations that dominate the computation in convolutional neural networks, allowing for the exploration of deeper architectures that were previously limited by computational resources. By leveraging this computational power, it becomes feasible to train larger and more complex models that can learn more abstract and translation-invariant features from the large labeled image datasets like ImageNet.",
+  "constraint_released": "The computational constraint that limited convolutional neural networks to shallow architectures is released, enabling the exploration of deeper models.",
+  "predicted_quantitative_outcome": "20% top-5 error",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining convolutional neural networks with graphics processing units (GPUs) could enable the training of deeper architectures on large datasets like ImageNet.\",\n  \"mechanism\": \"The massive parallel floating-point throughput of GPUs can accelerate the matrix multiplication operations that dominate the computation in convolutional neural networks, allowing for the exploration of deeper architectures that were previously limited by computational resources. By leveraging this computational power, it becomes feasible to train larger and more complex models that can learn more abstract and translation-invariant features from the large labeled image datasets like ImageNet.\",\n  \"constraint_released\": \"The computational constraint that limited convolutional neural networks to shallow architectures is released, enabling the exploration of deeper models.\",\n  \"predicted_quantitative_outcome\": \"20% top-5 error\"\n}\n```",
+  "receipt_hash": "6cce5ef966d8b8628212d7f35ee6a24d3257ad9dc1cbf669cb511fc9f775ea77"
+}

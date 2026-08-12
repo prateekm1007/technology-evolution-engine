@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-002-combination",
+  "case_id": "DSB-F-002",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-F-002-combination",
+  "payload_hash": "426e999413ee22851bb1436a4009374a23a6c45301f60e02fd912c210625d118",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:12:06.980414+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining the fact that DNA ligase enzymes join adjacent oligonucleotide probes hybridized to a template with the fact that synthetic oligonucleotides of arbitrary sequence can be chemically manufactured could enable the creation of custom DNA sequences.",
+  "mechanism": "The mechanism of this combination involves using chemically manufactured oligonucleotides as probes that are designed to hybridize to a specific template in a particular order, allowing DNA ligase enzymes to join them together in a predetermined sequence, thereby creating a custom DNA sequence. This process can be repeated and amplified by heating and cooling the mixture to denature and re-anneal the probes, increasing the yield of the desired sequence. As the oligonucleotides are designed to be complementary to the template and to each other in a specific order, the resulting DNA sequence can be precisely controlled.",
+  "constraint_released": "This combination releases the constraint of being limited to naturally occurring DNA sequences, allowing for the creation of entirely novel sequences with specific functions or properties.",
+  "predicted_quantitative_outcome": "10^6 copies per microliter",
+  "raw_response": "{\"proposed_relationship\": \"Combining the fact that DNA ligase enzymes join adjacent oligonucleotide probes hybridized to a template with the fact that synthetic oligonucleotides of arbitrary sequence can be chemically manufactured could enable the creation of custom DNA sequences.\", \n\"mechanism\": \"The mechanism of this combination involves using chemically manufactured oligonucleotides as probes that are designed to hybridize to a specific template in a particular order, allowing DNA ligase enzymes to join them together in a predetermined sequence, thereby creating a custom DNA sequence. This process can be repeated and amplified by heating and cooling the mixture to denature and re-anneal the probes, increasing the yield of the desired sequence. As the oligonucleotides are designed to be complementary to the template and to each other in a specific order, the resulting DNA sequence can be precisely controlled.\", \n\"constraint_released\": \"This combination releases the constraint of being limited to naturally occurring DNA sequences, allowing for the creation of entirely novel sequences with specific functions or properties.\", \n\"predicted_quantitative_outcome\": \"10^6 copies per microliter\"}",
+  "receipt_hash": "8891577b2524e30e34d6b7d96ed57263f7f733cdba2707aeb2d95d436d27effd"
+}

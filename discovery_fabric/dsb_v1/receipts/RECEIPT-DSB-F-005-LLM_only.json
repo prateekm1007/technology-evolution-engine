@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-005-LLM_only",
+  "case_id": "DSB-F-005",
+  "arm": "LLM_only",
+  "payload_id": "PAYLOAD-DSB-F-005-LLM_only",
+  "payload_hash": "ba4ef4da258f08384c11c1ee0b0bd258ea7a688a16a7ccb72a561edc1fe32fd2",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:14:52.112740+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining solution-processable semiconductors with tandem architectures may enhance the power conversion efficiency of organic photovoltaics.",
+  "mechanism": "The use of solution-processable semiconductors allows for low-cost large-area production, while tandem architectures enable better utilization of the solar spectrum by stacking cells with complementary absorption spectra, potentially leading to improved power conversion efficiency. This combination could leverage the benefits of both approaches, as the solution-processable semiconductors can be easily integrated into the tandem architecture, facilitating the creation of large-area, high-efficiency photovoltaics.",
+  "constraint_released": "The limitation of single-cell architectures with limited absorption spectra is overcome by the tandem approach, allowing for more efficient energy harvesting.",
+  "predicted_quantitative_outcome": "8 percent power conversion efficiency",
+  "raw_response": "{\"proposed_relationship\": \"Combining solution-processable semiconductors with tandem architectures may enhance the power conversion efficiency of organic photovoltaics.\", \n\"mechanism\": \"The use of solution-processable semiconductors allows for low-cost large-area production, while tandem architectures enable better utilization of the solar spectrum by stacking cells with complementary absorption spectra, potentially leading to improved power conversion efficiency. This combination could leverage the benefits of both approaches, as the solution-processable semiconductors can be easily integrated into the tandem architecture, facilitating the creation of large-area, high-efficiency photovoltaics.\", \n\"constraint_released\": \"The limitation of single-cell architectures with limited absorption spectra is overcome by the tandem approach, allowing for more efficient energy harvesting.\", \n\"predicted_quantitative_outcome\": \"8 percent power conversion efficiency\"}",
+  "receipt_hash": "57f51a6e7be270f59d3680ae69422cfddb987f326b798bf5868e71407fd4cc9a"
+}

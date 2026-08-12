@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-005-full_system",
+  "case_id": "DSB-F-005",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-005-full_system",
+  "payload_hash": "1d924750828a6ec066ad9af695107e75924db7829f64fa816c05c5f7e932166c",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:15:15.629376+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining solution-processable semiconductors with tandem architectures can enhance the power conversion efficiency of organic photovoltaics.",
+  "mechanism": "The mechanism involves stacking two cells with complementary absorption spectra, enabled by transparent conducting oxides, to better utilize the solar spectrum. Solution-processable semiconductors can facilitate the fabrication of these tandem cells, potentially leading to improved efficiency. The interaction between the conjugated polymer donors, fullerene acceptors, and the solution-processable semiconductors can result in a more efficient energy transfer and conversion process.",
+  "constraint_released": "The constraint of limited power conversion efficiency in single-cell organic photovoltaics is released by combining solution-processable semiconductors with tandem architectures.",
+  "predicted_quantitative_outcome": "10 percent power conversion efficiency",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Combining solution-processable semiconductors with tandem architectures can enhance the power conversion efficiency of organic photovoltaics.\",\n  \"mechanism\": \"The mechanism involves stacking two cells with complementary absorption spectra, enabled by transparent conducting oxides, to better utilize the solar spectrum. Solution-processable semiconductors can facilitate the fabrication of these tandem cells, potentially leading to improved efficiency. The interaction between the conjugated polymer donors, fullerene acceptors, and the solution-processable semiconductors can result in a more efficient energy transfer and conversion process.\",\n  \"constraint_released\": \"The constraint of limited power conversion efficiency in single-cell organic photovoltaics is released by combining solution-processable semiconductors with tandem architectures.\",\n  \"predicted_quantitative_outcome\": \"10 percent power conversion efficiency\"\n}\n```",
+  "receipt_hash": "c949f56dd2a436df9dff70e54ef2e9bb1832c510a712d8d8ef424f7b103bc210"
+}

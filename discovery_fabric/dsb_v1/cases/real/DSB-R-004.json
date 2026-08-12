@@ -1,0 +1,37 @@
+{
+  "case_id": "DSB-R-004",
+  "case_type": "real",
+  "domain": "ml",
+  "name_internal": "alexnet",
+  "cutoff_date": "2011-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Convolutional neural networks can learn translation-invariant visual features but have been limited to shallow architectures and small datasets.",
+    "Graphics processing units (GPUs) provide massive parallel floating-point throughput suitable for matrix multiplication.",
+    "Large labeled image datasets such as ImageNet contain over one million images across one thousand categories.",
+    "Rectified linear units (ReLUs) avoid the vanishing-gradient problem of sigmoid activations.",
+    "Dropout is a regularization technique that prevents co-adaptation of hidden units during training.",
+    "Support vector machines and shallow hand-engineered features dominate ImageNet benchmarks at approximately 25 percent top-5 error."
+  ],
+  "withheld_facts": [
+    "Training a deep (eight-layer) convolutional network with ReLU activations and dropout on two GPUs using ImageNet reduces top-5 error from approximately 26 percent to approximately 15 percent (Krizhevsky, Sutskever, Hinton, 2012)."
+  ],
+  "breakthrough_relationship": "A deep (5+ layer) convolutional neural network with ReLU activations and dropout, trained on GPUs on a million-image dataset, reduces image-classification top-5 error by approximately 10 percentage points over the previous shallow-feature state of the art.",
+  "answer_hash": "bb661f1904bd8401e8e20f0be6e80371467f79b63593d85834e91a2afb5da8d9",
+  "forbidden_terms": [
+    "alexnet",
+    "krizhevsky",
+    "sutskever",
+    "hinton 2012",
+    "imagenet 2012 winner"
+  ],
+  "future_terminology": [
+    "AlexNet",
+    "deep learning revolution",
+    "GPU-trained CNN",
+    "ImageNet 2012"
+  ],
+  "answer_mechanism": "Depth allows the network to learn a hierarchy of features from edges to object parts. ReLU enables training of deep networks without vanishing gradients. Dropout prevents overfitting on the million-image dataset. GPU parallelism makes training the large model tractable in weeks rather than months.",
+  "constraint_release": "Releases the depth constraint on trainable CNNs imposed by vanishing gradients and training cost, enabling deep learning.",
+  "historical_source": "Krizhevsky, Sutskever, Hinton 2012 (NeurIPS); widely cited as the start of the deep learning era.",
+  "fabricated": false
+}

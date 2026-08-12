@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-006-mechanism_only",
+  "case_id": "DSB-R-006",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-006-mechanism_only",
+  "payload_hash": "a39bf86e8410371da6571c4531a288b4a6cc4ef702d480787b144fd174c7c732",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:07:28.993375+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The use of lipid nanoparticles to deliver modified-nucleoside mRNA encoding for viral surface proteins can enhance the production of neutralizing antibodies by increasing the efficiency of therapeutic translation.",
+  "mechanism": "The core mechanism shared across the facts is the interaction between the immune system and nucleic acids, where the immune system recognizes and responds to foreign nucleic acids, and modifications to these nucleic acids can alter this recognition and response, allowing for more efficient delivery and translation of therapeutic agents.",
+  "constraint_released": "The constraint of TLR recognition and degradation of mRNA is released by the use of modified-nucleoside chemistry, allowing for more efficient translation and therapeutic effect.",
+  "predicted_quantitative_outcome": "A 5-fold increase in neutralizing antibody titers with the use of lipid nanoparticles and modified-nucleoside mRNA",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The use of lipid nanoparticles to deliver modified-nucleoside mRNA encoding for viral surface proteins can enhance the production of neutralizing antibodies by increasing the efficiency of therapeutic translation.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the interaction between the immune system and nucleic acids, where the immune system recognizes and responds to foreign nucleic acids, and modifications to these nucleic acids can alter this recognition and response, allowing for more efficient delivery and translation of therapeutic agents.\",\n  \"constraint_released\": \"The constraint of TLR recognition and degradation of mRNA is released by the use of modified-nucleoside chemistry, allowing for more efficient translation and therapeutic effect.\",\n  \"predicted_quantitative_outcome\": \"A 5-fold increase in neutralizing antibody titers with the use of lipid nanoparticles and modified-nucleoside mRNA\"\n}\n```",
+  "receipt_hash": "801e74574cc28391235eb79b79cbead168beb986b2bbce15d531a3eb242a92be"
+}

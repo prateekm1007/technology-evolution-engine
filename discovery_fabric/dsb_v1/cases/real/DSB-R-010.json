@@ -1,0 +1,33 @@
+{
+  "case_id": "DSB-R-010",
+  "case_type": "real",
+  "domain": "ml",
+  "name_internal": "gan",
+  "cutoff_date": "2013-12-31T23:59:59Z",
+  "exposed_facts": [
+    "Generative models that maximize likelihood (such as deep Boltzmann machines and variational autoencoders) tend to produce blurry samples because they average over modes.",
+    "Discriminative neural networks achieve high accuracy on classification tasks.",
+    "Two-player zero-sum games in game theory have equilibrium solutions where neither player benefits from changing strategy.",
+    "Neural networks can approximate complex distributions given sufficient capacity and training data."
+  ],
+  "withheld_facts": [
+    "Training two networks simultaneously — a generator that maps noise to samples and a discriminator that distinguishes real from generated samples — in an adversarial zero-sum game produces a generator that outputs sharp, realistic samples (Goodfellow et al. 2014)."
+  ],
+  "breakthrough_relationship": "Training a generator network against a discriminator network in an adversarial zero-sum game produces a generator that maps noise to sharp, realistic samples without requiring an explicit likelihood.",
+  "answer_hash": "3923936bf8336a2d98642a7903667428541cc4574dca0421a626fb02515da01b",
+  "forbidden_terms": [
+    "gan",
+    "generative adversarial",
+    "goodfellow 2014",
+    "adversarial generator-discriminator"
+  ],
+  "future_terminology": [
+    "GAN",
+    "generative adversarial network",
+    "adversarial training"
+  ],
+  "answer_mechanism": "The generator learns to fool the discriminator; the discriminator learns to detect fakes. At equilibrium, the generator produces samples indistinguishable from real data. Bypassing explicit likelihood avoids the mode-averaging that causes blurriness.",
+  "constraint_release": "Releases the likelihood-averaging constraint of explicit generative models, enabling sharp sample generation.",
+  "historical_source": "Goodfellow et al. 2014 (NeurIPS).",
+  "fabricated": false
+}

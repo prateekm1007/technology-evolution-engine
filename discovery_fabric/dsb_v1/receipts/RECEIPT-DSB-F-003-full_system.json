@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-F-003-full_system",
+  "case_id": "DSB-F-003",
+  "arm": "full_system",
+  "payload_id": "PAYLOAD-DSB-F-003-full_system",
+  "payload_hash": "2e58048c7491e81ab6b1559aec508c3809917d69a2cf01b30f55b3cb416a9cd6",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:13:41.755198+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Mechanical cleavage of hexagonal boron nitride can produce strictly two-dimensional crystals of h-BN, which, despite being thermodynamically unstable, can be stabilized by rolling them into boron nitride nanotubes.",
+  "mechanism": "The mechanism involves the application of mechanical cleavage to layered hexagonal boron nitride, exploiting the weak van der Waals forces holding the layers together to thin the material down to a single layer. This single layer, though unstable on its own due to thermodynamic principles, can then be rolled into a nanotube structure, which stabilizes it through the formation of a curved, three-dimensional structure from a two-dimensional sheet. This process leverages the known properties of both hexagonal boron nitride and boron nitride nanotubes to achieve a stable, two-dimensional crystal in a nanotube form.",
+  "constraint_released": "The constraint of thermodynamic instability of strictly two-dimensional crystals at finite temperature is released by stabilizing them through the formation of nanotubes.",
+  "predicted_quantitative_outcome": "10^-9 meters (the approximate diameter of a boron nitride nanotube that could be produced through this method)",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"Mechanical cleavage of hexagonal boron nitride can produce strictly two-dimensional crystals of h-BN, which, despite being thermodynamically unstable, can be stabilized by rolling them into boron nitride nanotubes.\",\n  \"mechanism\": \"The mechanism involves the application of mechanical cleavage to layered hexagonal boron nitride, exploiting the weak van der Waals forces holding the layers together to thin the material down to a single layer. This single layer, though unstable on its own due to thermodynamic principles, can then be rolled into a nanotube structure, which stabilizes it through the formation of a curved, three-dimensional structure from a two-dimensional sheet. This process leverages the known properties of both hexagonal boron nitride and boron nitride nanotubes to achieve a stable, two-dimensional crystal in a nanotube form.\",\n  \"constraint_released\": \"The constraint of thermodynamic instability of strictly two-dimensional crystals at finite temperature is released by stabilizing them through the formation of nanotubes.\",\n  \"predicted_quantitative_outcome\": \"10^-9 meters (the approximate diameter of a boron nitride nanotube that could be produced through this method)\"\n}\n```",
+  "receipt_hash": "d6ba9b459a4f82db0d4b15c274e377fb1b65a49d0eab11e30de0983193f749c4"
+}

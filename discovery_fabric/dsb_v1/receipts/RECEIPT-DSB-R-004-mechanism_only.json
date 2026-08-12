@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-004-mechanism_only",
+  "case_id": "DSB-R-004",
+  "arm": "mechanism_only",
+  "payload_id": "PAYLOAD-DSB-R-004-mechanism_only",
+  "payload_hash": "fc112ddfe55707b81778ead0c79268fc087624170403d1dbef269c5d2199259c",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:05:52.134452+00:00",
+  "generation_success": true,
+  "proposed_relationship": "The use of GPUs can accelerate the training of convolutional neural networks with ReLUs, leading to improved performance on large labeled image datasets.",
+  "mechanism": "The core mechanism shared across the facts is the concept of efficient computation and optimization in deep learning models, which enables the training of complex neural networks on large datasets. This mechanism involves the use of techniques such as regularization, parallel processing, and activation functions to improve the performance and generalizability of the models.",
+  "constraint_released": "The limitation of shallow architectures and small datasets in convolutional neural networks is released by the use of GPUs and large labeled image datasets.",
+  "predicted_quantitative_outcome": "20% top-5 error",
+  "raw_response": "```json\n{\n  \"proposed_relationship\": \"The use of GPUs can accelerate the training of convolutional neural networks with ReLUs, leading to improved performance on large labeled image datasets.\",\n  \"mechanism\": \"The core mechanism shared across the facts is the concept of efficient computation and optimization in deep learning models, which enables the training of complex neural networks on large datasets. This mechanism involves the use of techniques such as regularization, parallel processing, and activation functions to improve the performance and generalizability of the models.\",\n  \"constraint_released\": \"The limitation of shallow architectures and small datasets in convolutional neural networks is released by the use of GPUs and large labeled image datasets.\",\n  \"predicted_quantitative_outcome\": \"20% top-5 error\"\n}\n```",
+  "receipt_hash": "ee3d7bc855aa74c15ff0ed881ba5752a15ad50a7345f57a00c352a5e0b4dcaa0"
+}

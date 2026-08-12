@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-006-combination",
+  "case_id": "DSB-R-006",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-R-006-combination",
+  "payload_hash": "fedc00908e1a8aa8e0e9689b2706d0d77dc43fbbaa901f89c6502c06e7b38c00",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:07:34.752580+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining lipid nanoparticles with modified-nucleoside chemistry in synthetic mRNA could enable efficient delivery and translation of viral surface protein-encoding mRNA in cells.",
+  "mechanism": "The use of lipid nanoparticles would allow for efficient delivery of the synthetic mRNA into the cytoplasm of cells, while the modified-nucleoside chemistry would reduce TLR recognition and increase translation of the mRNA, potentially leading to the production of viral surface proteins such as the SARS-CoV-2 spike protein. This could trigger an immune response and potentially lead to the production of neutralizing antibodies.",
+  "constraint_released": "The combination of these two technologies could release the constraint of conventional vaccine platforms requiring months to years of manufacturing scale-up.",
+  "predicted_quantitative_outcome": "90% translation efficiency",
+  "raw_response": "{\"proposed_relationship\": \"Combining lipid nanoparticles with modified-nucleoside chemistry in synthetic mRNA could enable efficient delivery and translation of viral surface protein-encoding mRNA in cells.\", \n\"mechanism\": \"The use of lipid nanoparticles would allow for efficient delivery of the synthetic mRNA into the cytoplasm of cells, while the modified-nucleoside chemistry would reduce TLR recognition and increase translation of the mRNA, potentially leading to the production of viral surface proteins such as the SARS-CoV-2 spike protein. This could trigger an immune response and potentially lead to the production of neutralizing antibodies.\", \n\"constraint_released\": \"The combination of these two technologies could release the constraint of conventional vaccine platforms requiring months to years of manufacturing scale-up.\", \n\"predicted_quantitative_outcome\": \"90% translation efficiency\"}",
+  "receipt_hash": "f2a87815907e66720b32997cd6433391823bc5afaa6228e0f77dbc01a0fb9487"
+}

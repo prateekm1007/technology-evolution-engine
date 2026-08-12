@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "DSB_V1_GENERATION",
+  "receipt_id": "RECEIPT-DSB-R-002-combination",
+  "case_id": "DSB-R-002",
+  "arm": "combination",
+  "payload_id": "PAYLOAD-DSB-R-002-combination",
+  "payload_hash": "ebae929926249c392b64d9e2a7aabd58a22a0ba8e8ed5ea55e0cd0b3234b9f17",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "temperature": 0.3,
+  "max_tokens": 600,
+  "generation_timestamp": "2026-08-12T17:04:45.643478+00:00",
+  "generation_success": true,
+  "proposed_relationship": "Combining the ability to extend short oligonucleotide primers along a DNA template with the capability to heat and cool double-stranded DNA allows for repeated cycles of denaturation and re-annealing to amplify specific DNA sequences.",
+  "mechanism": "The process would involve heating the double-stranded DNA to denature it into single strands, then cooling it to allow short oligonucleotide primers to re-anneal to their complementary sequences on the template strands. DNA polymerase enzymes would then extend these primers, effectively doubling the amount of the specific DNA sequence. Repeating this cycle of heating, cooling, and extending would exponentially increase the amount of the target DNA sequence, making it possible to detect and measure.",
+  "constraint_released": "This combination releases the constraint of requiring a large initial amount of a specific DNA sequence to detect and measure it.",
+  "predicted_quantitative_outcome": "10^6 copies of the target DNA sequence per microliter",
+  "raw_response": "{\"proposed_relationship\": \"Combining the ability to extend short oligonucleotide primers along a DNA template with the capability to heat and cool double-stranded DNA allows for repeated cycles of denaturation and re-annealing to amplify specific DNA sequences.\", \n\"mechanism\": \"The process would involve heating the double-stranded DNA to denature it into single strands, then cooling it to allow short oligonucleotide primers to re-anneal to their complementary sequences on the template strands. DNA polymerase enzymes would then extend these primers, effectively doubling the amount of the specific DNA sequence. Repeating this cycle of heating, cooling, and extending would exponentially increase the amount of the target DNA sequence, making it possible to detect and measure.\", \n\"constraint_released\": \"This combination releases the constraint of requiring a large initial amount of a specific DNA sequence to detect and measure it.\", \n\"predicted_quantitative_outcome\": \"10^6 copies of the target DNA sequence per microliter\"}",
+  "receipt_hash": "569039e63ffd4e6a7c89202b13b9886f8e17c1559e6dfb7dcb5c9f31194a6316"
+}
