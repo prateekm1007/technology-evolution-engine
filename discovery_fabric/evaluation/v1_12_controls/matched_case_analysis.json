@@ -1,0 +1,115 @@
+{
+  "matched_cases": 18,
+  "matched_recovery": {
+    "B_llm_only": "17/18 (94%)",
+    "C_mechanism": "18/18 (100%)",
+    "D_mech_constraints": "17/18 (94%)",
+    "E_combination": "17/18 (94%)",
+    "F_full": "16/18 (89%)"
+  },
+  "paired_c_vs_f": {
+    "c_better": 2,
+    "f_better": 0,
+    "tie": 16,
+    "mcnemar_chi2": 0.5
+  },
+  "paired_b_vs_f": {
+    "b_better": 2,
+    "f_better": 1,
+    "tie": 15
+  },
+  "f_full_failures": [
+    {
+      "case_id": "HB-008",
+      "name": "Penicillin",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery information, we can analyze the situation as follows:",
+      "actual": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without ha",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-009",
+      "name": "Monoclonal antibodies",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery information provided, we can analyze the invariant pr",
+      "actual": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-013",
+      "name": "Statins",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery information provided, here's an analysis of the invar",
+      "actual": "Fungal metabolites inhibit HMG-CoA reductase, lowering cholesterol",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-016",
+      "name": "Quantum Hall effect",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery concepts provided, I will analyze and propose a mecha",
+      "actual": "Hall conductance is exactly quantized in integer multiples of e²/h",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-022",
+      "name": "AlphaFold",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery knowledge cutoff of 2019-12-31, I will analyze the gi",
+      "actual": "Attention network + evolutionary covariance = near-experimental structure predic",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-023",
+      "name": "CAR-T cell therapy",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery knowledge provided, here's an analysis of the invaria",
+      "actual": "Chimeric antigen receptor + T-cell = engineered cell that targets specific cance",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-025",
+      "name": "Organic LEDs (OLED)",
+      "gen_success": true,
+      "proposed": "Based on the given information, I will analyze the situation and propose a mecha",
+      "actual": "Double-layer organic thin film produces efficient electroluminescence",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-028",
+      "name": "Next-gen sequencing (Illumina)",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery information provided, I'll analyze the invariant prin",
+      "actual": "Bridge amplification + reversible terminators + parallel imaging = massive paral",
+      "failure_type": "scoring_failed"
+    },
+    {
+      "case_id": "HB-030",
+      "name": "3D printing (FDM)",
+      "gen_success": true,
+      "proposed": "Based on the pre-discovery context, I'll analyze the situation and propose a mec",
+      "actual": "Fused deposition of thermoplastic filament layer by layer = 3D printing",
+      "failure_type": "scoring_failed"
+    }
+  ],
+  "matched_case_ids": [
+    "HB-001",
+    "HB-002",
+    "HB-003",
+    "HB-004",
+    "HB-005",
+    "HB-007",
+    "HB-010",
+    "HB-011",
+    "HB-012",
+    "HB-014",
+    "HB-017",
+    "HB-018",
+    "HB-019",
+    "HB-020",
+    "HB-021",
+    "HB-024",
+    "HB-027",
+    "HB-029"
+  ]
+}
