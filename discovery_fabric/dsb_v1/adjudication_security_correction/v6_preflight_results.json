@@ -1,0 +1,178 @@
+{
+  "schema_version": "6.0.0",
+  "forensic_type": "SECURITY_FORENSIC_V6_PREFLIGHT_CORRECTION",
+  "generated_at": "2026-08-12T20:01:07.852525+00:00",
+  "checks": [
+    {
+      "check": "H1_NO_VAULT_KEYS_IN_WORKING_TREE",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "found": []
+    },
+    {
+      "check": "H2_TRUE_FORBIDDEN_ARTIFACT_AUDIT",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "n_classes_audited": 11,
+      "classes_audited": [
+        "vault_key files (vault_key.bin, vault_key.json, vault_key_META.json)",
+        "plaintext machine-score vaults (machine_score_vault.json)",
+        "encrypted machine-score vaults (machine_score_vault_ENCRYPTED.bin)",
+        "full-packet artifacts (cto_packets_FULL.json)",
+        "adjudication packets with internal bookkeeping (adjudication_packets.json)",
+        "any file containing case_id + case_type + arm in the same JSON object",
+        "any file containing breakthrough_relationship text",
+        "any file containing withheld_facts text",
+        "any file containing answer_mechanism text",
+        "any file containing machine scorer verdicts (RECOVERED/NOT_RECOVERED/RECONSTRUCTED)",
+        "any blob in git history matching the above"
+      ],
+      "n_findings": 0,
+      "findings": [],
+      "description": "Audits ALL 11 forbidden artifact classes across working tree, all Git blobs, and all refs"
+    },
+    {
+      "check": "F_RECURSIVE_NAMESPACE_INSPECTION",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "n_findings": 0,
+      "findings": [],
+      "description": "Recursively inspects entire adjudicator namespace for full-packet artifacts, ground truth, symlinks, bytecode, content"
+    },
+    {
+      "check": "H4_OLD_KEYS_TREATED_AS_COMPROMISED",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "note": "All previously committed vault keys purged. New key material required."
+    },
+    {
+      "check": "B_ADJUDICATOR_CANNOT_READ_KEY",
+      "passed": false,
+      "blocking": true,
+      "executable_test": false,
+      "status": "ENVIRONMENT_BLOCKED",
+      "reason": "Single-user container (UID 1001, no root). Cannot create separate OS identity. This check requires a real multi-identity deployment.",
+      "description": "NOT a failed attacker test — a check that cannot be executed in this environment. Must be executed in a multi-identity deployment."
+    },
+    {
+      "check": "C_ADJUDICATOR_CANNOT_WRITE_EVAL_BOUNDARY",
+      "passed": false,
+      "blocking": true,
+      "executable_test": false,
+      "status": "ENVIRONMENT_BLOCKED",
+      "reason": "Single-user container (UID 1001, no root). Cannot create separate OS identity.",
+      "description": "NOT a failed attacker test — a check that cannot be executed in this environment."
+    },
+    {
+      "check": "D_ENCRYPTED_VAULT_EXISTS",
+      "passed": false,
+      "blocking": true,
+      "executable_test": true,
+      "reason": "Vault was purged in V4 (old key compromised). Must be regenerated with new key in isolated deployment."
+    },
+    {
+      "check": "E_RECURSIVE_BLIND_INSPECTION",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "n_findings": 0,
+      "findings": [],
+      "description": "Recursively inspects blind packets for ground truth: nested fields, strings, base64, hashes, breakthrough text"
+    },
+    {
+      "check": "F_RECURSIVE_NAMESPACE_INSPECTION",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "n_findings": 0,
+      "findings": [],
+      "description": "Recursively inspects entire adjudicator namespace for full-packet artifacts, ground truth, symlinks, bytecode, content"
+    },
+    {
+      "check": "I_NO_OPEN_FD_TO_KEY",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true
+    },
+    {
+      "check": "J_NO_ENV_VAR_WITH_KEY",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true
+    },
+    {
+      "check": "K_NO_INHERITED_FDS",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "open_fds": []
+    },
+    {
+      "check": "L_SYMLINK_TRAVERSAL_PROTECTION",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "note": "O_NOFOLLOW available on Linux"
+    },
+    {
+      "check": "M_DETERMINISTIC_FORBIDDEN_MANIFEST",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "n_findings": 0,
+      "findings": [],
+      "description": "Deterministic forbidden-artifact manifest: SHA-256 + filename + content checks (no heuristics)"
+    },
+    {
+      "check": "N_NO_BACKUP_FILES",
+      "passed": true,
+      "blocking": true,
+      "executable_test": true,
+      "found": []
+    },
+    {
+      "check": "O_NO_ACCESS_TO_EVALUATOR_PROCESS",
+      "passed": false,
+      "blocking": true,
+      "executable_test": false,
+      "status": "ENVIRONMENT_BLOCKED",
+      "reason": "Single-user container. /proc is visible to same-UID processes. Cannot enforce ptrace access checks without separate users.",
+      "description": "NOT a failed attacker test — a check that cannot be executed in this environment."
+    },
+    {
+      "check": "P_VAULT_IS_ENCRYPTED",
+      "passed": false,
+      "blocking": true,
+      "executable_test": true,
+      "reason": "No vault exists (purged in V4). Must be regenerated in isolated deployment."
+    }
+  ],
+  "hard_invariant": {
+    "n_required_checks": 17,
+    "n_executable": 14,
+    "n_passed": 12,
+    "n_environment_blocked": 3,
+    "n_failed_executable": 2,
+    "adjudication_permitted": false,
+    "invariant": "adjudication_permitted == TRUE ONLY IF every required check has executable_test==true AND passed==true",
+    "invariant_satisfied": true,
+    "verdict": "BLOCKED",
+    "block_reasons": [
+      "B_ADJUDICATOR_CANNOT_READ_KEY: ENVIRONMENT_BLOCKED",
+      "C_ADJUDICATOR_CANNOT_WRITE_EVAL_BOUNDARY: ENVIRONMENT_BLOCKED",
+      "D_ENCRYPTED_VAULT_EXISTS: FAILED",
+      "O_NO_ACCESS_TO_EVALUATOR_PROCESS: ENVIRONMENT_BLOCKED",
+      "P_VAULT_IS_ENCRYPTED: FAILED"
+    ]
+  },
+  "adjudication_permitted": false,
+  "verdict": "BLOCKED",
+  "v6_is_green": false,
+  "environment": "single-user container (UID 1001, no root, no Docker)",
+  "note": "V6 preflight is more rigorous than V5 but environment remains BLOCKED. B/C/O are ENVIRONMENT_BLOCKED (not failed attacker tests). D/P are hard blocking (vault must be regenerated). V6 is NOT called green.",
+  "hash": "3cdf88338ec0a54ba7e8c51236e0cc3de9ffc379b0dd1185d7548b3ae2bd15fe"
+}
