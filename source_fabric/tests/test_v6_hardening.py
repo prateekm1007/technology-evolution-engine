@@ -61,7 +61,7 @@ class TestFailureModeMandatory:
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m",
+            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
             alternative_explanations=(),
         )
         assert claim.has_six_slots() is False
@@ -82,7 +82,7 @@ class TestFailureModeMandatory:
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="test",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m",
+            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
             alternative_explanations=(),
         )
         assert claim.has_six_slots() is False
@@ -216,7 +216,7 @@ class TestSimulationReady:
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m",
+            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
             alternative_explanations=(),
         )
         assert is_simulation_ready(claim) is False
@@ -238,7 +238,7 @@ class TestSimulationReady:
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m",
+            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
             alternative_explanations=(),
         )
         assert is_simulation_ready(claim) is True
@@ -279,7 +279,7 @@ class TestClaimIntegrity:
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m",
+            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
             alternative_explanations=(),
         )
         passed, reason = validate_claim_integrity(claim)

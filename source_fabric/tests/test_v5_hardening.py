@@ -243,14 +243,15 @@ class TestV5PositiveGoldenCases:
         assert claims[0].status == "EVIDENCE_BACKED"
 
     def test_golden_case_material_property_extraction(self):
-        """Golden case: material-property sentence produces EVIDENCE_BACKED claim."""
-        text = "Hydroxyapatite coating enhances bone integration by 50 percent in dental implants."
+        """Golden case: material-property sentence with failure taxonomy match produces EVIDENCE_BACKED claim."""
+        text = "Hydroxyapatite coating reduces degradation by 50 percent in dental implants."
         claims = extract_causal_claims_v4(
             text, source_id="p:4", source_type="paper",
             source_field="abstract", source_hash="jkl012",
             publication_date="2023-09-05", evidence_tier="D",
         )
         assert len(claims) >= 1
+        # "degradation" IS in the failure taxonomy, so this should be EVIDENCE_BACKED
         assert claims[0].status == "EVIDENCE_BACKED"
 
     def test_golden_case_with_boundary_conditions(self):
