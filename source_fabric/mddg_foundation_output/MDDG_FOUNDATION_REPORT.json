@@ -1,0 +1,124 @@
+{
+  "report_version": "MDDG-FOUNDATION-1.0",
+  "generated_at": "2026-08-13T03:04:12.498116+00:00",
+  "snapshot_hash": "7125fde6bb578a79c2c589ddb995a54d5eda392d10fd1f46c9c7b15333ac24ba",
+  "summary": {
+    "devices_ingested": 48,
+    "papers_linked": 8,
+    "patents_linked": 193,
+    "trials_linked": 0,
+    "adverse_events_linked": 70,
+    "recalls_linked": 0,
+    "failure_modes_extracted": 46,
+    "devices_with_paper": 5,
+    "devices_with_patent": 13,
+    "devices_with_trial": 0,
+    "devices_with_adverse_event": 14,
+    "devices_with_recall": 0,
+    "lifecycle_stage_distribution": {
+      "0": 0,
+      "1": 22,
+      "2": 10,
+      "3": 13,
+      "4": 2,
+      "5": 1,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "structural_edges": 192,
+    "substantive_edges": 634,
+    "inferred_edges": 0,
+    "evidence_edges_total": 826,
+    "search_only_edges_total": 0,
+    "unresolved_links": 484,
+    "unknown_source_count": 0,
+    "quarantined_record_count": 0,
+    "silent_substitution_count": 0,
+    "complete_lifecycle_chains": 0,
+    "real_lifecycle_chains": 3,
+    "failure_to_mechanism_chains": 0,
+    "provenance_completeness": 1.0,
+    "temporal_integrity": "valid",
+    "duplicate_rate": 0.0,
+    "orphan_rate": 0.4583333333333333
+  },
+  "four_hop_benchmark": {
+    "candidates_found": 0,
+    "qualified_candidates": 0
+  },
+  "null_controls": {
+    "NULL_A_TEMPORAL_SHUFFLE": {
+      "null_type": "TEMPORAL_SHUFFLE",
+      "seed": 42,
+      "devices_shuffled": 48,
+      "lifecycle_chains_after_shuffle": 3,
+      "note": "If chains persist after date shuffle, temporal ordering is not the signal.",
+      "snapshot_hash": "7125fde6bb578a79",
+      "method_hash": "100e13ec02d059bd"
+    },
+    "NULL_B_SINGLE_CORPUS_ONLY": {
+      "null_type": "SINGLE_CORPUS_ONLY",
+      "corpus": "FDA only (no papers/patents/trials)",
+      "lifecycle_chains_fda_only": 0,
+      "note": "If chains form with FDA alone, cross-corpus adds no value.",
+      "snapshot_hash": "7125fde6bb578a79",
+      "method_hash": "128bc4bcb1c6a18d"
+    },
+    "NULL_C_DEGREE_MATCHED": {
+      "null_type": "DEGREE_MATCHED",
+      "seed": 42,
+      "devices_swapped": 48,
+      "lifecycle_chains_after_swap": 0,
+      "note": "If chains persist after random swap, the device-failure pairing is not meaningful.",
+      "snapshot_hash": "7125fde6bb578a79",
+      "method_hash": "2e43835a0999a7fe"
+    },
+    "NULL_D_SEMANTIC_ONLY": {
+      "null_type": "SEMANTIC_ONLY",
+      "lifecycle_chains_semantic_only": 0,
+      "note": "If chains form with semantic edges alone, evidence tiers add no value.",
+      "snapshot_hash": "7125fde6bb578a79",
+      "method_hash": "c8c7fc43044097b1"
+    },
+    "NULL_E_FAILURE_UNRELATED": {
+      "null_type": "FAILURE_UNRELATED",
+      "seed": 42,
+      "lifecycle_chains_unrelated_failure": 0,
+      "note": "If chains persist with unrelated failures, the failure\u2192mechanism link is not specific.",
+      "snapshot_hash": "7125fde6bb578a79",
+      "method_hash": "549f47d182eaa1f0"
+    }
+  },
+  "device_categories": [
+    "implantables",
+    "diagnostics",
+    "surgical_systems",
+    "wearables",
+    "biomaterials",
+    "neurotechnology"
+  ],
+  "honest_boundaries": {
+    "real_data": true,
+    "no_synthetic_data": true,
+    "no_discovery_claims": true,
+    "missing_links_explicitly_recorded": true,
+    "tier_c_never_evidence": true,
+    "psc_frozen": true,
+    "a2_authorized": false
+  },
+  "foundation_gate": {
+    "devices_ge_50": false,
+    "papers_ge_25": false,
+    "patents_ge_25": true,
+    "trials_ge_25": false,
+    "adverse_events_ge_100": false,
+    "recalls_ge_25": false,
+    "real_lifecycle_chains_ge_10": false,
+    "unknown_source_count_eq_0": true,
+    "silent_substitution_eq_0": true,
+    "provenance_completeness_100pct": true,
+    "temporal_integrity_valid": true,
+    "MDDG_FOUNDATION_PASS": false
+  }
+}

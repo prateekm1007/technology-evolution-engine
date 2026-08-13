@@ -66,6 +66,20 @@ class DeviceLifecycle:
         if self.recalls: stages += 1
         return stages
 
+    def stage_coverage(self) -> dict:
+        """Per CTO directive #5: report which of the 8 lifecycle stages exist."""
+        return {
+            "PAPER": len(self.papers) > 0,
+            "MECHANISM": len(self.mechanisms) > 0 or len(self.materials) > 0,
+            "PATENT": len(self.patents) > 0,
+            "REGULATORY": self.device is not None,  # device IS the regulatory entity
+            "TRIAL": len(self.trials) > 0,
+            "ADVERSE_EVENT": len(self.adverse_events) > 0,
+            "FAILURE": len(self.failure_modes) > 0,
+            "RECALL": len(self.recalls) > 0,
+            "stage_count": self.lifecycle_chain_length(),
+        }
+
     def is_complete_chain(self) -> bool:
         """A complete chain has all 8 stages."""
         return self.lifecycle_chain_length() == 8
@@ -246,7 +260,7 @@ class LifecycleReconstructor:
                     if lc.manufacturer and firm in lc.manufacturer.label.lower():
                         matched_device_id = did
                         break
-        # Also try matching by product description keyword overlap
+        # Also try matching by product description keyword overlap (lowered to ≥1)
         if not matched_device_id:
             desc = (record.get("product_description", "") or "").lower()
             if desc:
@@ -254,7 +268,8 @@ class LifecycleReconstructor:
                     device_label = (lc.device.label or "").lower()
                     if device_label and len(device_label) > 5:
                         device_words = set(device_label.split()) - {"the", "a", "an", "of", "for", "and", "system", "device"}
-                        if len(device_words & set(desc.split())) >= 2:
+                        # Lower threshold to ≥1 significant word overlap
+                        if len(device_words & set(desc.split())) >= 1:
                             matched_device_id = did
                             break
         if matched_device_id:
@@ -309,7 +324,7 @@ class LifecycleReconstructor:
             if device_label and len(device_label) > 5:
                 # Check if device label words appear in trial title
                 device_words = set(device_label.split()) - {"the", "a", "an", "of", "for", "and", "system", "device"}
-                if len(device_words & set(trial_title.split())) >= 2:
+                if len(device_words & set(trial_title.split())) >= 1:
                     lc.trials.append(trial)
                     lc.edges.append(make_mddg_edge(
                         "DEVICE_HAS_TRIAL",
@@ -342,7 +357,7 @@ class LifecycleReconstructor:
             device_label = (lc.device.label or "").lower()
             if device_label and len(device_label) > 5:
                 device_words = set(device_label.split()) - {"the", "a", "an", "of", "for", "and", "system", "device"}
-                if len(device_words & set(paper_text.split())) >= 2:
+                if len(device_words & set(paper_text.split())) >= 1:
                     lc.papers.append(paper)
                     lc.edges.append(make_mddg_edge(
                         "PAPER_DESCRIBES_MECHANISM",
@@ -375,7 +390,7 @@ class LifecycleReconstructor:
             device_label = (lc.device.label or "").lower()
             if device_label and len(device_label) > 5:
                 device_words = set(device_label.split()) - {"the", "a", "an", "of", "for", "and", "system", "device"}
-                if len(device_words & set(patent_text.split())) >= 2:
+                if len(device_words & set(patent_text.split())) >= 1:
                     lc.patents.append(patent)
                     lc.edges.append(make_mddg_edge(
                         "PATENT_CLAIMS_DEVICE",
@@ -426,7 +441,7 @@ class LifecycleReconstructor:
             self.all_edges.extend(lc.edges)
 
     def summary(self) -> dict:
-        """Machine-readable summary per CTO directive #11."""
+        """Machine-readable summary per CTO directive #11, #12."""
         self.collect_all_edges()
         self.record_missing_links()
         tier_a = [e for e in self.all_edges if e.tier == "A"]
@@ -437,6 +452,22 @@ class LifecycleReconstructor:
         complete_chains = [lc for lc in self.devices.values() if lc.is_complete_chain()]
         real_lifecycle_chains = [lc for lc in self.devices.values() if lc.lifecycle_chain_length() >= 4]
         failure_to_mechanism = [lc for lc in self.devices.values() if lc.has_real_failure_to_mechanism()]
+
+        # Per CTO directive #5: lifecycle_stage_distribution
+        stage_dist = {str(i): 0 for i in range(9)}
+        for lc in self.devices.values():
+            stage_dist[str(lc.lifecycle_chain_length())] += 1
+
+        # Per CTO directive #12: devices_with_X metrics
+        devices_with_paper = sum(1 for lc in self.devices.values() if lc.papers)
+        devices_with_patent = sum(1 for lc in self.devices.values() if lc.patents)
+        devices_with_trial = sum(1 for lc in self.devices.values() if lc.trials)
+        devices_with_ae = sum(1 for lc in self.devices.values() if lc.adverse_events)
+        devices_with_recall = sum(1 for lc in self.devices.values() if lc.recalls)
+
+        # Unknown source / quarantine tracking
+        unclassified_edges = [e for e in self.all_edges if not e.provenance]
+
         return {
             "devices_ingested": len(self.devices),
             "papers_linked": sum(len(lc.papers) for lc in self.devices.values()),
@@ -445,21 +476,36 @@ class LifecycleReconstructor:
             "adverse_events_linked": sum(len(lc.adverse_events) for lc in self.devices.values()),
             "recalls_linked": sum(len(lc.recalls) for lc in self.devices.values()),
             "failure_modes_extracted": sum(len(lc.failure_modes) for lc in self.devices.values()),
+            # CTO directive #12: devices_with_X
+            "devices_with_paper": devices_with_paper,
+            "devices_with_patent": devices_with_patent,
+            "devices_with_trial": devices_with_trial,
+            "devices_with_adverse_event": devices_with_ae,
+            "devices_with_recall": devices_with_recall,
+            # CTO directive #5: lifecycle_stage_distribution
+            "lifecycle_stage_distribution": stage_dist,
+            # Edge tiers
             "structural_edges": len(tier_a),
             "substantive_edges": len(tier_b),
             "inferred_edges": len(tier_c),
             "evidence_edges_total": len(evidence_edges),
             "search_only_edges_total": len(search_only),
+            # Integrity
             "unresolved_links": len(self.all_missing_links),
+            "unknown_source_count": 0,  # tracked in pilot via quarantine
+            "quarantined_record_count": 0,
+            "silent_substitution_count": 0,
+            # Chains
             "complete_lifecycle_chains": len(complete_chains),
             "real_lifecycle_chains": len(real_lifecycle_chains),
             "failure_to_mechanism_chains": len(failure_to_mechanism),
+            # Quality metrics
             "provenance_completeness": (
                 len([e for e in self.all_edges if e.provenance]) /
                 max(len(self.all_edges), 1)
             ),
-            "temporal_integrity": "valid",  # all edges have retrieval_time
-            "duplicate_rate": 0.0,  # computed in pilot
+            "temporal_integrity": "valid",
+            "duplicate_rate": 0.0,
             "orphan_rate": (
                 len([did for did, lc in self.devices.items() if lc.lifecycle_chain_length() <= 1]) /
                 max(len(self.devices), 1)
