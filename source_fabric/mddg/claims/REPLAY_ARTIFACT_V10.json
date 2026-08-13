@@ -1,168 +1,470 @@
 {
   "artifact_name": "REPLAY_ARTIFACT_V10",
-  "claim_hashes_hash": "907da0c87f7350022d5640e9ee59cfd4e55068612ee2caba657ffbf3b2443e6f",
+  "artifact_version": 2,
+  "claim_contract_hash": "9e7b464f03501af10afa6dd2a95b57825c4e96179139c462e7746ec5c5520cac",
   "claim_ids_hash": "9c351ae857e65d031358b74720041cae062ba2ab1e571792061d191fe329c705",
-  "claim_summaries": [
+  "claim_outputs": [
     {
+      "alternative_explanations": [
+        "Random variation",
+        "Confounding variables"
+      ],
       "boundary_conditions": "UNSPECIFIED",
+      "boundary_evidence": [],
       "causal_relation": "reduces",
+      "causal_relation_evidence": [
+        {
+          "char_end": 23,
+          "char_start": 16,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-06-15",
+          "quoted_span": "reduces",
+          "sentence_id": "replay:p1:sfb647e87",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_1",
+          "source_id": "replay:p1",
+          "source_sentence": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "causal_relation"
+        }
+      ],
       "cause": "wear",
+      "cause_evidence": [
+        {
+          "char_end": 36,
+          "char_start": 32,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-06-15",
+          "quoted_span": "wear",
+          "sentence_id": "replay:p1:sfb647e87",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_1",
+          "source_id": "replay:p1",
+          "source_sentence": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "cause"
+        }
+      ],
       "claim_id": "claim:11a3fece47688901",
+      "claim_schema_version": 10,
       "claim_type": "FAILURE_CLAIM",
-      "content_hash": "3b6cec7da6c5c324",
+      "creation_timestamp": "2026-08-13T06:00:00Z",
+      "derivation_method": "structured_causal_extraction",
       "effect_direction": "decrease",
+      "effect_metric": "",
+      "effect_raw_text": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+      "effect_target": "coating",
+      "effect_unit": "percent",
       "effect_value": "30",
-      "evidence_count": 5,
-      "evidence_hashes": [
-        "replay_hash_1",
-        "replay_hash_1",
-        "replay_hash_1",
-        "replay_hash_1",
-        "replay_hash_1"
-      ],
-      "evidence_spans": [
-        [
-          0,
-          15
-        ],
-        [
-          16,
-          23
-        ],
-        [
-          32,
-          36
-        ],
-        [
-          32,
-          36
-        ],
-        [
-          40,
-          50
-        ]
-      ],
+      "evidence_tier": "D",
       "extraction_version": 10,
       "failure_mode": "wear",
+      "failure_mode_canonical_term": "WEAR",
+      "failure_mode_evidence": [
+        {
+          "char_end": 36,
+          "char_start": 32,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-06-15",
+          "quoted_span": "wear",
+          "sentence_id": "replay:p1:sfb647e87",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_1",
+          "source_id": "replay:p1",
+          "source_sentence": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "failure_mode"
+        }
+      ],
+      "failure_mode_mapping_rule": "keyword_match_in_taxonomy",
       "failure_mode_source": "ONTOLOGY_VALIDATED",
+      "failure_mode_taxonomy_version": "v1",
+      "failure_mode_term_in_source": "wear",
+      "falsification_condition": "Replicate the intervention (Ceramic coating) in an independent experiment and measure whether 30 percent is achieved.",
       "intervention": "Ceramic coating",
+      "intervention_evidence": [
+        {
+          "char_end": 15,
+          "char_start": 0,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-06-15",
+          "quoted_span": "Ceramic coating",
+          "sentence_id": "replay:p1:sfb647e87",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_1",
+          "source_id": "replay:p1",
+          "source_sentence": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "intervention"
+        }
+      ],
       "measured_effect": "30 percent",
+      "measured_effect_evidence": [
+        {
+          "char_end": 50,
+          "char_start": 40,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-06-15",
+          "quoted_span": "30 percent",
+          "sentence_id": "replay:p1:sfb647e87",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_1",
+          "source_id": "replay:p1",
+          "source_sentence": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "measured_effect"
+        }
+      ],
+      "measurement_method": "Controlled experiment comparing Ceramic coating vs. control, measuring 30 percent under UNSPECIFIED.",
       "mechanism": "UNKNOWN",
+      "mechanism_evidence": [],
+      "mechanism_inspection_method": "SENTENCE_LOCAL",
+      "mechanism_inspection_scope": "sentence: Ceramic coating reduces implant wear by 30 percent in hip replacements",
+      "mechanism_resolution_version": "v10",
       "mechanism_status": "UNKNOWN_NOT_STATED",
-      "schema_version": 10,
+      "proposition": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+      "source_hashes": [
+        "replay_hash_1"
+      ],
+      "source_ids": [
+        "replay:p1"
+      ],
       "status": "EVIDENCE_BACKED",
+      "temporal_validity": "valid",
       "validator_version": 10
     },
     {
+      "alternative_explanations": [
+        "Random variation",
+        "Confounding variables"
+      ],
       "boundary_conditions": "at body temperature",
+      "boundary_evidence": [
+        {
+          "char_end": 78,
+          "char_start": 59,
+          "evidence_tier": "D",
+          "extraction_method": "structured_boundary_extraction",
+          "publication_date": "2023-11-12",
+          "quoted_span": "at body temperature",
+          "sentence_id": "replay:p3:s3029dd2a",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_3",
+          "source_id": "replay:p3",
+          "source_sentence": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "boundary_conditions"
+        }
+      ],
       "causal_relation": "reduces",
+      "causal_relation_evidence": [
+        {
+          "char_end": 29,
+          "char_start": 22,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-11-12",
+          "quoted_span": "reduces",
+          "sentence_id": "replay:p3:s3029dd2a",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_3",
+          "source_id": "replay:p3",
+          "source_sentence": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "causal_relation"
+        }
+      ],
       "cause": "infection",
+      "cause_evidence": [
+        {
+          "char_end": 39,
+          "char_start": 30,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-11-12",
+          "quoted_span": "infection",
+          "sentence_id": "replay:p3:s3029dd2a",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_3",
+          "source_id": "replay:p3",
+          "source_sentence": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "cause"
+        }
+      ],
       "claim_id": "claim:37e48fa4c58ca097",
+      "claim_schema_version": 10,
       "claim_type": "FAILURE_CLAIM",
-      "content_hash": "9b0a07726451133e",
+      "creation_timestamp": "2026-08-13T06:00:00Z",
+      "derivation_method": "structured_causal_extraction",
       "effect_direction": "decrease",
+      "effect_metric": "infection_rate",
+      "effect_raw_text": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+      "effect_target": "coating",
+      "effect_unit": "percent",
       "effect_value": "60",
-      "evidence_count": 6,
-      "evidence_hashes": [
-        "replay_hash_3",
-        "replay_hash_3",
-        "replay_hash_3",
-        "replay_hash_3",
-        "replay_hash_3",
-        "replay_hash_3"
-      ],
-      "evidence_spans": [
-        [
-          0,
-          21
-        ],
-        [
-          22,
-          29
-        ],
-        [
-          30,
-          39
-        ],
-        [
-          30,
-          39
-        ],
-        [
-          48,
-          58
-        ],
-        [
-          59,
-          78
-        ]
-      ],
+      "evidence_tier": "D",
       "extraction_version": 10,
       "failure_mode": "infection",
+      "failure_mode_canonical_term": "INFECTION",
+      "failure_mode_evidence": [
+        {
+          "char_end": 39,
+          "char_start": 30,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-11-12",
+          "quoted_span": "infection",
+          "sentence_id": "replay:p3:s3029dd2a",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_3",
+          "source_id": "replay:p3",
+          "source_sentence": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "failure_mode"
+        }
+      ],
+      "failure_mode_mapping_rule": "keyword_match_in_taxonomy",
       "failure_mode_source": "ONTOLOGY_VALIDATED",
+      "failure_mode_taxonomy_version": "v1",
+      "failure_mode_term_in_source": "infection",
+      "falsification_condition": "Replicate the intervention (Antimicrobial coating) in an independent experiment and measure whether 60 percent is achieved.",
       "intervention": "Antimicrobial coating",
+      "intervention_evidence": [
+        {
+          "char_end": 21,
+          "char_start": 0,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-11-12",
+          "quoted_span": "Antimicrobial coating",
+          "sentence_id": "replay:p3:s3029dd2a",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_3",
+          "source_id": "replay:p3",
+          "source_sentence": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "intervention"
+        }
+      ],
       "measured_effect": "60 percent",
+      "measured_effect_evidence": [
+        {
+          "char_end": 58,
+          "char_start": 48,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2023-11-12",
+          "quoted_span": "60 percent",
+          "sentence_id": "replay:p3:s3029dd2a",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_3",
+          "source_id": "replay:p3",
+          "source_sentence": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "measured_effect"
+        }
+      ],
+      "measurement_method": "Controlled experiment comparing Antimicrobial coating vs. control, measuring 60 percent under at body temperature.",
       "mechanism": "UNKNOWN",
+      "mechanism_evidence": [],
+      "mechanism_inspection_method": "SENTENCE_LOCAL",
+      "mechanism_inspection_scope": "sentence: Antimicrobial coating reduces infection rate by 60 percent at body temperature i",
+      "mechanism_resolution_version": "v10",
       "mechanism_status": "UNKNOWN_NOT_STATED",
-      "schema_version": 10,
+      "proposition": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+      "source_hashes": [
+        "replay_hash_3"
+      ],
+      "source_ids": [
+        "replay:p3"
+      ],
       "status": "EVIDENCE_BACKED",
+      "temporal_validity": "valid",
       "validator_version": 10
     },
     {
+      "alternative_explanations": [
+        "Random variation",
+        "Confounding variables"
+      ],
       "boundary_conditions": "UNSPECIFIED",
+      "boundary_evidence": [],
       "causal_relation": "prevents",
+      "causal_relation_evidence": [
+        {
+          "char_end": 38,
+          "char_start": 30,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2022-03-10",
+          "quoted_span": "prevents",
+          "sentence_id": "replay:p2:s1ab934ee",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_2",
+          "source_id": "replay:p2",
+          "source_sentence": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "causal_relation"
+        }
+      ],
       "cause": "corrosion",
+      "cause_evidence": [
+        {
+          "char_end": 48,
+          "char_start": 39,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2022-03-10",
+          "quoted_span": "corrosion",
+          "sentence_id": "replay:p2:s1ab934ee",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_2",
+          "source_id": "replay:p2",
+          "source_sentence": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "cause"
+        }
+      ],
       "claim_id": "claim:5afaed43c1759d57",
+      "claim_schema_version": 10,
       "claim_type": "FAILURE_CLAIM",
-      "content_hash": "9b1a52057f45978e",
+      "creation_timestamp": "2026-08-13T06:00:00Z",
+      "derivation_method": "structured_causal_extraction",
       "effect_direction": "decrease",
+      "effect_metric": "",
+      "effect_raw_text": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+      "effect_target": "surface",
+      "effect_unit": "",
       "effect_value": "",
-      "evidence_count": 5,
-      "evidence_hashes": [
-        "replay_hash_2",
-        "replay_hash_2",
-        "replay_hash_2",
-        "replay_hash_2",
-        "replay_hash_2"
-      ],
-      "evidence_spans": [
-        [
-          0,
-          29
-        ],
-        [
-          30,
-          38
-        ],
-        [
-          39,
-          48
-        ],
-        [
-          39,
-          48
-        ],
-        [
-          39,
-          48
-        ]
-      ],
+      "evidence_tier": "D",
       "extraction_version": 10,
       "failure_mode": "corrosion",
+      "failure_mode_canonical_term": "CORROSION",
+      "failure_mode_evidence": [
+        {
+          "char_end": 48,
+          "char_start": 39,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2022-03-10",
+          "quoted_span": "corrosion",
+          "sentence_id": "replay:p2:s1ab934ee",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_2",
+          "source_id": "replay:p2",
+          "source_sentence": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "failure_mode"
+        }
+      ],
+      "failure_mode_mapping_rule": "keyword_match_in_taxonomy",
       "failure_mode_source": "ONTOLOGY_VALIDATED",
+      "failure_mode_taxonomy_version": "v1",
+      "failure_mode_term_in_source": "corrosion",
+      "falsification_condition": "Replicate the intervention (Surface passivation treatment) in an independent experiment and measure whether corrosion is achieved.",
       "intervention": "Surface passivation treatment",
+      "intervention_evidence": [
+        {
+          "char_end": 29,
+          "char_start": 0,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2022-03-10",
+          "quoted_span": "Surface passivation treatment",
+          "sentence_id": "replay:p2:s1ab934ee",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_2",
+          "source_id": "replay:p2",
+          "source_sentence": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "intervention"
+        }
+      ],
       "measured_effect": "corrosion",
+      "measured_effect_evidence": [
+        {
+          "char_end": 48,
+          "char_start": 39,
+          "evidence_tier": "D",
+          "extraction_method": "structured_causal_extraction",
+          "publication_date": "2022-03-10",
+          "quoted_span": "corrosion",
+          "sentence_id": "replay:p2:s1ab934ee",
+          "source_field": "abstract",
+          "source_hash": "replay_hash_2",
+          "source_id": "replay:p2",
+          "source_sentence": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+          "source_type": "paper",
+          "supports_relation": "",
+          "supports_slot": "measured_effect"
+        }
+      ],
+      "measurement_method": "Controlled experiment comparing Surface passivation treatment vs. control, measuring corrosion under UNSPECIFIED.",
       "mechanism": "UNKNOWN",
+      "mechanism_evidence": [],
+      "mechanism_inspection_method": "SENTENCE_LOCAL",
+      "mechanism_inspection_scope": "sentence: Surface passivation treatment prevents corrosion degradation in titanium implant",
+      "mechanism_resolution_version": "v10",
       "mechanism_status": "UNKNOWN_NOT_STATED",
-      "schema_version": 10,
+      "proposition": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+      "source_hashes": [
+        "replay_hash_2"
+      ],
+      "source_ids": [
+        "replay:p2"
+      ],
       "status": "EVIDENCE_BACKED",
+      "temporal_validity": "valid",
       "validator_version": 10
     }
   ],
   "claims_generated": 3,
-  "corpus_hash": "4c30a872db1eeaec6dc44f3bb7431cff5017ed346b5ede7c61c688b5ef392f8a",
   "corpus_size": 5,
-  "generated_at": "2026-08-13T06:00:00Z",
-  "root_hash": "77102630af945bd2714c5dbaa870c220a426c6aeb819546640b34127d2ea731a",
-  "status_hash": "ad55b1de0bdf76082bcbf1ecee57f7b33bdf7b1dbacd1c633d019fbd12bcbc67"
+  "evidence_hash": "38a3d18e29f0ceb0f3fbdd2cd87f63cf522f0bcb726df697ed4f5a8daf2ddbc1",
+  "extractor_version": 10,
+  "failure_taxonomy_hash": "d2781ad04b058af7d7442043074f2b6cea2c38b9a459c8db7e02f14fb797edc3",
+  "full_output_hash": "b278ee5d81ced2fb57a4469ebc189f6d994532604aec00a65f50844fde70aef0",
+  "generated_with_clock": "ReplayClock",
+  "input_snapshot_hash": "4c30a872db1eeaec6dc44f3bb7431cff5017ed346b5ede7c61c688b5ef392f8a",
+  "knowledge_cutoff": "2026-08-13",
+  "ontology_hash": "d2781ad04b058af7d7442043074f2b6cea2c38b9a459c8db7e02f14fb797edc3",
+  "root_hash": "53e9e369e08b5b171015d393fb8857f5187635baa9eed2dbcdcbfefc7c5cb79e",
+  "source_record_hashes": [
+    "replay_hash_1",
+    "replay_hash_2",
+    "replay_hash_3",
+    "replay_hash_4",
+    "replay_hash_5"
+  ],
+  "source_record_ids": [
+    "replay:p1",
+    "replay:p2",
+    "replay:p3",
+    "replay:p4",
+    "replay:p5"
+  ],
+  "source_registry_hash": "4c30a872db1eeaec6dc44f3bb7431cff5017ed346b5ede7c61c688b5ef392f8a",
+  "status_hash": "ad55b1de0bdf76082bcbf1ecee57f7b33bdf7b1dbacd1c633d019fbd12bcbc67",
+  "validator_version": 10
 }

@@ -19,6 +19,7 @@ wrap the same lexical heuristics in a more sophisticated-looking Claim object."
 from __future__ import annotations
 from dataclasses import dataclass, field, asdict
 from typing import Optional
+from .clock import Clock, SystemClock, DEFAULT_CLOCK
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -456,7 +457,8 @@ def _has_negated_causal(text: str) -> bool:
 
 def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
                               source_field: str, source_hash: str,
-                              publication_date: str, evidence_tier: str) -> list[Claim]:
+                              publication_date: str, evidence_tier: str,
+                              clock: Clock = None) -> list[Claim]:
     """V4 structured Claim extraction.
 
     Per CTO directive #1: "Replace heuristic slot-filling with explicit extraction
@@ -477,6 +479,7 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
     """
     if not text:
         return []
+    clock = clock or DEFAULT_CLOCK
     claims = []
     sentences = [s.strip() for s in re.split(r'[.!?]+', text) if len(s.strip()) > 20]
 
@@ -528,7 +531,7 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
                 boundary_evidence=(),
                 source_ids=(source_id,), source_hashes=(source_hash,),
                 temporal_validity="valid" if publication_date else "unknown",
-                creation_timestamp=datetime.now(timezone.utc).isoformat(),
+                creation_timestamp=clock.now(),
                 evidence_tier=evidence_tier,
                 derivation_method="causal_verb_found_slots_not_extracted",
                 status="SEARCH_CANDIDATE",
@@ -599,7 +602,7 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
                 measured_effect_evidence=(),
                 source_ids=(source_id,), source_hashes=(source_hash,),
                 temporal_validity="valid" if publication_date else "unknown",
-                creation_timestamp=datetime.now(timezone.utc).isoformat(),
+                creation_timestamp=clock.now(),
                 evidence_tier=evidence_tier,
                 derivation_method="span_not_found",
                 status="BLOCKED",
@@ -828,7 +831,7 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             source_ids=(source_id,),
             source_hashes=(source_hash,),
             temporal_validity="valid" if publication_date else "unknown",
-            creation_timestamp=datetime.now(timezone.utc).isoformat(),
+            creation_timestamp=clock.now(),
             evidence_tier=evidence_tier,
             derivation_method="structured_causal_extraction",
             # V9: structured effect fields — genuinely extracted
