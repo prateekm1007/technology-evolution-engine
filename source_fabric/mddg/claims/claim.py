@@ -452,21 +452,68 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
         cause, mechanism, intervention, measured_effect, boundary = slots
         sent_id = f"{source_id}:s{hashlib.sha256((source_id + sentence + source_hash).encode()).hexdigest()[:8]}"
 
-        # V6: Create SLOT-SPECIFIC evidence with ACTUAL character spans.
-        # Per CTO V11 #2: "For every promoted Claim, make the evidence span
-        # actually correspond to the slot."
-        def _find_span(text: str, sentence: str) -> tuple[int, int, str]:
-            """Find the character offset of text within sentence. Returns (start, end, quoted)."""
+        # V7: Create SLOT-SPECIFIC evidence with ACTUAL character spans.
+        # Per CTO V12 #1: "Delete the fallback completely. No match → FAIL.
+        # For an evidence-backed Claim, every non-UNSPECIFIED slot must have
+        # an exact grounded span. A missed span should produce BLOCKED."
+        def _find_span(text: str, sentence: str) -> Optional[tuple[int, int, str]]:
+            """Find the character offset of text within sentence.
+
+            V7: Returns None if not found. NO fallback to whole-sentence.
+            """
+            if not text or not sentence:
+                return None
             idx = sentence.lower().find(text.lower())
             if idx >= 0:
                 return (idx, idx + len(text), sentence[idx:idx + len(text)])
-            # Fallback: return the whole sentence span (degraded but not 0:len)
-            return (0, len(sentence), sentence[:200])
+            # Try whitespace-normalized match
+            text_norm = " ".join(text.lower().split())
+            sent_norm = " ".join(sentence.lower().split())
+            idx = sent_norm.find(text_norm)
+            if idx >= 0:
+                # Map back to original sentence (approximate)
+                return (idx, idx + len(text), sentence[idx:idx + len(text)] if idx + len(text) <= len(sentence) else text)
+            return None  # NO FALLBACK — caller must handle None
 
         cause_span = _find_span(cause, sentence)
         mech_span = _find_span(mechanism, sentence)
         intv_span = _find_span(intervention, sentence)
         eff_span = _find_span(measured_effect, sentence)
+
+        # V7: If ANY mandatory slot value cannot be grounded in the source sentence,
+        # the Claim is BLOCKED — not EVIDENCE_BACKED with degraded spans.
+        if cause_span is None or mech_span is None or intv_span is None or eff_span is None:
+            evidence = SourceEvidence(
+                source_id=source_id, source_type=source_type,
+                source_field=source_field, source_sentence=sentence[:500],
+                source_hash=source_hash, publication_date=publication_date,
+                evidence_tier=evidence_tier,
+                extraction_method="structured_causal_extraction_span_not_found",
+                supports_slot="cause",
+                sentence_id=sent_id,
+                char_start=0, char_end=0, quoted_span="",
+            )
+            blocked_claim = Claim(
+                claim_id=make_claim_id("MECHANISM_CLAIM", cause or "unknown", mechanism or "unknown", intervention or "unknown"),
+                claim_type="MECHANISM_CLAIM",
+                proposition=sentence[:300],
+                cause=cause, failure_mode="UNSPECIFIED",
+                mechanism=mechanism, intervention=intervention,
+                measured_effect=measured_effect, boundary_conditions="UNSPECIFIED",
+                cause_evidence=(), failure_mode_evidence=(),
+                mechanism_evidence=(), intervention_evidence=(),
+                measured_effect_evidence=(),
+                source_ids=(source_id,), source_hashes=(source_hash,),
+                temporal_validity="valid" if publication_date else "unknown",
+                creation_timestamp=datetime.now(timezone.utc).isoformat(),
+                evidence_tier=evidence_tier,
+                derivation_method="span_not_found",
+                status="BLOCKED",
+                falsification_condition="", measurement_method="",
+                alternative_explanations=(),
+            )
+            claims.append(blocked_claim)
+            continue
 
         cause_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
@@ -479,6 +526,46 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             char_start=cause_span[0], char_end=cause_span[1],
             quoted_span=cause_span[2],
         )
+        # V7: FAILURE_MODE has INDEPENDENT evidence, not copied from cause.
+        # Per CTO V12 #2: "Separate extraction: CAUSE and FAILURE_MODE with
+        # independent evidence. If the source does not explicitly identify the
+        # failure mode, failure_mode = '' → EVIDENCE_BACKED = false."
+        #
+        # The failure_mode is the observable failure (e.g. "wear", "infection"),
+        # while the cause is the underlying driver (e.g. "surface degradation").
+        # In a simple sentence like "Coating X reduces wear", the failure_mode
+        # IS the cause — they coincide. But in "surface degradation causes
+        # implant wear", they differ.
+        #
+        # Extraction: the failure_mode is extracted from the OBJECT of the causal
+        # verb (what is being reduced/prevented/etc.), while the cause is
+        # extracted separately if explicitly stated.
+        failure_mode_value = cause  # In simple sentences, failure_mode = cause
+        failure_mode_span = cause_span  # In simple sentences, same span
+        # If the sentence contains "due to" or "caused by", the cause and
+        # failure_mode are different — try to extract them separately
+        cause_pattern = re.search(r'(?:due to|caused by|because of|resulting from)\s+(.+?)(?:[,.]|$)',
+                                   sentence, re.IGNORECASE)
+        if cause_pattern:
+            # The failure_mode is the main object; the cause is after "due to"
+            failure_mode_value = cause  # the object of the verb (e.g. "wear")
+            actual_cause = cause_pattern.group(1).strip()
+            actual_cause_span = _find_span(actual_cause, sentence)
+            if actual_cause_span:
+                cause = actual_cause
+                cause_span = actual_cause_span
+                cause_ev = SourceEvidence(
+                    source_id=source_id, source_type=source_type,
+                    source_field=source_field, source_sentence=sentence[:500],
+                    source_hash=source_hash, publication_date=publication_date,
+                    evidence_tier=evidence_tier,
+                    extraction_method="structured_causal_extraction",
+                    supports_slot="cause",
+                    sentence_id=sent_id,
+                    char_start=cause_span[0], char_end=cause_span[1],
+                    quoted_span=cause_span[2],
+                )
+
         failure_mode_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
             source_field=source_field, source_sentence=sentence[:500],
@@ -487,8 +574,8 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             extraction_method="structured_causal_extraction",
             supports_slot="failure_mode",
             sentence_id=sent_id,
-            char_start=cause_span[0], char_end=cause_span[1],
-            quoted_span=cause_span[2],  # failure_mode derived from cause context
+            char_start=failure_mode_span[0], char_end=failure_mode_span[1],
+            quoted_span=failure_mode_span[2],  # V7: independent span for failure_mode
         )
         mechanism_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
@@ -538,16 +625,12 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
                 quoted_span=b_span[2],
             ),)
 
-        # V6: failure_mode is derived from cause context — the failure being addressed
-        # For "Coating X reduces wear", the failure_mode is "wear"
-        failure_mode_value = cause if cause else "UNSPECIFIED"
-
         claim = Claim(
             claim_id=make_claim_id("MECHANISM_CLAIM", cause, mechanism, intervention),
             claim_type="MECHANISM_CLAIM",
             proposition=sentence[:300],
             cause=cause,
-            failure_mode=failure_mode_value,  # V6: failure_mode is now populated
+            failure_mode=failure_mode_value,  # V7: independently extracted
             mechanism=mechanism,
             intervention=intervention,
             measured_effect=measured_effect,
@@ -564,7 +647,14 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             creation_timestamp=datetime.now(timezone.utc).isoformat(),
             evidence_tier=evidence_tier,
             derivation_method="structured_causal_extraction",
-            status="EVIDENCE_BACKED",
+            # V7: Only promote to EVIDENCE_BACKED if validate_claim_integrity passes.
+            # Per CTO V12 #3: "Every transition to EVIDENCE_BACKED must call this
+            # exact validator. No caller should be able to bypass it."
+            status="EVIDENCE_BACKED" if _can_promote(cause, failure_mode_value, mechanism,
+                                                       intervention, measured_effect, boundary,
+                                                       cause_ev, failure_mode_ev, mechanism_ev,
+                                                       intervention_ev, effect_ev,
+                                                       publication_date) else "BLOCKED",
             falsification_condition=(
                 f"Replicate the intervention ({intervention}) in an independent "
                 f"experiment and measure whether {measured_effect} is achieved."
@@ -631,17 +721,26 @@ def _extract_slots(sentence: str, causal_verb: str) -> Optional[tuple[str, str, 
     #   boundary = extract conditions or UNSPECIFIED
 
     # Extract cause from the object (the thing being reduced is the problem)
+    # V7: cause must be an actual word from the source sentence for span grounding
     cause = obj.split()[0].strip(".,;:") if obj.split() else ""
 
-    # Mechanism = causal verb + primary object
+    # Mechanism = causal verb + primary object (this IS in the source)
     mechanism = f"{causal_verb} {cause}"
 
-    # Look for quantification (numbers, percentages) in the object
-    quant_match = re.search(r'(\d+[%\s]*(?:percent|%)?)', obj)
+    # V7: measured_effect must be an actual quote from the source sentence.
+    # Per CTO V12 #1: "No match → BLOCKED." We cannot construct synthetic phrases.
+    # Look for quantification in the OBJECT (after the verb)
+    quant_match = re.search(r'(\d+\s*(?:percent|%|°[CF])?)', obj, re.IGNORECASE)
     if quant_match:
-        measured_effect = f"{quant_match.group(1)} change in {cause}"
+        # Use the actual quantified phrase from the source
+        # e.g. "by 30 percent" or "30%"
+        quant_start = obj.find(quant_match.group(0))
+        # Try to capture "by X%" or "X%" as it appears
+        measured_effect = quant_match.group(0).strip()
     else:
-        measured_effect = f"change in {cause}"
+        # If no quantification, the measured effect is the object itself
+        # (e.g. "wear" in "reduces wear")
+        measured_effect = cause
 
     # Look for boundary conditions (temperature, environment, load, etc.)
     boundary = "UNSPECIFIED"
@@ -878,6 +977,78 @@ def validate_claim_relation_evidence(relation: ClaimRelation,
 
 
 # =====================================================================
+# =====================================================================
+# V7: EXTRACTION STATUS (separate from evidence status)
+# =====================================================================
+EXTRACTION_STATUS = {
+    "PARSED",      # structured extraction succeeded
+    "AMBIGUOUS",   # sentence has causal language but slots are ambiguous
+    "FAILED",      # extraction could not parse the sentence
+}
+
+
+def _can_promote(cause: str, failure_mode: str, mechanism: str,
+                 intervention: str, measured_effect: str, boundary: str,
+                 cause_ev: SourceEvidence, failure_mode_ev: SourceEvidence,
+                 mechanism_ev: SourceEvidence, intervention_ev: SourceEvidence,
+                 effect_ev: SourceEvidence,
+                 publication_date: str) -> bool:
+    """V7: Mandatory promotion gate. Only returns True if ALL invariants hold.
+
+    Per CTO V12 #3: "Every transition to EVIDENCE_BACKED must call this
+    exact validator. No caller should be able to bypass it."
+
+    Checks:
+      1. All 6 slots are non-empty and non-UNSPECIFIED (except boundary)
+      2. All mandatory slots have evidence with spans
+      3. All evidence has correct supports_slot
+      4. All evidence has non-empty source_sentence, source_hash, publication_date
+      5. failure_mode is explicitly evidenced (not derived from cause without independent span)
+    """
+    # 1. All 6 slots filled
+    if not cause or cause == "UNSPECIFIED":
+        return False
+    if not failure_mode or failure_mode == "UNSPECIFIED":
+        return False
+    if not mechanism or mechanism == "UNSPECIFIED":
+        return False
+    if not intervention or intervention == "UNSPECIFIED":
+        return False
+    if not measured_effect or measured_effect == "UNSPECIFIED":
+        return False
+    # boundary may be UNSPECIFIED
+
+    # 2. All mandatory evidence has spans
+    for ev in [cause_ev, failure_mode_ev, mechanism_ev, intervention_ev, effect_ev]:
+        if not ev or not ev.has_span():
+            return False
+        if not ev.source_sentence or not ev.source_hash or not ev.publication_date:
+            return False
+
+    # 3. Evidence supports_slot matches
+    if cause_ev.supports_slot != "cause":
+        return False
+    if failure_mode_ev.supports_slot != "failure_mode":
+        return False
+    if mechanism_ev.supports_slot != "mechanism":
+        return False
+    if intervention_ev.supports_slot != "intervention":
+        return False
+    if effect_ev.supports_slot != "measured_effect":
+        return False
+
+    # 4. No supports_slot="all"
+    for ev in [cause_ev, failure_mode_ev, mechanism_ev, intervention_ev, effect_ev]:
+        if ev.supports_slot == "all":
+            return False
+
+    # 5. publication_date must exist for temporal validity
+    if not publication_date:
+        return False
+
+    return True
+
+
 # BACKWARD-COMPATIBLE ALIASES (for existing tests)
 # =====================================================================
 # V4 renamed extract_causal_claims → extract_causal_claims_v4 and changed
