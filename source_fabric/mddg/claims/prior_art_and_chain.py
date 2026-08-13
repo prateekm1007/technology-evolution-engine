@@ -221,40 +221,67 @@ def find_claim_chain_candidates(
     failure_claims: list[Claim],
     mechanism_claims: list[Claim],
     intervention_claims: list[Claim],
+    claim_relations: list = None,  # V4: typed ClaimRelation objects
 ) -> list[ClaimChainCandidate]:
-    """Find Claim-chain candidates by matching actual Claims.
+    """V4: Find Claim-chain candidates by following TYPED RELATIONS, not word overlap.
 
-    Per directive #12: "Every transition must correspond to an actual
-    evidence-backed relationship."
+    Per CTO V9 directive #3: "Remove word-overlap from Claim-chain qualification.
+    This code path: any(word in mc.proposition ...) must disappear from qualification.
+    Semantic search may retrieve candidate Claim pairs, but it may only create
+    CLAIM_LINK_CANDIDATE. The candidate must then be promoted through explicit evidence."
 
-    The matching logic:
-      - FAILURE_CLAIM: must reference the device_id
-      - MECHANISM_CLAIM: must reference the same failure as the FAILURE_CLAIM
-      - INTERVENTION_CLAIM: must reference the same mechanism as the MECHANISM_CLAIM
+    V4 approach:
+      1. Use typed ClaimRelation objects to connect Claims
+      2. A relation must have evidence_status="EVIDENCE" to qualify
+      3. No lexical/word-overlap matching
+      4. If no typed relations provided, NO candidates are produced (honest)
     """
+    from .claim import ClaimRelation
     candidates = []
-    # Filter failure claims that reference this device
-    device_failure_claims = [fc for fc in failure_claims
-                              if device_id in fc.source_ids or device_id in fc.proposition]
-    for fc in device_failure_claims:
-        # Find mechanism claims that address the same failure
-        failure_text = fc.cause.lower()
-        matching_mech_claims = [mc for mc in mechanism_claims
-                                if failure_text and any(
-                                    word in mc.proposition.lower()
-                                    for word in failure_text.split()
-                                    if len(word) > 4
-                                )]
-        for mc in matching_mech_claims:
-            # Find intervention claims that reference the same mechanism
-            mech_text = mc.mechanism.lower()
-            matching_int_claims = [ic for ic in intervention_claims
-                                   if mech_text and any(
-                                       word in ic.proposition.lower()
-                                       for word in mech_text.split()
-                                       if len(word) > 4
-                                   )]
-            for ic in matching_int_claims:
+
+    # V4: If no typed relations provided, return empty (no word-overlap fallback)
+    if claim_relations is None:
+        claim_relations = []
+
+    # Filter to EVIDENCE-status relations only
+    evidence_relations = [r for r in claim_relations
+                          if isinstance(r, ClaimRelation) and r.is_evidence()]
+    if not evidence_relations:
+        return []  # NO word-overlap fallback — honest empty result
+
+    # Build relation index
+    relations_by_type: dict[str, list] = {}
+    for r in evidence_relations:
+        key = r.relation_type
+        relations_by_type.setdefault(key, []).append(r)
+
+    # Find failure claims linked to this device via FAILURE_CLAIM_ABOUT_DEVICE
+    device_failure_relations = [r for r in relations_by_type.get("FAILURE_CLAIM_ABOUT_DEVICE", [])
+                                 if r.target_claim_id == device_id or r.source_claim_id == device_id]
+    for dfr in device_failure_relations:
+        fc_id = dfr.source_claim_id if dfr.source_claim_id != device_id else dfr.target_claim_id
+        fc = next((c for c in failure_claims if c.claim_id == fc_id), None)
+        if not fc or not fc.is_evidence_backed():
+            continue
+
+        # Find mechanism claims linked to this failure via MECHANISM_CLAIM_ADDRESSES_FAILURE
+        mech_relations = [r for r in relations_by_type.get("MECHANISM_CLAIM_ADDRESSES_FAILURE", [])
+                          if r.source_claim_id == fc.claim_id or r.target_claim_id == fc.claim_id]
+        for mr in mech_relations:
+            mc_id = mr.target_claim_id if mr.source_claim_id == fc.claim_id else mr.source_claim_id
+            mc = next((c for c in mechanism_claims if c.claim_id == mc_id), None)
+            if not mc or not mc.is_evidence_backed():
+                continue
+
+            # Find intervention claims linked to this mechanism
+            int_relations = [r for r in relations_by_type.get("INTERVENTION_CLAIM_REALIZES_MECHANISM", [])
+                             if r.source_claim_id == mc.claim_id or r.target_claim_id == mc.claim_id]
+            for ir in int_relations:
+                ic_id = ir.target_claim_id if ir.source_claim_id == mc.claim_id else ir.source_claim_id
+                ic = next((c for c in intervention_claims if c.claim_id == ic_id), None)
+                if not ic or not ic.is_evidence_backed():
+                    continue
+
                 cid = f"claimchain:{device_id}:{fc.claim_id[:8]}:{mc.claim_id[:8]}:{ic.claim_id[:8]}"
                 candidate = ClaimChainCandidate(
                     candidate_id=cid,

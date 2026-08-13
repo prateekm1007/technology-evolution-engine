@@ -174,7 +174,7 @@ class TestClaimExtractionNeverCoMention:
         )
         assert len(claims) == 1
         assert claims[0].status == "EVIDENCE_BACKED"
-        assert claims[0].derivation_method == "explicit_causal_extraction"
+        assert claims[0].derivation_method == "structured_causal_extraction"
 
 
 # =====================================================================
@@ -234,7 +234,7 @@ class TestClaimChainNeverCoPresence:
             proposition="wear mentioned", cause="wear",
             mechanism="degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
-            source_evidence=(evidence,), source_ids=("d:1",),
+            cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("d:1",),
             source_hashes=("h",), temporal_validity="valid",
             creation_timestamp="2026-01-01", evidence_tier="D",
             derivation_method="co_mention",
@@ -247,7 +247,7 @@ class TestClaimChainNeverCoPresence:
             proposition="degradation mentioned", cause="wear",
             mechanism="degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
-            source_evidence=(evidence,), source_ids=("p:2",),
+            cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("p:2",),
             source_hashes=("h",), temporal_validity="valid",
             creation_timestamp="2026-01-01", evidence_tier="D",
             derivation_method="co_mention",
@@ -260,7 +260,7 @@ class TestClaimChainNeverCoPresence:
             proposition="coating mentioned", cause="wear",
             mechanism="degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
-            source_evidence=(evidence,), source_ids=("p:3",),
+            cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("p:3",),
             source_hashes=("h",), temporal_validity="valid",
             creation_timestamp="2026-01-01", evidence_tier="D",
             derivation_method="co_mention",
