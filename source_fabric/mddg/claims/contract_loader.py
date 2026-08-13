@@ -19,6 +19,11 @@ from typing import Optional
 CONTRACT_PATH = Path(__file__).parent / "CLAIM_CONTRACT_V10.json"
 INTEGRITY_PATH = Path(__file__).parent / "CLAIM_CONTRACT_V10.INTEGRITY.json"
 
+
+class ContractIntegrityError(Exception):
+    """Raised when contract integrity verification fails."""
+    pass
+
 _ACTIVE_CONTRACT_HASH: Optional[str] = None
 _ACTIVE_CONTRACT: Optional[dict] = None
 _INTEGRITY_VERIFIED: bool = False
@@ -67,7 +72,7 @@ def _verify_integrity():
             f"but integrity manifest expects {expected_hash[:16]}..."
         )
 
-    # 2. Verify repository commit (optional — only if git is available)
+    # 2. Verify repository commit — HARD FAILURE on mismatch (CTO V19 P0-1)
     expected_commit = integrity.get("repository_commit", "")
     if expected_commit:
         try:
@@ -77,11 +82,23 @@ def _verify_integrity():
                 stderr=subprocess.DEVNULL
             ).decode().strip()
             if actual_commit != expected_commit:
-                # During development, the commit may have advanced. Record but don't block.
-                # In production/frozen mode, this would be a hard failure.
-                pass  # Soft check during development
-        except Exception:
-            pass  # Git not available — skip commit verification
+                raise ContractIntegrityError(
+                    f"Repository commit mismatch: runtime={actual_commit[:16]}... "
+                    f"but integrity manifest expects={expected_commit[:16]}... "
+                    f"The contract is bound to a different commit. "
+                    f"Update CLAIM_CONTRACT_V10.INTEGRITY.json to match the current commit."
+                )
+        except ContractIntegrityError:
+            raise
+        except FileNotFoundError:
+            raise ContractIntegrityError(
+                "Git not available — contract integrity is UNVERIFIABLE. "
+                "Cannot verify repository_commit without git."
+            )
+        except Exception as e:
+            raise ContractIntegrityError(
+                f"Git verification failed: {e}. Contract integrity is UNVERIFIABLE."
+            )
 
     _INTEGRITY_VERIFIED = True
 

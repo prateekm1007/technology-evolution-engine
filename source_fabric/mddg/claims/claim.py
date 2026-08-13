@@ -237,6 +237,9 @@ class Claim:
     claim_schema_version: int = 10
     validator_version: int = 10
     extraction_version: int = 10
+    # V11: Contract identity (provenance metadata, not scientific schema)
+    contract_hash: str = ""       # hash of the frozen contract that validated this Claim
+    repository_commit: str = ""   # git commit at which this Claim was promoted
 
     def __post_init__(self):
         if self.claim_type not in CLAIM_TYPES:
@@ -1460,17 +1463,22 @@ def is_simulation_ready(claim: Claim) -> bool:
 # =====================================================================
 
 def validate_claim_for_promotion(claim: Claim, source_store: dict = None) -> tuple[bool, str]:
-    """V8: Validate a CANDIDATE claim for promotion to EVIDENCE_BACKED.
+    """V11: Validate a CANDIDATE claim for promotion to EVIDENCE_BACKED.
 
-    Per CTO V13 #5: "No external caller may set status=EVIDENCE_BACKED and
-    bypass promotion."
-    Per CTO V13 #6: "The validator must NOT require claim.status == EVIDENCE_BACKED
-    before promotion. That would create a circular dependency."
+    Per CTO V19 P0-2: "The canonical promotion path must consume
+    validate_claim_against_contract(). No Claim can become EVIDENCE_BACKED
+    unless the active frozen contract validates it."
 
     This function works on candidate claims (status may be anything).
     It does NOT check claim.status — it checks the structural invariants.
     """
     source_store = source_store or {}
+
+    # V11 P0-2: FIRST check against the frozen contract (source of truth)
+    from .contract_loader import validate_claim_against_contract
+    contract_passed, contract_reason = validate_claim_against_contract(claim)
+    if not contract_passed:
+        return False, f"contract validation failed: {contract_reason}"
 
     # 1. has_seven_slots (V9: 7 slots including causal_relation)
     if not claim.has_seven_slots():
@@ -1545,21 +1553,34 @@ def validate_claim_for_promotion(claim: Claim, source_store: dict = None) -> tup
 
 
 def promote_claim_to_evidence_backed(claim: Claim, source_store: dict = None) -> Claim:
-    """V8: The ONLY function that may transition a Claim to EVIDENCE_BACKED.
+    """V11: The ONLY function that may transition a Claim to EVIDENCE_BACKED.
 
-    Per CTO V13 #5: "The promotion function alone may transition status.
-    No external caller may set status=EVIDENCE_BACKED and bypass promotion."
+    Per CTO V13 #5: "The promotion function alone may transition status."
+    Per CTO V19 P0-2: "Must consume validate_claim_against_contract()."
+    Per CTO V19 P0-4: "Must stamp contract_hash and repository_commit."
 
     Returns a NEW Claim with status=EVIDENCE_BACKED if validation passes.
     Returns the original claim (unchanged) if validation fails.
     """
     passed, reason = validate_claim_for_promotion(claim, source_store)
     if not passed:
-        # Return the claim as-is (it remains BLOCKED or SEARCH_CANDIDATE)
         return claim
-    # Create a new frozen Claim with EVIDENCE_BACKED status
+    # V11: Stamp contract identity on the promoted Claim
+    from .contract_loader import get_contract_hash, load_contract
+    import subprocess
+    contract_hash = get_contract_hash()
+    try:
+        repo_commit = subprocess.check_output(
+            ['git', 'rev-parse', 'HEAD'],
+            stderr=subprocess.DEVNULL
+        ).decode().strip()
+    except Exception:
+        repo_commit = "UNAVAILABLE"
+    # Create a new frozen Claim with EVIDENCE_BACKED status + contract identity
     import dataclasses
-    return dataclasses.replace(claim, status="EVIDENCE_BACKED")
+    return dataclasses.replace(claim, status="EVIDENCE_BACKED",
+                               contract_hash=contract_hash,
+                               repository_commit=repo_commit)
 
 
 # =====================================================================
