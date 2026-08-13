@@ -208,10 +208,17 @@ class Claim:
 
     # V9: FAILURE_MODE provenance tracking — three levels
     failure_mode_source: str = "DERIVED_FROM_CONTEXT"  # SOURCE_EXPLICIT | ONTOLOGY_VALIDATED | DERIVED_FROM_CONTEXT
-    failure_mode_term_in_source: str = ""     # V9: the actual text in the source
-    failure_mode_canonical_term: str = ""     # V9: the taxonomy canonical form
-    failure_mode_mapping_rule: str = ""       # V9: how the mapping was made
-    failure_mode_taxonomy_version: str = ""   # V9: version of the taxonomy used
+    failure_mode_term_in_source: str = ""
+    failure_mode_canonical_term: str = ""
+    failure_mode_mapping_rule: str = ""
+    failure_mode_taxonomy_version: str = ""
+
+    # V10: MECHANISM_STATUS — separate from mechanism value
+    # Per CTO V15 #2: "mechanism='UNKNOWN' plus mandatory mechanism evidence is contradictory"
+    # UNKNOWN_NOT_STATED = source does not identify a mechanism (no evidence needed)
+    # EXPLICIT = source explicitly identifies a mechanism (evidence with span required)
+    # UNKNOWN_NOT_RESOLVED = parser could not resolve (human review needed)
+    mechanism_status: str = "UNKNOWN_NOT_STATED"  # EXPLICIT | UNKNOWN_NOT_STATED | UNKNOWN_NOT_RESOLVED
 
     # V9: Structured measured_effect — genuinely extracted, not copied from cause
     effect_value: str = ""        # e.g. "30"
@@ -312,20 +319,23 @@ class Claim:
         ])
 
     def has_slot_level_evidence_v9(self) -> bool:
-        """V9: Each of the 7 mandatory slots must have slot-specific evidence.
+        """V10: Each mandatory slot must have slot-specific evidence.
 
-        mechanism_evidence is required even when mechanism="UNKNOWN"
-        (the evidence must show that the source did NOT identify a mechanism,
-        or that it did).
+        Per CTO V15 #2: mechanism evidence is NOT required when
+        mechanism_status == "UNKNOWN_NOT_STATED". That is a valid
+        scientific absence state, not evidence for a mechanism.
         """
-        return all([
+        required = [
             len(self.cause_evidence) > 0,
             len(self.failure_mode_evidence) > 0,
             len(self.causal_relation_evidence) > 0,
-            len(self.mechanism_evidence) > 0,
             len(self.intervention_evidence) > 0,
             len(self.measured_effect_evidence) > 0,
-        ])
+        ]
+        # V10: mechanism evidence only required when mechanism_status == "EXPLICIT"
+        if self.mechanism_status == "EXPLICIT":
+            required.append(len(self.mechanism_evidence) > 0)
+        return all(required)
 
     def has_slot_specific_evidence(self) -> bool:
         """V9: Evidence objects must have supports_slot matching their slot."""
@@ -374,7 +384,7 @@ class Claim:
             and self.has_slot_specific_evidence()
             and self.status == "EVIDENCE_BACKED"
             and self.temporal_validity == "valid"
-            and self.failure_mode_source in ("SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED", "EXPLICIT")
+            and self.failure_mode_source in ("SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED")  # V10: removed "EXPLICIT"
             and all(e.source_sentence for e in self.source_evidence)
             and all(e.source_hash for e in self.source_evidence)
             and all(e.publication_date for e in self.source_evidence)
@@ -677,20 +687,26 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             char_start=cr_span[0], char_end=cr_span[1],
             quoted_span=cr_span[2],
         )
-        # V9: mechanism evidence — even when mechanism="UNKNOWN", evidence must exist
-        # The evidence records that the source did NOT explicitly identify a mechanism
-        mechanism_ev = SourceEvidence(
-            source_id=source_id, source_type=source_type,
-            source_field=source_field, source_sentence=sentence[:500],
-            source_hash=source_hash, publication_date=publication_date,
-            evidence_tier=evidence_tier,
-            extraction_method="structured_causal_extraction" if mechanism != "UNKNOWN" else "mechanism_not_identified",
-            supports_slot="mechanism",
-            sentence_id=sent_id,
-            char_start=mech_span[0] if mechanism != "UNKNOWN" else 0,
-            char_end=mech_span[1] if mechanism != "UNKNOWN" else 0,
-            quoted_span=mech_span[2] if mechanism != "UNKNOWN" else "",
-        )
+        # V10: mechanism evidence — NOT created when mechanism_status == "UNKNOWN_NOT_STATED"
+        # Per CTO V15 #2: "mechanism='UNKNOWN' plus mandatory mechanism evidence is
+        # conceptually contradictory. It is an absence/negative-information assertion."
+        mechanism_status_value = "EXPLICIT" if mechanism != "UNKNOWN" else "UNKNOWN_NOT_STATED"
+        if mechanism_status_value == "EXPLICIT":
+            mechanism_ev = SourceEvidence(
+                source_id=source_id, source_type=source_type,
+                source_field=source_field, source_sentence=sentence[:500],
+                source_hash=source_hash, publication_date=publication_date,
+                evidence_tier=evidence_tier,
+                extraction_method="structured_causal_extraction",
+                supports_slot="mechanism",
+                sentence_id=sent_id,
+                char_start=mech_span[0], char_end=mech_span[1],
+                quoted_span=mech_span[2],
+            )
+            mechanism_evidence_tuple = (mechanism_ev,)
+        else:
+            # V10: no mechanism evidence — UNKNOWN_NOT_STATED is a valid absence
+            mechanism_evidence_tuple = ()
         intervention_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
             source_field=source_field, source_sentence=sentence[:500],
@@ -784,7 +800,8 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             cause_evidence=(cause_ev,),
             failure_mode_evidence=(failure_mode_ev,),
             causal_relation_evidence=(cr_ev,),  # V9
-            mechanism_evidence=(mechanism_ev,),
+            mechanism_evidence=mechanism_evidence_tuple,  # V10: empty when UNKNOWN_NOT_STATED
+            mechanism_status=mechanism_status_value,  # V10
             intervention_evidence=(intervention_ev,),
             measured_effect_evidence=(effect_ev,),
             boundary_evidence=boundary_ev,
@@ -814,7 +831,8 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             # V9: Only promote if _can_promote passes
             status="EVIDENCE_BACKED" if _can_promote(cause, failure_mode_value, mechanism,
                                                        intervention, measured_effect, boundary,
-                                                       cause_ev, failure_mode_ev, mechanism_ev,
+                                                       cause_ev, failure_mode_ev,
+                                                       mechanism_evidence_tuple[0] if mechanism_evidence_tuple else None,
                                                        intervention_ev, effect_ev,
                                                        publication_date, failure_mode_source,
                                                        causal_relation, cr_ev) else "BLOCKED",
@@ -914,10 +932,11 @@ def _extract_slots(sentence: str, causal_verb: str) -> Optional[tuple[str, str, 
     # Only set mechanism if the source explicitly identifies it (e.g. "via", "through",
     # "by", "due to", "through the mechanism of").
     mechanism = "UNKNOWN"  # V9: default — source does not explicitly identify mechanism
+    # V10: Removed "due to" from mechanism patterns.
+    # Per CTO V15 #4: "'due to' is dangerous. It may indicate CAUSE, not MECHANISM."
     mechanism_patterns = [
         r'(?:via|through|by means of|through the mechanism of)\s+(.+?)(?:[,.]|$)',
         r'(?:mechanism\s*:\s*)(.+?)(?:[,.]|$)',
-        r'(?:due to|resulting from|caused by)\s+(.+?)(?:[,.]|$)',
     ]
     for pattern in mechanism_patterns:
         mech_match = re.search(pattern, sentence, re.IGNORECASE)
@@ -1226,8 +1245,7 @@ def _can_promote(cause: str, failure_mode: str, mechanism: str,
         return False
     # boundary may be UNSPECIFIED
 
-    # V9: mechanism evidence may have empty span when mechanism="UNKNOWN"
-    # All OTHER mandatory evidence must have spans
+    # V10: mechanism evidence NOT required when mechanism_status == "UNKNOWN_NOT_STATED"
     mandatory_evs = [cause_ev, failure_mode_ev, intervention_ev, effect_ev]
     if causal_relation_ev:
         mandatory_evs.append(causal_relation_ev)
@@ -1236,18 +1254,15 @@ def _can_promote(cause: str, failure_mode: str, mechanism: str,
             return False
         if not ev.source_sentence or not ev.source_hash or not ev.publication_date:
             return False
-    # mechanism_ev must exist but may have empty span when mechanism="UNKNOWN"
-    if not mechanism_ev:
-        return False
-    if not mechanism_ev.source_sentence or not mechanism_ev.source_hash or not mechanism_ev.publication_date:
-        return False
+    # V10: mechanism_ev only required when mechanism is explicitly identified
+    # (mechanism != "UNKNOWN"). When UNKNOWN_NOT_STATED, no evidence needed.
 
-    # 3. Evidence supports_slot matches
+    # 3. Evidence supports_slot matches (mechanism_ev may be None when UNKNOWN_NOT_STATED)
     if cause_ev.supports_slot != "cause":
         return False
     if failure_mode_ev.supports_slot != "failure_mode":
         return False
-    if mechanism_ev.supports_slot != "mechanism":
+    if mechanism_ev is not None and mechanism_ev.supports_slot != "mechanism":
         return False
     if intervention_ev.supports_slot != "intervention":
         return False
@@ -1256,13 +1271,14 @@ def _can_promote(cause: str, failure_mode: str, mechanism: str,
     if causal_relation_ev and causal_relation_ev.supports_slot != "causal_relation":
         return False
 
-    # 4. No supports_slot="all"
-    for ev in [cause_ev, failure_mode_ev, mechanism_ev, intervention_ev, effect_ev]:
+    # 4. No supports_slot="all" (mechanism_ev may be None)
+    all_evs = [ev for ev in [cause_ev, failure_mode_ev, mechanism_ev, intervention_ev, effect_ev] if ev is not None]
+    for ev in all_evs:
         if ev.supports_slot == "all":
             return False
 
-    # 5. V9: failure_mode_source must be SOURCE_EXPLICIT or ONTOLOGY_VALIDATED
-    if failure_mode_source not in ("SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED", "EXPLICIT"):
+    # 5. V10: failure_mode_source must be SOURCE_EXPLICIT or ONTOLOGY_VALIDATED (no "EXPLICIT")
+    if failure_mode_source not in ("SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED"):
         return False
 
     # 6. publication_date must exist for temporal validity
@@ -1340,7 +1356,7 @@ def validate_claim_integrity(claim: Claim, source_store: dict[str, dict] = None)
         return False, "missing one or more of the 6 mandatory slots"
 
     # 3. Must have slot-level evidence
-    if not claim.has_slot_level_evidence_v6():
+    if not claim.has_slot_level_evidence_v9():
         return False, "missing slot-level evidence for one or more mandatory slots"
 
     # 4. Must have slot-specific evidence (no supports_slot="all")
@@ -1424,7 +1440,7 @@ def validate_claim_for_promotion(claim: Claim, source_store: dict = None) -> tup
         return False, "missing one or more of the 6 mandatory slots"
 
     # 2. has_slot_level_evidence
-    if not claim.has_slot_level_evidence_v6():
+    if not claim.has_slot_level_evidence_v9():
         return False, "missing slot-level evidence for one or more mandatory slots"
 
     # 3. has_slot_specific_evidence

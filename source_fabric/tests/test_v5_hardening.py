@@ -52,7 +52,7 @@ class TestV5NegativeCases:
                 source_ids=("p:1",), source_hashes=("h",),
                 temporal_validity="valid", creation_timestamp="2026-01-01",
                 evidence_tier="D", derivation_method="structured_causal_extraction",
-                failure_mode_source="EXPLICIT",
+                failure_mode_source="ONTOLOGY_VALIDATED",
             status="EVIDENCE_BACKED",
                 falsification_condition="f", measurement_method="m",
                 alternative_explanations=(),
@@ -163,7 +163,7 @@ class TestV5NegativeCases:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
-            failure_mode_source="EXPLICIT",
+            failure_mode_source="ONTOLOGY_VALIDATED",
             status="EVIDENCE_BACKED",
             falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
@@ -233,7 +233,7 @@ class TestV5PositiveGoldenCases:
         assert len(claims) >= 1
         claim = claims[0]
         assert claim.status == "EVIDENCE_BACKED"
-        assert "prevents" in claim.mechanism
+        assert claim.causal_relation == "prevents"  # V9: causal verb in causal_relation
 
     def test_golden_case_intervention_effect_extraction(self):
         """Golden case: intervention-effect sentence produces EVIDENCE_BACKED claim."""
@@ -300,6 +300,8 @@ class TestV5PositiveGoldenCases:
         assert len(claims) >= 1
         claim = claims[0]
         for ev in claim.source_evidence:
+            if ev.supports_slot == "mechanism" and ev.quoted_span == "":
+                continue  # V9: mechanism=UNKNOWN has empty span
             assert ev.char_end > ev.char_start
             assert ev.quoted_span != ""
             assert ev.sentence_id != ""
