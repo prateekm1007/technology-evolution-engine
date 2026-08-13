@@ -16,7 +16,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 
 from source_fabric.mddg.claims.claim import (
-    Claim, SourceEvidence, extract_causal_claims_v4, is_causal_sentence,
+    Claim, SourceEvidence, extract_causal_claims, is_causal_sentence,
     make_claim_id, ClaimRelation, make_claim_relation,
     CLAIM_RELATION_TYPES, CAUSAL_VERBS,
 )
@@ -33,7 +33,7 @@ class TestStructuredExtraction:
     def test_causal_verb_alone_is_search_candidate_not_evidence(self):
         """Per directive #1: causal verb without extractable slots → SEARCH_CANDIDATE."""
         # "reduces" is present but sentence is too short to extract subject/object
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             "It reduces.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
@@ -47,7 +47,7 @@ class TestStructuredExtraction:
 
     def test_well_structured_sentence_produces_evidence_backed(self):
         """A well-structured causal sentence with identifiable slots → EVIDENCE_BACKED."""
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             "Ceramic coating reduces wear by 30 percent in hip implants.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
@@ -63,7 +63,7 @@ class TestStructuredExtraction:
 
     def test_mechanism_is_not_just_verb(self):
         """Per directive #1: 'A verb such as reduces is not a mechanism.'"""
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             "Ceramic coating reduces wear by 30 percent.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
@@ -80,7 +80,7 @@ class TestStructuredExtraction:
     def test_slots_are_not_sentence_copies(self):
         """Per directive #1: 'A whole sentence copied into cause, intervention, and
         measured_effect is not structured extraction.'"""
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             "Ceramic coating reduces wear by 30 percent in hip implants.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
@@ -100,7 +100,7 @@ class TestStructuredExtraction:
 
 class TestNegativeClaimRejection:
     def _extract(self, text):
-        return extract_causal_claims_v4(
+        return extract_causal_claims(
             text, source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",

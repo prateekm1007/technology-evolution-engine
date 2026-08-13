@@ -22,7 +22,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 
 from source_fabric.mddg.claims.claim import (
-    Claim, SourceEvidence, extract_causal_claims_v4, make_claim_id,
+    Claim, SourceEvidence, extract_causal_claims, make_claim_id,
     ClaimRelation, make_search_claim_relation, make_evidence_claim_relation,
     validate_claim_relation_evidence, VALID_SLOTS,
     validate_slot_support, validate_claim_integrity, is_simulation_ready,
@@ -115,13 +115,13 @@ class TestSpanAtZero:
 class TestDeterministicSentenceId:
     def test_same_input_produces_same_sentence_id(self):
         """V6: same source + sentence + hash → identical sentence_id across runs."""
-        claims1 = extract_causal_claims_v4(
+        claims1 = extract_causal_claims(
             "Ceramic coating reduces wear by 30 percent.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="abc",
             publication_date="2020-01-01", evidence_tier="D",
         )
-        claims2 = extract_causal_claims_v4(
+        claims2 = extract_causal_claims(
             "Ceramic coating reduces wear by 30 percent.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="abc",
@@ -134,13 +134,13 @@ class TestDeterministicSentenceId:
 
     def test_different_source_produces_different_sentence_id(self):
         """V6: different source_id → different sentence_id."""
-        claims1 = extract_causal_claims_v4(
+        claims1 = extract_causal_claims(
             "Ceramic coating reduces wear by 30 percent.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="abc",
             publication_date="2020-01-01", evidence_tier="D",
         )
-        claims2 = extract_causal_claims_v4(
+        claims2 = extract_causal_claims(
             "Ceramic coating reduces wear by 30 percent.",
             source_id="p:2", source_type="paper",
             source_field="abstract", source_hash="abc",
@@ -186,7 +186,7 @@ class TestConservativeExtraction:
         """V6: ambiguous sentence with multiple causal propositions → not EVIDENCE_BACKED."""
         text = ("Surface roughness increased wear, whereas coating X reduced wear "
                 "under simulated physiological loading.")
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
@@ -260,7 +260,7 @@ class TestSimulationReady:
 class TestClaimIntegrity:
     def test_valid_claim_passes_integrity(self):
         """V6: a well-formed evidence-backed claim passes integrity validation."""
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             "Ceramic coating reduces implant wear by 30 percent in saline.",
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="abc",
@@ -304,7 +304,7 @@ class TestClaimIntegrity:
 
 class TestAdversarialExtraction:
     def _extract(self, text):
-        return extract_causal_claims_v4(
+        return extract_causal_claims(
             text, source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",

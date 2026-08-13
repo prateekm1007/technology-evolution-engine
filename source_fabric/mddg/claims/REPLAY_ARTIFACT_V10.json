@@ -1,7 +1,7 @@
 {
   "artifact_name": "REPLAY_ARTIFACT_V10",
   "artifact_version": 2,
-  "claim_contract_hash": "9e7b464f03501af10afa6dd2a95b57825c4e96179139c462e7746ec5c5520cac",
+  "claim_contract_hash": "f89a7feeaf8200e2c03334ddc0cd4d0e7824ae2002dd58f82724d98676f4629e",
   "claim_ids_hash": "9c351ae857e65d031358b74720041cae062ba2ab1e571792061d191fe329c705",
   "claim_outputs": [
     {
@@ -139,7 +139,7 @@
       "source_ids": [
         "replay:p1"
       ],
-      "status": "EVIDENCE_BACKED",
+      "status": "SEARCH_CANDIDATE",
       "temporal_validity": "valid",
       "validator_version": 10
     },
@@ -295,7 +295,7 @@
       "source_ids": [
         "replay:p3"
       ],
-      "status": "EVIDENCE_BACKED",
+      "status": "SEARCH_CANDIDATE",
       "temporal_validity": "valid",
       "validator_version": 10
     },
@@ -434,7 +434,7 @@
       "source_ids": [
         "replay:p2"
       ],
-      "status": "EVIDENCE_BACKED",
+      "status": "SEARCH_CANDIDATE",
       "temporal_validity": "valid",
       "validator_version": 10
     }
@@ -444,12 +444,12 @@
   "evidence_hash": "38a3d18e29f0ceb0f3fbdd2cd87f63cf522f0bcb726df697ed4f5a8daf2ddbc1",
   "extractor_version": 10,
   "failure_taxonomy_hash": "d2781ad04b058af7d7442043074f2b6cea2c38b9a459c8db7e02f14fb797edc3",
-  "full_output_hash": "b278ee5d81ced2fb57a4469ebc189f6d994532604aec00a65f50844fde70aef0",
+  "full_output_hash": "ba970336ff0ba75562d05bcf62445c92b320770f51b7fb23dc0adc1ec4d0bb5f",
   "generated_with_clock": "ReplayClock",
   "input_snapshot_hash": "4c30a872db1eeaec6dc44f3bb7431cff5017ed346b5ede7c61c688b5ef392f8a",
   "knowledge_cutoff": "2026-08-13",
   "ontology_hash": "d2781ad04b058af7d7442043074f2b6cea2c38b9a459c8db7e02f14fb797edc3",
-  "root_hash": "53e9e369e08b5b171015d393fb8857f5187635baa9eed2dbcdcbfefc7c5cb79e",
+  "root_hash": "91458b2e52a767d0787c7dccb3d55b4b92794406a3128e279ac269338d3e4da9",
   "source_record_hashes": [
     "replay_hash_1",
     "replay_hash_2",
@@ -465,6 +465,6 @@
     "replay:p5"
   ],
   "source_registry_hash": "4c30a872db1eeaec6dc44f3bb7431cff5017ed346b5ede7c61c688b5ef392f8a",
-  "status_hash": "ad55b1de0bdf76082bcbf1ecee57f7b33bdf7b1dbacd1c633d019fbd12bcbc67",
+  "status_hash": "ef7c222025f086e1dee55f2de435ef05ec0ca6e1c5a3da2be3107c2071174658",
   "validator_version": 10
 }

@@ -49,8 +49,6 @@
       ]
     }
   },
-  "contract_content_hash": "a8106656209ba3466c0d05ea65698ab54837487a00ae993c9aa958ce94e1d708",
-  "contract_hash": "a8106656209ba346",
   "contract_name": "CLAIM_CONTRACT_V10",
   "discovery_rules": {
     "FAILURE_to_MECHANISM_requires": "is_mechanistically_complete() == true",
@@ -294,7 +292,6 @@
       "value": 10
     }
   },
-  "frozen_at": "2026-08-13T05:57:23.152855+00:00",
   "mechanism_evidence_rule": {
     "EXPLICIT": "required_with_span",
     "UNKNOWN_NOT_RESOLVED": "forbidden_for_evidence_backed",
@@ -311,7 +308,6 @@
     "only_function": "promote_claim_to_evidence_backed()",
     "validator": "validate_claim_for_promotion()"
   },
-  "repository_commit": "aad43beb8f6065ec56382b29368e4f4289a11d90",
   "schema_version": 10,
   "temporal_rules": {
     "evidence_publication_date_must_predate_candidate_lock": true,

@@ -13,7 +13,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 
 from source_fabric.mddg.claims.claim import (
-    Claim, SourceEvidence, extract_causal_claims_v4, make_claim_id,
+    Claim, SourceEvidence, extract_causal_claims, make_claim_id,
     ClaimRelation, make_search_claim_relation, make_evidence_claim_relation,
     validate_claim_relation_evidence, VALID_SLOTS,
 )
@@ -60,7 +60,7 @@ class TestV5NegativeCases:
 
     def test_mechanism_equal_to_verb_only_not_evidence_backed(self):
         """V5: mechanism = causal verb only → not EVIDENCE_BACKED."""
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             "Reduces.",  # too short to extract slots
             source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="h",
@@ -204,7 +204,7 @@ class TestV5PositiveGoldenCases:
     def test_golden_case_device_failure_extraction(self):
         """Golden case: device failure sentence produces EVIDENCE_BACKED claim."""
         text = "Ceramic coating reduces implant wear by 30 percent in hip replacements."
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:1", source_type="paper",
             source_field="abstract", source_hash="abc123",
             publication_date="2023-06-15", evidence_tier="D",
@@ -225,7 +225,7 @@ class TestV5PositiveGoldenCases:
     def test_golden_case_mechanism_effect_extraction(self):
         """Golden case: mechanism-effect sentence produces EVIDENCE_BACKED claim."""
         text = "Surface passivation treatment prevents corrosion degradation in titanium implants."
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:2", source_type="paper",
             source_field="abstract", source_hash="def456",
             publication_date="2022-03-10", evidence_tier="D",
@@ -238,7 +238,7 @@ class TestV5PositiveGoldenCases:
     def test_golden_case_intervention_effect_extraction(self):
         """Golden case: intervention-effect sentence produces EVIDENCE_BACKED claim."""
         text = "Diamond-like carbon coating improves wear resistance by 40 percent under physiological loading."
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:3", source_type="paper",
             source_field="abstract", source_hash="ghi789",
             publication_date="2024-01-20", evidence_tier="D",
@@ -249,7 +249,7 @@ class TestV5PositiveGoldenCases:
     def test_golden_case_material_property_extraction(self):
         """Golden case: material-property sentence with failure taxonomy match produces EVIDENCE_BACKED claim."""
         text = "Hydroxyapatite coating reduces degradation by 50 percent in dental implants."
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:4", source_type="paper",
             source_field="abstract", source_hash="jkl012",
             publication_date="2023-09-05", evidence_tier="D",
@@ -261,7 +261,7 @@ class TestV5PositiveGoldenCases:
     def test_golden_case_with_boundary_conditions(self):
         """Golden case: sentence with boundary conditions extracts them."""
         text = "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo."
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:5", source_type="paper",
             source_field="abstract", source_hash="mno345",
             publication_date="2023-11-12", evidence_tier="D",
@@ -275,7 +275,7 @@ class TestV5PositiveGoldenCases:
     def test_golden_case_slot_specific_evidence(self):
         """Golden case: each slot has its own slot-specific evidence."""
         text = "Zirconia coating reduces surface wear by 35 percent under physiological conditions."
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:6", source_type="paper",
             source_field="abstract", source_hash="pqr678",
             publication_date="2024-02-01", evidence_tier="D",
@@ -292,7 +292,7 @@ class TestV5PositiveGoldenCases:
     def test_golden_case_evidence_has_spans(self):
         """Golden case: evidence objects have char_start, char_end, quoted_span."""
         text = "Nitride coating suppresses metal ion release by 80 percent in saline environment."
-        claims = extract_causal_claims_v4(
+        claims = extract_causal_claims(
             text, source_id="p:7", source_type="paper",
             source_field="abstract", source_hash="stu901",
             publication_date="2023-07-22", evidence_tier="D",

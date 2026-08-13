@@ -30,31 +30,41 @@ REPO = Path(__file__).resolve().parents[1]
 # Files to scan
 SCAN_DIRS = ["source_fabric", "scripts", "tools"]
 ALLOWED_FILES = {
-    # The promotion function itself
-    "source_fabric/mddg/claims/claim.py",
-    # The contract loader
+    # Only the contract loader is file-level whitelisted (it doesn't create Claims)
     "source_fabric/mddg/claims/contract_loader.py",
-    # Tests that deliberately construct Claims to test validation
-    # (these test the DETECTION of direct writes, not production code)
 }
 
 # Test files that construct Claims with EVIDENCE_BACKED for testing purposes
-# These are ALLOWED because they test the validation logic, not produce production Claims
 TEST_FILES_PREFIX = "source_fabric/tests/"
 
-# Allowed function names that may set EVIDENCE_BACKED
-ALLOWED_FUNCTIONS = {
+# Allowed FUNCTION NAMES that may write EVIDENCE_BACKED
+# The AST audit checks if the write is inside one of these functions
+ALLOWED_FUNCTION_NAMES = {
     "promote_claim_to_evidence_backed",
-    "_can_promote",  # extractor's gate: status="EVIDENCE_BACKED" if _can_promote(...)
 }
 
 
 class EvidencePromotionAuditor(ast.NodeVisitor):
-    """AST visitor that detects direct EVIDENCE_BACKED writes."""
+    """AST visitor that detects direct EVIDENCE_BACKED writes.
+
+    V11: Whitelists FUNCTION SCOPE only, not file scope.
+    Only promote_claim_to_evidence_backed() may write EVIDENCE_BACKED.
+    """
 
     def __init__(self, filepath: str):
         self.filepath = filepath
         self.violations = []
+        self.function_stack = []  # tracks enclosing function names
+
+    def visit_FunctionDef(self, node):
+        self.function_stack.append(node.name)
+        self.generic_visit(node)
+        self.function_stack.pop()
+
+    def visit_AsyncFunctionDef(self, node):
+        self.function_stack.append(node.name)
+        self.generic_visit(node)
+        self.function_stack.pop()
 
     def visit_Call(self, node):
         # Detect Claim(..., status="EVIDENCE_BACKED") or Claim(..., status=<var>)
@@ -137,11 +147,15 @@ class EvidencePromotionAuditor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def _is_in_allowed_context(self, node):
-        """Check if the node is inside an allowed context (production code only)."""
+        """Check if the node is inside an allowed function (function scope, not file scope)."""
         # Test files are allowed to construct Claims for testing validation
         if self.filepath.startswith(TEST_FILES_PREFIX):
             return True
-        return self.filepath in ALLOWED_FILES
+        # V11: Check if inside an allowed function by name
+        for fn_name in self.function_stack:
+            if fn_name in ALLOWED_FUNCTION_NAMES:
+                return True
+        return False
 
 
 def scan_file(filepath: Path) -> list[dict]:

@@ -847,12 +847,13 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             failure_mode_canonical_term=failure_mode_canonical_term,
             failure_mode_mapping_rule=failure_mode_mapping_rule,
             failure_mode_taxonomy_version=failure_mode_taxonomy_version,
-            # V9: schema versioning
             claim_schema_version=10,
             validator_version=10,
             extraction_version=10,
-            # V9: Only promote if _can_promote passes
-            status="EVIDENCE_BACKED" if _can_promote(cause, failure_mode_value, mechanism,
+            # V11: Extractor creates BLOCKED or SEARCH_CANDIDATE only.
+            # Promotion to EVIDENCE_BACKED happens ONLY through
+            # promote_claim_to_evidence_backed() — the canonical promotion function.
+            status="SEARCH_CANDIDATE" if _can_promote(cause, failure_mode_value, mechanism,
                                                        intervention, measured_effect, boundary,
                                                        cause_ev, failure_mode_ev,
                                                        mechanism_evidence_tuple[0] if mechanism_evidence_tuple else None,
@@ -1321,8 +1322,21 @@ def _can_promote(cause: str, failure_mode: str, mechanism: str,
 # the Claim constructor. These aliases maintain backward compatibility.
 
 def extract_causal_claims(text: str, **kwargs) -> list[Claim]:
-    """Backward-compatible alias for extract_causal_claims_v4."""
-    return extract_causal_claims_v4(text, **kwargs)
+    """Backward-compatible alias for extract_causal_claims_v4.
+
+    V11: This function extracts Claims AND promotes eligible ones to EVIDENCE_BACKED
+    via the canonical promotion function. The extractor itself creates SEARCH_CANDIDATE
+    or BLOCKED only; promotion is the sole path to EVIDENCE_BACKED.
+    """
+    raw_claims = extract_causal_claims_v4(text, **kwargs)
+    promoted = []
+    for claim in raw_claims:
+        if claim.status == "SEARCH_CANDIDATE":
+            promoted_claim = promote_claim_to_evidence_backed(claim)
+            promoted.append(promoted_claim)
+        else:
+            promoted.append(claim)
+    return promoted
 
 
 # =====================================================================
@@ -1458,9 +1472,9 @@ def validate_claim_for_promotion(claim: Claim, source_store: dict = None) -> tup
     """
     source_store = source_store or {}
 
-    # 1. has_six_slots
-    if not claim.has_six_slots():
-        return False, "missing one or more of the 6 mandatory slots"
+    # 1. has_seven_slots (V9: 7 slots including causal_relation)
+    if not claim.has_seven_slots():
+        return False, "missing one or more of the 7 mandatory slots"
 
     # 2. has_slot_level_evidence
     if not claim.has_slot_level_evidence_v9():
@@ -1483,9 +1497,9 @@ def validate_claim_for_promotion(claim: Claim, source_store: dict = None) -> tup
             if not ev.has_span():
                 return False, "boundary evidence has no span"
 
-    # 6. V8: failure_mode_source must be EXPLICIT
-    if claim.failure_mode_source != "EXPLICIT":
-        return False, f"failure_mode_source is '{claim.failure_mode_source}', must be 'EXPLICIT'"
+    # 6. V11: failure_mode_source must be SOURCE_EXPLICIT or ONTOLOGY_VALIDATED
+    if claim.failure_mode_source not in ("SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED"):
+        return False, f"failure_mode_source is '{claim.failure_mode_source}', must be SOURCE_EXPLICIT or ONTOLOGY_VALIDATED"
 
     # 7. Slot grounding
     slot_evidence_map = {
