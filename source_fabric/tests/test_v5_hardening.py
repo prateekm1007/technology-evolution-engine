@@ -43,6 +43,7 @@ class TestV5NegativeCases:
             Claim(
                 claim_id="c:1", claim_type="MECHANISM_CLAIM",
                 proposition="test", cause="wear", failure_mode="UNSPECIFIED",
+                causal_relation="UNSPECIFIED",
                 mechanism="degradation", intervention="coating",
                 measured_effect="30% reduction", boundary_conditions="UNSPECIFIED",
                 cause_evidence=(bad_ev,), mechanism_evidence=(_make_ev("mechanism"),),
@@ -51,7 +52,8 @@ class TestV5NegativeCases:
                 source_ids=("p:1",), source_hashes=("h",),
                 temporal_validity="valid", creation_timestamp="2026-01-01",
                 evidence_tier="D", derivation_method="structured_causal_extraction",
-                status="EVIDENCE_BACKED",
+                failure_mode_source="EXPLICIT",
+            status="EVIDENCE_BACKED",
                 falsification_condition="f", measurement_method="m",
                 alternative_explanations=(),
             )
@@ -151,6 +153,7 @@ class TestV5NegativeCases:
         claim = Claim(
             claim_id="c:1", claim_type="MECHANISM_CLAIM",
             proposition="test", cause="wear", failure_mode="UNSPECIFIED",
+            causal_relation="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="30%", boundary_conditions="UNSPECIFIED",
             cause_evidence=(_make_ev("cause"),),
@@ -160,6 +163,7 @@ class TestV5NegativeCases:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
             falsification_condition="f", measurement_method="m",
             alternative_explanations=(),

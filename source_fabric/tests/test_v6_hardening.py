@@ -50,18 +50,20 @@ class TestFailureModeMandatory:
         """V6: Claim with empty failure_mode → is_evidence_backed() == False."""
         claim = Claim(
             claim_id="c:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="wear", failure_mode="",  # EMPTY
+            proposition="test", cause="wear", failure_mode="", causal_relation="",  # EMPTY
             mechanism="degradation", intervention="coating",
             measured_effect="30%", boundary_conditions="UNSPECIFIED",
             cause_evidence=(_ev("cause"),), failure_mode_evidence=(),
+            causal_relation_evidence=(),
             mechanism_evidence=(_ev("mechanism"),),
             intervention_evidence=(_ev("intervention"),),
             measured_effect_evidence=(_ev("measured_effect"),),
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
+            falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
         )
         assert claim.has_six_slots() is False
@@ -72,6 +74,7 @@ class TestFailureModeMandatory:
         claim = Claim(
             claim_id="c:1", claim_type="MECHANISM_CLAIM",
             proposition="test", cause="wear", failure_mode="UNSPECIFIED",
+            causal_relation="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="30%", boundary_conditions="UNSPECIFIED",
             cause_evidence=(_ev("cause"),),
@@ -81,8 +84,9 @@ class TestFailureModeMandatory:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="test",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
+            falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
         )
         assert claim.has_six_slots() is False
@@ -206,6 +210,7 @@ class TestSimulationReady:
         claim = Claim(
             claim_id="c:1", claim_type="MECHANISM_CLAIM",
             proposition="test", cause="wear", failure_mode="wear",
+            causal_relation="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="30%", boundary_conditions="UNSPECIFIED",
             cause_evidence=(_ev("cause"),), failure_mode_evidence=(_ev("failure_mode"),),
@@ -215,8 +220,9 @@ class TestSimulationReady:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
+            falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
         )
         assert is_simulation_ready(claim) is False
@@ -226,6 +232,7 @@ class TestSimulationReady:
         claim = Claim(
             claim_id="c:1", claim_type="MECHANISM_CLAIM",
             proposition="test", cause="wear", failure_mode="wear",
+            causal_relation="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="30%", boundary_conditions="37C saline environment",
             cause_evidence=(_ev(slot="cause", span="wear"),),
@@ -237,8 +244,9 @@ class TestSimulationReady:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
+            falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
         )
         assert is_simulation_ready(claim) is True
@@ -268,6 +276,7 @@ class TestClaimIntegrity:
         claim = Claim(
             claim_id="c:1", claim_type="MECHANISM_CLAIM",
             proposition="test", cause="wear", failure_mode="wear",
+            causal_relation="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="30%", boundary_conditions="UNSPECIFIED",
             cause_evidence=(_ev("cause"),),
@@ -278,8 +287,9 @@ class TestClaimIntegrity:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
-            falsification_condition="f", measurement_method="m", failure_mode_source="EXPLICIT",
+            falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
         )
         passed, reason = validate_claim_integrity(claim)

@@ -148,31 +148,33 @@ class SourceEvidence:
 
 
 # V5: valid slot names for supports_slot
-VALID_SLOTS = {"cause", "failure_mode", "mechanism", "intervention",
-               "measured_effect", "boundary_conditions"}
+VALID_SLOTS = {"cause", "failure_mode", "causal_relation", "mechanism",
+               "intervention", "measured_effect", "boundary_conditions"}
 
 
 @dataclass(frozen=True)
 class Claim:
     """The canonical epistemic atomic unit.
 
-    V5 HARDENING: 6-slot scientific structure (CAUSE + FAILURE_MODE + MECHANISM +
-    INTERVENTION + MEASURED_EFFECT + BOUNDARY_CONDITIONS).
+    V9: 7-slot scientific structure (CAUSE + FAILURE_MODE + CAUSAL_RELATION +
+    MECHANISM + INTERVENTION + MEASURED_EFFECT + BOUNDARY_CONDITIONS).
 
-    Per CTO directive D: "explicitly separating FAILURE_MODE from CAUSE is
-    worthwhile for the medical-device vertical."
-
-    Per CTO directive A: "supports_slot = 'all' is FORBIDDEN for evidence-backed
-    claims. Every slot must point to explicit evidence."
+    Per CTO V14 #1: "A causal relationship is not the same thing as a mechanism."
+    - CAUSAL_RELATION = the observed predicate (e.g. "reduces", "prevents")
+    - MECHANISM = the underlying causal explanation (e.g. "adhesive interaction")
+    A Claim may be EVIDENCE_BACKED with mechanism=UNKNOWN if the source
+    establishes a causal relation but does not identify the mechanism.
+    But it cannot be a MECHANISM_CLAIM without an explicit mechanism.
     """
     claim_id: str
     claim_type: str
     proposition: str
 
-    # 6-SLOT SCIENTIFIC STRUCTURE (mandatory)
+    # 7-SLOT SCIENTIFIC STRUCTURE
     cause: str
     failure_mode: str          # V5: separated from cause
-    mechanism: str
+    causal_relation: str       # V9: the observed predicate (e.g. "reduces")
+    mechanism: str             # V9: the underlying explanation (may be "UNKNOWN")
     intervention: str
     measured_effect: str
     boundary_conditions: str   # "UNSPECIFIED" allowed
@@ -180,6 +182,7 @@ class Claim:
     # EVIDENCE — each slot has its own slot-specific evidence
     cause_evidence: tuple[SourceEvidence, ...] = ()
     failure_mode_evidence: tuple[SourceEvidence, ...] = ()
+    causal_relation_evidence: tuple[SourceEvidence, ...] = ()
     mechanism_evidence: tuple[SourceEvidence, ...] = ()
     intervention_evidence: tuple[SourceEvidence, ...] = ()
     measured_effect_evidence: tuple[SourceEvidence, ...] = ()
@@ -203,21 +206,25 @@ class Claim:
     measurement_method: str = ""
     alternative_explanations: tuple[str, ...] = ()
 
-    # V8: FAILURE_MODE provenance tracking
-    failure_mode_source: str = "DERIVED_FROM_CONTEXT"  # "EXPLICIT" or "DERIVED_FROM_CONTEXT"
+    # V9: FAILURE_MODE provenance tracking — three levels
+    failure_mode_source: str = "DERIVED_FROM_CONTEXT"  # SOURCE_EXPLICIT | ONTOLOGY_VALIDATED | DERIVED_FROM_CONTEXT
+    failure_mode_term_in_source: str = ""     # V9: the actual text in the source
+    failure_mode_canonical_term: str = ""     # V9: the taxonomy canonical form
+    failure_mode_mapping_rule: str = ""       # V9: how the mapping was made
+    failure_mode_taxonomy_version: str = ""   # V9: version of the taxonomy used
 
-    # V8: Structured measured_effect
+    # V9: Structured measured_effect — genuinely extracted, not copied from cause
     effect_value: str = ""        # e.g. "30"
     effect_unit: str = ""         # e.g. "%"
     effect_direction: str = ""    # "increase" or "decrease"
-    effect_metric: str = ""       # e.g. "wear_rate"
-    effect_target: str = ""       # e.g. "implant_wear"
+    effect_metric: str = ""       # V9: e.g. "wear_rate" — extracted from source, NOT copied from cause
+    effect_target: str = ""       # V9: e.g. "implant" — extracted from source, NOT copied from cause
     effect_raw_text: str = ""     # e.g. "reduced implant wear by 30 percent"
 
-    # V8: Schema versioning
-    claim_schema_version: int = 8
-    validator_version: int = 8
-    extraction_version: int = 8
+    # V9: Schema versioning
+    claim_schema_version: int = 9
+    validator_version: int = 9
+    extraction_version: int = 9
 
     def __post_init__(self):
         if self.claim_type not in CLAIM_TYPES:
@@ -245,26 +252,41 @@ class Claim:
     def source_evidence(self) -> tuple[SourceEvidence, ...]:
         """All evidence across all slots."""
         return (self.cause_evidence + self.failure_mode_evidence +
-                self.mechanism_evidence + self.intervention_evidence +
-                self.measured_effect_evidence + self.boundary_evidence)
+                self.causal_relation_evidence + self.mechanism_evidence +
+                self.intervention_evidence + self.measured_effect_evidence +
+                self.boundary_evidence)
 
     def has_six_slots(self) -> bool:
-        """V6: Check that all 6 mandatory slots are filled.
-
-        failure_mode must be a real value (NOT "UNSPECIFIED").
-        boundary_conditions may be "UNSPECIFIED" (the only slot that allows it).
-        """
+        """V9 backward compat: checks 6 original slots (without causal_relation)."""
         return all([
             self.cause and self.cause != "UNSPECIFIED",
             self.failure_mode and self.failure_mode != "UNSPECIFIED",
             self.mechanism and self.mechanism != "UNSPECIFIED",
             self.intervention and self.intervention != "UNSPECIFIED",
             self.measured_effect and self.measured_effect != "UNSPECIFIED",
-            self.boundary_conditions,  # boundary may be "UNSPECIFIED"
+            self.boundary_conditions,
+        ])
+
+    def has_seven_slots(self) -> bool:
+        """V9: Check that all 7 mandatory slots are filled.
+
+        Per CTO V14 #1: CAUSAL_RELATION is now separate from MECHANISM.
+        - cause, failure_mode, causal_relation, intervention, measured_effect must be real
+        - mechanism may be "UNKNOWN" (source establishes causal relation but not mechanism)
+        - boundary_conditions may be "UNSPECIFIED"
+        """
+        return all([
+            self.cause and self.cause != "UNSPECIFIED",
+            self.failure_mode and self.failure_mode != "UNSPECIFIED",
+            self.causal_relation and self.causal_relation != "UNSPECIFIED",
+            self.mechanism,  # may be "UNKNOWN"
+            self.intervention and self.intervention != "UNSPECIFIED",
+            self.measured_effect and self.measured_effect != "UNSPECIFIED",
+            self.boundary_conditions,  # may be "UNSPECIFIED"
         ])
 
     def has_five_slots(self) -> bool:
-        """Backward compat: 5-slot check (failure_mode may be empty in legacy)."""
+        """Backward compat: 5-slot check."""
         return all([
             self.cause, self.mechanism, self.intervention,
             self.measured_effect, self.boundary_conditions,
@@ -280,10 +302,7 @@ class Claim:
         ])
 
     def has_slot_level_evidence_v6(self) -> bool:
-        """V6: Each of the 6 mandatory slots must have slot-specific evidence.
-
-        Per CTO V11 #1: failure_mode is mandatory for evidence-backed claims.
-        """
+        """V6 backward compat."""
         return all([
             len(self.cause_evidence) > 0,
             len(self.failure_mode_evidence) > 0,
@@ -292,14 +311,28 @@ class Claim:
             len(self.measured_effect_evidence) > 0,
         ])
 
-    def has_slot_specific_evidence(self) -> bool:
-        """V5: Evidence objects must have supports_slot matching their slot.
+    def has_slot_level_evidence_v9(self) -> bool:
+        """V9: Each of the 7 mandatory slots must have slot-specific evidence.
 
-        Per CTO directive A: "supports_slot='all' is FORBIDDEN."
+        mechanism_evidence is required even when mechanism="UNKNOWN"
+        (the evidence must show that the source did NOT identify a mechanism,
+        or that it did).
         """
+        return all([
+            len(self.cause_evidence) > 0,
+            len(self.failure_mode_evidence) > 0,
+            len(self.causal_relation_evidence) > 0,
+            len(self.mechanism_evidence) > 0,
+            len(self.intervention_evidence) > 0,
+            len(self.measured_effect_evidence) > 0,
+        ])
+
+    def has_slot_specific_evidence(self) -> bool:
+        """V9: Evidence objects must have supports_slot matching their slot."""
         slot_evidence_map = {
             "cause": self.cause_evidence,
             "failure_mode": self.failure_mode_evidence,
+            "causal_relation": self.causal_relation_evidence,
             "mechanism": self.mechanism_evidence,
             "intervention": self.intervention_evidence,
             "measured_effect": self.measured_effect_evidence,
@@ -314,21 +347,21 @@ class Claim:
         return True
 
     def is_evidence_backed(self) -> bool:
-        """V8: EVIDENCE_BACKED requires ALL of:
-        - 6 slots filled (INCLUDING failure_mode — NOT optional)
-        - slot-level evidence for cause, failure_mode, mechanism, intervention, measured_effect
+        """V9: EVIDENCE_BACKED requires ALL of:
+        - 7 slots filled (INCLUDING causal_relation; mechanism may be "UNKNOWN")
+        - slot-level evidence for all mandatory slots
         - no supports_slot="all" in any evidence
         - status == EVIDENCE_BACKED
         - temporal_validity == "valid"
         - source sentence + hash + date in every evidence
         - every non-boundary evidence has a real span (has_span())
-        - V8: boundary evidence required when boundary != UNSPECIFIED
-        - V8: failure_mode_source == "EXPLICIT"
+        - boundary evidence required when boundary != UNSPECIFIED
+        - failure_mode_source in (SOURCE_EXPLICIT, ONTOLOGY_VALIDATED)
 
-        Per CTO V11 #1: 'EVIDENCE_BACKED => has_six_slots(). No compatibility path.'
-        Per CTO V13 #4: 'boundary_conditions != UNSPECIFIED → boundary_evidence REQUIRED.'
+        Per CTO V14 #1: 'A causal relationship is not the same thing as a mechanism.'
+        Per CTO V14 #2: 'Separate SOURCE_EXPLICIT from ONTOLOGY_VALIDATED.'
         """
-        # V8: boundary evidence check
+        # V9: boundary evidence check
         boundary_ok = True
         if self.boundary_conditions != "UNSPECIFIED" and len(self.boundary_conditions) > 5:
             boundary_ok = (
@@ -336,17 +369,19 @@ class Claim:
                 and all(e.has_span() for e in self.boundary_evidence)
             )
         return (
-            self.has_six_slots()
-            and self.has_slot_level_evidence_v6()
+            self.has_seven_slots()
+            and self.has_slot_level_evidence_v9()
             and self.has_slot_specific_evidence()
             and self.status == "EVIDENCE_BACKED"
             and self.temporal_validity == "valid"
-            and self.failure_mode_source == "EXPLICIT"  # V8
+            and self.failure_mode_source in ("SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED", "EXPLICIT")
             and all(e.source_sentence for e in self.source_evidence)
             and all(e.source_hash for e in self.source_evidence)
             and all(e.publication_date for e in self.source_evidence)
-            and all(e.has_span() for e in self.source_evidence if e.supports_slot != "boundary_conditions")
-            and boundary_ok  # V8
+            and all(e.has_span() for e in self.source_evidence
+                    if e.supports_slot not in ("boundary_conditions",)
+                    and not (e.supports_slot == "mechanism" and self.mechanism == "UNKNOWN"))
+            and boundary_ok
         )
 
     def is_search_candidate_only(self) -> bool:
@@ -477,7 +512,8 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             continue
 
         # SLOTS EXTRACTED → EVIDENCE_BACKED
-        cause, mechanism, intervention, measured_effect, boundary = slots
+        # V9: unpack 7-tuple
+        cause, causal_relation, mechanism, intervention, measured_effect, boundary = slots
         sent_id = f"{source_id}:s{hashlib.sha256((source_id + sentence + source_hash).encode()).hexdigest()[:8]}"
 
         # V7: Create SLOT-SPECIFIC evidence with ACTUAL character spans.
@@ -504,13 +540,15 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             return None  # NO FALLBACK — caller must handle None
 
         cause_span = _find_span(cause, sentence)
-        mech_span = _find_span(mechanism, sentence)
+        cr_span = _find_span(causal_relation, sentence)  # V9: causal_relation span
+        # V9: mechanism may be "UNKNOWN" — if so, no span needed (but evidence still required)
+        mech_span = _find_span(mechanism, sentence) if mechanism != "UNKNOWN" else (0, 0, "")
         intv_span = _find_span(intervention, sentence)
         eff_span = _find_span(measured_effect, sentence)
 
-        # V7: If ANY mandatory slot value cannot be grounded in the source sentence,
+        # V9: If ANY mandatory slot value cannot be grounded (except mechanism=UNKNOWN),
         # the Claim is BLOCKED — not EVIDENCE_BACKED with degraded spans.
-        if cause_span is None or mech_span is None or intv_span is None or eff_span is None:
+        if cause_span is None or cr_span is None or intv_span is None or eff_span is None:
             evidence = SourceEvidence(
                 source_id=source_id, source_type=source_type,
                 source_field=source_field, source_sentence=sentence[:500],
@@ -575,20 +613,30 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
         # Per CTO V13 #1: "only if 'wear' is mapped to the controlled failure taxonomy
         # through a validated ontology mapping."
         from ..failure_taxonomy import FAILURE_MODES, classify_failure_from_text
+        # V9: three-level failure_mode_source distinction
+        failure_mode_term_in_source = ""
+        failure_mode_canonical_term = ""
+        failure_mode_mapping_rule = ""
+        failure_mode_taxonomy_version = "v1"  # from failure_taxonomy.py
+
         # Check if cause text contains a known failure mode keyword
         failure_matches = classify_failure_from_text(cause.lower())
         if failure_matches:
-            failure_mode_source = "EXPLICIT"  # ontology-validated
-            failure_mode_value = failure_matches[0].lower().replace("_", " ")  # canonical form
-        failure_mode_span = cause_span  # In simple sentences, same span
-        # If the sentence contains "due to" or "caused by", the cause and
-        # failure_mode are different — try to extract them separately
+            failure_mode_source = "ONTOLOGY_VALIDATED"  # V9: not SOURCE_EXPLICIT
+            failure_mode_value = failure_matches[0].lower().replace("_", " ")
+            failure_mode_term_in_source = cause
+            failure_mode_canonical_term = failure_matches[0]
+            failure_mode_mapping_rule = "keyword_match_in_taxonomy"
+        failure_mode_span = cause_span
+        # If "due to"/"caused by" pattern → cause and failure_mode are DIFFERENT
         cause_pattern = re.search(r'(?:due to|caused by|because of|resulting from)\s+(.+?)(?:[,.]|$)',
                                    sentence, re.IGNORECASE)
         if cause_pattern:
-            # The failure_mode is the main object; the cause is after "due to"
-            failure_mode_value = cause  # the object of the verb (e.g. "wear")
-            failure_mode_source = "EXPLICIT"  # V8: explicitly distinguished from cause
+            failure_mode_value = cause
+            failure_mode_source = "SOURCE_EXPLICIT"  # V9: explicitly distinguished
+            failure_mode_term_in_source = cause
+            failure_mode_canonical_term = cause
+            failure_mode_mapping_rule = "explicit_due_to_pattern"
             actual_cause = cause_pattern.group(1).strip()
             actual_cause_span = _find_span(actual_cause, sentence)
             if actual_cause_span:
@@ -615,18 +663,33 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             supports_slot="failure_mode",
             sentence_id=sent_id,
             char_start=failure_mode_span[0], char_end=failure_mode_span[1],
-            quoted_span=failure_mode_span[2],  # V7: independent span for failure_mode
+            quoted_span=failure_mode_span[2],
         )
-        mechanism_ev = SourceEvidence(
+        # V9: causal_relation evidence
+        cr_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
             source_field=source_field, source_sentence=sentence[:500],
             source_hash=source_hash, publication_date=publication_date,
             evidence_tier=evidence_tier,
             extraction_method="structured_causal_extraction",
+            supports_slot="causal_relation",
+            sentence_id=sent_id,
+            char_start=cr_span[0], char_end=cr_span[1],
+            quoted_span=cr_span[2],
+        )
+        # V9: mechanism evidence — even when mechanism="UNKNOWN", evidence must exist
+        # The evidence records that the source did NOT explicitly identify a mechanism
+        mechanism_ev = SourceEvidence(
+            source_id=source_id, source_type=source_type,
+            source_field=source_field, source_sentence=sentence[:500],
+            source_hash=source_hash, publication_date=publication_date,
+            evidence_tier=evidence_tier,
+            extraction_method="structured_causal_extraction" if mechanism != "UNKNOWN" else "mechanism_not_identified",
             supports_slot="mechanism",
             sentence_id=sent_id,
-            char_start=mech_span[0], char_end=mech_span[1],
-            quoted_span=mech_span[2],
+            char_start=mech_span[0] if mechanism != "UNKNOWN" else 0,
+            char_end=mech_span[1] if mechanism != "UNKNOWN" else 0,
+            quoted_span=mech_span[2] if mechanism != "UNKNOWN" else "",
         )
         intervention_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
@@ -686,19 +749,41 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             eff_value = quant_match.group(1)
             eff_unit = quant_match.group(2) or "%" if quant_match.group(2) else "%"
 
+        # V9: effect_metric and effect_target are NOT copied from cause.
+        # They are extracted from the source sentence independently.
+        # If not identifiable, they remain empty (UNKNOWN).
+        eff_metric = ""  # V9: extracted from source, not copied from cause
+        eff_target = ""  # V9: extracted from source, not copied from cause
+        # Try to extract metric from the object (e.g. "wear rate" from "wear rate by 30%")
+        metric_match = re.search(r'(\w+\s+rate|\w+\s+life|\w+\s+strength|\w+\s+resistance)',
+                                  sentence, re.IGNORECASE)
+        if metric_match:
+            eff_metric = metric_match.group(1).lower().replace(" ", "_")
+        # Try to extract target from the subject or object
+        target_match = re.search(r'(implant|device|coating|surface|material|catheter|stent|sensor)',
+                                  sentence, re.IGNORECASE)
+        if target_match:
+            eff_target = target_match.group(1).lower()
+
+        # V9: claim_type depends on whether mechanism is identified
+        # If mechanism = UNKNOWN, this is a FAILURE_CLAIM (causal relation established,
+        # but mechanism not identified). Not a MECHANISM_CLAIM.
+        claim_type = "MECHANISM_CLAIM" if mechanism != "UNKNOWN" else "FAILURE_CLAIM"
+
         claim = Claim(
-            claim_id=make_claim_id("MECHANISM_CLAIM", cause, mechanism, intervention),
-            claim_type="MECHANISM_CLAIM",
+            claim_id=make_claim_id(claim_type, cause, causal_relation, intervention),
+            claim_type=claim_type,
             proposition=sentence[:300],
             cause=cause,
             failure_mode=failure_mode_value,
-            failure_mode_source=failure_mode_source,
-            mechanism=mechanism,
+            causal_relation=causal_relation,  # V9: the verb
+            mechanism=mechanism,  # V9: may be "UNKNOWN"
             intervention=intervention,
             measured_effect=measured_effect,
             boundary_conditions=boundary,
             cause_evidence=(cause_ev,),
             failure_mode_evidence=(failure_mode_ev,),
+            causal_relation_evidence=(cr_ev,),  # V9
             mechanism_evidence=(mechanism_ev,),
             intervention_evidence=(intervention_ev,),
             measured_effect_evidence=(effect_ev,),
@@ -709,22 +794,30 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             creation_timestamp=datetime.now(timezone.utc).isoformat(),
             evidence_tier=evidence_tier,
             derivation_method="structured_causal_extraction",
-            # V8: structured effect fields
+            # V9: structured effect fields — genuinely extracted
             effect_value=eff_value,
             effect_unit=eff_unit,
             effect_direction=effect_direction,
-            effect_metric=cause,  # the thing being measured
-            effect_target=cause,  # the thing being affected
+            effect_metric=eff_metric,  # V9: not copied from cause
+            effect_target=eff_target,  # V9: not copied from cause
             effect_raw_text=effect_raw[:200],
-            claim_schema_version=8,
-            validator_version=8,
-            extraction_version=8,
-            # V8: Only promote if _can_promote passes (now includes failure_mode_source check)
+            # V9: failure_mode provenance
+            failure_mode_source=failure_mode_source,
+            failure_mode_term_in_source=failure_mode_term_in_source,
+            failure_mode_canonical_term=failure_mode_canonical_term,
+            failure_mode_mapping_rule=failure_mode_mapping_rule,
+            failure_mode_taxonomy_version=failure_mode_taxonomy_version,
+            # V9: schema versioning
+            claim_schema_version=9,
+            validator_version=9,
+            extraction_version=9,
+            # V9: Only promote if _can_promote passes
             status="EVIDENCE_BACKED" if _can_promote(cause, failure_mode_value, mechanism,
                                                        intervention, measured_effect, boundary,
                                                        cause_ev, failure_mode_ev, mechanism_ev,
                                                        intervention_ev, effect_ev,
-                                                       publication_date, failure_mode_source) else "BLOCKED",
+                                                       publication_date, failure_mode_source,
+                                                       causal_relation, cr_ev) else "BLOCKED",
             falsification_condition=(
                 f"Replicate the intervention ({intervention}) in an independent "
                 f"experiment and measure whether {measured_effect} is achieved."
@@ -784,11 +877,14 @@ def _extract_slots(sentence: str, causal_verb: str) -> Optional[tuple[str, str, 
     # The subject IS the intervention; the object contains the effect
     # The mechanism is the causal relationship described by the verb
     # For "Coating X reduces wear by 30%", we want:
-    #   intervention = "Coating X"
-    #   mechanism = "reduces wear" (verb + object head)
-    #   measured_effect = "30% reduction in wear" (if quantified) or "wear reduction"
-    #   cause = "wear" (the problem being addressed)
-    #   boundary = extract conditions or UNSPECIFIED
+    # V9: CAUSAL_RELATION is the verb itself (e.g. "reduces").
+    #     MECHANISM is the underlying explanation (e.g. "adhesive interaction").
+    #     The source may establish a causal relation without identifying a mechanism.
+    #     In that case, mechanism = "UNKNOWN".
+    causal_relation = causal_verb  # V9: just the verb
+
+    # Extract cause from the object (the thing being reduced is the problem)
+    # V8: Try to find a failure-mode keyword in the object for ontology mapping.
 
     # Extract cause from the object (the thing being reduced is the problem)
     # V8: Try to find a failure-mode keyword in the object for ontology mapping.
@@ -811,15 +907,23 @@ def _extract_slots(sentence: str, causal_verb: str) -> Optional[tuple[str, str, 
         # V7: cause must be an actual word from the source sentence for span grounding
         cause = obj.split()[0].strip(".,;:") if obj.split() else ""
 
-    # Mechanism = causal verb + object text up to the cause word
-    # V8: mechanism must be a contiguous substring of the source sentence.
-    # Use the actual text from verb to cause, not a constructed phrase.
-    # For "reduces implant wear", mechanism = "reduces implant wear" (the full verb phrase)
-    cause_idx_in_obj = obj.lower().find(cause.lower())
-    if cause_idx_in_obj >= 0:
-        mechanism = f"{causal_verb} {obj[:cause_idx_in_obj + len(cause)].strip()}"
-    else:
-        mechanism = f"{causal_verb} {cause}"
+    # V9: MECHANISM is NOT the causal predicate. It is the underlying explanation.
+    # Per CTO V14 #1: "A causal relationship is not the same thing as a mechanism."
+    # The source may say "reduces wear" (causal_relation) without identifying
+    # WHY it reduces wear (mechanism). In that case, mechanism = "UNKNOWN".
+    # Only set mechanism if the source explicitly identifies it (e.g. "via", "through",
+    # "by", "due to", "through the mechanism of").
+    mechanism = "UNKNOWN"  # V9: default — source does not explicitly identify mechanism
+    mechanism_patterns = [
+        r'(?:via|through|by means of|through the mechanism of)\s+(.+?)(?:[,.]|$)',
+        r'(?:mechanism\s*:\s*)(.+?)(?:[,.]|$)',
+        r'(?:due to|resulting from|caused by)\s+(.+?)(?:[,.]|$)',
+    ]
+    for pattern in mechanism_patterns:
+        mech_match = re.search(pattern, sentence, re.IGNORECASE)
+        if mech_match:
+            mechanism = mech_match.group(1).strip()
+            break
 
     # V7: measured_effect must be an actual quote from the source sentence.
     # Per CTO V12 #1: "No match → BLOCKED." We cannot construct synthetic phrases.
@@ -849,13 +953,15 @@ def _extract_slots(sentence: str, causal_verb: str) -> Optional[tuple[str, str, 
             boundary = m.group(0)
             break
 
-    # Validate: all slots must be non-empty and meaningful
-    if not subject or not cause or not mechanism or not measured_effect:
+    # V9: Validate: cause, causal_relation, intervention, measured_effect must be non-empty
+    # mechanism may be "UNKNOWN" — that is valid.
+    if not subject or not cause or not causal_relation or not measured_effect:
         return None
     if len(subject) < 3 or len(cause) < 3:
         return None
 
-    return (cause, mechanism, subject, measured_effect, boundary)
+    # V9: return 7-tuple including causal_relation and mechanism
+    return (cause, causal_relation, mechanism, subject, measured_effect, boundary)
 
 
 def is_causal_sentence(text: str) -> bool:
@@ -1087,39 +1193,54 @@ def _can_promote(cause: str, failure_mode: str, mechanism: str,
                  mechanism_ev: SourceEvidence, intervention_ev: SourceEvidence,
                  effect_ev: SourceEvidence,
                  publication_date: str,
-                 failure_mode_source: str = "DERIVED_FROM_CONTEXT") -> bool:
-    """V8: Mandatory promotion gate. Only returns True if ALL invariants hold.
+                 failure_mode_source: str = "DERIVED_FROM_CONTEXT",
+                 causal_relation: str = "",
+                 causal_relation_ev: SourceEvidence = None) -> bool:
+    """V9: Mandatory promotion gate. Only returns True if ALL invariants hold.
 
-    Per CTO V13 #5: "No external caller may set status=EVIDENCE_BACKED and bypass promotion."
-    Per CTO V13 #1: "Require FAILURE_MODE_SOURCE == EXPLICIT for EVIDENCE_BACKED."
+    Per CTO V14 #1: mechanism may be "UNKNOWN" — that is valid for FAILURE_CLAIM.
+    Per CTO V14 #2: failure_mode_source must be SOURCE_EXPLICIT or ONTOLOGY_VALIDATED.
 
     Checks:
-      1. All 6 slots are non-empty and non-UNSPECIFIED (except boundary)
-      2. All mandatory slots have evidence with spans
+      1. All mandatory slots non-empty (mechanism may be "UNKNOWN")
+      2. All mandatory slots have evidence with spans (mechanism evidence may have empty span if UNKNOWN)
       3. All evidence has correct supports_slot
-      4. All evidence has non-empty source_sentence, source_hash, publication_date
-      5. failure_mode_source must be EXPLICIT (V8: not just DERIVED_FROM_CONTEXT)
-      6. If boundary != UNSPECIFIED, boundary evidence must exist with span
+      4. No supports_slot="all"
+      5. failure_mode_source in (SOURCE_EXPLICIT, ONTOLOGY_VALIDATED, EXPLICIT)
+      6. publication_date exists
+      7. V9: causal_relation and causal_relation_ev must exist
     """
-    # 1. All 6 slots filled
+    # 1. All mandatory slots filled (mechanism may be "UNKNOWN")
     if not cause or cause == "UNSPECIFIED":
         return False
     if not failure_mode or failure_mode == "UNSPECIFIED":
         return False
-    if not mechanism or mechanism == "UNSPECIFIED":
+    if not mechanism:  # may be "UNKNOWN" but must not be empty
         return False
     if not intervention or intervention == "UNSPECIFIED":
         return False
     if not measured_effect or measured_effect == "UNSPECIFIED":
         return False
+    # V9: causal_relation must be non-empty
+    if not causal_relation or causal_relation == "UNSPECIFIED":
+        return False
     # boundary may be UNSPECIFIED
 
-    # 2. All mandatory evidence has spans
-    for ev in [cause_ev, failure_mode_ev, mechanism_ev, intervention_ev, effect_ev]:
+    # V9: mechanism evidence may have empty span when mechanism="UNKNOWN"
+    # All OTHER mandatory evidence must have spans
+    mandatory_evs = [cause_ev, failure_mode_ev, intervention_ev, effect_ev]
+    if causal_relation_ev:
+        mandatory_evs.append(causal_relation_ev)
+    for ev in mandatory_evs:
         if not ev or not ev.has_span():
             return False
         if not ev.source_sentence or not ev.source_hash or not ev.publication_date:
             return False
+    # mechanism_ev must exist but may have empty span when mechanism="UNKNOWN"
+    if not mechanism_ev:
+        return False
+    if not mechanism_ev.source_sentence or not mechanism_ev.source_hash or not mechanism_ev.publication_date:
+        return False
 
     # 3. Evidence supports_slot matches
     if cause_ev.supports_slot != "cause":
@@ -1132,18 +1253,24 @@ def _can_promote(cause: str, failure_mode: str, mechanism: str,
         return False
     if effect_ev.supports_slot != "measured_effect":
         return False
+    if causal_relation_ev and causal_relation_ev.supports_slot != "causal_relation":
+        return False
 
     # 4. No supports_slot="all"
     for ev in [cause_ev, failure_mode_ev, mechanism_ev, intervention_ev, effect_ev]:
         if ev.supports_slot == "all":
             return False
 
-    # 5. V8: failure_mode_source must be EXPLICIT (not DERIVED_FROM_CONTEXT)
-    if failure_mode_source != "EXPLICIT":
+    # 5. V9: failure_mode_source must be SOURCE_EXPLICIT or ONTOLOGY_VALIDATED
+    if failure_mode_source not in ("SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED", "EXPLICIT"):
         return False
 
-    # 6. V8: publication_date must exist for temporal validity
+    # 6. publication_date must exist for temporal validity
     if not publication_date:
+        return False
+
+    # 7. V9: causal_relation_ev must exist
+    if not causal_relation_ev:
         return False
 
     return True
@@ -1220,8 +1347,12 @@ def validate_claim_integrity(claim: Claim, source_store: dict[str, dict] = None)
     if not claim.has_slot_specific_evidence():
         return False, "evidence has supports_slot mismatch or 'all'"
 
-    # 5. Every evidence must have a span
+    # 5. Every evidence must have a span (except mechanism=UNKNOWN and boundary=UNSPECIFIED)
     for ev in claim.source_evidence:
+        if ev.supports_slot == "boundary_conditions" and claim.boundary_conditions == "UNSPECIFIED":
+            continue
+        if ev.supports_slot == "mechanism" and claim.mechanism == "UNKNOWN":
+            continue  # V9: mechanism evidence may have empty span when mechanism is UNKNOWN
         if not ev.has_span():
             return False, f"evidence for slot '{ev.supports_slot}' has no span"
 
@@ -1235,6 +1366,8 @@ def validate_claim_integrity(claim: Claim, source_store: dict[str, dict] = None)
     }
     for slot_name, (value, evidence_list) in slot_evidence_map.items():
         if not value or value == "UNSPECIFIED":
+            continue
+        if value == "UNKNOWN" and slot_name == "mechanism":
             continue
         for ev in evidence_list:
             passed, reason = validate_slot_support(slot_name, value, ev)
@@ -1330,6 +1463,8 @@ def validate_claim_for_promotion(claim: Claim, source_store: dict = None) -> tup
             passed, reason = validate_slot_support(slot_name, value, ev)
             if not passed:
                 return False, f"slot grounding failed for '{slot_name}': {reason}"
+        if value == "UNKNOWN" and slot_name == "mechanism":
+            continue  # V9
 
     # 8. Temporal validity
     if claim.temporal_validity != "valid":

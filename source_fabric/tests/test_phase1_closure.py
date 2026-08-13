@@ -181,6 +181,7 @@ class TestTypedClaimRelations:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
             falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
@@ -233,7 +234,7 @@ class TestStrengthenedEvidenceBacked:
         """V4: EVIDENCE_BACKED requires evidence for each slot, not just source_evidence."""
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="c", failure_mode="UNSPECIFIED", mechanism="m",
+            proposition="test", cause="c", failure_mode="UNSPECIFIED", causal_relation="UNSPECIFIED", mechanism="m",
             intervention="i", measured_effect="e",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(),  # NO evidence for cause
@@ -243,6 +244,7 @@ class TestStrengthenedEvidenceBacked:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="test",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
             falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
@@ -271,6 +273,7 @@ class TestStrengthenedEvidenceBacked:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="test",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
             falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
@@ -289,7 +292,7 @@ class TestStrengthenedEvidenceBacked:
         )
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="c", failure_mode="UNSPECIFIED", mechanism="m",
+            proposition="test", cause="c", failure_mode="UNSPECIFIED", causal_relation="UNSPECIFIED", mechanism="m",
             intervention="i", measured_effect="e",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,),
@@ -298,6 +301,7 @@ class TestStrengthenedEvidenceBacked:
             temporal_validity="unknown",  # NOT valid
             creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="test",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
             falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
@@ -321,7 +325,7 @@ class TestClaimSourceIntegrity:
         )
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="wear", failure_mode="UNSPECIFIED", mechanism="degradation",
+            proposition="test", cause="wear", failure_mode="UNSPECIFIED", causal_relation="UNSPECIFIED", mechanism="degradation",
             intervention="coating", measured_effect="30% reduction",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,),
@@ -329,6 +333,7 @@ class TestClaimSourceIntegrity:
             source_ids=("p:1",), source_hashes=("h",),
             temporal_validity="valid", creation_timestamp="2026-01-01",
             evidence_tier="D", derivation_method="structured_causal_extraction",
+            failure_mode_source="EXPLICIT",
             status="EVIDENCE_BACKED",
             falsification_condition="f", measurement_method="m",
             alternative_explanations=(),
