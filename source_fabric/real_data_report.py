@@ -227,14 +227,55 @@ def build_cross_corpus_edges(records: list[HarvestedRecord]) -> list[CrossCorpus
     """Build cross-corpus edges from real harvested records.
 
     Edge types produced:
-      - DIRECT_ID_MATCH: a paper DOI appears in a patent's NPL citations
-        (we approximate via title overlap for the pilot)
       - TOPIC_ALIGNMENT: paper and patent share a domain + keyword overlap
-      - BIBLIOGRAPHIC_MATCH: fuzzy title match between paper and patent
+        (keywords extracted from title + abstract)
+      - BIBLIOGRAPHIC_MATCH: high title+abstract keyword similarity (Jaccard > 0.4)
+
+    Uses a broader matching strategy than V3: extracts keywords from both
+    title AND abstract (not just title), and uses domain co-assignment
+    to find cross-corpus pairs.
     """
     edges: list[CrossCorpusEdge] = []
-    papers = [r for r in records if r.normalized.get("source") in ("openalex", "europepmc")]
-    patents = [r for r in records if r.normalized.get("source") == "google_patents"]
+    # Papers = evidence_type "paper" OR source in (openalex, europepmc)
+    papers = [r for r in records
+              if r.normalized.get("evidence_type") == "paper"
+              or r.normalized.get("source") in ("openalex", "europepmc")]
+    # Patents = evidence_type "patent" OR source in (huggingface_us_patents, google_patents)
+    patents = [r for r in records
+               if r.normalized.get("evidence_type") == "patent"
+               or r.normalized.get("source") in ("huggingface_us_patents", "google_patents")]
+
+    STOP_WORDS = {"the", "a", "an", "of", "in", "for", "and", "with", "to", "on",
+                  "is", "are", "was", "were", "be", "been", "being", "have", "has",
+                  "had", "do", "does", "did", "will", "would", "could", "should",
+                  "may", "might", "must", "can", "this", "that", "these", "those",
+                  "it", "its", "as", "at", "by", "from", "or", "not", "no", "but",
+                  "if", "then", "else", "when", "where", "which", "who", "whom",
+                  "method", "system", "device", "apparatus", "comprising", "include",
+                  "includes", "including", "first", "second", "third", "one", "two",
+                  "three", "more", "less", "than", "about", "into", "through", "during",
+                  "between", "within", "without", "above", "below", "up", "down",
+                  "over", "under", "again", "further", "once", "here", "there",
+                  "all", "each", "every", "both", "few", "other", "some", "such",
+                  "only", "own", "same", "so", "very", "just", "now"}
+
+    def extract_keywords(record: HarvestedRecord) -> set[str]:
+        """Extract significant keywords from title + abstract."""
+        text_parts = []
+        title = record.normalized.get("title", "") or record.normalized.get("brief_title", "")
+        abstract = record.normalized.get("abstract", "") or record.normalized.get("description", "")
+        if title:
+            text_parts.append(title)
+        if abstract:
+            text_parts.append(abstract[:500])
+        text = " ".join(text_parts).lower()
+        words = set()
+        for w in text.split():
+            # Clean word: remove punctuation, check length and stop-word
+            w_clean = w.strip(".,;:!?()[]{}\"'").lower()
+            if len(w_clean) >= 4 and w_clean not in STOP_WORDS and w_clean.isalpha():
+                words.add(w_clean)
+        return words
 
     # Index by domain
     from collections import defaultdict
@@ -249,43 +290,57 @@ def build_cross_corpus_edges(records: list[HarvestedRecord]) -> list[CrossCorpus
         if d:
             patents_by_domain[d].append(p)
 
-    # For each domain, find paper-patent pairs with title overlap
+    # Pre-compute keywords for all records
+    paper_keywords = {p.record_id: extract_keywords(p) for p in papers}
+    patent_keywords = {p.record_id: extract_keywords(p) for p in patents}
+
+    edge_count = 0
+    MAX_EDGES = 5000  # safety cap
+
+    # For each domain, find paper-patent pairs with keyword overlap
     for domain in papers_by_domain:
+        if edge_count >= MAX_EDGES:
+            break
         dom_papers = papers_by_domain[domain]
         dom_patents = patents_by_domain.get(domain, [])
         for paper in dom_papers:
-            paper_title = paper.normalized.get("title", "").lower()
-            if not paper_title or len(paper_title) < 10:
+            if edge_count >= MAX_EDGES:
+                break
+            p_kw = paper_keywords.get(paper.record_id, set())
+            if not p_kw:
                 continue
-            paper_words = set(paper_title.split()) - {"the", "a", "an", "of", "in", "for", "and", "with", "to", "on"}
             for patent in dom_patents:
-                pat_title = patent.normalized.get("title", "").lower()
-                if not pat_title:
+                if edge_count >= MAX_EDGES:
+                    break
+                pat_kw = patent_keywords.get(patent.record_id, set())
+                if not pat_kw:
                     continue
-                pat_words = set(pat_title.split()) - {"the", "a", "an", "of", "in", "for", "and", "with", "to", "on"}
-                overlap = paper_words & pat_words
-                # TOPIC_ALIGNMENT: same domain + >=2 shared significant words
-                if len(overlap) >= 2:
+                overlap = p_kw & pat_kw
+                if len(overlap) >= 3:  # at least 3 shared significant keywords
+                    # TOPIC_ALIGNMENT: same domain + >=3 shared keywords
                     edges.append(make_edge(
                         "TOPIC_ALIGNMENT",
                         paper.record_id, patent.record_id,
                         evidence_tier="D",
-                        confidence=min(len(overlap) / 5.0, 1.0),
+                        confidence=min(len(overlap) / 8.0, 1.0),
                         provenance_source_id="src:cross_corpus_linker",
-                        notes=f"domain={domain}, shared_words={sorted(overlap)[:5]}",
+                        notes=f"domain={domain}, shared_kw={sorted(overlap)[:5]}",
                     ))
-                # BIBLIOGRAPHIC_MATCH: high title similarity (>0.6 Jaccard)
-                if paper_words and pat_words:
-                    jaccard = len(overlap) / len(paper_words | pat_words)
-                    if jaccard > 0.6:
-                        edges.append(make_edge(
-                            "BIBLIOGRAPHIC_MATCH",
-                            paper.record_id, patent.record_id,
-                            evidence_tier="D",
-                            confidence=jaccard,
-                            provenance_source_id="src:cross_corpus_linker",
-                            notes=f"jaccard={jaccard:.2f}",
-                        ))
+                    edge_count += 1
+                    # BIBLIOGRAPHIC_MATCH: high similarity (>0.3 Jaccard)
+                    union = p_kw | pat_kw
+                    if union:
+                        jaccard = len(overlap) / len(union)
+                        if jaccard > 0.3:
+                            edges.append(make_edge(
+                                "BIBLIOGRAPHIC_MATCH",
+                                paper.record_id, patent.record_id,
+                                evidence_tier="D",
+                                confidence=jaccard,
+                                provenance_source_id="src:cross_corpus_linker",
+                                notes=f"jaccard={jaccard:.2f}, domain={domain}",
+                            ))
+                            edge_count += 1
     return edges
 
 

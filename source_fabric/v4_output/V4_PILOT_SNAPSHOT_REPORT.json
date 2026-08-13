@@ -1,0 +1,70 @@
+{
+  "snapshot_id": "snap:3ef1377e9f1f",
+  "created_at": "2026-08-13T01:48:54.053638+00:00",
+  "cutoff": "2026-08-13",
+  "science_records": 250,
+  "patent_records": 300,
+  "clinical_trial_records": 17,
+  "edgar_records": 403,
+  "total_records": 970,
+  "domains": [
+    "battery_electrochemistry",
+    "perovskite_photovoltaics",
+    "crispr_gene_editing",
+    "hydrogen_electrocatalysis",
+    "additive_manufacturing"
+  ],
+  "connectors_used": [
+    "src:ct_gov",
+    "src:huggingface_patents",
+    "src:openalex",
+    "src:pubmed",
+    "src:sec_edgar"
+  ],
+  "snapshot_hash": "3ef1377e9f1f123e17e968626811ea98fc4ca712d7f496f0f808e42460b45800",
+  "real_snapshot_hash": "3ef1377e9f1f123e17e968626811ea98fc4ca712d7f496f0f808e42460b45800",
+  "cross_corpus_edges": {
+    "total_edges": 74,
+    "by_type": {
+      "TOPIC_ALIGNMENT": 74
+    },
+    "all_inferred": 0,
+    "all_deterministic": 74
+  },
+  "snapshot_verified": true,
+  "is_real_data": true,
+  "no_synthetic_data": true,
+  "domain_counts": {
+    "battery_electrochemistry": {
+      "science": 50,
+      "patents": 60,
+      "trials": 2,
+      "edgar": 100
+    },
+    "perovskite_photovoltaics": {
+      "science": 50,
+      "patents": 60,
+      "trials": 0,
+      "edgar": 3
+    },
+    "crispr_gene_editing": {
+      "science": 50,
+      "patents": 60,
+      "trials": 5,
+      "edgar": 100
+    },
+    "hydrogen_electrocatalysis": {
+      "science": 50,
+      "patents": 60,
+      "trials": 5,
+      "edgar": 100
+    },
+    "additive_manufacturing": {
+      "science": 50,
+      "patents": 60,
+      "trials": 5,
+      "edgar": 100
+    }
+  },
+  "generated_at": "2026-08-13T01:48:54.092736+00:00"
+}

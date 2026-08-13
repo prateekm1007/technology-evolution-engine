@@ -803,6 +803,28 @@ SOURCES: list[Source] = [
            ("matter", "energy", "life", "machine", "information", "planet"),
            "Read-only links to subscription content", auth_required=False,
            metadata_format="HTML", primary_or_secondary="primary"),
+
+    # --- V4 CONTRARIAN HIGH-SIGNAL SOURCES (per CEO/CTO strategy) ---
+    # HuggingFace patent dataset — 8M+ US patents, ODC-BY, no auth needed
+    Source("src:huggingface_patents", "HuggingFace US Patents (allenai)", "https://huggingface.co/datasets/allenai/us-patents",
+           "patent", "rest_api", "ODC-BY", "C",
+           ("matter", "energy", "life", "machine", "information", "planet"),
+           "USPTO-derived; no family/citation data; full text only",
+           auth_required=False, rate_limit="polite", metadata_format="JSON",
+           primary_or_secondary="primary", jurisdiction="US",
+           historical_depth="1976-2025", update_cadence="batch",
+           fulltext_available=True, claims_available=True, citation_available=False,
+           family_available=False, language_coverage="en"),
+    # SEC EDGAR — 10-K risk factors (constraint/failure corpus)
+    Source("src:sec_edgar", "SEC EDGAR Full-Text Search", "https://efts.sec.gov/LATEST/search-index",
+           "failure_record", "rest_api", "public domain", "B",
+           ("matter", "energy", "life", "machine", "information", "planet"),
+           "Risk Factors section = constraint signal",
+           auth_required=False, rate_limit="10 req/sec", metadata_format="JSON",
+           primary_or_secondary="primary", jurisdiction="US",
+           historical_depth="1993-present", update_cadence="daily",
+           fulltext_available=True, claims_available=False, citation_available=False,
+           family_available=False, language_coverage="en"),
 ]
 
 
