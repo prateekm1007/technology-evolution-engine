@@ -219,6 +219,10 @@ class Claim:
     # EXPLICIT = source explicitly identifies a mechanism (evidence with span required)
     # UNKNOWN_NOT_RESOLVED = parser could not resolve (human review needed)
     mechanism_status: str = "UNKNOWN_NOT_STATED"  # EXPLICIT | UNKNOWN_NOT_STATED | UNKNOWN_NOT_RESOLVED
+    # V10: mechanism inspection scope — what source scope was inspected
+    mechanism_inspection_method: str = "SENTENCE_LOCAL"  # SENTENCE_LOCAL | FULL_DOCUMENT | NONE
+    mechanism_inspection_scope: str = ""  # e.g. "abstract sentence 3" or "full document"
+    mechanism_resolution_version: str = "v10"
 
     # V9: Structured measured_effect — genuinely extracted, not copied from cause
     effect_value: str = ""        # e.g. "30"
@@ -229,9 +233,9 @@ class Claim:
     effect_raw_text: str = ""     # e.g. "reduced implant wear by 30 percent"
 
     # V9: Schema versioning
-    claim_schema_version: int = 9
-    validator_version: int = 9
-    extraction_version: int = 9
+    claim_schema_version: int = 10
+    validator_version: int = 10
+    extraction_version: int = 10
 
     def __post_init__(self):
         if self.claim_type not in CLAIM_TYPES:
@@ -399,6 +403,20 @@ class Claim:
 
     def is_blocked(self) -> bool:
         return self.status == "BLOCKED"
+
+    def is_mechanistically_complete(self) -> bool:
+        """V10: True only when mechanism is explicitly identified with evidence.
+
+        Per CTO V16 #5: 'No exceptions. mechanism_status == EXPLICIT and
+        mechanism_evidence != empty before FAILURE→MECHANISM discovery.'
+        """
+        return (
+            self.mechanism_status == "EXPLICIT"
+            and len(self.mechanism_evidence) > 0
+            and self.mechanism != "UNKNOWN"
+            and self.mechanism != "UNSPECIFIED"
+            and self.mechanism != ""
+        )
 
     def content_hash(self) -> str:
         return hashlib.sha256(
@@ -691,6 +709,7 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
         # Per CTO V15 #2: "mechanism='UNKNOWN' plus mandatory mechanism evidence is
         # conceptually contradictory. It is an absence/negative-information assertion."
         mechanism_status_value = "EXPLICIT" if mechanism != "UNKNOWN" else "UNKNOWN_NOT_STATED"
+        mechanism_inspection_scope = f"sentence: {sentence[:80]}"  # V10
         if mechanism_status_value == "EXPLICIT":
             mechanism_ev = SourceEvidence(
                 source_id=source_id, source_type=source_type,
@@ -802,6 +821,7 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             causal_relation_evidence=(cr_ev,),  # V9
             mechanism_evidence=mechanism_evidence_tuple,  # V10: empty when UNKNOWN_NOT_STATED
             mechanism_status=mechanism_status_value,  # V10
+            mechanism_inspection_scope=mechanism_inspection_scope,  # V10
             intervention_evidence=(intervention_ev,),
             measured_effect_evidence=(effect_ev,),
             boundary_evidence=boundary_ev,
@@ -825,9 +845,9 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             failure_mode_mapping_rule=failure_mode_mapping_rule,
             failure_mode_taxonomy_version=failure_mode_taxonomy_version,
             # V9: schema versioning
-            claim_schema_version=9,
-            validator_version=9,
-            extraction_version=9,
+            claim_schema_version=10,
+            validator_version=10,
+            extraction_version=10,
             # V9: Only promote if _can_promote passes
             status="EVIDENCE_BACKED" if _can_promote(cause, failure_mode_value, mechanism,
                                                        intervention, measured_effect, boundary,

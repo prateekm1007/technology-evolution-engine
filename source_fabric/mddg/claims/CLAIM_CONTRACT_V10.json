@@ -1,0 +1,112 @@
+{
+  "contract_name": "CLAIM_CONTRACT_V10",
+  "schema_version": 10,
+  "validator_version": 10,
+  "extraction_version": 10,
+  "frozen_at": "2026-08-13T06:00:00Z",
+
+  "fields": {
+    "claim_id": {"type": "str", "required": true},
+    "claim_type": {"type": "str", "required": true, "enum": ["FAILURE_CLAIM", "MECHANISM_CLAIM", "INTERVENTION_CLAIM", "MATERIAL_PROPERTY_CLAIM", "DESIGN_CLAIM", "REGULATORY_CLAIM"]},
+    "proposition": {"type": "str", "required": true},
+
+    "cause": {"type": "str", "required": true, "allowed_unknown": false},
+    "failure_mode": {"type": "str", "required": true, "allowed_unknown": false},
+    "causal_relation": {"type": "str", "required": true, "allowed_unknown": false},
+    "mechanism": {"type": "str", "required": true, "allowed_unknown": true, "unknown_value": "UNKNOWN"},
+    "intervention": {"type": "str", "required": true, "allowed_unknown": false},
+    "measured_effect": {"type": "str", "required": true, "allowed_unknown": false},
+    "boundary_conditions": {"type": "str", "required": true, "allowed_unknown": true, "unknown_value": "UNSPECIFIED"},
+
+    "cause_evidence": {"type": "tuple[SourceEvidence]", "required": true},
+    "failure_mode_evidence": {"type": "tuple[SourceEvidence]", "required": true},
+    "causal_relation_evidence": {"type": "tuple[SourceEvidence]", "required": true},
+    "mechanism_evidence": {"type": "tuple[SourceEvidence]", "required": false, "condition": "required when mechanism_status == EXPLICIT"},
+    "intervention_evidence": {"type": "tuple[SourceEvidence]", "required": true},
+    "measured_effect_evidence": {"type": "tuple[SourceEvidence]", "required": true},
+    "boundary_evidence": {"type": "tuple[SourceEvidence]", "required": false, "condition": "required when boundary_conditions != UNSPECIFIED"},
+
+    "mechanism_status": {"type": "str", "required": true, "enum": ["EXPLICIT", "UNKNOWN_NOT_STATED", "UNKNOWN_NOT_RESOLVED"]},
+    "mechanism_inspection_method": {"type": "str", "required": true, "enum": ["SENTENCE_LOCAL", "FULL_DOCUMENT", "NONE"]},
+    "mechanism_inspection_scope": {"type": "str", "required": true},
+    "mechanism_resolution_version": {"type": "str", "required": true},
+
+    "failure_mode_source": {"type": "str", "required": true, "enum": ["SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED", "DERIVED_FROM_CONTEXT"]},
+    "failure_mode_term_in_source": {"type": "str", "required": false},
+    "failure_mode_canonical_term": {"type": "str", "required": false},
+    "failure_mode_mapping_rule": {"type": "str", "required": false},
+    "failure_mode_taxonomy_version": {"type": "str", "required": false},
+
+    "effect_value": {"type": "str", "required": false},
+    "effect_unit": {"type": "str", "required": false},
+    "effect_direction": {"type": "str", "required": false, "enum": ["increase", "decrease", ""]},
+    "effect_metric": {"type": "str", "required": false},
+    "effect_target": {"type": "str", "required": false},
+    "effect_raw_text": {"type": "str", "required": false},
+
+    "claim_schema_version": {"type": "int", "required": true, "value": 10},
+    "validator_version": {"type": "int", "required": true, "value": 10},
+    "extraction_version": {"type": "int", "required": true, "value": 10},
+
+    "status": {"type": "str", "required": true, "enum": ["BLOCKED", "SEARCH_CANDIDATE", "EVIDENCE_BACKED", "QUALIFIED_CANDIDATE", "PROMISING_INTERSECTION", "EXTERNALLY_TESTABLE", "SIMULATION_READY", "REJECTED"]},
+    "temporal_validity": {"type": "str", "required": true, "enum": ["valid", "invalid", "unknown"]},
+    "evidence_tier": {"type": "str", "required": true, "enum": ["A", "B", "C", "D", "E", "F", "G", "H", "I"]}
+  },
+
+  "allowed_unknown_states": {
+    "mechanism": {"value": "UNKNOWN", "requires": "mechanism_status in (UNKNOWN_NOT_STATED, UNKNOWN_NOT_RESOLVED)"},
+    "boundary_conditions": {"value": "UNSPECIFIED", "requires": "no boundary_evidence required"}
+  },
+
+  "evidence_rules": {
+    "supports_slot_forbidden_values": ["all"],
+    "every_non_boundary_evidence_must_have_span": true,
+    "mechanism_evidence_required_only_when_explicit": true,
+    "boundary_evidence_required_when_not_unspecified": true,
+    "source_sentence_required": true,
+    "source_hash_required": true,
+    "publication_date_required": true,
+    "quoted_span_must_match_source_field_span": true
+  },
+
+  "temporal_rules": {
+    "evidence_publication_date_must_predate_candidate_lock": true,
+    "temporal_validity_must_be_valid_for_evidence_backed": true
+  },
+
+  "promotion_rules": {
+    "only_function": "promote_claim_to_evidence_backed()",
+    "validator": "validate_claim_for_promotion()",
+    "no_direct_status_assignment": true,
+    "no_circular_dependency": true,
+    "failure_mode_source_must_be": ["SOURCE_EXPLICIT", "ONTOLOGY_VALIDATED"],
+    "mechanism_evidence_required_only_when_mechanism_status_is_EXPLICIT": true
+  },
+
+  "discovery_rules": {
+    "FAILURE_to_MECHANISM_requires": "is_mechanistically_complete() == true",
+    "MECHANISM_CLAIM_requires": "mechanism_status == EXPLICIT",
+    "UNKNOWN_mechanism_cannot_enter_discovery_chain": true
+  },
+
+  "claim_type_contracts": {
+    "FAILURE_CLAIM": {
+      "required_slots": ["cause", "failure_mode", "causal_relation", "intervention", "measured_effect"],
+      "mechanism_required": false,
+      "mechanism_may_be": "UNKNOWN"
+    },
+    "MECHANISM_CLAIM": {
+      "required_slots": ["cause", "failure_mode", "causal_relation", "mechanism", "intervention", "measured_effect"],
+      "mechanism_required": true,
+      "mechanism_must_be": "explicit (not UNKNOWN)"
+    },
+    "INTERVENTION_CLAIM": {
+      "required_slots": ["intervention", "measured_effect", "causal_relation"],
+      "mechanism_required": false
+    },
+    "MATERIAL_PROPERTY_CLAIM": {
+      "required_slots": ["intervention", "measured_effect"],
+      "mechanism_required": false
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "artifact_name": "REPLAY_ARTIFACT_V10",
+  "claim_hashes_hash": "907da0c87f7350022d5640e9ee59cfd4e55068612ee2caba657ffbf3b2443e6f",
+  "claim_ids_hash": "9c351ae857e65d031358b74720041cae062ba2ab1e571792061d191fe329c705",
+  "claim_summaries": [
+    {
+      "boundary_conditions": "UNSPECIFIED",
+      "causal_relation": "reduces",
+      "cause": "wear",
+      "claim_id": "claim:11a3fece47688901",
+      "claim_type": "FAILURE_CLAIM",
+      "content_hash": "3b6cec7da6c5c324",
+      "effect_direction": "decrease",
+      "effect_value": "30",
+      "evidence_count": 5,
+      "evidence_hashes": [
+        "replay_hash_1",
+        "replay_hash_1",
+        "replay_hash_1",
+        "replay_hash_1",
+        "replay_hash_1"
+      ],
+      "evidence_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          16,
+          23
+        ],
+        [
+          32,
+          36
+        ],
+        [
+          32,
+          36
+        ],
+        [
+          40,
+          50
+        ]
+      ],
+      "extraction_version": 10,
+      "failure_mode": "wear",
+      "failure_mode_source": "ONTOLOGY_VALIDATED",
+      "intervention": "Ceramic coating",
+      "measured_effect": "30 percent",
+      "mechanism": "UNKNOWN",
+      "mechanism_status": "UNKNOWN_NOT_STATED",
+      "schema_version": 10,
+      "status": "EVIDENCE_BACKED",
+      "validator_version": 10
+    },
+    {
+      "boundary_conditions": "at body temperature",
+      "causal_relation": "reduces",
+      "cause": "infection",
+      "claim_id": "claim:37e48fa4c58ca097",
+      "claim_type": "FAILURE_CLAIM",
+      "content_hash": "9b0a07726451133e",
+      "effect_direction": "decrease",
+      "effect_value": "60",
+      "evidence_count": 6,
+      "evidence_hashes": [
+        "replay_hash_3",
+        "replay_hash_3",
+        "replay_hash_3",
+        "replay_hash_3",
+        "replay_hash_3",
+        "replay_hash_3"
+      ],
+      "evidence_spans": [
+        [
+          0,
+          21
+        ],
+        [
+          22,
+          29
+        ],
+        [
+          30,
+          39
+        ],
+        [
+          30,
+          39
+        ],
+        [
+          48,
+          58
+        ],
+        [
+          59,
+          78
+        ]
+      ],
+      "extraction_version": 10,
+      "failure_mode": "infection",
+      "failure_mode_source": "ONTOLOGY_VALIDATED",
+      "intervention": "Antimicrobial coating",
+      "measured_effect": "60 percent",
+      "mechanism": "UNKNOWN",
+      "mechanism_status": "UNKNOWN_NOT_STATED",
+      "schema_version": 10,
+      "status": "EVIDENCE_BACKED",
+      "validator_version": 10
+    },
+    {
+      "boundary_conditions": "UNSPECIFIED",
+      "causal_relation": "prevents",
+      "cause": "corrosion",
+      "claim_id": "claim:5afaed43c1759d57",
+      "claim_type": "FAILURE_CLAIM",
+      "content_hash": "9b1a52057f45978e",
+      "effect_direction": "decrease",
+      "effect_value": "",
+      "evidence_count": 5,
+      "evidence_hashes": [
+        "replay_hash_2",
+        "replay_hash_2",
+        "replay_hash_2",
+        "replay_hash_2",
+        "replay_hash_2"
+      ],
+      "evidence_spans": [
+        [
+          0,
+          29
+        ],
+        [
+          30,
+          38
+        ],
+        [
+          39,
+          48
+        ],
+        [
+          39,
+          48
+        ],
+        [
+          39,
+          48
+        ]
+      ],
+      "extraction_version": 10,
+      "failure_mode": "corrosion",
+      "failure_mode_source": "ONTOLOGY_VALIDATED",
+      "intervention": "Surface passivation treatment",
+      "measured_effect": "corrosion",
+      "mechanism": "UNKNOWN",
+      "mechanism_status": "UNKNOWN_NOT_STATED",
+      "schema_version": 10,
+      "status": "EVIDENCE_BACKED",
+      "validator_version": 10
+    }
+  ],
+  "claims_generated": 3,
+  "corpus_hash": "4c30a872db1eeaec6dc44f3bb7431cff5017ed346b5ede7c61c688b5ef392f8a",
+  "corpus_size": 5,
+  "generated_at": "2026-08-13T06:00:00Z",
+  "root_hash": "77102630af945bd2714c5dbaa870c220a426c6aeb819546640b34127d2ea731a",
+  "status_hash": "ad55b1de0bdf76082bcbf1ecee57f7b33bdf7b1dbacd1c633d019fbd12bcbc67"
+}

@@ -146,7 +146,7 @@ class TestConnectorDeprecation:
 class TestRealConnectorsLive:
     """These tests make LIVE HTTP calls. They verify real data retrieval."""
 
-    @pytest.mark.skip(reason="Live HTTP test - run manually with --run-live")
+    @pytest.mark.skipif(True, reason="LIVE_INTEGRATION_SUITE: requires live OpenAlex API. Run with: pytest --run-live")
     def test_openalex_health_check_live(self):
         """OpenAlex health_check() performs a real live probe."""
         src = next(s for s in SOURCES if s.source_id == "src:openalex")
@@ -158,7 +158,7 @@ class TestRealConnectorsLive:
         assert hr.http_status == 200
         assert hr.latency_ms > 0
 
-    @pytest.mark.skip(reason="Live HTTP test - run manually with --run-live")
+    @pytest.mark.skipif(True, reason="LIVE_INTEGRATION_SUITE: requires live OpenAlex API. Run with: pytest --run-live")
     def test_openalex_fetch_real_records(self):
         """OpenAlex fetch_updates retrieves REAL records (not synthetic)."""
         src = next(s for s in SOURCES if s.source_id == "src:openalex")
@@ -248,7 +248,7 @@ class TestCrossCorpusEdgesV3:
 # =====================================================================
 
 class TestRealDataConnectorReport:
-    @pytest.mark.skip(reason="Live HTTP test - run manually with --run-live")
+    @pytest.mark.skipif(True, reason="LIVE_INTEGRATION_SUITE: requires live OpenAlex API. Run with: pytest --run-live")
     def test_connector_report_generated(self):
         """REAL_DATA_CONNECTOR_REPORT.json is generated with proof fields."""
         from source_fabric.real_data_report import generate_real_data_connector_report
