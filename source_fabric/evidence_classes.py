@@ -54,8 +54,39 @@ SOURCE_TO_EVIDENCE_CLASS = {
 
 
 def get_evidence_class(source_id: str) -> str:
-    """Return the evidence class for a source_id. Defaults to SCIENTIFIC_OBSERVATION."""
-    return SOURCE_TO_EVIDENCE_CLASS.get(source_id, "SCIENTIFIC_OBSERVATION")
+    """Return the evidence class for a source_id. FAILS CLOSED.
+
+    Per CTO V6 directive: "Unknown source → UNCLASSIFIED → QUARANTINED →
+    failure recorded. A new, misspelled, missing, or unregistered source
+    can silently enter the graph as scientific evidence. That directly
+    conflicts with no-silent-substitution."
+
+    Unknown source_ids return "UNCLASSIFIED" — NOT "SCIENTIFIC_OBSERVATION".
+    The caller MUST check for UNCLASSIFIED and quarantine the record.
+    """
+    return SOURCE_TO_EVIDENCE_CLASS.get(source_id, "UNCLASSIFIED")
+
+
+def is_classified(evidence_class: str) -> bool:
+    """True if the evidence class is a real class (not UNCLASSIFIED)."""
+    return evidence_class in EVIDENCE_CLASSES
+
+
+def quarantine_unclassified(source_id: str, record_id: str) -> dict:
+    """Produce a quarantine record for an unclassified source.
+
+    Per directive: unknown source → UNCLASSIFIED → QUARANTINED → failure recorded.
+    """
+    return {
+        "record_id": record_id,
+        "source_id": source_id,
+        "evidence_class": "UNCLASSIFIED",
+        "quarantine_reason": "UNKNOWN_SOURCE",
+        "action": "QUARANTINED",
+        "message": f"Source '{source_id}' is not in the evidence-class registry. "
+                   f"Record quarantined. Add the source to SOURCE_TO_EVIDENCE_CLASS "
+                   f"before this record can enter the graph.",
+    }
 
 
 def validate_evidence_class(ec: str) -> bool:

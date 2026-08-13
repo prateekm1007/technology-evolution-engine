@@ -1,0 +1,87 @@
+{
+  "manifest_version": "MDDG-V1",
+  "generated_at": "2026-08-13T02:41:04.405849+00:00",
+  "summary": {
+    "devices_ingested": 46,
+    "papers_linked": 3,
+    "patents_linked": 3,
+    "trials_linked": 0,
+    "adverse_events_linked": 57,
+    "recalls_linked": 0,
+    "failure_modes_extracted": 28,
+    "structural_edges": 184,
+    "substantive_edges": 182,
+    "inferred_edges": 0,
+    "evidence_edges_total": 366,
+    "search_only_edges_total": 0,
+    "unresolved_links": 478,
+    "complete_lifecycle_chains": 0,
+    "real_lifecycle_chains": 1,
+    "failure_to_mechanism_chains": 0,
+    "provenance_completeness": 1.0,
+    "temporal_integrity": "valid",
+    "duplicate_rate": 0.0,
+    "orphan_rate": 0.5217391304347826
+  },
+  "four_hop_benchmark": {
+    "candidates_found": 0,
+    "qualified_candidates": 0,
+    "qualified_candidate_details": []
+  },
+  "null_controls": {
+    "NULL_A_TEMPORAL_SHUFFLE": {
+      "null_type": "TEMPORAL_SHUFFLE",
+      "seed": 42,
+      "devices_shuffled": 46,
+      "lifecycle_chains_after_shuffle": 1,
+      "note": "If chains persist after date shuffle, temporal ordering is not the signal."
+    },
+    "NULL_B_SINGLE_CORPUS_ONLY": {
+      "null_type": "SINGLE_CORPUS_ONLY",
+      "corpus": "FDA only (no papers/patents/trials)",
+      "lifecycle_chains_fda_only": 0,
+      "note": "If chains form with FDA alone, cross-corpus adds no value."
+    },
+    "NULL_C_DEGREE_MATCHED": {
+      "null_type": "DEGREE_MATCHED",
+      "seed": 42,
+      "devices_swapped": 46,
+      "lifecycle_chains_after_swap": 0,
+      "note": "If chains persist after random swap, the device-failure pairing is not meaningful."
+    },
+    "NULL_D_SEMANTIC_ONLY": {
+      "null_type": "SEMANTIC_ONLY",
+      "lifecycle_chains_semantic_only": 0,
+      "note": "If chains form with semantic edges alone, evidence tiers add no value."
+    },
+    "NULL_E_FAILURE_UNRELATED": {
+      "null_type": "FAILURE_UNRELATED",
+      "seed": 42,
+      "lifecycle_chains_unrelated_failure": 0,
+      "note": "If chains persist with unrelated failures, the failure\u2192mechanism link is not specific."
+    }
+  },
+  "device_categories": [
+    "implantables",
+    "diagnostics",
+    "surgical_systems",
+    "wearables",
+    "biomaterials",
+    "neurotechnology"
+  ],
+  "honest_boundaries": {
+    "real_data": true,
+    "no_synthetic_data": true,
+    "no_discovery_claims": true,
+    "missing_links_explicitly_recorded": true,
+    "tier_c_never_evidence": true,
+    "psc_frozen": true,
+    "a2_authorized": false
+  },
+  "exit_criterion": {
+    "REAL_LIFECYCLE_CHAINS": 1,
+    "REAL_LIFECYCLE_CHAINS_GT_0": true,
+    "FOUR_HOP_QUALIFIED_CANDIDATES": 0,
+    "FAILURE_TO_MECHANISM_CHAINS": 0
+  }
+}
