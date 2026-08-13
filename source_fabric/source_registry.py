@@ -39,7 +39,9 @@ import json
 
 @dataclass(frozen=True)
 class Source:
-    source_id: str               # e.g. "src:openalex:papers"
+    """A real source system. 24 fields per Issue #5 Phase 1 directive + 5-tier classification."""
+    # --- original fields (preserved for backward compat) ---
+    source_id: str               # e.g. "src:openalex"
     name: str
     url: str
     evidence_type: str           # paper | patent | technical_report | ...
@@ -47,12 +49,29 @@ class Source:
     license: str                 # CC0 | CC-BY | proprietary | public_domain | ...
     evidence_tier: str           # A | B | C | D | E | F | G | H | I
     universes: tuple[str, ...]   # subset of {matter, energy, life, machine, information, planet}
-    coverage_notes: str = ""     # honest notes on coverage limitations
-    auth_required: bool = False  # True if API key/credentials needed
+    coverage_notes: str = ""
+    auth_required: bool = False
     rate_limit: Optional[str] = None
-    metadata_format: str = ""    # JSON-LD | XML | CSV | Parquet | ...
-    primary_or_secondary: str = "primary"  # primary | secondary
+    metadata_format: str = ""
+    primary_or_secondary: str = "primary"
     status: str = "UNKNOWN"
+    # --- new fields per Issue #5 Phase 1 directive (24-field spec) ---
+    jurisdiction: str = ""           # US | EP | CN | IN | JP | KR | WO | multi | ""
+    domains: tuple[str, ...] = ()    # specific domains (from domain_map)
+    authority_tier: str = "PRIMARY_OPEN_DATA"  # PRIMARY_AUTHORITATIVE | PRIMARY_OPEN_DATA | SECONDARY_AUXILIARY | DISCOVERY_ONLY | UNUSABLE
+    free_or_paid: str = "free"       # free | paid | freemium
+    historical_depth: str = ""      # e.g. "1665-present" or "1976-present"
+    update_cadence: str = ""         # daily | weekly | monthly | real-time | batch
+    metadata_fields: tuple[str, ...] = ()  # which metadata fields are available
+    fulltext_available: bool = False
+    claims_available: bool = False   # patent claims
+    citation_available: bool = False # citation graph
+    family_available: bool = False   # patent family
+    language_coverage: str = "en"    # "en" | "multi" | "zh,en,ja,..."
+    last_probe: Optional[str] = None  # ISO timestamp of last live probe
+    probe_result: str = "NOT_PROBED" # NOT_PROBED | OK | AUTH_REQUIRED | ACCESS_BLOCKED | RATE_LIMITED | TEMPORARILY_UNAVAILABLE | SOURCE_CHANGED | LICENSE_BLOCKED | NOT_SUPPORTED
+    connector_status: str = "NOT_BUILT"  # NOT_BUILT | BUILT | VERIFIED | OPERATIONAL
+    provenance_policy: str = "CC0"   # what provenance we retain
 
 
 # =====================================================================
@@ -410,6 +429,12 @@ SOURCES: list[Source] = [
            ("matter", "energy", "life", "machine", "information", "planet"),
            "Zenodo code releases with DOIs", auth_required=False,
            metadata_format="JSON", primary_or_secondary="primary"),
+    Source("src:osf", "Open Science Framework", "https://osf.io",
+           "dataset", "rest_api", "CC-BY metadata", "A",
+           ("matter", "energy", "life", "machine", "information", "planet"),
+           "OSF preprints + datasets + projects", auth_required=False,
+           rate_limit="polite", metadata_format="JSON",
+           primary_or_secondary="primary"),
     Source("src:ascl", "Astrophysics Source Code Library", "https://ascl.net",
            "code", "rest_api", "CC-BY", "D",
            ("planet", "information"),
@@ -828,10 +853,12 @@ def registry_manifest() -> dict:
     by_license: dict[str, int] = {}
     by_tier: dict[str, int] = {}
     by_access: dict[str, int] = {}
+    by_authority: dict[str, int] = {}
     for s in SOURCES:
         by_license[s.license] = by_license.get(s.license, 0) + 1
         by_tier[s.evidence_tier] = by_tier.get(s.evidence_tier, 0) + 1
         by_access[s.access_method] = by_access.get(s.access_method, 0) + 1
+        by_authority[s.authority_tier] = by_authority.get(s.authority_tier, 0) + 1
     # Hash of the registry content
     content = json.dumps([asdict(s) for s in SOURCES], sort_keys=True, default=str)
     return {
@@ -841,7 +868,159 @@ def registry_manifest() -> dict:
         "by_license": by_license,
         "by_evidence_tier": by_tier,
         "by_access_method": by_access,
+        "by_authority_tier": by_authority,
         "primary_count": len(get_primary_sources()),
         "aggregator_count": len(get_aggregators()),
         "registry_content_hash": hashlib.sha256(content.encode()).hexdigest(),
     }
+
+
+# =====================================================================
+# PHASE 1: SOURCE_REGISTRY.json emitter (24-field spec per Issue #5)
+# =====================================================================
+
+AUTHORITY_TIERS = {
+    "PRIMARY_AUTHORITATIVE",   # official IP offices, regulatory bodies
+    "PRIMARY_OPEN_DATA",       # open scholarly indexes, open data repos
+    "SECONDARY_AUXILIARY",     # aggregators, derived databases
+    "DISCOVERY_ONLY",          # search portals with no API
+    "UNUSABLE",                # known broken / deprecated
+}
+
+
+def to_registry_record(s: Source) -> dict:
+    """Emit a 24-field registry record per Issue #5 Phase 1 directive."""
+    return {
+        "source_id": s.source_id,
+        "source_name": s.name,
+        "evidence_type": s.evidence_type,
+        "jurisdiction": s.jurisdiction,
+        "domains": list(s.domains) if s.domains else list(s.universes),
+        "authority_tier": s.authority_tier,
+        "access_method": s.access_method,
+        "endpoint": s.url,
+        "authentication_required": s.auth_required,
+        "free_or_paid": s.free_or_paid,
+        "license_terms": s.license,
+        "rate_limit": s.rate_limit or "",
+        "historical_depth": s.historical_depth,
+        "update_cadence": s.update_cadence,
+        "metadata_fields": list(s.metadata_fields),
+        "fulltext_available": s.fulltext_available,
+        "claims_available": s.claims_available,
+        "citation_available": s.citation_available,
+        "family_available": s.family_available,
+        "language_coverage": s.language_coverage,
+        "last_probe": s.last_probe,
+        "probe_result": s.probe_result,
+        "connector_status": s.connector_status,
+        "provenance_policy": s.provenance_policy,
+    }
+
+
+def emit_source_registry_json(path) -> dict:
+    """Write SOURCE_REGISTRY.json — the Phase 1 deliverable.
+
+    The SHA-256 hash goes ONLY in the .sha256 sidecar, never inside the file
+    itself (self-referential hashes are a bug source — the hash would change
+    the content it hashes).
+    """
+    from pathlib import Path
+    import hashlib
+    from datetime import datetime, timezone
+    import dataclasses
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    # Classify each source into its authority tier before emitting
+    classified_records = []
+    for s in SOURCES:
+        tier = classify_source(s)
+        s_classified = dataclasses.replace(s, authority_tier=tier)
+        classified_records.append(to_registry_record(s_classified))
+    by_tier: dict[str, int] = {}
+    for r in classified_records:
+        by_tier[r["authority_tier"]] = by_tier.get(r["authority_tier"], 0) + 1
+    payload = {
+        "registry_version": "1.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "total_sources": len(classified_records),
+        "by_authority_tier": by_tier,
+        "sources": classified_records,
+    }
+    # Write the file ONCE. Compute hash over the exact bytes written.
+    file_content = json.dumps(payload, sort_keys=True, indent=2, default=str)
+    path.write_text(file_content)
+    file_hash = hashlib.sha256(file_content.encode()).hexdigest()
+    # The hash goes ONLY in the sidecar — never inside the file
+    path.with_suffix(path.suffix + ".sha256").write_text(file_hash)
+    payload["registry_hash"] = file_hash  # included in the RETURNED dict, not in the file
+    return payload
+
+
+def get_by_authority_tier(tier: str) -> list[Source]:
+    """Filter sources by authority tier."""
+    return [s for s in SOURCES if s.authority_tier == tier]
+
+
+def classify_source(s: Source) -> str:
+    """Classify a source into one of 5 authority tiers based on its properties.
+
+    PRIMARY_AUTHORITATIVE — official IP offices (EPO, USPTO, CNIPA, IP India,
+      JPO, KIPO, WIPO), regulatory bodies (FDA, EMA, NTSB, CSB, CPSC, NHTSA),
+      standards bodies (ISO, IEC, ASTM, NIST SRD), and government data portals
+      (USGS, NOAA, NASA, DOE).
+    PRIMARY_OPEN_DATA — open scholarly indexes (OpenAlex, arXiv, PubMed,
+      DOAJ, Zenodo, Figshare, OSF) and open experimental databases (Materials
+      Project, AFLOW, COD, PubChem, ChEMBL, PDB, GBIF).
+    SECONDARY_AUXILIARY — aggregators and derived databases (Semantic Scholar,
+      Scopus, Web of Science, CORE, Unpaywall, BASE, Google Patents, The Lens,
+      PatentsView, Dimensions, Altmetric).
+    DISCOVERY_ONLY — search portals with no bulk API (Espacenet web, EPO
+      Register web, CNIPA web, IP India web, ISO catalog web).
+    UNUSABLE — known broken or deprecated sources.
+    """
+    sid = s.source_id
+    # PRIMARY_AUTHORITATIVE: official IP offices, regulators, standards bodies, gov data
+    authoritative_sources = {
+        "src:epo_ops", "src:uspto_odp", "src:cnipa", "src:ip_india",
+        "src:jpo", "src:kipo", "src:wipo_patentscope", "src:uspto_ppat",
+        "src:opentext_ePO", "src:uspto_tm",
+        "src:fda_devices", "src:fda_drugs", "src:fda_recalls",
+        "src:ema_drugs", "src:cpsc_recalls", "src:nhtsa_recalls",
+        "src:ntsb_reports", "src:csb_reports",
+        "src:iso_catalog", "src:iec_catalog", "src:astm_catalog",
+        "src:nist_srd", "src:nist_webbook", "src:ansi_catalog",
+        "src:ieee_standards", "src:iso_639_lang",
+        "src:nasa_ntrs", "src:nasa_earthdata",
+        "src:doe_osti", "src:nist_pubs", "src:dtic",
+        "src:usgs_data", "src:noaa_ncei", "src:esa_cds",
+        "src:usda_ree", "src:epa_scihub",
+        "src:ct_gov", "src:eu_ctr", "src:isrctn", "src:who_ictrp",
+        "src:japic_cti", "src:anzctr",
+        "src:energystar", "src:cec_db",
+        "src:eric",
+    }
+    if sid in authoritative_sources:
+        return "PRIMARY_AUTHORITATIVE"
+    # SECONDARY_AUXILIARY: aggregators and derived databases
+    aggregator_sources = {
+        "src:semantic_scholar", "src:scopus", "src:wos", "src:core",
+        "src:unpaywall", "src:base", "src:google_patents", "src:lens",
+        "src:patentsview", "src:dimensions", "src:altmetric", "src:plumx",
+        "src:chemspider", "src:worldcat", "src:archive_org_scholarly",
+        "src:sharedit", "src:cochrane_revman",
+        "src:oecd_stats", "src:world_bank",
+    }
+    if sid in aggregator_sources or s.primary_or_secondary in ("aggregator", "secondary"):
+        return "SECONDARY_AUXILIARY"
+    # DISCOVERY_ONLY: web-scrape-only search portals with no bulk API
+    if s.access_method == "web_scrape" and not s.auth_required:
+        return "DISCOVERY_ONLY"
+    # PRIMARY_OPEN_DATA: everything else that's primary and open
+    if s.primary_or_secondary == "primary" and s.free_or_paid in ("free", "freemium"):
+        return "PRIMARY_OPEN_DATA"
+    # Archive/federation
+    if s.primary_or_secondary in ("archive", "federation"):
+        return "SECONDARY_AUXILIARY"
+    return "PRIMARY_OPEN_DATA"
+
