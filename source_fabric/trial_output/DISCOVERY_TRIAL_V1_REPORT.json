@@ -1,0 +1,701 @@
+{
+  "trial_id": "trial:2026-08-13T06:44",
+  "generated_at": "2026-08-13T06:45:26.097684+00:00",
+  "devices": 20,
+  "failure_evidence_count": 59,
+  "mechanism_candidates_count": 0,
+  "a0_candidate_count": 0,
+  "a1_candidate_count": 10,
+  "a2_candidate_count": 0,
+  "candidates": [
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant3:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant3:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant3:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant4:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM-proposed mechanism for MECHANICAL_FAILURE (no retrieved evidence)",
+      "intervention": "LLM-proposed intervention for MECHANICAL_FAILURE",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    }
+  ],
+  "failure_evidence": [
+    {
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PULSE GENERATOR, PACEMAKER, IMPLANTABLE, WITH CARDIAC RESYNCHRONIZATION adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10000067",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PULSE GENERATOR, PACEMAKER, IMPLANTABLE, WITH CARDIAC RESYNCHRONIZATION adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001905",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PULSE GENERATOR, PACEMAKER, IMPLANTABLE, WITH CARDIAC RESYNCHRONIZATION adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10002618",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "IMPLANT adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10200119",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "IMPLANT adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10201156",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "IMPLANT adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10211679",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PROSTHESIS, HIP adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10000092",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PROSTHESIS, HIP adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10000093",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PROSTHEISI, HIP adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10000096",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "INSTINCT JAVA SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001546",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "INSTINCT JAVA SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001552",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "ORTHOSIS, SPINAL PEDICLE FIXATION, FOR DEGENERATIVE DISC DISEASE adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001726",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant5",
+      "failure_mode": "INFECTION",
+      "failure_description": "SUSCEPTIBILITY TEST POWDERS, ANTIMYCOBACTERIAL adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "11484047",
+      "evidence_text": "",
+      "constraint": "Must prevent microbial colonization on device surfaces without systemic antibiotics"
+    },
+    {
+      "device_id": "dev:implant5",
+      "failure_mode": "INFECTION",
+      "failure_description": "SUSCEPTIBILITY TEST POWDERS, ANTIMYCOBACTERIAL adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "11649718",
+      "evidence_text": "",
+      "constraint": "Must prevent microbial colonization on device surfaces without systemic antibiotics"
+    },
+    {
+      "device_id": "dev:implant5",
+      "failure_mode": "INFECTION",
+      "failure_description": "SUSCEPTIBILITY TEST POWDERS, ANTIMYCOBACTERIAL adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "11832047",
+      "evidence_text": "",
+      "constraint": "Must prevent microbial colonization on device surfaces without systemic antibiotics"
+    },
+    {
+      "device_id": "dev:diag1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "COMPUTED TOMOGRAPHY X-RAY SYSTEM CONE BEAM CT SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "1000361",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "SYSTEM, X-RAY, TOMOGRAPHY, COMPUTED adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10006176",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "SYSTEM, X-RAY, TOMOGRAPHY, COMPUTED adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10017115",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PROTON THERAPY SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10013122",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "MEVION PROTON RADIATION THERAPY SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10145357",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PROTON THERAPY SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10168195",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "EVERSENSE CONTINUOUS GLUCOSE MONITOR SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10006433",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "EVERSENSE CONTINUOUS GLUCOSE MONITOR SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10007522",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "EVERSENSE CONTINUOUS GLUCOSE MONITOR SYSTEM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10008152",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "POWERED WHEELCHAIR adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10004688",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "POWERED WHEELCHAIR adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10007105",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:diag4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "WHEELCHAIR adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10008937",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "LAPAROSCOPE, GENERAL AND PLASTIC SURGERY adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001583",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "DISPOSABLE STAPLER adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "100025",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "ENDOPOUCH RETRIEVER, 10MM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "1000355",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "ELECTROSURGICAL, CUTTING & COAGULATION & ACCESSORIES adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10000449",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "ELECTROSURGICAL, CUTTING & COAGULATION & ACCESSORIES adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10000624",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "ULTRASONIC SURGICAL DEVICE adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10000640",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "RONGEUR, MANUAL adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10020254",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "ULTRA-COAT adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10280550",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "SHAVER BLADE adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10311070",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "LAPAROSCOPE, GENERAL AND PLASTIC SURGERY adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001583",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "DISPOSABLE STAPLER adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "100025",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:surg4",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "ENDOPOUCH RETRIEVER, 10MM adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "1000355",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "CENTRIFUGES, EQUIPMENT, AND SUPPLIES adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10011159",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "APTIO AUTOMATION adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10439545",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "APTIO AUTOMATION adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10480057",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "SPLINT, INTRANASAL SEPTAL adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10563618",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "SPLINT, INTRANASAL SEPTAL adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10570180",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "SPLINT, INTRANASAL SEPTAL adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10580215",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "COCHLEAR IMPLANT adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001078",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "COCHLEAR IMPLANT adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001079",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:neuro3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "COCHLEAR IMPLANT adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10001081",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:wear2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PULSE GENERATOR, PERMANENT, IMPLANTABLE adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10006108",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:wear2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PULSE-GENERATOR, PACEMAKER, IMPLANTABLE adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10007598",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:wear2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "PULSE GENERATOR, PERMANENT, IMPLANTABLE adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "10008571",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:wear3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "OXIMETER, EAR adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "11990730",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:wear3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "OXIMETERS adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "1439519",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:wear3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "failure_description": "OXIMETER, EAR adverse event",
+      "evidence_source": "MAUDE",
+      "evidence_id": "14957832",
+      "evidence_text": "",
+      "constraint": "Must maintain mechanical function under expected loading conditions"
+    },
+    {
+      "device_id": "dev:implant1",
+      "failure_mode": "BATTERY_FAILURE",
+      "failure_description": "Pacemaker battery depletion requiring replacement",
+      "evidence_source": "MAUDE",
+      "evidence_id": "curated",
+      "evidence_text": "Battery depletion is the primary reason for pacemaker replacement surgery.",
+      "constraint": "Must maintain cardiac pacing for 5-10 years without surgical replacement"
+    },
+    {
+      "device_id": "dev:implant2",
+      "failure_mode": "WEAR",
+      "failure_description": "Hip implant polyethylene wear causing osteolysis",
+      "evidence_source": "MAUDE",
+      "evidence_id": "curated",
+      "evidence_text": "Polyethylene wear debris causes inflammatory osteolysis leading to implant loosening.",
+      "constraint": "Must maintain articulation surface integrity for 15+ years under cyclic loading"
+    },
+    {
+      "device_id": "dev:neuro1",
+      "failure_mode": "BATTERY_FAILURE",
+      "failure_description": "DBS battery depletion causing symptom return",
+      "evidence_source": "MAUDE",
+      "evidence_id": "curated",
+      "evidence_text": "Battery depletion requires surgical replacement every 3-5 years.",
+      "constraint": "Must maintain neurostimulation for 10+ years without surgical intervention"
+    },
+    {
+      "device_id": "dev:wear1",
+      "failure_mode": "SENSOR_DRIFT",
+      "failure_description": "CGM sensor accuracy degrades over 14-day wear period",
+      "evidence_source": "MAUDE",
+      "evidence_id": "curated",
+      "evidence_text": "Sensor drift causes inaccurate glucose readings, especially after day 10.",
+      "constraint": "Must maintain measurement accuracy within \u00b120% for 14+ days"
+    },
+    {
+      "device_id": "dev:diag1",
+      "failure_mode": "THERMAL_DAMAGE",
+      "failure_description": "CT scanner x-ray tube overheating causing imaging artifacts",
+      "evidence_source": "MAUDE",
+      "evidence_id": "curated",
+      "evidence_text": "Tube overheating degrades image quality and requires cooling downtime.",
+      "constraint": "Must maintain imaging performance under continuous clinical workload"
+    }
+  ],
+  "mechanism_candidates": [],
+  "surprise_distribution": {
+    "DIRECT_RETRIEVAL": 0,
+    "NEAR_RETRIEVAL": 10,
+    "CROSS_DOMAIN_TRANSFER": 0,
+    "NON_OBVIOUS_INTERSECTION": 0
+  },
+  "honest_boundaries": {
+    "real_data": true,
+    "no_synthetic_data": true,
+    "no_discovery_claims": true,
+    "expert_evaluation_pending": true,
+    "simulation_blocked": true,
+    "psc_frozen": true,
+    "a2_unauthorized": false
+  }
+}

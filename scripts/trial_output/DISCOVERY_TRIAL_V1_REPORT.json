@@ -1,0 +1,936 @@
+{
+  "trial_id": "trial:2026-08-13T06:53",
+  "generated_at": "2026-08-13T06:55:19.197523+00:00",
+  "devices": 20,
+  "failure_evidence_count": 59,
+  "a0_candidate_count": 8,
+  "a1_candidate_count": 8,
+  "a2_candidate_count": 8,
+  "candidates": [
+    {
+      "candidate_id": "cand:A0:dev:implant1:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant1:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant1:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant2:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant2:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant2:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant3:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant3:MECH",
+      "source_arm": "A0",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant3:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant3:MECH",
+      "source_arm": "A1",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": []
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant1:bd43ef",
+      "source_arm": "A2",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) Hysteresis Damping",
+      "intervention": "Fabricate stress-relief washers and lead-sealing gaskets from medical-grade NiTi SMA wire or thin strips. These components would be placed at the interface between the pacemaker leads and the titanium alloy pulse generator housing, specifically at the points of highest stress concentration identified via finite element analysis (FEA).",
+      "expected_effect": "A reduction in the peak stress amplitude at critical joints by 30-50%, and a projected increase in the fatigue life of the pulse generator casing by a factor of 5-10, effectively preventing mechanical failure under expected loading conditions over the device's 10-15 year lifespan.",
+      "required_conditions": "The SMA must be passivated to prevent ion leaching, and its transformation temperatures must be precisely controlled via alloy composition (e.g., adding Ni or Cu) to ensure full pseudoelasticity at 37\u00b0C. The device must undergo accelerated fatigue testing in a simulated physiological saline environment at 37\u00b0C and 120 beats per minute.",
+      "falsification_test": "Perform a rigorous accelerated life test (ALT) on two cohorts of pulse generators: a control group with standard titanium components and an intervention group with integrated SMA dampers. Subject both to 10 years' worth of mechanical cycles (approximately 500 million cycles) at 1.5 times the expected physiological load. The intervention is considered falsified if the failure rate of the SMA-integrated devices is not at least 50% lower than the control group.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The mechanical failure in the implantable pulse generator is likely due to cumulative fatigue damage from repeated cardiac contractions and patient movement. By integrating SMA elements at stress concentration points (e.g., where leads connect to the casing), the hysteresis damping would absorb vibrational and impact energy, reducing the stress amplitude experienced by the primary structural materials and extending fatigue life.",
+          "counterargument": "The biocompatibility of the SMA material and its long-term degradation (e.g., ion release from NiTi) in the physiological environment could lead to adverse inflammatory responses or toxicity, negating the mechanical benefit. Additionally, the cyclic stability of the SMA's damping properties over decades of implantation is not guaranteed."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) Hysteresis Damping"
+      ]
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant1:53ab8d",
+      "source_arm": "A2",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) based preload compensation mechanism",
+      "intervention": "Integrate a thin-film Nitinol (Ni-Ti) SMA washer into the housing assembly of the pulse generator, designed to undergo a martensite-to-austenite transformation at body temperature, generating a compensatory tensile force to counteract creep in the titanium housing screws.",
+      "expected_effect": "The SMA mechanism would maintain a constant 95% of the initial preload on the housing screws over the device's 10-year lifespan, preventing housing micro-movements and lead connector detachment.",
+      "required_conditions": "The SMA must be vacuum-sealed from bodily fluids. The transformation temperatures must be precisely controlled during manufacturing to ensure activation occurs within the 37\u00b11\u00b0C core body temperature range. The SMA element must be annealed to a specific stress state to generate the required actuation force.",
+      "falsification_test": "Accelerated aging of prototype devices in a saline bath at 42\u00b0C for 5 years, with continuous cyclic mechanical loading simulating cardiac motion. Measure the preload retention using micro-CT scanning to detect screw loosening and compare against control devices without the SMA mechanism. A failure is defined as >10% preload loss.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The pacemaker's pulse generator experiences cyclic mechanical loading from lead movement and cardiac contractions, causing metallic components to creep and fasteners to relax over time, leading to mechanical failure. An SMA-based preload compensation system could autonomously adjust to maintain clamping force and structural integrity.",
+          "counterargument": "The biocompatibility of SMA alloys in the long-term physiological environment is not fully established. Potential ion leaching and the effect of body fluids on the SMA's phase transformation temperatures could degrade performance. The fatigue life of the SMA in a constant, low-amplitude cyclic load environment is unknown."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) based preload compensation mechanism"
+      ]
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant1:c71617",
+      "source_arm": "A2",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) preload compensation mechanism",
+      "intervention": "Embed a NiTi wire helix within the pacemaker's titanium casing, pre-strained during manufacturing and anchored at stress concentration points. The wire would be designed to activate its shape-memory effect at body temperature, maintaining constant preload on critical joints.",
+      "expected_effect": "A 30% reduction in crack initiation rate at solder joints and casing interfaces under accelerated mechanical fatigue testing, extending device lifetime by 50%.",
+      "required_conditions": "Precise control of SMA composition (Ni/Ti ratio) to ensure transformation temperature is precisely at 37\u00b0C, biocompatible encapsulation to prevent ion leaching, and finite element analysis to optimize preload distribution.",
+      "falsification_test": "Perform accelerated lifetime testing (ISO 14708-3) with and without the SMA mechanism, using a hydraulic fatigue tester to simulate 10 years of cardiac cycles. Monitor electrical resistance changes and perform micro-CT scans to detect crack formation. A statistically significant (p<0.05) reduction in failure rates would validate the mechanism.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The pacemaker's pulse generator experiences cyclic mechanical stress from repeated diaphragm contractions and body movement, leading to metal fatigue at solder joints and casing seams. An SMA element could be integrated to absorb and redistribute these dynamic loads, mimicking how aerospace structures absorb vibrational energy.",
+          "counterargument": "The human body's thermal environment (37\u00b0C \u00b1 1\u00b0C) is far more stable than aerospace thermal cycling, potentially preventing full SMA actuation and leading to incomplete stress compensation."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) preload compensation mechanism"
+      ]
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant2:1268db",
+      "source_arm": "A2",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Self-healing polymer matrix with microcapsule-based healing agents",
+      "intervention": "Fabricate the implant's structural polymer components (e.g., PEEK or UHMWPE) using a co-extrusion or in-situ polymerization process to embed dicyclopentadiene-filled poly(urea-formaldehyde) microcapsules and a Grubbs' catalyst dispersion throughout the bulk material.",
+      "expected_effect": "The implant would autonomously repair microcracks formed during physiological loading, preventing crack propagation and subsequent catastrophic mechanical failure, thereby maintaining mechanical function under expected loading conditions.",
+      "required_conditions": "The healing system must be sterilizable (e.g., via gamma irradiation or EtO) without deactivating the catalyst or degrading the microcapsules. The mechanical properties of the composite must meet ISO standards for orthopedic implants.",
+      "falsification_test": "Perform accelerated aging and cyclic fatigue testing (e.g., 10 million cycles at 5Hz, simulating 10 years of gait) on the modified implant material. Post-test, analyze the samples using micro-CT and SEM to quantify crack density and compare the fracture toughness of healed vs. unhealed samples. A successful intervention would show significantly reduced crack density and restored mechanical properties in the fatigue-tested samples.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "materials science (specifically, aerospace composite materials)",
+          "transfer_argument": "The mechanical failure of the implant (dev:implant2) is likely due to crack initiation and propagation under cyclic physiological loading. A self-healing matrix could autonomously repair microcracks before they propagate to critical failure, extending the implant's fatigue life.",
+          "counterargument": "The long-term biocompatibility and stability of the healing agent and catalyst within the human body are unknown. The hydrolysis of the microcapsules or the polymerization reaction could produce cytotoxic byproducts. The mechanical properties of the healed region may not match the virgin material, potentially creating a weak point."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Self-healing polymer matrix with microcapsule-based healing agents"
+      ]
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant2:36423d",
+      "source_arm": "A2",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Crack Bridging by Platelet-like Particles",
+      "intervention": "Integrate a low volume fraction (3-7%) of biocompatible, high-aspect-ratio ceramic nanofillers (e.g., hydroxyapatite nanosheets or BNNTs) into the polymer matrix of the implant via in-situ polymerization or powder metallurgy, ensuring uniform dispersion and strong interfacial bonding.",
+      "expected_effect": "The implant's resistance to crack propagation under cyclic physiological loading will be significantly increased, leading to a longer fatigue life and a reduced probability of sudden mechanical failure, while maintaining the original material's mechanical properties and biocompatibility.",
+      "required_conditions": "The nanofillers must be biocompatible and have a proven long-term stability in the physiological environment. The manufacturing process must be scalable and result in a defect-free, homogeneous composite material. The final material must meet all regulatory requirements for medical implants.",
+      "falsification_test": "Perform accelerated fatigue testing on the modified implant material using a cyclic loading protocol that simulates 10 years of physiological stress. Compare the number of cycles to failure with the unmodified material. A successful intervention will demonstrate a statistically significant increase in fatigue life. Additionally, perform fracture toughness tests (e.g., ASTM D5045) to confirm the measured G<sub>IC</sub> improvement.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "materials science (specifically, advanced composite fracture mechanics)",
+          "transfer_argument": "The mechanical failure of the implant is likely due to crack initiation and propagation under cyclic loading, leading to catastrophic fracture. The crack-bridging mechanism from composites can be directly transferred to the implant's material (e.g., PEEK or titanium alloy) to enhance its fracture toughness without compromising its biocompatibility or mechanical strength, thereby preventing sudden mechanical failure.",
+          "counterargument": "The introduction of secondary phases could potentially reduce the material's fatigue life by creating new stress concentration sites or could lead to galvanic corrosion if the particles are metallic and the matrix is a dissimilar metal. Additionally, the long-term biocompatibility and degradation of the new composite material are unknown."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Crack Bridging by Platelet-like Particles"
+      ]
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant2:bd43ef",
+      "source_arm": "A2",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) Hysteresis Damping",
+      "intervention": "Fabricate the stress-critical components of the implant (e.g., the modular neck or fixation screws) from a medical-grade superelastic Nitinol alloy, replacing the original conventional titanium alloy.",
+      "expected_effect": "A significant reduction in the initiation and propagation of fatigue cracks in the implant, thereby extending its functional lifespan under expected physiological loading conditions.",
+      "required_conditions": "The implant's geometry must be redesigned to accommodate the unique mechanical properties of SMAs (e.g., different elastic modulus). The SMA must be passivated and coated to minimize ion leaching, and its long-term cyclic stability must be validated in a simulated physiological environment.",
+      "falsification_test": "Perform accelerated fatigue testing on the SMA-implant components using a cyclic loading profile that mimics physiological conditions. Compare the number of cycles to failure against the original titanium implant. Failure is defined as a crack length exceeding a critical threshold (e.g., 0.5mm) or a 10% loss of superelastic damping capacity.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The implant experiences cyclic mechanical loading (e.g., from walking, movement) that can lead to fatigue cracking. SMA hysteresis provides an intrinsic, passive damping mechanism that absorbs this energy at the source, reducing the stress amplitude below the fatigue threshold of the implant material.",
+          "counterargument": "The biocompatibility of the SMA alloy (e.g., nickel leaching from Nitinol) and the potential for a decrease in superelasticity properties after a high number of cycles (fatigue of the SMA itself) could compromise the long-term safety and efficacy of the implant."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) Hysteresis Damping"
+      ]
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant3:10dcc8",
+      "source_arm": "A2",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) based self-healing strain accommodation",
+      "intervention": "Integrate a thin-walled NiTi tube as a stress-relief layer within the proximal, high-stress region of the titanium alloy prosthesis stem. The tube would be pre-strained in the martensitic state and then heat-treated above its Af temperature to \"lock in\" the recovery stress.",
+      "expected_effect": "A reduction in stress concentration at the stem-neck junction by up to 40%, and a projected 5-10 fold increase in the fatigue life of the implant under gait-simulated loading.",
+      "required_conditions": "The SMA must be hermetically sealed with a biocompatible ceramic coating (e.g., alumina) to prevent ion leaching. The operating temperature of the joint (maintained by the body at ~37\u00b0C) must be consistently above the Af of the SMA.",
+      "falsification_test": "In-vitro mechanical testing using a hip simulator to apply 10 million cycles of physiological loading (3-5x body weight) to the modified prosthesis, comparing the crack initiation and propagation rates to a control group via high-resolution micro-CT scanning. Failure would be defined as a crack length >200 \u00b5m.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The cyclic loading on a hip prosthesis stem can cause microplastic deformation and crack initiation at stress concentration points. An SMA element integrated into the prosthesis could absorb these strains elastically and return to its original shape, preventing permanent damage and extending fatigue life.",
+          "counterargument": "The biocompatibility of SMA elements within the human body, particularly the potential for Ni ion leaching and the long-term degradation of the SMA's functional properties in the corrosive physiological environment, poses significant risks."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) based self-healing strain accommodation"
+      ]
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant3:e41dd4",
+      "source_arm": "A2",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Gradient Structure Surface Engineering",
+      "intervention": "Implement a surface treatment on the femoral head of the hip implant using a combination of severe shot peening to create a nanocrystalline surface layer (10-30 \u00b5m deep) with high hardness, followed by a controlled thermal annealing to create a gradual hardness gradient into the bulk material.",
+      "expected_effect": "A significant increase in fatigue life (>5x) and resistance to stress corrosion cracking, while maintaining the overall toughness and fracture resistance of the bulk implant material.",
+      "required_conditions": "Precise control over shot peening parameters (media size, velocity, coverage) and annealing temperature/time. Use of biocompatible materials (e.g., Ti-6Al-4V or CoCrMo alloy) for both the surface and bulk. Rigorous in-vitro testing to validate biocompatibility and performance.",
+      "falsification_test": "Perform accelerated fatigue testing (ISO 7206-4) on treated vs. untreated implants in a physiological saline solution at 37\u00b0C, with cyclic loading simulating 10 years of gait. Monitor for crack initiation using acoustic emission and for surface degradation using profilometry. Failure would be defined as a crack depth exceeding 100 \u00b5m or a surface roughness increase of >0.5 \u00b5m Ra.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "materials science (specifically, surface engineering of turbine blades)",
+          "transfer_argument": "Hip prostheses fail due to mechanical fatigue, stress corrosion cracking, and wear at the articulating surface, which are analogous to the HCF and corrosive wear in turbine blades. A gradient structure could mitigate these failure modes by distributing stress away from the critical surface and improving corrosion resistance.",
+          "counterargument": "The manufacturing processes for turbine blades (e.g., laser shock peening, physical vapor deposition) are not directly transferable to complex, patient-specific orthopedic implants. Biocompatibility of the gradient layers and their long-term stability in the physiological environment (aqueous, with varying pH and ions) is unproven."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Gradient Structure Surface Engineering"
+      ]
+    }
+  ],
+  "blinded_candidates": [
+    {
+      "candidate_id": "cand:A0:dev:implant1:MECH",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "58de8fec"
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant1:MECH",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "58de8fec"
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant1:MECH",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "58de8fec"
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant2:MECH",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "29e99a72"
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant2:MECH",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "29e99a72"
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant2:MECH",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "29e99a72"
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant3:MECH",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "8a6b8752"
+    },
+    {
+      "candidate_id": "cand:A0:dev:implant3:MECH",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Standard medical approach: Use standard medical solution",
+      "intervention": "Use standard medical solution",
+      "expected_effect": "Standard clinical outcome",
+      "required_conditions": "Standard clinical conditions",
+      "falsification_test": "Standard clinical trial",
+      "evidence_sources": [
+        {
+          "source_type": "retrieval",
+          "source_domain": "medical"
+        }
+      ],
+      "surprise_class": "DIRECT_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "8a6b8752"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "ed0e5d9b"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "ed0e5d9b"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant1:MECH",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "ed0e5d9b"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "1b5299c6"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "1b5299c6"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant2:MECH",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "1b5299c6"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant3:MECH",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "4c63d1f1"
+    },
+    {
+      "candidate_id": "cand:A1:dev:implant3:MECH",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "LLM knowledge: LLM-proposed standard solution",
+      "intervention": "LLM-proposed standard solution",
+      "expected_effect": "LLM-predicted effect (no external evidence)",
+      "required_conditions": "LLM-inferred conditions (unverified)",
+      "falsification_test": "Requires experimental validation",
+      "evidence_sources": [],
+      "surprise_class": "NEAR_RETRIEVAL",
+      "llm_source_spans": [],
+      "blinded_id": "4c63d1f1"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant1:bd43ef",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) Hysteresis Damping",
+      "intervention": "Fabricate stress-relief washers and lead-sealing gaskets from medical-grade NiTi SMA wire or thin strips. These components would be placed at the interface between the pacemaker leads and the titanium alloy pulse generator housing, specifically at the points of highest stress concentration identified via finite element analysis (FEA).",
+      "expected_effect": "A reduction in the peak stress amplitude at critical joints by 30-50%, and a projected increase in the fatigue life of the pulse generator casing by a factor of 5-10, effectively preventing mechanical failure under expected loading conditions over the device's 10-15 year lifespan.",
+      "required_conditions": "The SMA must be passivated to prevent ion leaching, and its transformation temperatures must be precisely controlled via alloy composition (e.g., adding Ni or Cu) to ensure full pseudoelasticity at 37\u00b0C. The device must undergo accelerated fatigue testing in a simulated physiological saline environment at 37\u00b0C and 120 beats per minute.",
+      "falsification_test": "Perform a rigorous accelerated life test (ALT) on two cohorts of pulse generators: a control group with standard titanium components and an intervention group with integrated SMA dampers. Subject both to 10 years' worth of mechanical cycles (approximately 500 million cycles) at 1.5 times the expected physiological load. The intervention is considered falsified if the failure rate of the SMA-integrated devices is not at least 50% lower than the control group.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The mechanical failure in the implantable pulse generator is likely due to cumulative fatigue damage from repeated cardiac contractions and patient movement. By integrating SMA elements at stress concentration points (e.g., where leads connect to the casing), the hysteresis damping would absorb vibrational and impact energy, reducing the stress amplitude experienced by the primary structural materials and extending fatigue life.",
+          "counterargument": "The biocompatibility of the SMA material and its long-term degradation (e.g., ion release from NiTi) in the physiological environment could lead to adverse inflammatory responses or toxicity, negating the mechanical benefit. Additionally, the cyclic stability of the SMA's damping properties over decades of implantation is not guaranteed."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) Hysteresis Damping"
+      ],
+      "blinded_id": "d861b84f"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant1:53ab8d",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) based preload compensation mechanism",
+      "intervention": "Integrate a thin-film Nitinol (Ni-Ti) SMA washer into the housing assembly of the pulse generator, designed to undergo a martensite-to-austenite transformation at body temperature, generating a compensatory tensile force to counteract creep in the titanium housing screws.",
+      "expected_effect": "The SMA mechanism would maintain a constant 95% of the initial preload on the housing screws over the device's 10-year lifespan, preventing housing micro-movements and lead connector detachment.",
+      "required_conditions": "The SMA must be vacuum-sealed from bodily fluids. The transformation temperatures must be precisely controlled during manufacturing to ensure activation occurs within the 37\u00b11\u00b0C core body temperature range. The SMA element must be annealed to a specific stress state to generate the required actuation force.",
+      "falsification_test": "Accelerated aging of prototype devices in a saline bath at 42\u00b0C for 5 years, with continuous cyclic mechanical loading simulating cardiac motion. Measure the preload retention using micro-CT scanning to detect screw loosening and compare against control devices without the SMA mechanism. A failure is defined as >10% preload loss.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The pacemaker's pulse generator experiences cyclic mechanical loading from lead movement and cardiac contractions, causing metallic components to creep and fasteners to relax over time, leading to mechanical failure. An SMA-based preload compensation system could autonomously adjust to maintain clamping force and structural integrity.",
+          "counterargument": "The biocompatibility of SMA alloys in the long-term physiological environment is not fully established. Potential ion leaching and the effect of body fluids on the SMA's phase transformation temperatures could degrade performance. The fatigue life of the SMA in a constant, low-amplitude cyclic load environment is unknown."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) based preload compensation mechanism"
+      ],
+      "blinded_id": "8c696d94"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant1:c71617",
+      "device_id": "dev:implant1",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) preload compensation mechanism",
+      "intervention": "Embed a NiTi wire helix within the pacemaker's titanium casing, pre-strained during manufacturing and anchored at stress concentration points. The wire would be designed to activate its shape-memory effect at body temperature, maintaining constant preload on critical joints.",
+      "expected_effect": "A 30% reduction in crack initiation rate at solder joints and casing interfaces under accelerated mechanical fatigue testing, extending device lifetime by 50%.",
+      "required_conditions": "Precise control of SMA composition (Ni/Ti ratio) to ensure transformation temperature is precisely at 37\u00b0C, biocompatible encapsulation to prevent ion leaching, and finite element analysis to optimize preload distribution.",
+      "falsification_test": "Perform accelerated lifetime testing (ISO 14708-3) with and without the SMA mechanism, using a hydraulic fatigue tester to simulate 10 years of cardiac cycles. Monitor electrical resistance changes and perform micro-CT scans to detect crack formation. A statistically significant (p<0.05) reduction in failure rates would validate the mechanism.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The pacemaker's pulse generator experiences cyclic mechanical stress from repeated diaphragm contractions and body movement, leading to metal fatigue at solder joints and casing seams. An SMA element could be integrated to absorb and redistribute these dynamic loads, mimicking how aerospace structures absorb vibrational energy.",
+          "counterargument": "The human body's thermal environment (37\u00b0C \u00b1 1\u00b0C) is far more stable than aerospace thermal cycling, potentially preventing full SMA actuation and leading to incomplete stress compensation."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) preload compensation mechanism"
+      ],
+      "blinded_id": "4623fc90"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant2:1268db",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Self-healing polymer matrix with microcapsule-based healing agents",
+      "intervention": "Fabricate the implant's structural polymer components (e.g., PEEK or UHMWPE) using a co-extrusion or in-situ polymerization process to embed dicyclopentadiene-filled poly(urea-formaldehyde) microcapsules and a Grubbs' catalyst dispersion throughout the bulk material.",
+      "expected_effect": "The implant would autonomously repair microcracks formed during physiological loading, preventing crack propagation and subsequent catastrophic mechanical failure, thereby maintaining mechanical function under expected loading conditions.",
+      "required_conditions": "The healing system must be sterilizable (e.g., via gamma irradiation or EtO) without deactivating the catalyst or degrading the microcapsules. The mechanical properties of the composite must meet ISO standards for orthopedic implants.",
+      "falsification_test": "Perform accelerated aging and cyclic fatigue testing (e.g., 10 million cycles at 5Hz, simulating 10 years of gait) on the modified implant material. Post-test, analyze the samples using micro-CT and SEM to quantify crack density and compare the fracture toughness of healed vs. unhealed samples. A successful intervention would show significantly reduced crack density and restored mechanical properties in the fatigue-tested samples.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "materials science (specifically, aerospace composite materials)",
+          "transfer_argument": "The mechanical failure of the implant (dev:implant2) is likely due to crack initiation and propagation under cyclic physiological loading. A self-healing matrix could autonomously repair microcracks before they propagate to critical failure, extending the implant's fatigue life.",
+          "counterargument": "The long-term biocompatibility and stability of the healing agent and catalyst within the human body are unknown. The hydrolysis of the microcapsules or the polymerization reaction could produce cytotoxic byproducts. The mechanical properties of the healed region may not match the virgin material, potentially creating a weak point."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Self-healing polymer matrix with microcapsule-based healing agents"
+      ],
+      "blinded_id": "6277f8e6"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant2:36423d",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Crack Bridging by Platelet-like Particles",
+      "intervention": "Integrate a low volume fraction (3-7%) of biocompatible, high-aspect-ratio ceramic nanofillers (e.g., hydroxyapatite nanosheets or BNNTs) into the polymer matrix of the implant via in-situ polymerization or powder metallurgy, ensuring uniform dispersion and strong interfacial bonding.",
+      "expected_effect": "The implant's resistance to crack propagation under cyclic physiological loading will be significantly increased, leading to a longer fatigue life and a reduced probability of sudden mechanical failure, while maintaining the original material's mechanical properties and biocompatibility.",
+      "required_conditions": "The nanofillers must be biocompatible and have a proven long-term stability in the physiological environment. The manufacturing process must be scalable and result in a defect-free, homogeneous composite material. The final material must meet all regulatory requirements for medical implants.",
+      "falsification_test": "Perform accelerated fatigue testing on the modified implant material using a cyclic loading protocol that simulates 10 years of physiological stress. Compare the number of cycles to failure with the unmodified material. A successful intervention will demonstrate a statistically significant increase in fatigue life. Additionally, perform fracture toughness tests (e.g., ASTM D5045) to confirm the measured G<sub>IC</sub> improvement.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "materials science (specifically, advanced composite fracture mechanics)",
+          "transfer_argument": "The mechanical failure of the implant is likely due to crack initiation and propagation under cyclic loading, leading to catastrophic fracture. The crack-bridging mechanism from composites can be directly transferred to the implant's material (e.g., PEEK or titanium alloy) to enhance its fracture toughness without compromising its biocompatibility or mechanical strength, thereby preventing sudden mechanical failure.",
+          "counterargument": "The introduction of secondary phases could potentially reduce the material's fatigue life by creating new stress concentration sites or could lead to galvanic corrosion if the particles are metallic and the matrix is a dissimilar metal. Additionally, the long-term biocompatibility and degradation of the new composite material are unknown."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Crack Bridging by Platelet-like Particles"
+      ],
+      "blinded_id": "cda2d3eb"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant2:bd43ef",
+      "device_id": "dev:implant2",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) Hysteresis Damping",
+      "intervention": "Fabricate the stress-critical components of the implant (e.g., the modular neck or fixation screws) from a medical-grade superelastic Nitinol alloy, replacing the original conventional titanium alloy.",
+      "expected_effect": "A significant reduction in the initiation and propagation of fatigue cracks in the implant, thereby extending its functional lifespan under expected physiological loading conditions.",
+      "required_conditions": "The implant's geometry must be redesigned to accommodate the unique mechanical properties of SMAs (e.g., different elastic modulus). The SMA must be passivated and coated to minimize ion leaching, and its long-term cyclic stability must be validated in a simulated physiological environment.",
+      "falsification_test": "Perform accelerated fatigue testing on the SMA-implant components using a cyclic loading profile that mimics physiological conditions. Compare the number of cycles to failure against the original titanium implant. Failure is defined as a crack length exceeding a critical threshold (e.g., 0.5mm) or a 10% loss of superelastic damping capacity.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The implant experiences cyclic mechanical loading (e.g., from walking, movement) that can lead to fatigue cracking. SMA hysteresis provides an intrinsic, passive damping mechanism that absorbs this energy at the source, reducing the stress amplitude below the fatigue threshold of the implant material.",
+          "counterargument": "The biocompatibility of the SMA alloy (e.g., nickel leaching from Nitinol) and the potential for a decrease in superelasticity properties after a high number of cycles (fatigue of the SMA itself) could compromise the long-term safety and efficacy of the implant."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) Hysteresis Damping"
+      ],
+      "blinded_id": "31223fc0"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant3:10dcc8",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Shape Memory Alloy (SMA) based self-healing strain accommodation",
+      "intervention": "Integrate a thin-walled NiTi tube as a stress-relief layer within the proximal, high-stress region of the titanium alloy prosthesis stem. The tube would be pre-strained in the martensitic state and then heat-treated above its Af temperature to \"lock in\" the recovery stress.",
+      "expected_effect": "A reduction in stress concentration at the stem-neck junction by up to 40%, and a projected 5-10 fold increase in the fatigue life of the implant under gait-simulated loading.",
+      "required_conditions": "The SMA must be hermetically sealed with a biocompatible ceramic coating (e.g., alumina) to prevent ion leaching. The operating temperature of the joint (maintained by the body at ~37\u00b0C) must be consistently above the Af of the SMA.",
+      "falsification_test": "In-vitro mechanical testing using a hip simulator to apply 10 million cycles of physiological loading (3-5x body weight) to the modified prosthesis, comparing the crack initiation and propagation rates to a control group via high-resolution micro-CT scanning. Failure would be defined as a crack length >200 \u00b5m.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "aerospace",
+          "transfer_argument": "The cyclic loading on a hip prosthesis stem can cause microplastic deformation and crack initiation at stress concentration points. An SMA element integrated into the prosthesis could absorb these strains elastically and return to its original shape, preventing permanent damage and extending fatigue life.",
+          "counterargument": "The biocompatibility of SMA elements within the human body, particularly the potential for Ni ion leaching and the long-term degradation of the SMA's functional properties in the corrosive physiological environment, poses significant risks."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Shape Memory Alloy (SMA) based self-healing strain accommodation"
+      ],
+      "blinded_id": "472a9fd9"
+    },
+    {
+      "candidate_id": "cand:A2:dev:implant3:e41dd4",
+      "device_id": "dev:implant3",
+      "failure_mode": "MECHANICAL_FAILURE",
+      "mechanism": "Gradient Structure Surface Engineering",
+      "intervention": "Implement a surface treatment on the femoral head of the hip implant using a combination of severe shot peening to create a nanocrystalline surface layer (10-30 \u00b5m deep) with high hardness, followed by a controlled thermal annealing to create a gradual hardness gradient into the bulk material.",
+      "expected_effect": "A significant increase in fatigue life (>5x) and resistance to stress corrosion cracking, while maintaining the overall toughness and fracture resistance of the bulk implant material.",
+      "required_conditions": "Precise control over shot peening parameters (media size, velocity, coverage) and annealing temperature/time. Use of biocompatible materials (e.g., Ti-6Al-4V or CoCrMo alloy) for both the surface and bulk. Rigorous in-vitro testing to validate biocompatibility and performance.",
+      "falsification_test": "Perform accelerated fatigue testing (ISO 7206-4) on treated vs. untreated implants in a physiological saline solution at 37\u00b0C, with cyclic loading simulating 10 years of gait. Monitor for crack initiation using acoustic emission and for surface degradation using profilometry. Failure would be defined as a crack depth exceeding 100 \u00b5m or a surface roughness increase of >0.5 \u00b5m Ra.",
+      "evidence_sources": [
+        {
+          "source_type": "llm_cross_domain",
+          "source_domain": "materials science (specifically, surface engineering of turbine blades)",
+          "transfer_argument": "Hip prostheses fail due to mechanical fatigue, stress corrosion cracking, and wear at the articulating surface, which are analogous to the HCF and corrosive wear in turbine blades. A gradient structure could mitigate these failure modes by distributing stress away from the critical surface and improving corrosion resistance.",
+          "counterargument": "The manufacturing processes for turbine blades (e.g., laser shock peening, physical vapor deposition) are not directly transferable to complex, patient-specific orthopedic implants. Biocompatibility of the gradient layers and their long-term stability in the physiological environment (aqueous, with varying pH and ions) is unproven."
+        }
+      ],
+      "surprise_class": "CROSS_DOMAIN_TRANSFER",
+      "llm_source_spans": [
+        "Gradient Structure Surface Engineering"
+      ],
+      "blinded_id": "e9764783"
+    }
+  ],
+  "surprise_distribution": {
+    "DIRECT_RETRIEVAL": 8,
+    "NEAR_RETRIEVAL": 8,
+    "CROSS_DOMAIN_TRANSFER": 8,
+    "NON_OBVIOUS_INTERSECTION": 0
+  },
+  "expert_evaluation_template": {
+    "scoring_dimensions": [
+      "evidence_validity (1-5)",
+      "mechanism_quality (1-5)",
+      "non_obviousness (1-5)",
+      "transfer_plausibility (1-5)",
+      "falsifiability (1-5)",
+      "prior_art_burden (1-5)",
+      "experimental_testability (1-5)"
+    ],
+    "instructions": "Score each blinded candidate. Higher = better. A candidate scoring 4+ on non_obviousness AND transfer_plausibility is a HIGH_VALUE_CANDIDATE."
+  },
+  "honest_boundaries": {
+    "real_failure_evidence": true,
+    "llm_used_for_synthesis": true,
+    "llm_not_used_for_evidence_manufacturing": true,
+    "expert_evaluation_pending": true,
+    "no_discovery_claims": true,
+    "simulation_blocked": true,
+    "psc_frozen": true
+  }
+}
