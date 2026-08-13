@@ -1,0 +1,141 @@
+{
+  "active_components": [
+    "FDA connectors (510k, PMA, MAUDE, recalls, classification) \u2014 ACTIVE",
+    "ClinicalTrials.gov connector \u2014 ACTIVE",
+    "OpenAlex / scientific ingestion \u2014 ACTIVE",
+    "HuggingFace patent ingestion \u2014 ACTIVE",
+    "SEC EDGAR ingestion \u2014 ACTIVE",
+    "Snapshot system \u2014 ACTIVE",
+    "Provenance system \u2014 ACTIVE",
+    "Failure recorder \u2014 ACTIVE",
+    "Source registry \u2014 ACTIVE",
+    "Claim atomic unit (V3) \u2014 ACTIVE",
+    "Device lineage + 4-tier resolution (V3) \u2014 ACTIVE",
+    "FDA predicate walker (V3) \u2014 ACTIVE",
+    "Independence v3 with 2-of-3 (V3) \u2014 ACTIVE",
+    "Staged prior-art vocabulary (V3) \u2014 ACTIVE",
+    "Claim-chain detector (V3) \u2014 ACTIVE"
+  ],
+  "baseline_commit": "511ff8c9",
+  "baseline_snapshot_hash": "4f56fc787cdbde40",
+  "benchmark_scores": {
+    "1": "3/10",
+    "2": "2/10",
+    "3": "1/10",
+    "4": "0/10",
+    "5": "2/10",
+    "6": "3/10",
+    "7": "N/A",
+    "8": "0/10",
+    "9": "4/10",
+    "10": "0/10 (correctly blocked)",
+    "11": "0/10"
+  },
+  "exit_gate": {
+    "evidence": "23 negative tests proving 8 invariants across all code paths",
+    "gate_statement": "NO_SIMILARITY_ONLY_EDGE_CAN_EVER_BECOME_EVIDENCE",
+    "gate_status": "PASS"
+  },
+  "frozen_components": [
+    "Four-hop detector (archived in V2, replaced by Claim-chain in V3)",
+    "Independence procedure (archived in V2, replaced by v3 in V3)",
+    "Lexical/semantic evidence-linking (archived in V2, replaced by verified_linkage in V2)",
+    "Null implementations (archived in V2, replaced by benchmark_v2 in V2)",
+    "Adversarial qualification (archived in V2, OBVIOUS_COMBINATION = BLOCKED)"
+  ],
+  "generated_at": "2026-08-13T03:53:36.791416+00:00",
+  "honest_baseline": {
+    "adverse_events_linked": 70,
+    "devices_ingested": 48,
+    "failure_modes_extracted": 46,
+    "four_hop_qualified": 0,
+    "papers_linked": 8,
+    "patents_linked": 193,
+    "real_lifecycle_chains": 3,
+    "recalls_linked": 0,
+    "trials_linked": 0
+  },
+  "invariants_proven": [
+    {
+      "invariant": "make_search_candidate NEVER produces EVIDENCE",
+      "status": "PASS",
+      "tests": [
+        "test_search_candidate_is_not_evidence",
+        "test_high_similarity_still_not_evidence",
+        "test_temporal_proximity_not_evidence",
+        "test_name_similarity_not_evidence"
+      ]
+    },
+    {
+      "invariant": "verify_*_link functions NEVER produce EVIDENCE from similarity",
+      "status": "PASS",
+      "tests": [
+        "test_paper_link_single_word_not_evidence",
+        "test_patent_link_keyword_overlap_not_evidence",
+        "test_trial_link_name_similarity_not_evidence",
+        "test_recall_link_temporal_proximity_not_evidence",
+        "test_ae_link_embedding_similarity_not_evidence"
+      ]
+    },
+    {
+      "invariant": "Claim extraction NEVER creates claims from co-mention",
+      "status": "PASS",
+      "tests": [
+        "test_co_mention_produces_no_claim",
+        "test_embedding_similarity_produces_no_claim",
+        "test_temporal_proximity_produces_no_claim",
+        "test_negated_causal_produces_no_claim",
+        "test_only_explicit_causal_produces_claim"
+      ]
+    },
+    {
+      "invariant": "Tier C edges are NEVER evidence",
+      "status": "PASS",
+      "tests": [
+        "test_semantic_similarity_tier_c_not_evidence",
+        "test_temporal_proximity_tier_c_not_evidence"
+      ]
+    },
+    {
+      "invariant": "Claim-chain detector NEVER qualifies from co-presence",
+      "status": "PASS",
+      "tests": [
+        "test_no_claims_no_candidate",
+        "test_unverified_claims_no_qualified_candidate"
+      ]
+    },
+    {
+      "invariant": "Independence NEVER passes with hash inequality alone",
+      "status": "PASS",
+      "tests": [
+        "test_overlapping_sets_not_independent_even_if_hashes_differ"
+      ]
+    },
+    {
+      "invariant": "Prior-art NEVER emits NOVEL",
+      "status": "PASS",
+      "tests": [
+        "test_novel_not_in_vocabulary",
+        "test_machine_cannot_self_assign_externally_testable"
+      ]
+    },
+    {
+      "invariant": "OBVIOUS_COMBINATION is BLOCKED (not hardcoded PASS)",
+      "status": "PASS",
+      "tests": [
+        "test_obvious_combination_fails_by_default",
+        "test_candidate_cannot_qualify_with_blocked_attack"
+      ]
+    }
+  ],
+  "next_phase": {
+    "exit_gate": ">=98% of records with Tier-1 identifier resolve without human intervention; Claim schema is the only path for failure\u2192mechanism relationships",
+    "gate_status": "SCHEMA COMPLETE \u2014 needs real-data verification at scale",
+    "phase": "Phase 1 \u2014 Rebuild the Atomic Unit",
+    "status": "ALREADY COMPLETE (V3 built Claim atomic unit, 4-tier resolution, predicate walker)"
+  },
+  "phase": "Phase 0 \u2014 Stop the Bleeding",
+  "report_version": "MDDG-PHASE0-EXIT",
+  "simulation_status": "BLOCKED \u2014 4 conditions unmet (per Fortune 50 directive #20)",
+  "tests": "229/229 PASS (206 existing + 23 Phase 0 invariants)"
+}

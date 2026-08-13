@@ -1,0 +1,71 @@
+{
+  "benchmarks_baseline": {
+    "1": {
+      "name": "Entity Resolution Integrity",
+      "score": "3/10"
+    },
+    "2": {
+      "name": "Evidence-Link Precision",
+      "score": "2/10"
+    },
+    "3": {
+      "name": "Lifecycle/Lineage Depth",
+      "score": "1/10"
+    },
+    "4": {
+      "name": "Failure\u2192Mechanism Causal Rigor",
+      "score": "0/10"
+    },
+    "5": {
+      "name": "Independence Standard Robustness",
+      "score": "2/10"
+    },
+    "6": {
+      "name": "Null/Benchmark Discipline",
+      "score": "3/10"
+    },
+    "7": {
+      "name": "Novelty Staging Accuracy",
+      "score": "N/A"
+    },
+    "8": {
+      "name": "Invention Decision-Package Completeness",
+      "score": "0/10"
+    },
+    "9": {
+      "name": "Human-in-the-Loop Governance",
+      "score": "4/10"
+    },
+    "10": {
+      "name": "Simulation Readiness",
+      "score": "0/10 (correctly blocked)"
+    },
+    "11": {
+      "name": "Portfolio Track Record",
+      "score": "0/10"
+    }
+  },
+  "commit": "511ff8c9",
+  "generated_at": "2026-08-13T03:51:37.080393+00:00",
+  "honest_baseline_state": {
+    "adverse_events_linked": 70,
+    "devices_ingested": 48,
+    "discovery_gate": "NOT_ATTEMPTED",
+    "failure_modes_extracted": 46,
+    "foundation_gate": "FAIL",
+    "four_hop_qualified": 0,
+    "papers_linked": 8,
+    "patents_linked": 193,
+    "real_lifecycle_chains": 3,
+    "recalls_linked": 0,
+    "simulation": "BLOCKED",
+    "trials_linked": 0
+  },
+  "phase_0_directives": [
+    "Freeze four-hop detector (DONE \u2014 archived in V2)",
+    "Kill similarity\u2192evidence promotion paths (TO VERIFY)",
+    "Snapshot baseline (THIS DOCUMENT)",
+    "Claim schema is only path for failure\u2192mechanism (TO VERIFY)"
+  ],
+  "snapshot_version": "MDDG-PHASE0-BASELINE"
+}
