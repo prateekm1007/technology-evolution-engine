@@ -40,12 +40,13 @@ class TestClaimAtomicUnit:
             source_sentence="X reduces Y", source_hash="abc",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="explicit_causal_verb",
+            supports_slot="cause",
         )
         claim = Claim(
             claim_id=make_claim_id("MECHANISM_CLAIM", "wear", "coating", "coating"),
             claim_type="MECHANISM_CLAIM",
             proposition="Coating reduces wear",
-            cause="wear", mechanism="coating", intervention="apply coating",
+            cause="wear", failure_mode="UNSPECIFIED", mechanism="coating", intervention="apply coating",
             measured_effect="wear rate decreases",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,),
@@ -77,10 +78,11 @@ class TestClaimAtomicUnit:
             source_sentence="X reduces Y", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="explicit_causal_verb",
+            supports_slot="cause",
         )
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="c", mechanism="m",
+            proposition="test", cause="c", failure_mode="UNSPECIFIED", mechanism="m",
             intervention="i", measured_effect="e",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("p1",),
@@ -100,10 +102,11 @@ class TestClaimAtomicUnit:
             source_sentence="test", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="test",
+            supports_slot="cause",
         )
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="c", mechanism="m",
+            proposition="test", cause="c", failure_mode="UNSPECIFIED", mechanism="m",
             intervention="i", measured_effect="e",
             boundary_conditions="",  # empty — should default to UNSPECIFIED
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("p1",),
@@ -319,10 +322,12 @@ class TestClaimChainDetector:
             source_sentence="X reduces Y", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="explicit_causal_verb",
+            supports_slot="cause",
         )
         fc = Claim(
             claim_id="claim:fc1", claim_type="FAILURE_CLAIM",
             proposition="wear causes implant failure", cause="wear",
+            failure_mode="UNSPECIFIED",
             mechanism="surface degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("device:1", "paper:1"),
@@ -336,7 +341,7 @@ class TestClaimChainDetector:
         mc = Claim(
             claim_id="claim:mc1", claim_type="MECHANISM_CLAIM",
             proposition="surface degradation reduces coating effectiveness",
-            cause="wear", mechanism="surface degradation",
+            cause="wear", failure_mode="UNSPECIFIED", mechanism="surface degradation",
             intervention="coating", measured_effect="wear rate decrease",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("paper:2",),
@@ -350,7 +355,7 @@ class TestClaimChainDetector:
         ic = Claim(
             claim_id="claim:ic1", claim_type="INTERVENTION_CLAIM",
             proposition="coating improves wear resistance",
-            cause="wear", mechanism="surface degradation",
+            cause="wear", failure_mode="UNSPECIFIED", mechanism="surface degradation",
             intervention="apply coating", measured_effect="wear rate decrease",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("paper:3",),

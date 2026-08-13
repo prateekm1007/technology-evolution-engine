@@ -168,10 +168,12 @@ class TestTypedClaimRelations:
             source_sentence="test", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="test",
+            supports_slot="cause",
         )
         fc = Claim(
             claim_id="claim:fc", claim_type="FAILURE_CLAIM",
             proposition="wear causes failure", cause="wear",
+            failure_mode="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,),
@@ -231,7 +233,7 @@ class TestStrengthenedEvidenceBacked:
         """V4: EVIDENCE_BACKED requires evidence for each slot, not just source_evidence."""
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="c", mechanism="m",
+            proposition="test", cause="c", failure_mode="UNSPECIFIED", mechanism="m",
             intervention="i", measured_effect="e",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(),  # NO evidence for cause
@@ -256,10 +258,12 @@ class TestStrengthenedEvidenceBacked:
             source_sentence="test", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="test",
+            supports_slot="cause",
         )
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
             proposition="test", cause="",  # EMPTY
+            failure_mode="UNSPECIFIED",
             mechanism="m", intervention="i",
             measured_effect="e", boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,),
@@ -281,10 +285,11 @@ class TestStrengthenedEvidenceBacked:
             source_sentence="test", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="test",
+            supports_slot="cause",
         )
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="c", mechanism="m",
+            proposition="test", cause="c", failure_mode="UNSPECIFIED", mechanism="m",
             intervention="i", measured_effect="e",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,),
@@ -316,7 +321,7 @@ class TestClaimSourceIntegrity:
         )
         claim = Claim(
             claim_id="claim:1", claim_type="MECHANISM_CLAIM",
-            proposition="test", cause="wear", mechanism="degradation",
+            proposition="test", cause="wear", failure_mode="UNSPECIFIED", mechanism="degradation",
             intervention="coating", measured_effect="30% reduction",
             boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,),

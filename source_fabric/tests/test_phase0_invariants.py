@@ -228,10 +228,12 @@ class TestClaimChainNeverCoPresence:
             source_sentence="X mentions Y", source_hash="h",
             publication_date="2020-01-01", evidence_tier="D",
             extraction_method="co_mention",
+            supports_slot="cause",
         )
         fc = Claim(
             claim_id="c:fc", claim_type="FAILURE_CLAIM",
             proposition="wear mentioned", cause="wear",
+            failure_mode="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("d:1",),
@@ -245,6 +247,7 @@ class TestClaimChainNeverCoPresence:
         mc = Claim(
             claim_id="c:mc", claim_type="MECHANISM_CLAIM",
             proposition="degradation mentioned", cause="wear",
+            failure_mode="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("p:2",),
@@ -258,6 +261,7 @@ class TestClaimChainNeverCoPresence:
         ic = Claim(
             claim_id="c:ic", claim_type="INTERVENTION_CLAIM",
             proposition="coating mentioned", cause="wear",
+            failure_mode="UNSPECIFIED",
             mechanism="degradation", intervention="coating",
             measured_effect="wear rate", boundary_conditions="UNSPECIFIED",
             cause_evidence=(evidence,), mechanism_evidence=(evidence,), intervention_evidence=(evidence,), measured_effect_evidence=(evidence,), source_ids=("p:3",),
