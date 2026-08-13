@@ -52,6 +52,7 @@
       "claim_id": "claim:11a3fece47688901",
       "claim_schema_version": 10,
       "claim_type": "FAILURE_CLAIM",
+      "contract_hash": "",
       "creation_timestamp": "2026-08-13T06:00:00Z",
       "derivation_method": "structured_causal_extraction",
       "effect_direction": "decrease",
@@ -133,6 +134,7 @@
       "mechanism_resolution_version": "v10",
       "mechanism_status": "UNKNOWN_NOT_STATED",
       "proposition": "Ceramic coating reduces implant wear by 30 percent in hip replacements",
+      "repository_commit": "",
       "source_hashes": [
         "replay_hash_1"
       ],
@@ -208,6 +210,7 @@
       "claim_id": "claim:37e48fa4c58ca097",
       "claim_schema_version": 10,
       "claim_type": "FAILURE_CLAIM",
+      "contract_hash": "",
       "creation_timestamp": "2026-08-13T06:00:00Z",
       "derivation_method": "structured_causal_extraction",
       "effect_direction": "decrease",
@@ -289,6 +292,7 @@
       "mechanism_resolution_version": "v10",
       "mechanism_status": "UNKNOWN_NOT_STATED",
       "proposition": "Antimicrobial coating reduces infection rate by 60 percent at body temperature in vivo",
+      "repository_commit": "",
       "source_hashes": [
         "replay_hash_3"
       ],
@@ -347,6 +351,7 @@
       "claim_id": "claim:5afaed43c1759d57",
       "claim_schema_version": 10,
       "claim_type": "FAILURE_CLAIM",
+      "contract_hash": "",
       "creation_timestamp": "2026-08-13T06:00:00Z",
       "derivation_method": "structured_causal_extraction",
       "effect_direction": "decrease",
@@ -428,6 +433,7 @@
       "mechanism_resolution_version": "v10",
       "mechanism_status": "UNKNOWN_NOT_STATED",
       "proposition": "Surface passivation treatment prevents corrosion degradation in titanium implants",
+      "repository_commit": "",
       "source_hashes": [
         "replay_hash_2"
       ],
@@ -444,12 +450,12 @@
   "evidence_hash": "38a3d18e29f0ceb0f3fbdd2cd87f63cf522f0bcb726df697ed4f5a8daf2ddbc1",
   "extractor_version": 10,
   "failure_taxonomy_hash": "d2781ad04b058af7d7442043074f2b6cea2c38b9a459c8db7e02f14fb797edc3",
-  "full_output_hash": "ba970336ff0ba75562d05bcf62445c92b320770f51b7fb23dc0adc1ec4d0bb5f",
+  "full_output_hash": "52ca3f2223392e126ebef87c06aa0b8f70c62edbcc9db521a01f598f4f7d587d",
   "generated_with_clock": "ReplayClock",
   "input_snapshot_hash": "4c30a872db1eeaec6dc44f3bb7431cff5017ed346b5ede7c61c688b5ef392f8a",
   "knowledge_cutoff": "2026-08-13",
   "ontology_hash": "d2781ad04b058af7d7442043074f2b6cea2c38b9a459c8db7e02f14fb797edc3",
-  "root_hash": "91458b2e52a767d0787c7dccb3d55b4b92794406a3128e279ac269338d3e4da9",
+  "root_hash": "660ace7e3e665a4f3a50ad8ab80408396efdd9cf4de47a41fc59ba8f4e3a3f22",
   "source_record_hashes": [
     "replay_hash_1",
     "replay_hash_2",

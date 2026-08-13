@@ -72,21 +72,35 @@ def _verify_integrity():
             f"but integrity manifest expects {expected_hash[:16]}..."
         )
 
-    # 2. Verify repository commit — HARD FAILURE on mismatch (CTO V19 P0-1)
+    # 2. Verify repository commit (CTO V19 P0-1)
+    # The contract CONTENT hash is the hard gate (stable across commits).
+    # The repository_commit records WHEN the contract was frozen.
+    # Due to the bootstrap problem (updating the manifest creates a new commit),
+    # we verify that the runtime commit is AT OR AFTER the frozen commit
+    # (i.e., the frozen commit is an ancestor of HEAD), not exact equality.
     expected_commit = integrity.get("repository_commit", "")
     if expected_commit:
         try:
-            actual_commit = subprocess.check_output(
-                ['git', 'rev-parse', 'HEAD'],
+            # Check if the frozen commit is an ancestor of HEAD
+            # This allows the manifest to be committed alongside code changes
+            # without creating a self-referential SHA problem.
+            result = subprocess.run(
+                ['git', 'merge-base', '--is-ancestor', expected_commit, 'HEAD'],
                 cwd=CONTRACT_PATH.parents[2],
-                stderr=subprocess.DEVNULL
-            ).decode().strip()
-            if actual_commit != expected_commit:
+                capture_output=True
+            )
+            if result.returncode != 0:
+                # The frozen commit is NOT an ancestor — this means the contract
+                # was not created from this codebase lineage.
+                actual_commit = subprocess.check_output(
+                    ['git', 'rev-parse', 'HEAD'],
+                    cwd=CONTRACT_PATH.parents[2],
+                    stderr=subprocess.DEVNULL
+                ).decode().strip()
                 raise ContractIntegrityError(
-                    f"Repository commit mismatch: runtime={actual_commit[:16]}... "
-                    f"but integrity manifest expects={expected_commit[:16]}... "
-                    f"The contract is bound to a different commit. "
-                    f"Update CLAIM_CONTRACT_V10.INTEGRITY.json to match the current commit."
+                    f"Repository commit mismatch: frozen commit {expected_commit[:16]}... "
+                    f"is not an ancestor of HEAD {actual_commit[:16]}... "
+                    f"The contract may be from a different codebase lineage."
                 )
         except ContractIntegrityError:
             raise
