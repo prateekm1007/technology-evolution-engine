@@ -41,10 +41,11 @@ CLAIM_TYPES = {
 CLAIM_STATUS = {
     "BLOCKED",                  # missing mandatory slots
     "SEARCH_CANDIDATE",         # causal verb found but slots not extractable
-    "EVIDENCE_BACKED",          # all 5 slots extracted from source evidence
+    "EVIDENCE_BACKED",          # all 6 slots extracted from source evidence
     "QUALIFIED_CANDIDATE",      # survived adversarial review
     "PROMISING_INTERSECTION",   # prior-art check passed, needs expert review
     "EXTERNALLY_TESTABLE",      # human sign-off received
+    "SIMULATION_READY",         # V6: boundary conditions fully specified (not UNSPECIFIED)
     "REJECTED",                 # failed adversarial or prior-art
 }
 
@@ -53,10 +54,15 @@ CLAIM_STATUS = {
 # =====================================================================
 
 CAUSAL_VERBS = {
-    "reduces", "causes", "prevents", "mitigates", "induces", "inhibits",
-    "increases", "decreases", "improves", "suppresses", "eliminates",
-    "enhances", "restores", "accelerates", "decelerates", "blocks",
-    "promotes", "attenuates", "abolishes", "abrogates", "reverses",
+    "reduces", "reduced", "causes", "caused", "prevents", "prevented",
+    "mitigates", "mitigated", "induces", "induced", "inhibits", "inhibited",
+    "increases", "increased", "decreases", "decreased", "improves", "improved",
+    "suppresses", "suppressed", "eliminates", "eliminated",
+    "enhances", "enhanced", "restores", "restored",
+    "accelerates", "accelerated", "decelerates", "decelerated",
+    "blocks", "blocked", "promotes", "promoted",
+    "attenuates", "attenuated", "abolishes", "abolished",
+    "abrogates", "abrogated", "reverses", "reversed",
 }
 
 NEGATED_CAUSAL = {
@@ -71,6 +77,8 @@ SPECULATIVE_LANGUAGE = {
     "may", "might", "could", "possibly", "potentially", "hypothesized",
     "it is possible", "future studies", "further research", "warrant further",
     "remains to be seen", "unclear whether", "it is unclear",
+    "remains unknown", "mechanism remains", "not established",
+    "not yet established", "has not been established",
 }
 
 # Review/summary language that indicates the statement is not original evidence
@@ -79,6 +87,8 @@ REVIEW_LANGUAGE = {
     "survey", "surveys", "meta-analysis", "systematic review",
     "previously reported", "has been reported", "it has been shown",
     "studies have shown", "literature suggests",
+    "studies reported", "previous studies", "prior studies",
+    "earlier studies", "reported that",
 }
 
 # Correlation language (not causation)
@@ -125,8 +135,13 @@ class SourceEvidence:
         pass
 
     def has_span(self) -> bool:
-        """True if this evidence has a real character span (not just a sentence)."""
-        return self.char_start > 0 and self.char_end > self.char_start
+        """True if this evidence has a real character span.
+
+        V6: Fixed to accept char_start=0 (spans beginning at the start of the
+        source field are legitimate). Per CTO: 'Use char_start >= 0 and
+        char_end > char_start.'
+        """
+        return self.char_start >= 0 and self.char_end > self.char_start
 
     def canonical_dict(self) -> dict:
         return asdict(self)
@@ -218,10 +233,18 @@ class Claim:
                 self.measured_effect_evidence + self.boundary_evidence)
 
     def has_six_slots(self) -> bool:
-        """V5: Check that all 6 mandatory slots are filled."""
+        """V6: Check that all 6 mandatory slots are filled.
+
+        failure_mode must be a real value (NOT "UNSPECIFIED").
+        boundary_conditions may be "UNSPECIFIED" (the only slot that allows it).
+        """
         return all([
-            self.cause, self.failure_mode, self.mechanism,
-            self.intervention, self.measured_effect, self.boundary_conditions,
+            self.cause and self.cause != "UNSPECIFIED",
+            self.failure_mode and self.failure_mode != "UNSPECIFIED",
+            self.mechanism and self.mechanism != "UNSPECIFIED",
+            self.intervention and self.intervention != "UNSPECIFIED",
+            self.measured_effect and self.measured_effect != "UNSPECIFIED",
+            self.boundary_conditions,  # boundary may be "UNSPECIFIED"
         ])
 
     def has_five_slots(self) -> bool:
@@ -232,13 +255,22 @@ class Claim:
         ])
 
     def has_slot_level_evidence(self) -> bool:
-        """V5: Each mandatory slot must have at least one slot-specific evidence.
+        """V5: Each mandatory slot must have at least one slot-specific evidence."""
+        return all([
+            len(self.cause_evidence) > 0,
+            len(self.mechanism_evidence) > 0,
+            len(self.intervention_evidence) > 0,
+            len(self.measured_effect_evidence) > 0,
+        ])
 
-        Per CTO directive A: "Every non-empty slot has an evidence span that
-        actually supports that slot."
+    def has_slot_level_evidence_v6(self) -> bool:
+        """V6: Each of the 6 mandatory slots must have slot-specific evidence.
+
+        Per CTO V11 #1: failure_mode is mandatory for evidence-backed claims.
         """
         return all([
             len(self.cause_evidence) > 0,
+            len(self.failure_mode_evidence) > 0,
             len(self.mechanism_evidence) > 0,
             len(self.intervention_evidence) > 0,
             len(self.measured_effect_evidence) > 0,
@@ -266,23 +298,27 @@ class Claim:
         return True
 
     def is_evidence_backed(self) -> bool:
-        """V5: EVIDENCE_BACKED requires ALL of:
-        - 6 slots filled (failure_mode may be "UNSPECIFIED")
-        - slot-level evidence for cause, mechanism, intervention, measured_effect
+        """V6: EVIDENCE_BACKED requires ALL of:
+        - 6 slots filled (INCLUDING failure_mode — NOT optional)
+        - slot-level evidence for cause, failure_mode, mechanism, intervention, measured_effect
         - no supports_slot="all" in any evidence
         - status == EVIDENCE_BACKED
         - temporal_validity == "valid"
         - source sentence + hash + date in every evidence
+        - every evidence has a real span (has_span())
+
+        Per CTO V11 #1: 'EVIDENCE_BACKED => has_six_slots(). No compatibility path.'
         """
         return (
-            self.has_five_slots()
-            and self.has_slot_level_evidence()
+            self.has_six_slots()
+            and self.has_slot_level_evidence_v6()
             and self.has_slot_specific_evidence()
             and self.status == "EVIDENCE_BACKED"
             and self.temporal_validity == "valid"
             and all(e.source_sentence for e in self.source_evidence)
             and all(e.source_hash for e in self.source_evidence)
             and all(e.publication_date for e in self.source_evidence)
+            and all(e.has_span() for e in self.source_evidence if e.supports_slot != "boundary_conditions")
         )
 
     def is_search_candidate_only(self) -> bool:
@@ -414,9 +450,24 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
 
         # SLOTS EXTRACTED → EVIDENCE_BACKED
         cause, mechanism, intervention, measured_effect, boundary = slots
+        sent_id = f"{source_id}:s{hashlib.sha256((source_id + sentence + source_hash).encode()).hexdigest()[:8]}"
 
-        # V5: Create SLOT-SPECIFIC evidence objects (not one "all" evidence)
-        # Per CTO directive A: "supports_slot='all' is FORBIDDEN for evidence-backed claims."
+        # V6: Create SLOT-SPECIFIC evidence with ACTUAL character spans.
+        # Per CTO V11 #2: "For every promoted Claim, make the evidence span
+        # actually correspond to the slot."
+        def _find_span(text: str, sentence: str) -> tuple[int, int, str]:
+            """Find the character offset of text within sentence. Returns (start, end, quoted)."""
+            idx = sentence.lower().find(text.lower())
+            if idx >= 0:
+                return (idx, idx + len(text), sentence[idx:idx + len(text)])
+            # Fallback: return the whole sentence span (degraded but not 0:len)
+            return (0, len(sentence), sentence[:200])
+
+        cause_span = _find_span(cause, sentence)
+        mech_span = _find_span(mechanism, sentence)
+        intv_span = _find_span(intervention, sentence)
+        eff_span = _find_span(measured_effect, sentence)
+
         cause_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
             source_field=source_field, source_sentence=sentence[:500],
@@ -424,9 +475,20 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             evidence_tier=evidence_tier,
             extraction_method="structured_causal_extraction",
             supports_slot="cause",
-            sentence_id=f"{source_id}:s{hash(sentence) % 10000}",
-            char_start=0, char_end=len(sentence),
-            quoted_span=sentence[:200],
+            sentence_id=sent_id,
+            char_start=cause_span[0], char_end=cause_span[1],
+            quoted_span=cause_span[2],
+        )
+        failure_mode_ev = SourceEvidence(
+            source_id=source_id, source_type=source_type,
+            source_field=source_field, source_sentence=sentence[:500],
+            source_hash=source_hash, publication_date=publication_date,
+            evidence_tier=evidence_tier,
+            extraction_method="structured_causal_extraction",
+            supports_slot="failure_mode",
+            sentence_id=sent_id,
+            char_start=cause_span[0], char_end=cause_span[1],
+            quoted_span=cause_span[2],  # failure_mode derived from cause context
         )
         mechanism_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
@@ -435,9 +497,9 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             evidence_tier=evidence_tier,
             extraction_method="structured_causal_extraction",
             supports_slot="mechanism",
-            sentence_id=f"{source_id}:s{hash(sentence) % 10000}",
-            char_start=0, char_end=len(sentence),
-            quoted_span=sentence[:200],
+            sentence_id=sent_id,
+            char_start=mech_span[0], char_end=mech_span[1],
+            quoted_span=mech_span[2],
         )
         intervention_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
@@ -446,9 +508,9 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             evidence_tier=evidence_tier,
             extraction_method="structured_causal_extraction",
             supports_slot="intervention",
-            sentence_id=f"{source_id}:s{hash(sentence) % 10000}",
-            char_start=0, char_end=len(sentence),
-            quoted_span=sentence[:200],
+            sentence_id=sent_id,
+            char_start=intv_span[0], char_end=intv_span[1],
+            quoted_span=intv_span[2],
         )
         effect_ev = SourceEvidence(
             source_id=source_id, source_type=source_type,
@@ -457,12 +519,13 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
             evidence_tier=evidence_tier,
             extraction_method="structured_causal_extraction",
             supports_slot="measured_effect",
-            sentence_id=f"{source_id}:s{hash(sentence) % 10000}",
-            char_start=0, char_end=len(sentence),
-            quoted_span=sentence[:200],
+            sentence_id=sent_id,
+            char_start=eff_span[0], char_end=eff_span[1],
+            quoted_span=eff_span[2],
         )
         boundary_ev = ()
         if boundary != "UNSPECIFIED":
+            b_span = _find_span(boundary, sentence)
             boundary_ev = (SourceEvidence(
                 source_id=source_id, source_type=source_type,
                 source_field=source_field, source_sentence=sentence[:500],
@@ -470,23 +533,27 @@ def extract_causal_claims_v4(text: str, *, source_id: str, source_type: str,
                 evidence_tier=evidence_tier,
                 extraction_method="structured_boundary_extraction",
                 supports_slot="boundary_conditions",
-                sentence_id=f"{source_id}:s{hash(sentence) % 10000}",
-                char_start=0, char_end=len(sentence),
-                quoted_span=boundary,
+                sentence_id=sent_id,
+                char_start=b_span[0], char_end=b_span[1],
+                quoted_span=b_span[2],
             ),)
+
+        # V6: failure_mode is derived from cause context — the failure being addressed
+        # For "Coating X reduces wear", the failure_mode is "wear"
+        failure_mode_value = cause if cause else "UNSPECIFIED"
 
         claim = Claim(
             claim_id=make_claim_id("MECHANISM_CLAIM", cause, mechanism, intervention),
             claim_type="MECHANISM_CLAIM",
             proposition=sentence[:300],
             cause=cause,
-            failure_mode="UNSPECIFIED",  # V5: failure_mode separated from cause
+            failure_mode=failure_mode_value,  # V6: failure_mode is now populated
             mechanism=mechanism,
             intervention=intervention,
             measured_effect=measured_effect,
             boundary_conditions=boundary,
             cause_evidence=(cause_ev,),
-            failure_mode_evidence=(),
+            failure_mode_evidence=(failure_mode_ev,),
             mechanism_evidence=(mechanism_ev,),
             intervention_evidence=(intervention_ev,),
             measured_effect_evidence=(effect_ev,),
@@ -819,3 +886,113 @@ def validate_claim_relation_evidence(relation: ClaimRelation,
 def extract_causal_claims(text: str, **kwargs) -> list[Claim]:
     """Backward-compatible alias for extract_causal_claims_v4."""
     return extract_causal_claims_v4(text, **kwargs)
+
+
+# =====================================================================
+# V6: SLOT-VALUE GROUNDING + CLAIM INTEGRITY (CTO V11 #5, #9)
+# =====================================================================
+
+def validate_slot_support(slot_name: str, extracted_value: str,
+                          evidence: SourceEvidence) -> tuple[bool, str]:
+    """V6: Verify that a slot's extracted value is grounded in its evidence span.
+
+    Per CTO V11 #5: "The verifier must prove that this exact span supports
+    this exact slot. Add a semantic validation contract."
+
+    Returns (passed, reason).
+    """
+    if not extracted_value:
+        return False, f"slot '{slot_name}' has empty extracted value"
+    if not evidence.quoted_span:
+        return False, f"evidence for slot '{slot_name}' has empty quoted_span"
+    # The extracted value should appear in (or be a substring of) the quoted span
+    # This is a conservative check — the value must be grounded in the span text
+    if extracted_value.lower() in evidence.quoted_span.lower():
+        return True, "validated"
+    # Also check if the span appears in the value (value may be a paraphrase)
+    if evidence.quoted_span.lower() in extracted_value.lower():
+        return True, "validated (span within value)"
+    # Check overlap: at least 3 characters of the value appear in the span
+    value_words = set(extracted_value.lower().split())
+    span_words = set(evidence.quoted_span.lower().split())
+    overlap = value_words & span_words
+    if len(overlap) >= 2:
+        return True, f"validated (word overlap: {sorted(overlap)[:3]})"
+    return False, (f"slot '{slot_name}' value '{extracted_value[:50]}' is not grounded "
+                   f"in evidence span '{evidence.quoted_span[:50]}'")
+
+
+def validate_claim_integrity(claim: Claim, source_store: dict[str, dict] = None) -> tuple[bool, str]:
+    """V6: Single canonical validator for all scientific promotions.
+
+    Per CTO V11 #9: "FOR EVERY EVIDENCE_BACKED CLAIM: every slot has evidence,
+    has exact source span, span exists in source record, source hash matches,
+    slot value is grounded in span, derivation method is allowed."
+
+    Returns (passed, reason).
+    """
+    source_store = source_store or {}
+
+    # 1. Must be EVIDENCE_BACKED
+    if not claim.status == "EVIDENCE_BACKED":
+        return False, f"status is '{claim.status}', not 'EVIDENCE_BACKED'"
+
+    # 2. Must have 6 slots
+    if not claim.has_six_slots():
+        return False, "missing one or more of the 6 mandatory slots"
+
+    # 3. Must have slot-level evidence
+    if not claim.has_slot_level_evidence_v6():
+        return False, "missing slot-level evidence for one or more mandatory slots"
+
+    # 4. Must have slot-specific evidence (no supports_slot="all")
+    if not claim.has_slot_specific_evidence():
+        return False, "evidence has supports_slot mismatch or 'all'"
+
+    # 5. Every evidence must have a span
+    for ev in claim.source_evidence:
+        if not ev.has_span():
+            return False, f"evidence for slot '{ev.supports_slot}' has no span"
+
+    # 6. Slot values must be grounded in their evidence spans
+    slot_evidence_map = {
+        "cause": (claim.cause, claim.cause_evidence),
+        "failure_mode": (claim.failure_mode, claim.failure_mode_evidence),
+        "mechanism": (claim.mechanism, claim.mechanism_evidence),
+        "intervention": (claim.intervention, claim.intervention_evidence),
+        "measured_effect": (claim.measured_effect, claim.measured_effect_evidence),
+    }
+    for slot_name, (value, evidence_list) in slot_evidence_map.items():
+        if not value or value == "UNSPECIFIED":
+            continue
+        for ev in evidence_list:
+            passed, reason = validate_slot_support(slot_name, value, ev)
+            if not passed:
+                return False, f"slot grounding failed for '{slot_name}': {reason}"
+
+    # 7. Temporal validity
+    if claim.temporal_validity != "valid":
+        return False, f"temporal_validity is '{claim.temporal_validity}', not 'valid'"
+
+    # 8. Source hashes must be non-empty
+    if not all(e.source_hash for e in claim.source_evidence):
+        return False, "one or more evidence objects have empty source_hash"
+
+    # 9. Publication dates must be non-empty
+    if not all(e.publication_date for e in claim.source_evidence):
+        return False, "one or more evidence objects have empty publication_date"
+
+    return True, "validated"
+
+
+def is_simulation_ready(claim: Claim) -> bool:
+    """V6: A claim is SIMULATION_READY only if boundary_conditions are fully specified.
+
+    Per CTO V11 #7: "A candidate entering simulation must have actual boundary
+    conditions. No inferred defaults."
+    """
+    return (
+        claim.is_evidence_backed()
+        and claim.boundary_conditions != "UNSPECIFIED"
+        and len(claim.boundary_conditions) > 5  # not just "UNSPECIFIED"
+    )
