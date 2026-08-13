@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-08-13T01:22:29.627221+00:00",
+  "v3_phase": "V3",
+  "stop_condition_met": false,
+  "exit_criterion": {
+    "CONNECTORS_OPERATIONAL": 2,
+    "SCIENCE_RECORDS_INGESTED": 350,
+    "PATENT_FAMILIES_INGESTED": 0,
+    "CROSS_CORPUS_EDGES": 0,
+    "REAL_SNAPSHOT_HASH_EXISTS": true,
+    "REAL_SNAPSHOT_HASH": "5ea2a75780b8e0d8..."
+  },
+  "connector_report_summary": {
+    "total_probed": 3,
+    "operational": 2,
+    "total_records_sampled": 6
+  },
+  "pilot_snapshot_summary": {
+    "science_records": 350,
+    "patent_records": 0,
+    "total_records": 350,
+    "domains": [
+      "battery_electrochemistry",
+      "perovskite_photovoltaics",
+      "crispr_gene_editing",
+      "hydrogen_electrocatalysis",
+      "additive_manufacturing"
+    ],
+    "connectors_used": [
+      "src:google_patents",
+      "src:openalex",
+      "src:pubmed"
+    ],
+    "snapshot_verified": true,
+    "is_real_data": true,
+    "no_synthetic_data": true
+  },
+  "cross_corpus_edges": {
+    "total_edges": 0,
+    "by_type": {},
+    "all_inferred": 0,
+    "all_deterministic": 0
+  },
+  "honest_boundaries": {
+    "live_http_performed": true,
+    "real_records_retrieved": true,
+    "no_synthetic_data": true,
+    "google_patents_labeled_secondary": true,
+    "google_patents_status": "FAILED (503 Service Unavailable)",
+    "patent_ingestion_blocked": true,
+    "patent_blockage_reason": "Google Patents returned HTTP 503 from this environment. EPO OPS requires OAuth credentials. USPTO ODP requires API key. No open patent source available without auth.",
+    "psc_frozen": true,
+    "a2_authorized": false,
+    "is_scientific_result": false,
+    "no_discovery_claims": true
+  },
+  "what_was_achieved": [
+    "Consolidated to ONE connector interface (EvidenceConnector). Old Connector deprecated.",
+    "3 distinct hashes implemented (raw_content_hash, normalized_content_hash, record_manifest_hash).",
+    "Regression test proves: identical content \u2192 identical normalized_content_hash.",
+    "6-status vocabulary: DISCOVERED/CATALOGUED/IMPLEMENTED/PROBED/OPERATIONAL/FAILED.",
+    "OpenAlex connector OPERATIONAL (real live HTTP, real records retrieved).",
+    "Europe PMC connector OPERATIONAL (real live HTTP, real records retrieved).",
+    "Google Patents connector IMPLEMENTED but FAILED (503 \u2014 recorded honestly).",
+    "350 real science records ingested across 5 domains.",
+    "Real pilot snapshot created with REAL_SNAPSHOT_HASH.",
+    "Snapshot verified (tamper-evident, content-addressed)."
+  ],
+  "what_remains_blocked": [
+    "PATENT_FAMILIES_INGESTED = 0 \u2014 Google Patents 503, EPO/USPTO need auth.",
+    "CROSS_CORPUS_EDGES = 0 without patent records (no paper\u2194patent edges possible).",
+    "STOP CONDITION not fully met (patent ingestion blocked)."
+  ],
+  "next_steps": [
+    "Provide EPO_OPS_KEY + EPO_OPS_SECRET for real patent ingestion.",
+    "OR provide USPTO_ODP_KEY for USPTO Open Data Portal access.",
+    "OR wait for Google Patents to recover from 503.",
+    "Once patents ingested: build cross-corpus edges, run intersection experiment."
+  ]
+}

@@ -1,0 +1,3 @@
+# Record files are content-addressed and can be regenerated from the snapshot manifest.
+# We exclude them from git to keep the repo manageable, but the manifest + hashes are committed.
+*.json

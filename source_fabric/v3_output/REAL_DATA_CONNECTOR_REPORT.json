@@ -1,0 +1,141 @@
+{
+  "generated_at": "2026-08-13T01:22:29.610471+00:00",
+  "total_connectors_probed": 3,
+  "operational_count": 2,
+  "total_records_sampled": 6,
+  "connector_proofs": [
+    {
+      "source_id": "src:openalex",
+      "connector_version": "openalex-v3-1.0",
+      "status": "OPERATIONAL",
+      "discovery_proven": true,
+      "metadata_retrieval_proven": true,
+      "content_retrieval_attempted": true,
+      "provenance_proven": true,
+      "normalization_proven": true,
+      "hashing_proven": true,
+      "checkpoint_proven": true,
+      "retry_proven": true,
+      "rate_limit_aware": true,
+      "schema_validated": true,
+      "failure_recording_wired": true,
+      "records_sampled": 3,
+      "first_record_id": "https://openalex.org/W1949231392",
+      "last_record_id": "https://openalex.org/W2152510783",
+      "first_raw_hash": "aa2f1c5dce010fe2d36be6a9f145bd39ebe11236f927571ae3b892e086398678",
+      "first_normalized_hash": "4fd5168d37a9fd05c00e4874aa78914c51c211a1f582e7a323dc5b498b739550",
+      "first_manifest_hash": "63af1b6a3314321317e73e010fe459aa863fb14aca84791d98de3c55d039e1d9",
+      "retrieval_timestamp": "2026-08-13T01:22:12.573730+00:00",
+      "http_status": 200,
+      "actual_response_schema": {
+        "normalized_keys": [
+          "abstract",
+          "authors",
+          "cited_by_count",
+          "doi",
+          "language",
+          "oa_url",
+          "publication_date",
+          "references",
+          "source",
+          "title",
+          "topics",
+          "work_id"
+        ],
+        "record_count": 3
+      },
+      "license_access_status": "CC0",
+      "checkpoint_state": {
+        "cursor": "Ils4NTU3LjIyNywgODU5ODUyODAwMDAwLCAnaHR0cHM6Ly9vcGVuYWxleC5vcmcvVzIxNTI1MTA3ODMnXSI=",
+        "records_harvested": 3,
+        "last_success_at": "2026-08-13T01:22:12.573730+00:00"
+      },
+      "errors": []
+    },
+    {
+      "source_id": "src:pubmed",
+      "connector_version": "europepmc-v3-1.0",
+      "status": "OPERATIONAL",
+      "discovery_proven": true,
+      "metadata_retrieval_proven": true,
+      "content_retrieval_attempted": true,
+      "provenance_proven": true,
+      "normalization_proven": true,
+      "hashing_proven": true,
+      "checkpoint_proven": true,
+      "retry_proven": true,
+      "rate_limit_aware": true,
+      "schema_validated": true,
+      "failure_recording_wired": true,
+      "records_sampled": 3,
+      "first_record_id": "europepmc:42262553",
+      "last_record_id": "europepmc:42470946",
+      "first_raw_hash": "34fe491da871e98efb7db9882bc3aa42d5e3ca6ac0168d7e8fae7bb352b02599",
+      "first_normalized_hash": "62069cd6ef396ccab78c821f1ddbd806975d0a86ecb409384e20be62278f45c3",
+      "first_manifest_hash": "125f60ef0bf6f7b3d5d7d41dcec3775108e2e1d58cf9b3ce8129fd2d72ed9f4d",
+      "retrieval_timestamp": "2026-08-13T01:22:15.523860+00:00",
+      "http_status": 200,
+      "actual_response_schema": {
+        "normalized_keys": [
+          "abstract",
+          "authors",
+          "cited_by_count",
+          "doi",
+          "journal",
+          "language",
+          "pmid",
+          "publication_date",
+          "references",
+          "source",
+          "title",
+          "topics",
+          "work_id"
+        ],
+        "record_count": 3
+      },
+      "license_access_status": "CC-BY",
+      "checkpoint_state": {
+        "cursor": "2",
+        "records_harvested": 3,
+        "last_success_at": "2026-08-13T01:22:15.523860+00:00"
+      },
+      "errors": []
+    },
+    {
+      "source_id": "src:google_patents",
+      "connector_version": "googlepatents-v3-1.0-SECONDARY",
+      "status": "FAILED",
+      "discovery_proven": false,
+      "metadata_retrieval_proven": false,
+      "content_retrieval_attempted": false,
+      "provenance_proven": false,
+      "normalization_proven": false,
+      "hashing_proven": false,
+      "checkpoint_proven": false,
+      "retry_proven": true,
+      "rate_limit_aware": true,
+      "schema_validated": false,
+      "failure_recording_wired": true,
+      "records_sampled": 0,
+      "first_record_id": "",
+      "last_record_id": "",
+      "first_raw_hash": "",
+      "first_normalized_hash": "",
+      "first_manifest_hash": "",
+      "retrieval_timestamp": "",
+      "http_status": 0,
+      "actual_response_schema": {},
+      "license_access_status": "secondary (Google Patents)",
+      "checkpoint_state": {},
+      "errors": [
+        "discovery failed: HTTP Error 503: Service Unavailable"
+      ]
+    }
+  ],
+  "honest_boundary": {
+    "live_http_performed": true,
+    "real_records_retrieved": true,
+    "no_synthetic_data": true,
+    "google_patents_labeled_secondary": true
+  }
+}
